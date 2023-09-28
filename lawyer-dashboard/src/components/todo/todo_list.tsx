@@ -1,7 +1,8 @@
-import CreateTask, { getTasks } from "@/server/tasks/tasks";
-import AddTaskForm from "./add_task_form";
+import CreateTask, { DeleteTask, getTasks } from "@/server/tasks/tasks";
+
 import TaskTable from "./task_table";
-import { revalidateTag } from "next/cache";
+import TaskForm from "./form";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 // function BootstrapDialogTitle(props: any) {
@@ -32,20 +33,19 @@ import { redirect } from "next/navigation";
 //   children: PropTypes.node,
 //   onClose: PropTypes.func.isRequired,
 // };
-
+async function Delete(taskId: string) {
+  "use server";
+  try {
+    const res = await DeleteTask(taskId);
+    revalidatePath("/tasks", "page");
+  } catch (error) {}
+}
 const ToDoLists = async () => {
-  async function onCreate(formData: FormData) {
-    "use server";
-    const res = await CreateTask(formData);
-    revalidateTag("tasks"); // Update cached posts
-    redirect("/tasks");
-  }
-
   const tasks = await getTasks();
   return (
     <>
-      <AddTaskForm onCreate={onCreate} />
-      <TaskTable dataRows={tasks} />
+      <TaskForm />
+      <TaskTable dataRows={tasks} deleteTask={Delete} />
     </>
   );
 };

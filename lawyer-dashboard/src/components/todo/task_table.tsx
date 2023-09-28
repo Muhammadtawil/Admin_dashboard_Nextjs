@@ -32,7 +32,8 @@ import {
   Button,
 } from "@mui/material";
 import { DeleteTask } from "@/server/tasks/tasks";
-import deleteAlert from "../alerts/alerts";
+import { deleteAlert } from "../alerts/alerts";
+
 
 const label = { input: { "aria-label": "Checkbox demo" } };
 
@@ -42,7 +43,13 @@ const cellStyle = {
   fontSize: "13.5px",
 };
 
-export default function TaskTable({ dataRows }: { dataRows: any[] }) {
+export default function TaskTable({
+  dataRows,
+  deleteTask,
+}: {
+  dataRows: any[];
+  deleteTask: any;
+}) {
   function ToDoList(props: any) {
     const theme = useTheme();
     const { count, page, rowsPerPage, onPageChange } = props;
@@ -119,7 +126,6 @@ export default function TaskTable({ dataRows }: { dataRows: any[] }) {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
 
   const RenderTableRows = (
     dataRows: any[],
@@ -200,7 +206,7 @@ export default function TaskTable({ dataRows }: { dataRows: any[] }) {
                   size="small"
                   color="error"
                   className="error"
-                  onClick={() => deleteAlert(DeleteTask(task.taskId))}
+                  onClick={() => deleteAlert(deleteTask(task.taskId))}
                 >
                   <DeleteIcon fontSize="inherit" />
                 </IconButton>

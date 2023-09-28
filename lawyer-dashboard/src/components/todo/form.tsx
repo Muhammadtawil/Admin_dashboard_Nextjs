@@ -12,6 +12,10 @@
 // import AddIcon from "@mui/icons-material/Add";
 // import CreateTask from "@/server/tasks/tasks";
 
+import CreateTask from "@/server/tasks/tasks";
+import { revalidatePath } from "next/cache";
+import AddTaskForm from "./add_task_form";
+
 // export default async function TdoDoForm() {
 //   async function onCreate(formData: FormData) {
 //     "use server";
@@ -169,3 +173,15 @@
 //     </Box>
 //   );
 // }
+
+("use sever");
+export default async function TaskForm() {
+  async function onCreate(formData: FormData) {
+    "use server";
+    try {
+      const res = await CreateTask(formData);
+      revalidatePath("/tasks", "page");
+    } catch (error) {}
+  }
+  return <AddTaskForm onCreate={onCreate} />;
+}

@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
+
 import {
   Box,
   Typography,
@@ -14,7 +15,11 @@ import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import Dialog from "@mui/material/Dialog";
 import { styled } from "@mui/material/styles";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
+import CreateTask from "@/server/tasks/tasks";
+import { revalidatePath } from "next/cache";
+import { deleteAlert } from "../alerts/alerts";
+
 
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
 const priorityValues = ["HIGH", "MEDIUM", "LOW"];
@@ -29,6 +34,7 @@ const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function AddTaskForm({ onCreate }: any) {
+  const ref = useRef<HTMLFormElement>(null);
   const router = useRouter();
   const CustomTextField = ({ name, label, type = "text" }: any) => (
     <Grid item xs={12} md={12} lg={6}>
@@ -193,7 +199,14 @@ export default function AddTaskForm({ onCreate }: any) {
               <ClearIcon />
             </IconButton>
           </Box>
-          <Box component="form" noValidate action={onCreate}>
+          <Box
+            component="form"
+            noValidate
+            action={async (formData) => {
+              handleClose();
+              await onCreate(formData);
+            }}
+          >
             <Box
               sx={{
                 background: "#fff",
@@ -326,7 +339,7 @@ export default function AddTaskForm({ onCreate }: any) {
                   </Button>
 
                   <Button
-                    onSubmit={handleRefresh}
+                    onSubmit={deleteAlert}
                     type="submit"
                     variant="contained"
                     sx={{

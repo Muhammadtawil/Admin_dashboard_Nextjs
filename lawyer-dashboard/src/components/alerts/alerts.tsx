@@ -13,7 +13,7 @@ const successAlert = () => {
   });
 };
 
-const deleteAlert = ({ deleteMethod }: any) => {
+export const deleteAlert = ({ deleteMethod }: any) => {
   Swal.fire({
     title: "Are you sure?",
     text: "You won't be able to revert this!",
@@ -30,4 +30,4 @@ const deleteAlert = ({ deleteMethod }: any) => {
   });
 };
 
-export default deleteAlert;
+

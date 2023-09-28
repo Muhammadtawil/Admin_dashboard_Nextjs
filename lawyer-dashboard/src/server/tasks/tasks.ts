@@ -13,7 +13,7 @@ export async function getTasks() {
 
     next: {
       revalidate: 60,
-      revalidateTag: ["tasks"],
+      // revalidateTag: ["tasks"],
     },
   };
 
@@ -23,6 +23,7 @@ export async function getTasks() {
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
     }
+    revalidatePath("/tasks", "page");
 
     return response.json();
   } catch (error) {
@@ -74,7 +75,7 @@ export default async function CreateTask(data: FormData) {
 
     // Optionally, you can revalidate tags or perform a redirect here
     // revalidateTag("posts");
-    redirect("/tasks");
+    // redirect("/tasks");
   } catch (error) {
     console.error("Error adding task:", error);
     // Handle the error here
@@ -97,7 +98,7 @@ export async function DeleteTask(taskId: string) {
   try {
     const response = await fetch(deleteUrl, requestOptions);
     console.log(deleteUrl);
-    await getTasks();
+
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
     }
@@ -105,7 +106,7 @@ export async function DeleteTask(taskId: string) {
     console.log("Task deleted successfully");
 
     // Optionally, you can revalidate tags or perform a redirect here
-    revalidatePath("/tasks", "page");
+    // revalidatePath("/tasks", "page");
     // revalidateTag("tasks");
     //      redirect("/");
   } catch (error) {
