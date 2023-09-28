@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.0.18",
+    "@mui/material": "^5.14.10",
+    "@mui/x-data-grid": "^6.15.0",
+    "@tanstack/react-table": "^8.10.1",
+    "react-tabs": "^6.0.2",
+    "sweetalert2": "^11.7.31",
+    "sweetalert2-react-content": "^5.0.7",
+    "swiper": "^10.3.0"
+  }
+}
