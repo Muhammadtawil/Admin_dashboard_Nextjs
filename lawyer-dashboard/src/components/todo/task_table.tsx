@@ -23,10 +23,11 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import { useState } from "react";
-import { deleteAlert } from "../alerts/alerts";
+import { deleteAlert, successAlert } from "../alerts/alerts";
 import { Dialog, Grid, TextField, Typography } from "@mui/material";
 import EditTaskForm from "./edit_Form";
-
+import PersonIcon from "@mui/icons-material/Person";
+import MemberSelect from "./member_select";
 const label = { input: { "aria-label": "Checkbox demo" } };
 const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -46,10 +47,12 @@ export default function TaskTable({
   dataRows,
   deleteTask,
   updateTask,
+  getusers,
 }: {
   dataRows: any[];
   deleteTask: any;
   updateTask: any;
+  getusers: any[];
 }) {
   function ToDoList(props: any) {
     const theme = useTheme();
@@ -128,6 +131,7 @@ export default function TaskTable({
     setPage(0);
   };
 
+  // Edit
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -146,6 +150,17 @@ export default function TaskTable({
     setSelectedTask(task);
     handleClickOpen();
   };
+
+  // Member Select
+  const [openMember, setOpenMember] = useState(false);
+  const handleCloseMember = () => {
+    setOpenMember(false);
+  };
+
+  const handleClickOpenMember = () => {
+    setOpenMember(true);
+  };
+
   const RenderTableRows = (
     dataRows: any[],
     page: number,
@@ -160,7 +175,9 @@ export default function TaskTable({
             {task.taskTitle}
           </TableCell>
           <TableCell sx={cellStyle}>
-            <Avatar alt="User" src={task.url} sx={{ width: 35, height: 35 }} />
+            <IconButton aria-label="User Icon" onClick={handleClickOpenMember}>
+              <PersonIcon sx={{ fontSize: 35, color: "#your-icon-color" }} />
+            </IconButton>
           </TableCell>
           <TableCell sx={{ ...cellStyle, fontSize: "13px" }}>
             {new Date(task.createdAt).toLocaleDateString("en-US", {
@@ -318,6 +335,13 @@ export default function TaskTable({
           selectedTask={selectedTask}
           onUpdate={updateTask}
         />
+      </StyledDialogTitle>
+      <StyledDialogTitle
+        onClose={handleCloseMember}
+        aria-labelledby="customized-dialog-title"
+        open={openMember}
+      >
+        <MemberSelect usersName={getusers}/>
       </StyledDialogTitle>
     </Card>
   );

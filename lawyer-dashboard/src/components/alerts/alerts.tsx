@@ -10,6 +10,7 @@ export const successAlert = () => {
     timer: 3000,
     timerProgressBar: true,
     showConfirmButton: false,
+    
   });
 };
 

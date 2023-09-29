@@ -6,6 +6,7 @@ import CreateTask, {
 import TaskTable from "./task_table";
 import { revalidatePath } from "next/cache";
 import AddTaskForm from "./add_task_form";
+import { GetUsers } from "@/server/users/users";
 
 // function BootstrapDialogTitle(props: any) {
 //   const { children, onClose, ...other } = props;
@@ -61,10 +62,11 @@ async function onUpdate(formData: FormData, taskId: string) {
 
 const ToDoLists = async () => {
   const tasks = await getTasks();
+  const users = await GetUsers();
   return (
     <>
       <AddTaskForm onCreate={onCreate} />;
-      <TaskTable dataRows={tasks} deleteTask={Delete} updateTask={onUpdate} />
+      <TaskTable dataRows={tasks} deleteTask={Delete} updateTask={onUpdate} getusers={users}/>
     </>
   );
 };

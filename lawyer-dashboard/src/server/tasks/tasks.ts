@@ -164,3 +164,49 @@ export async function UpdateTask(data: FormData, taskId: string) {
     // Handle the error here
   }
 }
+
+// Assign Task
+
+export async function AssignTask(data: FormData) {
+  // Extract client data from the FormData object
+  const taskId = data.get("taskId");
+  const assignedTo = data.get("usersId");
+
+  const taskData = {
+    taskId: taskId,
+    assignedTo: [assignedTo],
+  };
+
+  const jsonData = JSON.stringify(taskData);
+
+  // Define the URL for adding a client (replace with the correct endpoint)
+  const tasksUrl = process.env.ASSIGN_TASK_URL;
+
+  const token = process.env.TOKEN;
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  };
+
+  try {
+    const response = await fetch(`${tasksUrl}`, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    const responseData = await response.json();
+    console.log("task Assigned successfully:", responseData);
+
+    // Optionally, you can revalidate tags or perform a redirect here
+    // revalidateTag("posts");
+    // redirect("/tasks");
+  } catch (error) {
+    console.error("Error assigning task:", error);
+    // Handle the error here
+  }
+}
