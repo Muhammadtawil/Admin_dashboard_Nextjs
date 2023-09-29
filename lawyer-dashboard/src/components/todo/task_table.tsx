@@ -16,27 +16,26 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import PropTypes from "prop-types";
-import { useTheme } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import LastPageIcon from "@mui/icons-material/LastPage";
 import { useState } from "react";
-import {
-  Dialog,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-  Button,
-} from "@mui/material";
-import { DeleteTask } from "@/server/tasks/tasks";
 import { deleteAlert } from "../alerts/alerts";
-
+import { Dialog, Grid, TextField, Typography } from "@mui/material";
+import EditTaskForm from "./edit_Form";
 
 const label = { input: { "aria-label": "Checkbox demo" } };
-
+const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
+  "& .MuiDialogContent-root": {
+    padding: theme.spacing(2),
+  },
+  "& .MuiDialogActions-root": {
+    padding: theme.spacing(1),
+  },
+}));
 // Define a reusable cell style object
 const cellStyle = {
   borderBottom: "1px solid #F7FAFF",
@@ -127,6 +126,24 @@ export default function TaskTable({
     setPage(0);
   };
 
+  const [open, setOpen] = useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  // In your TaskTable component, add a state to store the selected task data.
+  const [selectedTask, setSelectedTask] = useState(null);
+
+  // Modify the Edit button click handler to set the selected task data.
+  const handleEditClick = (task: any) => {
+    setSelectedTask(task);
+    handleClickOpen(); 
+  };
   const RenderTableRows = (
     dataRows: any[],
     page: number,
@@ -211,12 +228,13 @@ export default function TaskTable({
                   <DeleteIcon fontSize="inherit" />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="Rename" placement="top">
+              <Tooltip title="edit" placement="top">
                 <IconButton
                   aria-label="rename"
                   size="small"
                   color="primary"
                   className="primary"
+                  onClick={() => handleEditClick(task)}
                 >
                   <DriveFileRenameOutlineIcon fontSize="inherit" />
                 </IconButton>
@@ -288,6 +306,13 @@ export default function TaskTable({
           </TableFooter>
         </Table>
       </TableContainer>
+      <StyledDialogTitle
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}
+      >
+        <EditTaskForm handleClose={handleClose} selectedTask={selectedTask} />
+      </StyledDialogTitle>
     </Card>
   );
 }

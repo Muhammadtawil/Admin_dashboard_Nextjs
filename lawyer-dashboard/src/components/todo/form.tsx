@@ -12,9 +12,10 @@
 // import AddIcon from "@mui/icons-material/Add";
 // import CreateTask from "@/server/tasks/tasks";
 
-import CreateTask from "@/server/tasks/tasks";
+import CreateTask, { DeleteTask, getTasks } from "@/server/tasks/tasks";
 import { revalidatePath } from "next/cache";
 import AddTaskForm from "./add_task_form";
+import TaskTable from "./task_table";
 
 // export default async function TdoDoForm() {
 //   async function onCreate(formData: FormData) {
@@ -174,14 +175,17 @@ import AddTaskForm from "./add_task_form";
 //   );
 // }
 
-("use sever");
-export default async function TaskForm() {
-  async function onCreate(formData: FormData) {
-    "use server";
-    try {
-      const res = await CreateTask(formData);
-      revalidatePath("/tasks", "page");
-    } catch (error) {}
-  }
-  return <AddTaskForm onCreate={onCreate} />;
-}
+// export default async function TaskForm({
+//   editingTask,
+//   handleEditTask,
+// }: {
+//   editingTask: any;
+//   handleEditTask: any;
+// }) {
+//   const tasks = await getTasks();
+//   return (
+//     <>
+
+//     </>
+//   );
+// }

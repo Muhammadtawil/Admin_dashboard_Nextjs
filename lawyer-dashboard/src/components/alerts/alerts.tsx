@@ -2,12 +2,12 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
 
-const successAlert = () => {
+export const successAlert = () => {
   MySwal.fire({
     title: "Done!",
     text: "New Task Added",
     icon: "success",
-    timer: 2000,
+    timer: 3000,
     timerProgressBar: true,
     showConfirmButton: false,
   });
@@ -29,5 +29,3 @@ export const deleteAlert = ({ deleteMethod }: any) => {
     }
   });
 };
-
-
