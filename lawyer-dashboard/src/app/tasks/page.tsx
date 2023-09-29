@@ -17,12 +17,11 @@ import theme from "../../styles/theme";
 import "react-tabs/style/react-tabs.css";
 import "swiper/css";
 import "swiper/css/bundle";
-// import DataTable from "@/components/test";
-// import TaskTable from "@/components/test";
+
 export default async function ToDo() {
   return (
     <>
-      {/* Page title */}
+
       <div className={styles.pageTitle}>
         <h1>To Do</h1>
         <ul>
@@ -34,8 +33,7 @@ export default async function ToDo() {
       </div>
 
       <ToDoLists />
-      {/* <DataTable />
-      <TaskTable /> */}
+
     </>
   );
 }

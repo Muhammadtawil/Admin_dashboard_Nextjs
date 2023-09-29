@@ -14,7 +14,7 @@ import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import Dialog from "@mui/material/Dialog";
 import { styled } from "@mui/material/styles";
-import { successAlert } from "../alerts/alerts";
+import { successAlert, updateTaskAlert } from "../alerts/alerts";
 import { isEditClicked } from "./globals";
 
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
@@ -24,14 +24,21 @@ export default function EditTaskForm({
   onUpdate,
   handleClose,
   selectedTask,
-}: any) {
+}: {
+  onUpdate: any;
+  handleClose: any;
+  selectedTask: any;
+}) {
   // const ref = useRef<HTMLFormElement>(null);
   // const router = useRouter();
+  const formattedTaskDeadline = selectedTask?.taskDeadline
+    ? new Date(selectedTask.taskDeadline).toISOString().split("T")[0]
+    : "";
   const [formData, setFormData] = useState({
     // Initialize the form data with the selected task's values
     taskTitle: selectedTask?.taskTitle,
     startDate: selectedTask?.startDate || "",
-    taskDeadline: selectedTask?.taskDeadline || "",
+    taskDeadline: formattedTaskDeadline || "",
     taskStatus: selectedTask?.taskStatus || "", // Add other form fields here...
     taskPriority: selectedTask?.taskPriority || "", // Add other form fields here...
   });
@@ -55,6 +62,7 @@ export default function EditTaskForm({
       [name]: value,
     }));
   };
+
   const CustomTextField = ({ name, label, type = "text", value }: any) => (
     <Grid item xs={12} md={12} lg={6}>
       <Typography
@@ -135,9 +143,9 @@ export default function EditTaskForm({
           component="form"
           noValidate
           action={async (formData) => {
-            handleClose;
-            await onUpdate(formData);
-            successAlert();
+            handleClose();
+            await onUpdate(formData, selectedTask.taskId);
+            updateTaskAlert();
           }}
         >
           <Box
@@ -156,13 +164,13 @@ export default function EditTaskForm({
                 onChange={handleInputChange}
               />
 
-              <CustomTextField
+              {/* <CustomTextField
                 name="taskDeadline"
                 label="End Date"
                 type="date"
                 value={formData.taskDeadline}
                 onChange={handleInputChange}
-              />
+              /> */}
               <CustomSelect
                 name="taskStatus"
                 label="Status"

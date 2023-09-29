@@ -115,6 +115,52 @@ export async function DeleteTask(taskId: string) {
   }
 }
 
-// update tasks 
+// update tasks
 
+export async function UpdateTask(data: FormData, taskId: string) {
+  // Extract client data from the FormData object
+  const taskTitle = data.get("taskTitle");
+  const taskPriority = data.get("taskPriority");
+  const taskStatus = data.get("taskStatus");
+  // const taskDeadline = data.get("taskDeadline");
 
+  const taskData = {
+    taskTitle: taskTitle,
+    taskPriority: taskPriority,
+    taskStatus: taskStatus,
+    // taskDeadline: taskDeadline,
+  };
+
+  const jsonData = JSON.stringify(taskData);
+
+  // Define the URL for adding a client (replace with the correct endpoint)
+  const tasksUrl = process.env.TASKS_URL;
+
+  const token = process.env.TOKEN;
+  const requestOptions = {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  };
+
+  try {
+    const response = await fetch(`${tasksUrl}/${taskId}`, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    const responseData = await response.json();
+    console.log("task Updated successfully:", responseData);
+
+    // Optionally, you can revalidate tags or perform a redirect here
+    // revalidateTag("posts");
+    // redirect("/tasks");
+  } catch (error) {
+    console.error("Error update task:", error);
+    // Handle the error here
+  }
+}

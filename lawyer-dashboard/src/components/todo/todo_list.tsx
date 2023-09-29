@@ -1,4 +1,8 @@
-import CreateTask, { DeleteTask, getTasks } from "@/server/tasks/tasks";
+import CreateTask, {
+  DeleteTask,
+  UpdateTask,
+  getTasks,
+} from "@/server/tasks/tasks";
 import TaskTable from "./task_table";
 import { revalidatePath } from "next/cache";
 import AddTaskForm from "./add_task_form";
@@ -46,12 +50,21 @@ async function onCreate(formData: FormData) {
     revalidatePath("/tasks", "page");
   } catch (error) {}
 }
+
+async function onUpdate(formData: FormData, taskId: string) {
+  "use server";
+  try {
+    await UpdateTask(formData, taskId);
+    revalidatePath("/tasks", "page");
+  } catch (error) {}
+}
+
 const ToDoLists = async () => {
   const tasks = await getTasks();
   return (
     <>
       <AddTaskForm onCreate={onCreate} />;
-      <TaskTable dataRows={tasks} deleteTask={Delete} />
+      <TaskTable dataRows={tasks} deleteTask={Delete} updateTask={onUpdate} />
     </>
   );
 };

@@ -16,7 +16,6 @@ import Dialog from "@mui/material/Dialog";
 import { styled } from "@mui/material/styles";
 import { successAlert } from "../alerts/alerts";
 
-
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
 const priorityValues = ["HIGH", "MEDIUM", "LOW"];
 
@@ -113,7 +112,6 @@ export default function AddTaskForm({ onCreate }: any) {
     setOpen(true);
   };
 
-
   return (
     <>
       <Box
@@ -152,7 +150,7 @@ export default function AddTaskForm({ onCreate }: any) {
           <AddIcon
             sx={{ position: "relative", top: "-1px" }}
             className="mr-5px"
-          />{" "}
+          />
           Add Task
         </Button>
       </Box>
@@ -330,7 +328,7 @@ export default function AddTaskForm({ onCreate }: any) {
                         top: "-1px",
                       }}
                       className="mr-5px"
-                    />{" "}
+                    />
                     Cancel
                   </Button>
 
@@ -353,7 +351,7 @@ export default function AddTaskForm({ onCreate }: any) {
                         top: "-1px",
                       }}
                       className="mr-5px"
-                    />{" "}
+                    />
                     Add Task
                   </Button>
                 </Grid>

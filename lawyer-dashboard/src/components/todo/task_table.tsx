@@ -45,9 +45,11 @@ const cellStyle = {
 export default function TaskTable({
   dataRows,
   deleteTask,
+  updateTask,
 }: {
   dataRows: any[];
   deleteTask: any;
+  updateTask: any;
 }) {
   function ToDoList(props: any) {
     const theme = useTheme();
@@ -142,7 +144,7 @@ export default function TaskTable({
   // Modify the Edit button click handler to set the selected task data.
   const handleEditClick = (task: any) => {
     setSelectedTask(task);
-    handleClickOpen(); 
+    handleClickOpen();
   };
   const RenderTableRows = (
     dataRows: any[],
@@ -311,7 +313,11 @@ export default function TaskTable({
         aria-labelledby="customized-dialog-title"
         open={open}
       >
-        <EditTaskForm handleClose={handleClose} selectedTask={selectedTask} />
+        <EditTaskForm
+          handleClose={handleClose}
+          selectedTask={selectedTask}
+          onUpdate={updateTask}
+        />
       </StyledDialogTitle>
     </Card>
   );

@@ -13,6 +13,17 @@ export const successAlert = () => {
   });
 };
 
+export const updateTaskAlert = () => {
+  MySwal.fire({
+    title: "Done!",
+    text: " Task Updated",
+    icon: "success",
+    timer: 2000,
+    timerProgressBar: true,
+    showConfirmButton: false,
+  });
+};
+
 export const deleteAlert = ({ deleteMethod }: any) => {
   Swal.fire({
     title: "Are you sure?",
