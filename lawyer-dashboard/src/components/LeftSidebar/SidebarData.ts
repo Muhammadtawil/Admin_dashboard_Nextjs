@@ -28,12 +28,8 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: "To Do",
-        path: "/apps/to-do/",
-      },
-      {
-        title: "Calendar",
-        path: "/apps/calendar/",
+        title: "calendar",
+        path: "/calendar",
       },
     ],
   },
