@@ -60,47 +60,6 @@ export default function AddTaskForm({ onCreate }: any) {
     </Grid>
   );
 
-  const CustomSelect = ({
-    name,
-    label,
-    values,
-    selectedValue,
-    onChange,
-  }: any) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <Typography
-        component="h5"
-        sx={{
-          fontWeight: "500",
-          fontSize: "14px",
-          mb: "12px",
-        }}
-      >
-        {label}
-      </Typography>
-      <Select
-        fullWidth
-        value={selectedValue}
-        name={name}
-        onChange={onChange}
-        displayEmpty
-        inputProps={{
-          //   name,
-          //   id: name,
-          style: { borderRadius: 8 },
-        }}
-      >
-        <MenuItem value="" disabled>
-          {`Select ${label}`}
-        </MenuItem>
-        {values.map((value: any, index: any) => (
-          <MenuItem key={index} value={value}>
-            {value}
-          </MenuItem>
-        ))}
-      </Select>
-    </Grid>
-  );
 
   const [open, setOpen] = useState(false);
 

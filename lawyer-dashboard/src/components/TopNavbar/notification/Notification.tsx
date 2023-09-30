@@ -100,7 +100,7 @@ const Notifications = () => {
             </Typography>
 
             <div className={styles.notificationListContent}>
-              <img src="/images/clicker.png" alt="PDF Icon" width={27} />{" "}
+              <img src="/images/clicker.png" alt="PDF Icon" width={27} />
               {/* Use 'img' instead of 'image' */}
               <Typography
                 variant="h6"
@@ -134,7 +134,7 @@ const Notifications = () => {
             </Typography>
 
             <div className={styles.notificationListContent}>
-              <img src="/images/clicker.png" alt="PDF Icon" width={27} />{" "}
+              <img src="/images/clicker.png" alt="PDF Icon" width={27} />
               <Typography
                 variant="h6"
                 sx={{
@@ -165,7 +165,7 @@ const Notifications = () => {
                 display: "inline-block",
               }}
             >
-              View All{" "}
+              View All
               <span className={styles.rightArrow}>
                 <i className="ri-arrow-right-s-line"></i>
               </span>

@@ -1,12 +1,16 @@
 import CreateTask, {
+  AssignTask,
   DeleteTask,
   UpdateTask,
+  getAssignedTasks,
   getTasks,
 } from "@/server/tasks/tasks";
 import TaskTable from "./task_table";
 import { revalidatePath } from "next/cache";
 import AddTaskForm from "./add_task_form";
 import { GetUsers } from "@/server/users/users";
+import { Typography } from "@mui/material";
+import EnhancedTable from "./tableHead/table_head";
 
 // function BootstrapDialogTitle(props: any) {
 //   const { children, onClose, ...other } = props;
@@ -60,13 +64,47 @@ async function onUpdate(formData: FormData, taskId: string) {
   } catch (error) {}
 }
 
+async function SelectMember(formData: FormData, taskId: string) {
+  "use server";
+  try {
+    await AssignTask(formData, taskId);
+    revalidatePath("/tasks", "page");
+  } catch (error) {}
+}
+
 const ToDoLists = async () => {
-  const tasks = await getTasks();
+  const assignedTasks = await getAssignedTasks();
+  const tasks = await getTasks(assignedTasks);
   const users = await GetUsers();
+
   return (
     <>
       <AddTaskForm onCreate={onCreate} />;
-      <TaskTable dataRows={tasks} deleteTask={Delete} updateTask={onUpdate} getusers={users}/>
+      <TaskTable
+        dataRows={tasks}
+        deleteTask={Delete}
+        updateTask={onUpdate}
+        getusers={users}
+        onSelectMember={SelectMember}
+      />
+      <Typography
+        component="h2"
+        sx={{
+          fontSize: 20,
+          fontWeight: 500,
+          padding: 2,
+        }}
+      >
+        Assigned Tasks
+      </Typography>
+      <TaskTable
+        dataRows={assignedTasks}
+        deleteTask={Delete}
+        updateTask={onUpdate}
+        getusers={users}
+        onSelectMember={SelectMember}
+      />
+      <EnhancedTable />
     </>
   );
 };

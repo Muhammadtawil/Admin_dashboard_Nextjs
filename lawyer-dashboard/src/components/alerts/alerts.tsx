@@ -10,7 +10,6 @@ export const successAlert = () => {
     timer: 3000,
     timerProgressBar: true,
     showConfirmButton: false,
-    
   });
 };
 
@@ -18,6 +17,17 @@ export const updateTaskAlert = () => {
   MySwal.fire({
     title: "Done!",
     text: " Task Updated",
+    icon: "success",
+    timer: 2000,
+    timerProgressBar: true,
+    showConfirmButton: false,
+  });
+};
+
+export const AssignTaskAlert = () => {
+  MySwal.fire({
+    title: "Done!",
+    text: " Task Assigned",
     icon: "success",
     timer: 2000,
     timerProgressBar: true,

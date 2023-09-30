@@ -21,7 +21,6 @@ import "swiper/css/bundle";
 export default async function ToDo() {
   return (
     <>
-
       <div className={styles.pageTitle}>
         <h1>To Do</h1>
         <ul>
@@ -33,7 +32,6 @@ export default async function ToDo() {
       </div>
 
       <ToDoLists />
-
     </>
   );
 }

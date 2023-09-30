@@ -10,6 +10,7 @@ import Chip from "@mui/material/Chip";
 import { Button, Grid, Typography } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
+import { AssignTaskAlert, updateTaskAlert } from "../alerts/alerts";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -44,7 +45,17 @@ function getStyles(name: string, personName: string[], theme: any) {
   };
 }
 
-export default function MemberSelect({ usersName }: { usersName: any[] }) {
+export default function MemberSelect({
+  usersName,
+  selectedTask,
+  onSelectMember,
+  handleClose,
+}: {
+  usersName: any[];
+  selectedTask: any;
+  handleClose: any;
+  onSelectMember: any;
+}) {
   const theme = useTheme();
   const [personName, setPersonName] = React.useState([]);
 
@@ -52,15 +63,24 @@ export default function MemberSelect({ usersName }: { usersName: any[] }) {
     const {
       target: { value },
     } = event;
-    setPersonName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
+
+    // Split the value by comma to get individual names
+    const namesArray = typeof value === "string" ? value.split(",") : value;
+
+    setPersonName(namesArray);
   };
 
   return (
     <Box>
-      <Box component="form" noValidate>
+      <Box
+        component="form"
+        noValidate
+        action={async (formData) => {
+          handleClose();
+          await onSelectMember(formData, selectedTask.taskId);
+          AssignTaskAlert();
+        }}
+      >
         <Box
           sx={{
             background: "#fff",
@@ -85,6 +105,7 @@ export default function MemberSelect({ usersName }: { usersName: any[] }) {
               fullWidth
               labelId="demo-multiple-chip-label"
               id="demo-multiple-chip"
+              name="usersId"
               multiple
               value={personName}
               onChange={handleChange}
@@ -122,7 +143,7 @@ export default function MemberSelect({ usersName }: { usersName: any[] }) {
               padding: "12px 20px",
               color: "#fff !important",
             }}
-            // onClick={handleClose}
+            onClick={handleClose}
             className="mr-15px"
           >
             <ClearIcon

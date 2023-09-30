@@ -48,11 +48,13 @@ export default function TaskTable({
   deleteTask,
   updateTask,
   getusers,
+  onSelectMember,
 }: {
   dataRows: any[];
   deleteTask: any;
   updateTask: any;
   getusers: any[];
+  onSelectMember: any;
 }) {
   function ToDoList(props: any) {
     const theme = useTheme();
@@ -161,6 +163,11 @@ export default function TaskTable({
     setOpenMember(true);
   };
 
+  const handleSelectClick = (task: any) => {
+    setSelectedTask(task);
+    handleClickOpenMember();
+  };
+
   const RenderTableRows = (
     dataRows: any[],
     page: number,
@@ -175,7 +182,10 @@ export default function TaskTable({
             {task.taskTitle}
           </TableCell>
           <TableCell sx={cellStyle}>
-            <IconButton aria-label="User Icon" onClick={handleClickOpenMember}>
+            <IconButton
+              aria-label="User Icon"
+              onClick={() => handleSelectClick(task)}
+            >
               <PersonIcon sx={{ fontSize: 35, color: "#your-icon-color" }} />
             </IconButton>
           </TableCell>
@@ -341,7 +351,12 @@ export default function TaskTable({
         aria-labelledby="customized-dialog-title"
         open={openMember}
       >
-        <MemberSelect usersName={getusers}/>
+        <MemberSelect
+          usersName={getusers}
+          selectedTask={selectedTask}
+          handleClose={handleCloseMember}
+          onSelectMember={onSelectMember}
+        />
       </StyledDialogTitle>
     </Card>
   );

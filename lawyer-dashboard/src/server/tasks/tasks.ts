@@ -1,7 +1,7 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
-export async function getTasks() {
+export async function getTasks(assignedTasks: any) {
   const token = process.env.TOKEN;
   const tasks_url = process.env.TASKS_URL;
   const requestOptions = {
@@ -10,7 +10,6 @@ export async function getTasks() {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
-
     next: {
       revalidate: 60,
       // revalidateTag: ["tasks"],
@@ -23,15 +22,25 @@ export async function getTasks() {
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
     }
+
+    const tasks = await response.json();
+
+    // Filter out tasks that are already assigned
+    const unassignedTasks = tasks.filter((task: any) => {
+      // Check if the task ID is not in the list of assigned tasks
+      return !assignedTasks.some(
+        (assignedTask: any) => assignedTask.taskId === task.taskId
+      );
+    });
+
     revalidatePath("/tasks", "page");
 
-    return response.json();
+    return unassignedTasks;
   } catch (error) {
     console.error("Error fetching data:", error);
     return [];
   }
 }
-
 // create Task
 
 export default async function CreateTask(data: FormData) {
@@ -165,16 +174,49 @@ export async function UpdateTask(data: FormData, taskId: string) {
   }
 }
 
+// Get assigned tasks
+
+export async function getAssignedTasks() {
+  const token = process.env.TOKEN;
+  const tasks_url = process.env.ASSIGNED_TASKS_URL;
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+
+    next: {
+      revalidate: 60,
+      // revalidateTag: ["tasks"],
+    },
+  };
+
+  try {
+    const response = await fetch(`${tasks_url}?=${Date.now()}`, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+    revalidatePath("/tasks", "page");
+
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return [];
+  }
+}
+
 // Assign Task
 
-export async function AssignTask(data: FormData) {
+export async function AssignTask(data: FormData, taskId: any) {
   // Extract client data from the FormData object
-  const taskId = data.get("taskId");
+
   const assignedTo = data.get("usersId");
 
   const taskData = {
     taskId: taskId,
-    assignedTo: [assignedTo],
+    assignedTo: [assignedTo].join(",").split(","),
   };
 
   const jsonData = JSON.stringify(taskData);
