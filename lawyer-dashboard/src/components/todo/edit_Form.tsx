@@ -24,10 +24,12 @@ export default function EditTaskForm({
   onUpdate,
   handleClose,
   selectedTask,
+  isAssigned,
 }: {
   onUpdate: any;
   handleClose: any;
   selectedTask: any;
+  isAssigned: boolean;
 }) {
   // const ref = useRef<HTMLFormElement>(null);
   // const router = useRouter();
@@ -144,7 +146,10 @@ export default function EditTaskForm({
           noValidate
           action={async (formData) => {
             handleClose();
-            await onUpdate(formData, selectedTask.taskId);
+            await onUpdate(
+              formData,
+              isAssigned ? selectedTask.assignedTaskId : selectedTask.taskId
+            );
             updateTaskAlert();
           }}
         >

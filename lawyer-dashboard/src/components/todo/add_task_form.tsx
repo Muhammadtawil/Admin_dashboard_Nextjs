@@ -170,11 +170,11 @@ export default function AddTaskForm({ onCreate }: any) {
             >
               <Grid container alignItems="center" spacing={2}>
                 <CustomTextField name="taskTitle" label="Task" />
-                <CustomTextField
+                {/* <CustomTextField
                   name="startDate"
                   label="Start Date"
                   type="date"
-                />
+                /> */}
                 <CustomTextField
                   name="taskDeadline"
                   label="End Date"

@@ -1,9 +1,12 @@
 import { revalidatePath, revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
+const token = process.env.TOKEN;
+const assignTasksUrl = process.env.ASSIGN_TASK_URL;
+const assignedTasks = process.env.ASSIGNED_TASKS_URL;
+const tasks_url = process.env.TASKS_URL;
+const update_assigned = process.env.UPDATE_ASSIGN_URL;
 export async function getTasks(assignedTasks: any) {
-  const token = process.env.TOKEN;
-  const tasks_url = process.env.TASKS_URL;
   const requestOptions = {
     method: "GET",
     headers: {
@@ -60,7 +63,6 @@ export default async function CreateTask(data: FormData) {
   const jsonData = JSON.stringify(taskData);
 
   // Define the URL for adding a client (replace with the correct endpoint)
-  const tasksUrl = process.env.TASKS_URL;
 
   const token = process.env.TOKEN;
   const requestOptions = {
@@ -73,7 +75,7 @@ export default async function CreateTask(data: FormData) {
   };
 
   try {
-    const response = await fetch(`${tasksUrl}`, requestOptions);
+    const response = await fetch(`${tasks_url}`, requestOptions);
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
@@ -94,13 +96,12 @@ export default async function CreateTask(data: FormData) {
 
 export async function DeleteTask(taskId: string) {
   // Define the URL for deleting a task (replace with the correct endpoint)
-  const deleteUrl = `https://lawfirm.cyclic.cloud/tasks/${taskId}`;
+  const deleteUrl = `${tasks_url}/${taskId}`;
 
   const requestOptions = {
     method: "DELETE",
     headers: {
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImFkbWluIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNjk1NjY2ODc5LCJleHAiOjE2OTY4NzY0Nzl9.Ln92hXmQXQ78Tj_pf30H4WGnu5LK_uJkC8hJQ_Xy9Nw",
+      Authorization: `Bearer ${token}`,
     },
   };
 
@@ -143,9 +144,7 @@ export async function UpdateTask(data: FormData, taskId: string) {
   const jsonData = JSON.stringify(taskData);
 
   // Define the URL for adding a client (replace with the correct endpoint)
-  const tasksUrl = process.env.TASKS_URL;
 
-  const token = process.env.TOKEN;
   const requestOptions = {
     method: "PATCH",
     headers: {
@@ -156,7 +155,7 @@ export async function UpdateTask(data: FormData, taskId: string) {
   };
 
   try {
-    const response = await fetch(`${tasksUrl}/${taskId}`, requestOptions);
+    const response = await fetch(`${tasks_url}/${taskId}`, requestOptions);
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
@@ -177,7 +176,6 @@ export async function UpdateTask(data: FormData, taskId: string) {
 // Get assigned tasks
 
 export async function getAssignedTasks() {
-  const token = process.env.TOKEN;
   const tasks_url = process.env.ASSIGNED_TASKS_URL;
   const requestOptions = {
     method: "GET",
@@ -222,7 +220,6 @@ export async function AssignTask(data: FormData, taskId: any) {
   const jsonData = JSON.stringify(taskData);
 
   // Define the URL for adding a client (replace with the correct endpoint)
-  const tasksUrl = process.env.ASSIGN_TASK_URL;
 
   const token = process.env.TOKEN;
   const requestOptions = {
@@ -235,7 +232,7 @@ export async function AssignTask(data: FormData, taskId: any) {
   };
 
   try {
-    const response = await fetch(`${tasksUrl}`, requestOptions);
+    const response = await fetch(`${assignTasksUrl}`, requestOptions);
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
@@ -249,6 +246,86 @@ export async function AssignTask(data: FormData, taskId: any) {
     // redirect("/tasks");
   } catch (error) {
     console.error("Error assigning task:", error);
+    // Handle the error here
+  }
+}
+
+export async function DeleteAssignedTask(taskId: string) {
+  // Define the URL for deleting a task (replace with the correct endpoint)
+  const deleteAssignUrl = `https://lawfirm.cyclic.cloud/tasks/assign/${taskId}`;
+
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  try {
+    const response = await fetch(deleteAssignUrl, requestOptions);
+    console.log(deleteAssignUrl);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    console.log("Task deleted successfully");
+
+    // Optionally, you can revalidate tags or perform a redirect here
+    // revalidatePath("/tasks", "page");
+    // revalidateTag("tasks");
+    //      redirect("/");
+  } catch (error) {
+    console.error("Error Deleting task:", error);
+    // Handle the error here
+  }
+}
+
+export async function UpdateAssignedTask(data: FormData, taskId: string) {
+  // Extract client data from the FormData object
+  const taskTitle = data.get("taskTitle");
+  const taskPriority = data.get("taskPriority");
+  const taskStatus = data.get("taskStatus");
+  // const taskDeadline = data.get("taskDeadline");
+
+  const taskData = {
+    taskTitle: taskTitle,
+    taskPriority: taskPriority,
+    taskStatus: taskStatus,
+    // taskDeadline: taskDeadline,
+  };
+
+  const jsonData = JSON.stringify(taskData);
+
+  // Define the URL for adding a client (replace with the correct endpoint)
+
+  const requestOptions = {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  };
+
+  try {
+    const response = await fetch(
+      `${update_assigned}/${taskId}`,
+      requestOptions
+    );
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    const responseData = await response.json();
+    console.log("assigned task Updated successfully:", responseData);
+
+    // Optionally, you can revalidate tags or perform a redirect here
+    // revalidateTag("posts");
+    // redirect("/tasks");
+  } catch (error) {
+    console.error("Error update assigned task:", error);
     // Handle the error here
   }
 }

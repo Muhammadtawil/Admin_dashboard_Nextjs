@@ -49,12 +49,14 @@ export default function TaskTable({
   updateTask,
   getusers,
   onSelectMember,
+  isAssigned,
 }: {
   dataRows: any[];
   deleteTask: any;
   updateTask: any;
   getusers: any[];
   onSelectMember: any;
+  isAssigned: boolean;
 }) {
   function ToDoList(props: any) {
     const theme = useTheme();
@@ -176,19 +178,44 @@ export default function TaskTable({
     dataRows
       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
       .map((task: any, index: number) => (
-        <TableRow key={task.taskId}>
-          <TableCell sx={{ ...cellStyle, fontWeight: "500", color: "#260944" }}>
+        <TableRow key={isAssigned ? task.assignedTaskId : task.taskId}>
+          <TableCell
+            sx={{
+              ...cellStyle,
+              fontWeight: "500",
+              color: "#260944",
+              display: "flex",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
             <Checkbox {...label} size="small" />
             {task.taskTitle}
           </TableCell>
-          <TableCell sx={cellStyle}>
-            <IconButton
-              aria-label="User Icon"
-              onClick={() => handleSelectClick(task)}
-            >
-              <PersonIcon sx={{ fontSize: 35, color: "#your-icon-color" }} />
-            </IconButton>
-          </TableCell>
+          {isAssigned ? (
+            // Render a row of Avatars using the assignedTo array
+
+            <TableCell sx={cellStyle}>
+              {task.assignedTo.map((user: any) => (
+                <Avatar
+                  key={user.userId}
+                  alt={user.userName}
+                  src={user.userImgUrl}
+                  sx={{ marginRight: "8px" }} // Adjust the spacing between avatars as needed
+                />
+              ))}
+            </TableCell>
+          ) : (
+            // Render the existing TableCell with PersonIcon
+            <TableCell sx={cellStyle}>
+              <IconButton
+                aria-label="User Icon"
+                onClick={() => handleSelectClick(task)}
+              >
+                <PersonIcon sx={{ fontSize: 35, color: "#your-icon-color" }} />
+              </IconButton>
+            </TableCell>
+          )}
           <TableCell sx={{ ...cellStyle, fontSize: "13px" }}>
             {new Date(task.createdAt).toLocaleDateString("en-US", {
               day: "numeric",
@@ -205,6 +232,17 @@ export default function TaskTable({
               year: "2-digit",
             })}
           </TableCell>
+          {isAssigned ? (
+            <TableCell sx={{ ...cellStyle, fontSize: "13px" }}>
+              {new Date(task.assignedAt).toLocaleDateString("en-US", {
+                day: "numeric",
+                month: "2-digit",
+                year: "2-digit",
+                hour: "numeric",
+                minute: "numeric",
+              })}
+            </TableCell>
+          ) : null}
           <TableCell align="center" sx={{ ...cellStyle, fontSize: "10px" }}>
             <Paper
               elevation={0}
@@ -252,7 +290,11 @@ export default function TaskTable({
                   size="small"
                   color="error"
                   className="error"
-                  onClick={() => deleteAlert(deleteTask(task.taskId))}
+                  onClick={() =>
+                    deleteAlert(
+                      deleteTask(isAssigned ? task.assignedTaskId : task.taskId)
+                    )
+                  }
                 >
                   <DeleteIcon fontSize="inherit" />
                 </IconButton>
@@ -299,6 +341,9 @@ export default function TaskTable({
               <TableCell sx={cellStyle}>Assigned</TableCell>
               <TableCell sx={cellStyle}>Start Date</TableCell>
               <TableCell sx={cellStyle}>End Date</TableCell>
+              {isAssigned ? (
+                <TableCell sx={cellStyle}>Assigned Date</TableCell>
+              ) : null}
               <TableCell align="center" sx={cellStyle}>
                 Status
               </TableCell>
@@ -344,6 +389,7 @@ export default function TaskTable({
           handleClose={handleClose}
           selectedTask={selectedTask}
           onUpdate={updateTask}
+          isAssigned={isAssigned?true:false}
         />
       </StyledDialogTitle>
       <StyledDialogTitle

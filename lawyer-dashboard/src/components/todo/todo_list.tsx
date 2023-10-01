@@ -1,6 +1,8 @@
 import CreateTask, {
   AssignTask,
+  DeleteAssignedTask,
   DeleteTask,
+  UpdateAssignedTask,
   UpdateTask,
   getAssignedTasks,
   getTasks,
@@ -10,7 +12,9 @@ import { revalidatePath } from "next/cache";
 import AddTaskForm from "./add_task_form";
 import { GetUsers } from "@/server/users/users";
 import { Typography } from "@mui/material";
-import EnhancedTable from "./tableHead/table_head";
+// import EnhancedTable from "./tableHead/table_head";
+import DataTable from "./tableHead/head2";
+import TestTable from "./tableHead/test";
 
 // function BootstrapDialogTitle(props: any) {
 //   const { children, onClose, ...other } = props;
@@ -48,6 +52,16 @@ async function Delete(taskId: string) {
   } catch (error) {}
 }
 
+async function DeleteAssignedTasks(assigntaskId: string) {
+  "use server";
+  try {
+    await DeleteAssignedTask(assigntaskId);
+    revalidatePath("/tasks", "page");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 async function onCreate(formData: FormData) {
   "use server";
   try {
@@ -60,6 +74,14 @@ async function onUpdate(formData: FormData, taskId: string) {
   "use server";
   try {
     await UpdateTask(formData, taskId);
+    revalidatePath("/tasks", "page");
+  } catch (error) {}
+}
+
+async function onUpdateAssigned(formData: FormData, taskId: string) {
+  "use server";
+  try {
+    await UpdateAssignedTask(formData, taskId);
     revalidatePath("/tasks", "page");
   } catch (error) {}
 }
@@ -86,6 +108,7 @@ const ToDoLists = async () => {
         updateTask={onUpdate}
         getusers={users}
         onSelectMember={SelectMember}
+        isAssigned={false}
       />
       <Typography
         component="h2"
@@ -99,12 +122,14 @@ const ToDoLists = async () => {
       </Typography>
       <TaskTable
         dataRows={assignedTasks}
-        deleteTask={Delete}
-        updateTask={onUpdate}
+        deleteTask={DeleteAssignedTasks}
+        updateTask={onUpdateAssigned}
         getusers={users}
         onSelectMember={SelectMember}
+        isAssigned={true}
       />
-      <EnhancedTable />
+      {/* <EnhancedTable /> */}
+      <TestTable />
     </>
   );
 };

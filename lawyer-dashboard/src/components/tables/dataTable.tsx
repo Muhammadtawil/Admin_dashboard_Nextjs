@@ -1,96 +1,53 @@
-"use client";
-import {
-  Table,
-  TableRow,
-  TableHead,
-  TableBody,
-  TableCell,
-} from "@mui/material";
-//we have to import a lot of things and here are they
-import {
-  ColumnDef,
-  flexRender,
-  getCoreRowModel,
-  getPaginationRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+// import * as React from "react";
+// import { DataGrid, GridColDef, GridValueGetterParams } from "@mui/x-data-grid";
 
-// import {
-//   Table,
-//   TableBody,
-//   TableCell,
-//   TableHead,
-//   TableHeader,
-//   TableRow,
-// } from "@/components/ui/table"
+// const columns: GridColDef[] = [
+//   { field: "id", headerName: "ID", width: 70 },
+//   { field: "firstName", headerName: "First name", width: 130 },
+//   { field: "lastName", headerName: "Last name", width: 130 },
+//   {
+//     field: "age",
+//     headerName: "Age",
+//     type: "number",
+//     width: 90,
+//   },
+//   {
+//     field: "fullName",
+//     headerName: "Full name",
+//     description: "This column has a value getter and is not sortable.",
+//     sortable: false,
+//     width: 160,
+//     valueGetter: (params: GridValueGetterParams) =>
+//       `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+//   },
+// ];
 
-//now we are expecting 2 props: columns and the data(that we are expecting from the page component)
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
-}
+// const rows = [
+//   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
+//   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
+//   { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
+//   { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+//   { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
+//   { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
+//   { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
+//   { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
+//   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+// ];
 
-export function DataTable<TData, TValue>({
-  columns,
-  data,
-}: DataTableProps<TData, TValue>) {
-  // and now we will use this useReactTable hook
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-
-    // and yes adding pagination can be done with just this above one line
-  });
-
-  return (
-    <div className="rounded-md border">
-      <Table>
-        <TableHead>
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead key={header.id}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
-            </TableRow>
-          ))}
-        </TableHead>
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
-              </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
-      //now to use the pagination we will use the buttons
-      <button onClick={() => table.previousPage()}>Previous page</button>
-      <button onClick={() => table.nextPage()}>Next Page</button>
-    </div>
-  );
-}
+// export default function DataTable() {
+//   return (
+//     <div style={{ height: 400, width: "100%" }}>
+//       <DataGrid
+//         rows={rows}
+//         columns={columns}
+//         initialState={{
+//           pagination: {
+//             paginationModel: { page: 0, pageSize: 5 },
+//           },
+//         }}
+//         pageSizeOptions={[5, 10]}
+//         checkboxSelection
+//       />
+//     </div>
+//   );
+// }
