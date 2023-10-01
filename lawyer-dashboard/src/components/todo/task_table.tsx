@@ -58,7 +58,16 @@ export default function TaskTable({
   onSelectMember: any;
   isAssigned: boolean;
 }) {
-  function ToDoList(props: any) {
+  const [selectedPriority, setSelectedPriority] = useState("");
+  const handlePriorityFilterChange = (event: any) => {
+    setSelectedPriority(event.target.value);
+  };
+  const [selectedStatus, setSelectedStatus] = useState("");
+  const handleStatusFilterChange = (event: any) => {
+    setSelectedStatus(event.target.value);
+  };
+
+  function TablePagination(props: any) {
     const theme = useTheme();
     const { count, page, rowsPerPage, onPageChange } = props;
 
@@ -113,7 +122,7 @@ export default function TaskTable({
     );
   }
 
-  ToDoList.propTypes = {
+  TablePagination.propTypes = {
     count: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
     page: PropTypes.number.isRequired,
@@ -123,8 +132,6 @@ export default function TaskTable({
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(8);
 
-  //   const emptyRows =
-  //     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - dataRows.length) : 0;
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -174,8 +181,19 @@ export default function TaskTable({
     dataRows: any[],
     page: number,
     rowsPerPage: number
-  ) =>
-    dataRows
+  ) => {
+    // Filter tasks based on selected priority and status
+    const filteredTasks = dataRows.filter(
+      (task) =>
+        (!selectedPriority || task.taskPriority === selectedPriority) &&
+        (!selectedStatus || task.taskStatus === selectedStatus)
+    );
+
+    if (filteredTasks.length === 0) {
+      return <TableRow>{/* ... */}</TableRow>;
+    }
+
+    return filteredTasks
       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
       .map((task: any, index: number) => (
         <TableRow key={isAssigned ? task.assignedTaskId : task.taskId}>
@@ -314,6 +332,7 @@ export default function TaskTable({
           </TableCell>
         </TableRow>
       ));
+  };
 
   return (
     <Card
@@ -346,10 +365,30 @@ export default function TaskTable({
               ) : null}
               <TableCell align="center" sx={cellStyle}>
                 Status
+                <select
+                  value={selectedStatus}
+                  onChange={handleStatusFilterChange}
+                  style={{ marginLeft: "8px" }}
+                >
+                  <option value="">All</option>
+                  <option value="COMPLETED">Completed</option>
+                  <option value="NOT_COMPLETED">Not Completed</option>
+                  <option value="IN_PROGRESS">In Progress</option>
+                </select>
               </TableCell>
 
               <TableCell align="center" sx={cellStyle}>
                 Priority
+                <select
+                  value={selectedPriority}
+                  onChange={handlePriorityFilterChange}
+                  style={{ marginLeft: "8px" }}
+                >
+                  <option value="">All</option>
+                  <option value="HIGH">High</option>
+                  <option value="MEDIUM">Medium</option>
+                  <option value="LOW">Low</option>
+                </select>
               </TableCell>
               <TableCell align="right" sx={cellStyle}>
                 Action
@@ -373,7 +412,7 @@ export default function TaskTable({
                 }}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
-                ActionsComponent={ToDoList}
+                ActionsComponent={TablePagination}
                 style={{ borderBottom: "none" }}
               />
             </TableRow>
@@ -389,7 +428,7 @@ export default function TaskTable({
           handleClose={handleClose}
           selectedTask={selectedTask}
           onUpdate={updateTask}
-          isAssigned={isAssigned?true:false}
+          isAssigned={isAssigned ? true : false}
         />
       </StyledDialogTitle>
       <StyledDialogTitle

@@ -77,7 +77,7 @@ export default function MemberSelect({
         noValidate
         action={async (formData) => {
           handleClose();
-          await onSelectMember(formData, selectedTask.assignedTaskId);
+          await onSelectMember(formData, selectedTask.taskId);
           AssignTaskAlert();
         }}
       >

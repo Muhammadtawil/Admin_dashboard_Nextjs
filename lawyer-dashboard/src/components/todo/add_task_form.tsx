@@ -60,7 +60,6 @@ export default function AddTaskForm({ onCreate }: any) {
     </Grid>
   );
 
-
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -216,7 +215,7 @@ export default function AddTaskForm({ onCreate }: any) {
                       borderRadius: "3%",
                     }}
                   >
-                    <option value="">Select A Service</option>
+                    <option value="">Select A Status</option>
                     {statusValues.length === 0 ? (
                       <option value="" disabled>
                         Loading...

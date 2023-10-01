@@ -101,7 +101,7 @@ const ToDoLists = async () => {
 
   return (
     <>
-      <AddTaskForm onCreate={onCreate} />;
+      <AddTaskForm onCreate={onCreate} />
       <TaskTable
         dataRows={tasks}
         deleteTask={Delete}
@@ -129,7 +129,7 @@ const ToDoLists = async () => {
         isAssigned={true}
       />
       {/* <EnhancedTable /> */}
-      <TestTable />
+      {/* <TestTable /> */}
     </>
   );
 };
