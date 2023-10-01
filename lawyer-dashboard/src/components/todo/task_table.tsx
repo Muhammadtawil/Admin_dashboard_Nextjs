@@ -67,7 +67,7 @@ export default function TaskTable({
     setSelectedStatus(event.target.value);
   };
 
-  function TablePagination(props: any) {
+  function ToDoList(props: any) {
     const theme = useTheme();
     const { count, page, rowsPerPage, onPageChange } = props;
 
@@ -122,7 +122,7 @@ export default function TaskTable({
     );
   }
 
-  TablePagination.propTypes = {
+  ToDoList.propTypes = {
     count: PropTypes.number.isRequired,
     onPageChange: PropTypes.func.isRequired,
     page: PropTypes.number.isRequired,
@@ -132,6 +132,8 @@ export default function TaskTable({
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(8);
 
+  //   const emptyRows =
+  //     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - dataRows.length) : 0;
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -412,7 +414,7 @@ export default function TaskTable({
                 }}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
-                ActionsComponent={TablePagination}
+                ActionsComponent={ToDoList}
                 style={{ borderBottom: "none" }}
               />
             </TableRow>
