@@ -15,10 +15,10 @@ export async function GetUsers() {
       "Content-Type": "application/json",
     },
 
-    next: {
-      revalidate: 60,
-      // revalidateTag: ["tasks"],
-    },
+    // next: {
+    //   revalidate: 60,
+    //   // revalidateTag: ["tasks"],
+    // },
   };
 
   try {
@@ -52,7 +52,10 @@ export async function GetUser() {
   };
 
   try {
-    const response = await fetch(`${user_url}/${userId}`, requestOptions);
+    const response = await fetch(
+      `${user_url}/${userId}?=${Date.now()}`,
+      requestOptions
+    );
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);

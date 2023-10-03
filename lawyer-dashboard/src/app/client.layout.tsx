@@ -50,18 +50,14 @@ export default function ClientLayout({
         <div className={`main-wrapper-content ${active && "active"}`}>
           {!isLoginPage && !isHomePage && (
             <>
-              <TopNavbar
-                toogleActive={toggleActive}
-                              userImageUrl={userImageUrl}
-                              userName={userName}
-                              userRole={userRole}
-              />
+              <TopNavbar toogleActive={toggleActive} />
               <Sidebar toggleActive={toggleActive} />
             </>
           )}
 
           {children}
         </div>
+        {/* </div> */}
 
         {/* ScrollToTop */}
         {!isLoginPage && !isHomePage && (
