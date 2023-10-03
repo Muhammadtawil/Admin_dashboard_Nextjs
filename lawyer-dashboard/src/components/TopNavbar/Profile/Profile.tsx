@@ -14,7 +14,15 @@ import {
 
 import Logout from "@mui/icons-material/Logout";
 
-const Profile = ({profileImageUrl}:{profileImageUrl:string}) => {
+const Profile = ({
+  profileImageUrl,
+  userName,
+  userRole,
+}: {
+  profileImageUrl: string;
+  userName: string;
+  userRole: any;
+}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: any) => {
@@ -36,7 +44,7 @@ const Profile = ({profileImageUrl}:{profileImageUrl:string}) => {
           className="ml-2"
         >
           <Avatar
-            src="/images/user1.png"
+            src={profileImageUrl}
             alt="Adison Jeck"
             sx={{ width: 40, height: 40 }}
           />
@@ -82,10 +90,10 @@ const Profile = ({profileImageUrl}:{profileImageUrl:string}) => {
         className="for-dark-top-navList"
       >
         <MenuItem>
-          <Avatar src="/images/user1.png" className="mr-1" />
+          <Avatar src={profileImageUrl} className="mr-1" />
           <Box>
             <Typography sx={{ fontSize: "11px", color: "#757FEF" }}>
-              Admin
+              {userRole}
             </Typography>
             <Typography
               sx={{
@@ -94,7 +102,7 @@ const Profile = ({profileImageUrl}:{profileImageUrl:string}) => {
                 fontWeight: "500",
               }}
             >
-              Admin
+              {userName}
             </Typography>
           </Box>
         </MenuItem>

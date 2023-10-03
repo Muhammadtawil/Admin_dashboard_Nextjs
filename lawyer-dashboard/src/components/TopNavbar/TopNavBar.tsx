@@ -1,15 +1,23 @@
-import * as React from "react";
 import { AppBar, Toolbar, IconButton, Stack, Typography } from "@mui/material";
-
 import Tooltip from "@mui/material/Tooltip";
 import { AnyMxRecord } from "dns";
 import SearchForm from "./search/SearchForm";
-
 import CurrentDate from "./Date/CurrentDate";
 import Profile from "./Profile/Profile";
 import Notifications from "./notification/Notification";
+import { GetUser } from "@/server/users/users";
 
-const TopNavbar = ({ toogleActive }: any) => {
+const TopNavbar = ({
+  toogleActive,
+  userImageUrl,
+  userName,
+  userRole,
+}: {
+  toogleActive: any;
+  userImageUrl: any;
+  userName: string;
+  userRole: any;
+}) => {
   return (
     <>
       <div className="topNavbarDark">
@@ -49,7 +57,7 @@ const TopNavbar = ({ toogleActive }: any) => {
               <Notifications />
 
               {/* Profile */}
-              <Profile />
+              <Profile profileImageUrl={userImageUrl} userName={userName} userRole={userRole}/>
             </Stack>
           </Toolbar>
         </AppBar>

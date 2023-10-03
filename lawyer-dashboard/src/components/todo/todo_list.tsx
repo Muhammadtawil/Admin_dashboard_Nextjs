@@ -10,7 +10,7 @@ import CreateTask, {
 import TaskTable from "./task_table";
 import { revalidatePath } from "next/cache";
 import AddTaskForm from "./add_task_form";
-import { GetUsers } from "@/server/users/users";
+import { GetUser, GetUsers } from "@/server/users/users";
 import { Typography } from "@mui/material";
 // import EnhancedTable from "./tableHead/table_head";
 import DataTable from "./tableHead/head2";
@@ -98,6 +98,7 @@ const ToDoLists = async () => {
   const assignedTasks = await getAssignedTasks();
   const tasks = await getTasks(assignedTasks);
   const users = await GetUsers();
+  const user = await GetUser();
 
   return (
     <>
@@ -109,6 +110,7 @@ const ToDoLists = async () => {
         getusers={users}
         onSelectMember={SelectMember}
         isAssigned={false}
+        userRole={user.userRole}
       />
       <Typography
         component="h2"
@@ -127,6 +129,7 @@ const ToDoLists = async () => {
         getusers={users}
         onSelectMember={SelectMember}
         isAssigned={true}
+        userRole={user.userRole}
       />
       {/* <EnhancedTable /> */}
       {/* <TestTable /> */}

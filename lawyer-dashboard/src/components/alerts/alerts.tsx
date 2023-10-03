@@ -51,3 +51,14 @@ export const deleteAlert = ({ deleteMethod }: any) => {
     }
   });
 };
+
+export const LoginAlert = ({ userName }: any) => {
+  MySwal.fire({
+    title: "Welcome!",
+    text: `you are welcome ${userName}`,
+    icon: "success",
+    timer: 2000,
+    timerProgressBar: true,
+    showConfirmButton: false,
+  });
+};

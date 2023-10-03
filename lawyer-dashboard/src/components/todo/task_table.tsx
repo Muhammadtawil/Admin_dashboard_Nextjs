@@ -50,6 +50,7 @@ export default function TaskTable({
   getusers,
   onSelectMember,
   isAssigned,
+  userRole,
 }: {
   dataRows: any[];
   deleteTask: any;
@@ -57,6 +58,7 @@ export default function TaskTable({
   getusers: any[];
   onSelectMember: any;
   isAssigned: boolean;
+  userRole: any;
 }) {
   const [selectedPriority, setSelectedPriority] = useState("");
   const handlePriorityFilterChange = (event: any) => {
@@ -212,9 +214,8 @@ export default function TaskTable({
             <Checkbox {...label} size="small" />
             {task.taskTitle}
           </TableCell>
-          {isAssigned ? (
+          {isAssigned && userRole === "ADMIN" ? (
             // Render a row of Avatars using the assignedTo array
-
             <TableCell sx={cellStyle}>
               {task.assignedTo.map((user: any) => (
                 <Avatar
@@ -225,8 +226,8 @@ export default function TaskTable({
                 />
               ))}
             </TableCell>
-          ) : (
-            // Render the existing TableCell with PersonIcon
+          ) : userRole === "ADMIN" ? (
+            // Render the TableCell for ADMIN
             <TableCell sx={cellStyle}>
               <IconButton
                 aria-label="User Icon"
@@ -235,7 +236,8 @@ export default function TaskTable({
                 <PersonIcon sx={{ fontSize: 35, color: "#your-icon-color" }} />
               </IconButton>
             </TableCell>
-          )}
+          ) : null}
+
           <TableCell sx={{ ...cellStyle, fontSize: "13px" }}>
             {new Date(task.createdAt).toLocaleDateString("en-US", {
               day: "numeric",
@@ -359,7 +361,10 @@ export default function TaskTable({
           <TableHead sx={{ background: "#F7FAFF" }}>
             <TableRow>
               <TableCell sx={cellStyle}>Name</TableCell>
-              <TableCell sx={cellStyle}>Assigned</TableCell>
+              {userRole === "ADMIN" ? (
+                <TableCell sx={cellStyle}>Assigned</TableCell>
+              ) : null}
+
               <TableCell sx={cellStyle}>Start Date</TableCell>
               <TableCell sx={cellStyle}>End Date</TableCell>
               {isAssigned ? (

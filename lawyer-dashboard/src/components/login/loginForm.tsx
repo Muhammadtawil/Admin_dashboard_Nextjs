@@ -1,10 +1,16 @@
 "use client";
 import Link from "next/link";
 import React from "react";
-import { successAlert } from "../alerts/alerts";
+import { LoginAlert, successAlert } from "../alerts/alerts";
 import { redirect, useRouter } from "next/navigation";
 
-export default function LoginForm({ onLogin }: { onLogin: any }) {
+export default function LoginForm({
+  onLogin,
+  userName,
+}: {
+  onLogin: any;
+  userName: any;
+}) {
   return (
     <div className="user-area-all-style log-in-area ptb-100">
       <div className="container">
@@ -18,7 +24,7 @@ export default function LoginForm({ onLogin }: { onLogin: any }) {
               <form
                 action={async (formData) => {
                   await onLogin(formData);
-                  successAlert();
+                  await LoginAlert(userName);
                   //   const router = useRouter();
                   //   router.replace("/tasks");
                   redirect("/tasks");

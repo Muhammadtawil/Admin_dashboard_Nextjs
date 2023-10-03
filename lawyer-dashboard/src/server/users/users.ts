@@ -1,11 +1,12 @@
 // get users
+const token = cookies().get("accessToken")?.value;
+const userId = cookies().get("userId")?.value;
+const users_url = process.env.USERS_URL;
+const user_url = process.env.USER_URL;
 
-import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 export async function GetUsers() {
-  const token = cookies().get("accessToken")?.value;
-  const userId = cookies().get("userId")?.value;
   const users_url = process.env.USERS_URL;
   const requestOptions = {
     method: "GET",
@@ -34,13 +35,9 @@ export async function GetUsers() {
   }
 }
 
-
-// get active user 
+// get active user
 
 export async function GetUser() {
-  const token = cookies().get("accessToken")?.value;
-  const userId = cookies().get("userId")?.value;
-  const users_url = process.env.USER_URL;
   const requestOptions = {
     method: "GET",
     headers: {
@@ -48,14 +45,14 @@ export async function GetUser() {
       "Content-Type": "application/json",
     },
 
-    next: {
-      revalidate: 10,
-      // revalidateTag: ["tasks"],
-    },
+    // next: {
+    //   revalidate: 10,
+    //   // revalidateTag: ["tasks"],
+    // },
   };
 
   try {
-    const response = await fetch(`${users_url}?=${Date.now()}`, requestOptions);
+    const response = await fetch(`${user_url}/${userId}`, requestOptions);
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
