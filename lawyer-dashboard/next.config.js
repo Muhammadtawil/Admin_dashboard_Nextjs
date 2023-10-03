@@ -5,7 +5,18 @@ const nextConfig = {
     appDir: true,
     serverActions: true, // Enable Server Actions
   },
-  productionBrowserSourceMaps: false, // Add other configuration options as needed
+  productionBrowserSourceMaps: false,
+  // Add other configuration options as needed
+
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: "/",
+  //       destination: "/",
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 };
 
 module.exports = nextConfig;

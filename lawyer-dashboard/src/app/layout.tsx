@@ -9,6 +9,7 @@ import type { Metadata } from "next";
 import { useState } from "react";
 import SideNavbar from "@/components/sidebar/SideBarTest";
 import Sidebar from "@/components/LeftSidebar/LeftSideBar";
+import { usePathname, useRouter } from "next/navigation";
 
 // import SidebarTest from "@/components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
@@ -23,9 +24,13 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const router = usePathname();
+  const isLoginPage = router === "/login";
+  const isHomePage = router === "/";
+
   const [active, setActive] = useState(false);
 
-  const toogleActive = () => {
+  const toggleActive = () => {
     setActive(!active);
   };
   return (
@@ -37,19 +42,24 @@ export default function RootLayout({
 
       <body className={inter.className}>
         <div className={`main-wrapper-content ${active && "active"}`}>
-          <>
-            <TopNavbar toogleActive={toogleActive} />
+          {!isLoginPage && !isHomePage && (
+            <>
+              <TopNavbar toggleActive={() => toggleActive()} />
+              <Sidebar toggleActive={() => toggleActive()} />
+            </>
+          )}
 
-            <Sidebar toogleActive={toogleActive} />
-          </>
-
-          <div className="main-content">{children}</div>
+          {children}
         </div>
 
         {/* ScrollToTop */}
-        <ScrollToTop />
+        {!isLoginPage && !isHomePage && (
+          <>
+            <ScrollToTop />
 
-        <ControlPanelModal />
+            <ControlPanelModal />
+          </>
+        )}
       </body>
     </html>
   );

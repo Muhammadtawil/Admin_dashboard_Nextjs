@@ -1,11 +1,14 @@
 import { revalidatePath, revalidateTag } from "next/cache";
-import { redirect } from "next/navigation";
-
-const token = process.env.TOKEN;
+import { cookies } from "next/headers";
+const token = cookies().get("accessToken")?.value;
+const userId = cookies().get("userId")?.value;
 const assignTasksUrl = process.env.ASSIGN_TASK_URL;
 const assignedTasks = process.env.ASSIGNED_TASKS_URL;
 const tasks_url = process.env.TASKS_URL;
 const update_assigned = process.env.UPDATE_ASSIGN_URL;
+// const userId = process.env.USERID;
+const getTasksUrl = process.env.Get_TASKS_URL;
+// const localuserId = localStorage.getItem("user_id");
 export async function getTasks(assignedTasks: any) {
   const requestOptions = {
     method: "GET",
@@ -14,13 +17,13 @@ export async function getTasks(assignedTasks: any) {
       "Content-Type": "application/json",
     },
     next: {
-      revalidate: 60,
+      revalidate: 10,
       // revalidateTag: ["tasks"],
     },
   };
 
   try {
-    const response = await fetch(`${tasks_url}?=${Date.now()}`, requestOptions);
+    const response = await fetch(`${getTasksUrl}/${userId}`, requestOptions);
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
@@ -64,7 +67,6 @@ export default async function CreateTask(data: FormData) {
 
   // Define the URL for adding a client (replace with the correct endpoint)
 
-  const token = process.env.TOKEN;
   const requestOptions = {
     method: "POST",
     headers: {
@@ -221,7 +223,6 @@ export async function AssignTask(data: FormData, taskId: any) {
 
   // Define the URL for adding a client (replace with the correct endpoint)
 
-  const token = process.env.TOKEN;
   const requestOptions = {
     method: "POST",
     headers: {

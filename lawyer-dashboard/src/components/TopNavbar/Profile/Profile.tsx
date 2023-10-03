@@ -14,7 +14,7 @@ import {
 
 import Logout from "@mui/icons-material/Logout";
 
-const Profile = () => {
+const Profile = ({profileImageUrl}:{profileImageUrl:string}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: any) => {
