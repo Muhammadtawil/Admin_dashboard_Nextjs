@@ -24,11 +24,13 @@ export default function ClientLayout({
   userImageUrl,
   userName,
   userRole,
+  // logout,
 }: {
   children: React.ReactNode;
   userImageUrl: any;
   userName: string;
   userRole: any;
+  // logout: any;
 }) {
   const router = usePathname();
   const isLoginPage = router === "/login";
@@ -55,6 +57,7 @@ export default function ClientLayout({
                 userImageUrl={userImageUrl}
                 userName={userName}
                 userRole={userRole}
+                // logout={logout}
               />
               <Sidebar toggleActive={toggleActive} />
             </>

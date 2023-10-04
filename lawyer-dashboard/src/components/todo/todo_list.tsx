@@ -112,6 +112,7 @@ const ToDoLists = async () => {
         onSelectMember={SelectMember}
         isAssigned={false}
         userRole={user.userRole}
+        isToMe={false}
       />
       <Typography
         component="h2"
@@ -143,6 +144,7 @@ const ToDoLists = async () => {
         onSelectMember={SelectMember}
         isAssigned={true}
         userRole={user.userRole}
+        isToMe={true}
       />
 
       {user.userRole === "ADMIN" ? (
@@ -166,6 +168,7 @@ const ToDoLists = async () => {
             onSelectMember={SelectMember}
             isAssigned={true}
             userRole={user.userRole}
+            isToMe={false}
           />
         </>
       ) : null}

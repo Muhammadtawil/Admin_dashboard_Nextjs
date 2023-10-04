@@ -12,11 +12,13 @@ const TopNavbar = ({
   userImageUrl,
   userName,
   userRole,
+  // logout,
 }: {
   toogleActive: any;
   userImageUrl: any;
   userName: string;
   userRole: any;
+  // logout: any;
 }) => {
   return (
     <>
@@ -57,7 +59,12 @@ const TopNavbar = ({
               <Notifications />
 
               {/* Profile */}
-              <Profile profileImageUrl={userImageUrl} userName={userName} userRole={userRole}/>
+              <Profile
+                profileImageUrl={userImageUrl}
+                userName={userName}
+                userRole={userRole}
+                // logout={logout}
+              />
             </Stack>
           </Toolbar>
         </AppBar>

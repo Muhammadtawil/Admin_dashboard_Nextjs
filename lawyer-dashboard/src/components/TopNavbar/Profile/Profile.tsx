@@ -1,4 +1,4 @@
-import * as React from "react";
+import { cookies } from "next/headers";
 import {
   IconButton,
   Typography,
@@ -13,15 +13,18 @@ import {
 } from "@mui/material";
 
 import Logout from "@mui/icons-material/Logout";
+import React from "react";
 
 const Profile = ({
   profileImageUrl,
   userName,
   userRole,
-}: {
+}: // logout,
+{
   profileImageUrl: string;
   userName: string;
   userRole: any;
+  // logout: any;
 }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -114,12 +117,7 @@ const Profile = ({
             <Logout fontSize="small" />
           </ListItemIcon>
 
-          <Link
-            href="/authentication/logout/"
-            fontSize="13px"
-            color="inherit"
-            underline="none"
-          >
+          <Link href="/login" fontSize="13px" color="inherit" underline="none">
             Logout
           </Link>
         </MenuItem>

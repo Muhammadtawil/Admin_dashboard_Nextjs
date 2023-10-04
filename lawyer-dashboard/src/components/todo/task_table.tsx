@@ -51,6 +51,7 @@ export default function TaskTable({
   onSelectMember,
   isAssigned,
   userRole,
+  isToMe,
 }: {
   dataRows: any[];
   deleteTask: any;
@@ -59,6 +60,7 @@ export default function TaskTable({
   onSelectMember: any;
   isAssigned: boolean;
   userRole: any;
+  isToMe: boolean;
 }) {
   const [selectedPriority, setSelectedPriority] = useState("");
   const handlePriorityFilterChange = (event: any) => {
@@ -214,7 +216,7 @@ export default function TaskTable({
             <Checkbox {...label} size="small" />
             {task.taskTitle}
           </TableCell>
-          {isAssigned && userRole === "ADMIN" ? (
+          {isAssigned && userRole === "ADMIN" && !isToMe ? (
             // Render a row of Avatars using the assignedTo array
             <TableCell sx={cellStyle}>
               {task.assignedTo.map((user: any) => (
@@ -226,15 +228,29 @@ export default function TaskTable({
                 />
               ))}
             </TableCell>
-          ) : userRole === "ADMIN" ? (
+          ) : userRole === "ADMIN" && !isToMe ? (
             // Render the TableCell for ADMIN
             <TableCell sx={cellStyle}>
               <IconButton
                 aria-label="User Icon"
                 onClick={() => handleSelectClick(task)}
               >
-                <PersonIcon sx={{ fontSize: 35, color: "#your-icon-color" }} />
+                <PersonIcon sx={{ fontSize: 35, color: "green" }} />
               </IconButton>
+            </TableCell>
+          ) : isToMe ? (
+            // Check if it's assigned to the user
+            <TableCell sx={cellStyle}>
+              {getusers
+                .filter((user: any) => user.userId === task.assignBy)
+                .map((filteredUser: any) => (
+                  <Avatar
+                    key={filteredUser.userId}
+                    alt={filteredUser.userName}
+                    src={filteredUser.userImgUrl}
+                    sx={{ marginRight: "8px" }} // Adjust the spacing between avatars as needed
+                  />
+                ))}
             </TableCell>
           ) : null}
 
@@ -361,8 +377,10 @@ export default function TaskTable({
           <TableHead sx={{ background: "#F7FAFF" }}>
             <TableRow>
               <TableCell sx={cellStyle}>Name</TableCell>
-              {userRole === "ADMIN" ? (
-                <TableCell sx={cellStyle}>Assigned</TableCell>
+              {userRole === "ADMIN" && !isToMe ? (
+                <TableCell sx={cellStyle}>Assigned To</TableCell>
+              ) : isToMe ? (
+                <TableCell sx={cellStyle}>Assigned By</TableCell>
               ) : null}
 
               <TableCell sx={cellStyle}>Start Date</TableCell>

@@ -1,3 +1,4 @@
+
 import Head from "next/head";
 import ControlPanelModal from "@/components/ControlPanelModal/control_panel";
 import TopNavbar from "@/components/TopNavbar/TopNavBar";
@@ -11,6 +12,7 @@ import Sidebar from "@/components/LeftSidebar/LeftSideBar";
 import { usePathname, useRouter } from "next/navigation";
 import ClientLayout from "./client.layout";
 import { GetUser } from "@/server/users/users";
+import { cookies } from "next/headers";
 
 // import SidebarTest from "@/components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
@@ -28,12 +30,18 @@ export default async function RootLayout({
 }) {
   const user = await GetUser();
 
+  const logout = async () => {
+"use server"
+
+    cookies().delete("accessToken");
+  };
   return (
     <ClientLayout
       userImageUrl={user.userImgUrl}
       userName={user.userName}
       userRole={user.userRole}
       children={children}
+      // logout={() => logout}
     />
   );
 }
