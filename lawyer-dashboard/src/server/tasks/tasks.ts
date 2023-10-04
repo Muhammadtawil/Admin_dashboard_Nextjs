@@ -193,7 +193,43 @@ export async function getAssignedTasks() {
   };
 
   try {
-    const response = await fetch(`${tasks_url}?=${Date.now()}`, requestOptions);
+    const response = await fetch(
+      `${update_assigned}/${userId}?=${Date.now()}`,
+      requestOptions
+    );
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+    revalidatePath("/tasks", "page");
+
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return [];
+  }
+}
+
+export async function getAssignedToTasks() {
+  const assignedTo_tasks_url = process.env.ASSIGN_TO_URL;
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+
+    next: {
+      revalidate: 10,
+      // revalidateTag: ["tasks"],
+    },
+  };
+
+  try {
+    const response = await fetch(
+      `${assignedTo_tasks_url}/${userId}`,
+      requestOptions
+    );
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);

@@ -5,6 +5,7 @@ import CreateTask, {
   UpdateAssignedTask,
   UpdateTask,
   getAssignedTasks,
+  getAssignedToTasks,
   getTasks,
 } from "@/server/tasks/tasks";
 import TaskTable from "./task_table";
@@ -95,11 +96,11 @@ async function SelectMember(formData: FormData, taskId: string) {
 }
 
 const ToDoLists = async () => {
-  const assignedTasks = await getAssignedTasks();
-  const tasks = await getTasks(assignedTasks);
   const users = await GetUsers();
   const user = await GetUser();
-
+  const assignedTasks = await getAssignedTasks();
+  const assignedToTasks = await getAssignedToTasks();
+  const tasks = await getTasks(assignedTasks);
   return (
     <>
       <AddTaskForm onCreate={onCreate} />
@@ -115,15 +116,27 @@ const ToDoLists = async () => {
       <Typography
         component="h2"
         sx={{
-          fontSize: 20,
+          fontSize: 25,
           fontWeight: 500,
           padding: 2,
         }}
       >
         Assigned Tasks
       </Typography>
+
+      <Typography
+        component="h2"
+        sx={{
+          fontSize: 20,
+          fontWeight: 500,
+          padding: 2,
+        }}
+      >
+        Assigned Tasks To Me
+      </Typography>
+
       <TaskTable
-        dataRows={assignedTasks}
+        dataRows={assignedToTasks}
         deleteTask={DeleteAssignedTasks}
         updateTask={onUpdateAssigned}
         getusers={users}
@@ -131,6 +144,32 @@ const ToDoLists = async () => {
         isAssigned={true}
         userRole={user.userRole}
       />
+
+      {user.userRole === "ADMIN" ? (
+        <>
+          <Typography
+            component="h2"
+            sx={{
+              fontSize: 20,
+              fontWeight: 500,
+              padding: 2,
+            }}
+          >
+            Assigned Tasks By Me
+          </Typography>
+
+          <TaskTable
+            dataRows={assignedTasks}
+            deleteTask={DeleteAssignedTasks}
+            updateTask={onUpdateAssigned}
+            getusers={users}
+            onSelectMember={SelectMember}
+            isAssigned={true}
+            userRole={user.userRole}
+          />
+        </>
+      ) : null}
+
       {/* <EnhancedTable /> */}
       {/* <TestTable /> */}
     </>
