@@ -1,3 +1,5 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth/next";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { cookies } from "next/headers";
 const token = cookies().get("accessToken")?.value;
@@ -10,11 +12,14 @@ const update_assigned = process.env.UPDATE_ASSIGN_URL;
 const getTasksUrl = process.env.Get_TASKS_URL;
 // const localuserId = localStorage.getItem("user_id");
 export async function getTasks(assignedTasks: any) {
+  const session = await getServerSession(authOptions);
+
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
+      cache: "no-store",
     },
     next: {
       revalidate: 10,
@@ -23,7 +28,10 @@ export async function getTasks(assignedTasks: any) {
   };
 
   try {
-    const response = await fetch(`${getTasksUrl}/${userId}`, requestOptions);
+    const response = await fetch(
+      `${getTasksUrl}/${session?.userId}`,
+      requestOptions
+    );
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
@@ -55,6 +63,7 @@ export default async function CreateTask(data: FormData) {
   const taskPriority = data.get("taskPriority");
   const taskStatus = data.get("taskStatus");
   const taskDeadline = data.get("taskDeadline");
+  const session = await getServerSession(authOptions);
 
   const taskData = {
     taskTitle: taskTitle,
@@ -70,7 +79,8 @@ export default async function CreateTask(data: FormData) {
   const requestOptions = {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
+
       "Content-Type": "application/json",
     },
     body: jsonData,
@@ -99,11 +109,12 @@ export default async function CreateTask(data: FormData) {
 export async function DeleteTask(taskId: string) {
   // Define the URL for deleting a task (replace with the correct endpoint)
   const deleteUrl = `${tasks_url}/${taskId}`;
+  const session = await getServerSession(authOptions);
 
   const requestOptions = {
     method: "DELETE",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
     },
   };
 
@@ -134,6 +145,8 @@ export async function UpdateTask(data: FormData, taskId: string) {
   const taskTitle = data.get("taskTitle");
   const taskPriority = data.get("taskPriority");
   const taskStatus = data.get("taskStatus");
+  const session = await getServerSession(authOptions);
+
   // const taskDeadline = data.get("taskDeadline");
 
   const taskData = {
@@ -150,7 +163,7 @@ export async function UpdateTask(data: FormData, taskId: string) {
   const requestOptions = {
     method: "PATCH",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
     },
     body: jsonData,
@@ -179,10 +192,13 @@ export async function UpdateTask(data: FormData, taskId: string) {
 
 export async function getAssignedTasks() {
   const tasks_url = process.env.ASSIGNED_TASKS_URL;
+  const session = await getServerSession(authOptions);
+
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
+
       "Content-Type": "application/json",
     },
 
@@ -194,7 +210,7 @@ export async function getAssignedTasks() {
 
   try {
     const response = await fetch(
-      `${update_assigned}/${userId}?=${Date.now()}`,
+      `${update_assigned}/${session?.userId}?=${Date.now()}`,
       requestOptions
     );
 
@@ -212,10 +228,13 @@ export async function getAssignedTasks() {
 
 export async function getAssignedToTasks() {
   const assignedTo_tasks_url = process.env.ASSIGN_TO_URL;
+  const session = await getServerSession(authOptions);
+
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
+
       "Content-Type": "application/json",
     },
 
@@ -227,7 +246,7 @@ export async function getAssignedToTasks() {
 
   try {
     const response = await fetch(
-      `${assignedTo_tasks_url}/${userId}`,
+      `${assignedTo_tasks_url}/${session?.userId}`,
       requestOptions
     );
 
@@ -249,6 +268,7 @@ export async function AssignTask(data: FormData, taskId: any) {
   // Extract client data from the FormData object
 
   const assignedTo = data.get("usersId");
+  const session = await getServerSession(authOptions);
 
   const taskData = {
     taskId: taskId,
@@ -262,7 +282,7 @@ export async function AssignTask(data: FormData, taskId: any) {
   const requestOptions = {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
     },
     body: jsonData,
@@ -290,11 +310,12 @@ export async function AssignTask(data: FormData, taskId: any) {
 export async function DeleteAssignedTask(taskId: string) {
   // Define the URL for deleting a task (replace with the correct endpoint)
   const deleteAssignUrl = `https://lawfirm.cyclic.cloud/tasks/assign/${taskId}`;
+  const session = await getServerSession(authOptions);
 
   const requestOptions = {
     method: "DELETE",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
     },
   };
 
@@ -324,6 +345,7 @@ export async function UpdateAssignedTask(data: FormData, taskId: string) {
   const taskPriority = data.get("taskPriority");
   const taskStatus = data.get("taskStatus");
   // const taskDeadline = data.get("taskDeadline");
+  const session = await getServerSession(authOptions);
 
   const taskData = {
     taskTitle: taskTitle,
@@ -339,7 +361,8 @@ export async function UpdateAssignedTask(data: FormData, taskId: string) {
   const requestOptions = {
     method: "PATCH",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
+
       "Content-Type": "application/json",
     },
     body: jsonData,

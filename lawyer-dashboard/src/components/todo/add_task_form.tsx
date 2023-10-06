@@ -152,7 +152,7 @@ export default function AddTaskForm({ onCreate }: any) {
           </Box>
           <Box
             component="form"
-            noValidate
+            noValidate={false}
             action={async (formData) => {
               handleClose();
               await onCreate(formData);

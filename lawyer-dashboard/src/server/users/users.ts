@@ -4,15 +4,19 @@ const userId = cookies().get("userId")?.value;
 const users_url = process.env.USERS_URL;
 const user_url = process.env.USER_URL;
 
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth/next";
 import { cookies } from "next/headers";
 
 export async function GetUsers() {
+  const session = await getServerSession(authOptions);
   const users_url = process.env.USERS_URL;
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
+      cache: "no-store",
     },
 
     // next: {
@@ -38,22 +42,19 @@ export async function GetUsers() {
 // get active user
 
 export async function GetUser() {
+  const session = await getServerSession(authOptions);
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
+      cache: "no-store",
     },
-
-    // next: {
-    //   revalidate: 10,
-    //   // revalidateTag: ["tasks"],
-    // },
   };
 
   try {
     const response = await fetch(
-      `${user_url}/${userId}?=${Date.now()}`,
+      `${user_url}/${session?.userId}?=${Date.now()}`,
       requestOptions
     );
 

@@ -6,7 +6,7 @@ import ScrollToTop from "@/components/shared/ScrollToTop";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 // import Sidebar from "@/components/LeftSidebar/SubMenu";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import SideNavbar from "@/components/sidebar/SideBarTest";
 import Sidebar from "@/components/LeftSidebar/LeftSideBar";
 import { usePathname, useRouter } from "next/navigation";
@@ -24,17 +24,15 @@ export default function ClientLayout({
   userImageUrl,
   userName,
   userRole,
-  // logout,
-}: {
+}: // deleteTokens,
+{
   children: React.ReactNode;
   userImageUrl: any;
   userName: string;
   userRole: any;
-  // logout: any;
+  // deleteTokens: any;
 }) {
   const router = usePathname();
-  const isLoginPage = router === "/login";
-  const isHomePage = router === "/";
 
   const [active, setActive] = useState(false);
 
@@ -50,31 +48,28 @@ export default function ClientLayout({
 
       <body className={inter.className}>
         <div className={`main-wrapper-content ${active && "active"}`}>
-          {!isLoginPage && !isHomePage && (
-            <>
-              <TopNavbar
-                toogleActive={toggleActive}
-                userImageUrl={userImageUrl}
-                userName={userName}
-                userRole={userRole}
-                // logout={logout}
-              />
-              <Sidebar toggleActive={toggleActive} />
-            </>
-          )}
+          <>
+            <TopNavbar
+              toogleActive={toggleActive}
+              userImageUrl={userImageUrl}
+              userName={userName}
+              userRole={userRole}
+              // logout={deleteTokens}
+            />
+            <Sidebar toggleActive={toggleActive} />
+          </>
 
           {children}
         </div>
         {/* </div> */}
 
         {/* ScrollToTop */}
-        {!isLoginPage && !isHomePage && (
-          <>
-            <ScrollToTop />
 
-            <ControlPanelModal />
-          </>
-        )}
+        <>
+          <ScrollToTop />
+
+          <ControlPanelModal />
+        </>
       </body>
     </html>
   );

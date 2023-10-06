@@ -16,11 +16,19 @@ import "swiper/css";
 import "swiper/css/bundle";
 import "../styles/style.css";
 import { ThemeProvider, CssBaseline } from "@mui/material";
-import LoginPage from "./login/page";
+import ToDo from "./tasks/page";
+import { useSession } from "next-auth/react";
 export default function Home() {
+  const { data: session } = useSession();
+  console.log({ session });
+
   return (
     <>
-      <LoginPage />
+      if (session && session.user) return (
+      <>
+        <ToDo />
+      </>
+      );
       <CssBaseline />
     </>
   );

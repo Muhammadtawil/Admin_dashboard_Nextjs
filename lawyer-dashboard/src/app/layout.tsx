@@ -1,20 +1,14 @@
-
 import Head from "next/head";
 import ControlPanelModal from "@/components/ControlPanelModal/control_panel";
 import TopNavbar from "@/components/TopNavbar/TopNavBar";
 import ScrollToTop from "@/components/shared/ScrollToTop";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
-// import Sidebar from "@/components/LeftSidebar/SubMenu";
-import { useState } from "react";
-import SideNavbar from "@/components/sidebar/SideBarTest";
-import Sidebar from "@/components/LeftSidebar/LeftSideBar";
-import { usePathname, useRouter } from "next/navigation";
 import ClientLayout from "./client.layout";
 import { GetUser } from "@/server/users/users";
-import { cookies } from "next/headers";
+import Providers from "@/components/providers";
 
-// import SidebarTest from "@/components/sidebar/Sidebar";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,19 +23,19 @@ export default async function RootLayout({
   userImageUrl: any;
 }) {
   const user = await GetUser();
-
-  const logout = async () => {
-"use server"
-
-    cookies().delete("accessToken");
-  };
+  // async function handleLogout() {
+  //   await deleteTokens();
+  // }
+  // const logout = handleLogout();
   return (
-    <ClientLayout
-      userImageUrl={user.userImgUrl}
-      userName={user.userName}
-      userRole={user.userRole}
-      children={children}
-      // logout={() => logout}
-    />
+    <Providers>
+      <ClientLayout
+        userImageUrl={user.userImgUrl}
+        userName={user.userName}
+        userRole={user.userRole}
+        children={children}
+        // deleteTokens={logout}
+      />
+    </Providers>
   );
 }

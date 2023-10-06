@@ -8,15 +8,15 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   // Add other configuration options as needed
 
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: "/",
-  //       destination: "/",
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/api/auth/signin",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

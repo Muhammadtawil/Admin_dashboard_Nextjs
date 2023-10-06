@@ -3,14 +3,21 @@ import Link from "next/link";
 import React from "react";
 import { LoginAlert, successAlert } from "../alerts/alerts";
 import { redirect, useRouter } from "next/navigation";
-
+import { useSession } from "next-auth/react";
+import ToDo from "@/app/tasks/page";
 export default function LoginForm({
   onLogin,
   userName,
+  isLogin,
 }: {
   onLogin: any;
   userName: any;
+  isLogin: boolean;
 }) {
+  // const { data: session } = useSession();
+  // console.log({ session });
+
+  // if (session && session.user) return <ToDo />;
   return (
     <div className="user-area-all-style log-in-area ptb-100">
       <div className="container">
@@ -22,12 +29,14 @@ export default function LoginForm({
               </div>
 
               <form
+                noValidate={false}
                 action={async (formData) => {
                   await onLogin(formData);
-                  await LoginAlert(userName);
+                  // await LoginAlert(userName);
                   //   const router = useRouter();
                   //   router.replace("/tasks");
-                  redirect("/tasks");
+
+                  isLogin ? redirect("/tasks") : null;
                 }}
               >
                 <div className="row">
@@ -75,9 +84,11 @@ export default function LoginForm({
                   </div>
 
                   <div className="col-12">
-                    <button className="default-btn btn-two" type="submit">
-                      Log In Now
-                    </button>
+                    <Link href={"/api/auth/signin"}>
+                      <button className="default-btn btn-two" type="submit">
+                        Log In Now
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </form>

@@ -1,3 +1,4 @@
+"use server";
 import { redirect, useRouter } from "next/navigation";
 import { Router } from "next/router";
 import { cookies } from "next/headers";
@@ -37,6 +38,8 @@ export default async function SignIn(data: FormData) {
     // Check if the response contains an accessToken
     if (responseData.accessToken) {
       // Store the token as an HTTP cookie with a specified expiration time (e.g., 1 day)
+      cookies().delete("accessToken");
+      cookies().delete("userId");
 
       cookies().set("accessToken", `${responseData.accessToken}`, {
         secure: true,
@@ -63,4 +66,21 @@ export default async function SignIn(data: FormData) {
     console.error("Error adding task:", error);
     // Handle the error here
   }
+}
+
+// export async function logout() {
+//   "use server";
+//   cookies().set({
+//     name: "accessToken",
+//     value: "",
+//     path: "/",
+//   });
+// }
+
+export async function deleteTokens() {
+  "use server";
+
+  cookies().delete("accessToken");
+  cookies().delete("userId");
+  // cookies().delete("PGADMIN_LANGUAGE")
 }

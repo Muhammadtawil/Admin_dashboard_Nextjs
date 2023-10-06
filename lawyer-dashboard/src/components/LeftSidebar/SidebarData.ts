@@ -14,7 +14,7 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 export const SidebarData = [
   {
     title: "Dashboard",
-    path: "/",
+    path: "/dashboar",
     icon: GridViewIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,
