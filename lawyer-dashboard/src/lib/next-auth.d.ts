@@ -1,10 +1,10 @@
 import NextAuth from "next-auth";
-
 declare module "next-auth" {
   interface Session {
     userId: any;
     userName: any;
     userImageUrl: any;
+    userRole: string;
     accessToken: string;
     refreshToken: string;
     expiresIn: number;
@@ -18,6 +18,7 @@ declare module "next-auth/jwt" {
     userId: string;
     userName: string;
     userImageUrl: string;
+    userRole: string;
     accessToken: string;
     refreshToken: string;
     expiresIn: any;

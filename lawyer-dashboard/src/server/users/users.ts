@@ -1,12 +1,10 @@
 // get users
-const token = cookies().get("accessToken")?.value;
-const userId = cookies().get("userId")?.value;
+
 const users_url = process.env.USERS_URL;
 const user_url = process.env.USER_URL;
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
-import { cookies } from "next/headers";
 
 export async function GetUsers() {
   const session = await getServerSession(authOptions);

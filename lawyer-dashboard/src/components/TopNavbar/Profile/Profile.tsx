@@ -96,7 +96,7 @@ const Profile = ({
           className="for-dark-top-navList"
         >
           <MenuItem>
-            <Avatar src={profileImageUrl} className="mr-1" />
+            <Avatar src={session.userImageUrl} className="mr-1" />
             <Box>
               <Typography sx={{ fontSize: "11px", color: "#757FEF" }}>
                 {userRole}

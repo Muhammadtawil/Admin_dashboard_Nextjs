@@ -1,3 +1,4 @@
+import { GetUser } from "@/server/users/users";
 import { NextAuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import NextAuth from "next-auth/next";
@@ -44,6 +45,8 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials, req) {
+        const userInfo = await GetUser();
+
         if (!credentials?.userName || !credentials?.password) return null;
         const { userName, password } = credentials;
         const res = await fetch(`${Backend_URL}`, {
@@ -63,8 +66,20 @@ export const authOptions: NextAuthOptions = {
         }
         const user = await res.json();
         // Ensure that the required properties are present in the user object
-        user.userName = userName; // Add the userName property
+        // user.userName = userName; // Add the userName property
         // user.userId = user.id; // Assuming that the user ID is stored in 'id'
+        // const userRole = user.userRole || null;
+        // user.userRole = userRole;
+        // Assuming that 'userRole' can be extracted from the 'user' object,
+        // and it's an enum value.
+        const userRole = user.userRole;
+        if (user.userId === userInfo.userId) {
+          user.userRole = userInfo.userRole;
+        }
+
+        // Ensure that the required properties are present in the user object
+        // user.userName = userName; // Add the userName property
+        // user.userRole = userRole; // Add the userRole property
         console.log("Response Body:", user);
 
         return user;
@@ -96,11 +111,12 @@ export const authOptions: NextAuthOptions = {
       return await refreshToken(token);
     },
 
-    async session({ token, session, user }) {
+    async session({ token, session }) {
       session.userId = token.userId;
       session.accessToken = token.accessToken;
       session.userName = token.userName;
       session.userImageUrl = token.userImageUrl;
+      session.userRole = token.userRole;
       console.log("Session Info:", session);
       return session;
     },
