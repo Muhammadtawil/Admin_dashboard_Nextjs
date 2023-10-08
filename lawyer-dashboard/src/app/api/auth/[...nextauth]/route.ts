@@ -7,6 +7,9 @@ import { redirect, useRouter } from "next/navigation";
 
 const Backend_URL = process.env.LOGIN_URL;
 const url = "/tasks";
+// Define the structure of your token
+interface CustomToken extends JWT {}
+
 async function refreshToken(token: JWT): Promise<JWT> {
   const res = await fetch(`${Backend_URL}`, {
     method: "POST",
@@ -17,6 +20,9 @@ async function refreshToken(token: JWT): Promise<JWT> {
   console.log("refreshed");
 
   const response = await res.json();
+
+  // Update the lastRefreshedAt property with the current timestamp
+  token.lastRefreshedAt = Date.now();
 
   return {
     ...token,
@@ -29,9 +35,6 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-  //   pages: {
-  //     signIn: "/login",
-  //   },
   providers: [
     CredentialsProvider({
       name: "Clickers",
@@ -65,24 +68,17 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
         const user = await res.json();
-        // Ensure that the required properties are present in the user object
-        // user.userName = userName; // Add the userName property
-        // user.userId = user.id; // Assuming that the user ID is stored in 'id'
-        // const userRole = user.userRole || null;
-        // user.userRole = userRole;
-        // Assuming that 'userRole' can be extracted from the 'user' object,
-        // and it's an enum value.
-        const userRole = user.userRole;
-        if (user.userId === userInfo.userId) {
-          user.userRole = userInfo.userRole;
-        }
+
+        // Add the lastRefreshedAt property to the token when you generate it
+        const token = {
+          ...user,
+          lastRefreshedAt: Date.now(),
+        };
 
         // Ensure that the required properties are present in the user object
-        // user.userName = userName; // Add the userName property
-        // user.userRole = userRole; // Add the userRole property
         console.log("Response Body:", user);
 
-        return user;
+        return token;
       },
     }),
   ],
@@ -106,8 +102,17 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, user }) {
       if (user) return { ...token, ...user };
 
-      if (new Date().getTime() < token.expiresIn) return token;
+      // Check if 'lastRefreshedAt' is defined and if an hour has passed since the last refresh
+      const oneHourInMillis = 60 * 60 * 1000;
+      const timeSinceLastRefresh = token.lastRefreshedAt
+        ? Date.now() - token.lastRefreshedAt
+        : oneHourInMillis + 1; // Set a default value to force a refresh if 'lastRefreshedAt' is undefined
 
+      if (timeSinceLastRefresh < oneHourInMillis) {
+        return token; // Token is still valid
+      }
+
+      // If an hour has passed, refresh the token
       return await refreshToken(token);
     },
 

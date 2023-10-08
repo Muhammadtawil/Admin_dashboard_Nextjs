@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "@mui/material/styles";
@@ -27,26 +28,27 @@ import Checkbox from "@mui/material/Checkbox";
 import StarBorderIcon from "@mui/icons-material/StarBorder";
 import StarIcon from "@mui/icons-material/Star";
 import Link from "next/link";
+import { useState } from "react";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
-function EmailList(props) {
+function EmailList(props: any) {
   const theme = useTheme();
   const { count, page, rowsPerPage, onPageChange } = props;
 
-  const handleFirstPageButtonClick = (event) => {
+  const handleFirstPageButtonClick = (event: any) => {
     onPageChange(event, 0);
   };
 
-  const handleBackButtonClick = (event) => {
+  const handleBackButtonClick = (event: any) => {
     onPageChange(event, page - 1);
   };
 
-  const handleNextButtonClick = (event) => {
+  const handleNextButtonClick = (event: any) => {
     onPageChange(event, page + 1);
   };
 
-  const handleLastPageButtonClick = (event) => {
+  const handleLastPageButtonClick = (event: any) => {
     onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
   };
 
@@ -101,58 +103,36 @@ EmailList.propTypes = {
   rowsPerPage: PropTypes.number.isRequired,
 };
 
-function createData(name, text, readEmail, date) {
+function createData(name: any, text: any, readEmail: any, date: any): any {
   return { name, readEmail, text, date };
 }
 
 const rows = [
-  createData(
-    "Raneem",
-    "Hello  ",
-    "/email/read-email",
-    "1 Jan 2023"
-  ),
-  createData(
-    "Raneem",
-    "Hello  ",
-    "/email/read-email",
-    "1 Jan 2023"
-  ),
-  createData(
-    "Raneem",
-    "Hello  ",
-    "/email/read-email",
-    "1 Jan 2023"
-  ),
-  createData(
-    "Raneem",
-    "Hello  ",
-    "/email/read-email",
-    "1 Jan 2023"
-  ),
+  createData("Raneem", "Hello  ", "/email/read-email", "1 Jan 2023"),
+  createData("Raneem", "Hello  ", "/email/read-email", "1 Jan 2023"),
+  createData("Raneem", "Hello  ", "/email/read-email", "1 Jan 2023"),
+  createData("Raneem", "Hello  ", "/email/read-email", "1 Jan 2023"),
 ].sort((a, b) => (a.name < b.name ? -1 : 1));
 
 export default function EmailLists() {
-  const [page, setPage] = React.useState(0);
+  const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
 
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = (event: any) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
 
-
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -181,7 +161,7 @@ export default function EmailLists() {
           className="for-dark-bottom-border"
         >
           <Typography
-            as="h3"
+            component="h3"
             sx={{
               fontSize: 16,
               fontWeight: 500,
@@ -195,7 +175,7 @@ export default function EmailLists() {
               <IconButton
                 size="small"
                 sx={{ background: "#F2F6F8" }}
-                className='ml-5px'
+                className="ml-5px"
               >
                 <PrintIcon fontSize="small" />
               </IconButton>
@@ -205,7 +185,7 @@ export default function EmailLists() {
               <IconButton
                 size="small"
                 sx={{ background: "#F2F6F8" }}
-                className='ml-5px'
+                className="ml-5px"
               >
                 <DeleteIcon fontSize="small" />
               </IconButton>
@@ -215,7 +195,7 @@ export default function EmailLists() {
               <IconButton
                 size="small"
                 sx={{ background: "#F2F6F8" }}
-                className='ml-5px'
+                className="ml-5px"
               >
                 <ErrorOutlineIcon fontSize="small" />
               </IconButton>
@@ -231,7 +211,7 @@ export default function EmailLists() {
                 sx={{
                   background: "#F2F6F8",
                 }}
-                className='ml-5px'
+                className="ml-5px"
               >
                 <MoreVertIcon />
               </IconButton>
@@ -284,8 +264,8 @@ export default function EmailLists() {
             boxShadow: "none",
           }}
         >
-          <Table 
-            sx={{ minWidth: 800 }} 
+          <Table
+            sx={{ minWidth: 800 }}
             aria-label="custom pagination table"
             className="dark-table"
           >

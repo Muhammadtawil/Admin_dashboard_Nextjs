@@ -9,16 +9,16 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import PrintIcon from "@mui/icons-material/Print";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import ReplyIcon from '@mui/icons-material/Reply';
-import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import ReplyIcon from "@mui/icons-material/Reply";
+import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
 
 export default function ReadEmailContent() {
   // Dropdown
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
@@ -47,13 +47,13 @@ export default function ReadEmailContent() {
           className="for-dark-bottom-border"
         >
           <Typography
-            as="h3"
+            component="h3"
             sx={{
               fontSize: 15,
               fontWeight: 500,
             }}
           >
-            EnvyTheme Support 
+            EnvyTheme Support
           </Typography>
 
           <Box>
@@ -61,7 +61,7 @@ export default function ReadEmailContent() {
               <IconButton
                 size="small"
                 sx={{ background: "#F2F6F8" }}
-                className='ml-5px'
+                className="ml-5px"
               >
                 <PrintIcon fontSize="small" />
               </IconButton>
@@ -71,7 +71,7 @@ export default function ReadEmailContent() {
               <IconButton
                 size="small"
                 sx={{ background: "#F2F6F8" }}
-                className='ml-5px'
+                className="ml-5px"
               >
                 <DeleteIcon fontSize="small" />
               </IconButton>
@@ -81,7 +81,7 @@ export default function ReadEmailContent() {
               <IconButton
                 size="small"
                 sx={{ background: "#F2F6F8" }}
-                className='ml-5px'
+                className="ml-5px"
               >
                 <ErrorOutlineIcon fontSize="small" />
               </IconButton>
@@ -97,7 +97,7 @@ export default function ReadEmailContent() {
                 sx={{
                   background: "#F2F6F8",
                 }}
-                className='ml-5px'
+                className="ml-5px"
               >
                 <MoreVertIcon />
               </IconButton>
@@ -143,7 +143,7 @@ export default function ReadEmailContent() {
             <MenuItem sx={{ fontSize: "14px" }}>Last Year</MenuItem>
           </Menu>
         </Box>
-        
+
         <Box>
           <Box
             sx={{
@@ -159,16 +159,20 @@ export default function ReadEmailContent() {
                 alignItems: "center",
               }}
             >
-              <img 
-                src="/images/user1.png" 
-                alt="User" 
+              <img
+                src="/images/user1.png"
+                alt="User"
                 width="44px"
                 height="44px"
                 className="borRadius100"
               />
               <Box className="ml-1">
-                <Typography as='h5' fontSize="14px" fontWeight="500">Jordan Stevenson</Typography>
-                <Typography fontSize="13px">From: jonathan@domain.com</Typography>
+                <Typography component="h5" fontSize="14px" fontWeight="500">
+                  Jordan Stevenson
+                </Typography>
+                <Typography fontSize="13px">
+                  From: jonathan@domain.com
+                </Typography>
               </Box>
             </Box>
 
@@ -176,22 +180,31 @@ export default function ReadEmailContent() {
               <Typography fontSize="13px">Dec 14, 2017, 5:17 AM</Typography>
             </Box>
           </Box>
-          
+
           <Box>
             <Typography variant="h6" gutterBottom fontSize="14px">
               Hi Coderthemes!
             </Typography>
 
             <Typography mb={2} lineHeight="26px">
-              Last pic over my village  –  Yeah i'd like that! Do you remember the video som..
+              Last pic over my village – Yeah i'd like that! Do you remember the
+              video som..
             </Typography>
 
             <Typography mb={2} lineHeight="26px">
-              Praesent dui ex, dapibus eget mauris ut, finibus vestibulum enim. Quisque arcu leo, facilisis in fringilla id, luctus in tortor. Nunc vestibulum est quis orci varius viverra. Curabitur dictum volutpat massa vulputate molestie. In at felis ac velit maximus convallis.
+              Praesent dui ex, dapibus eget mauris ut, finibus vestibulum enim.
+              Quisque arcu leo, facilisis in fringilla id, luctus in tortor.
+              Nunc vestibulum est quis orci varius viverra. Curabitur dictum
+              volutpat massa vulputate molestie. In at felis ac velit maximus
+              convallis.
             </Typography>
 
             <Typography mb={2} lineHeight="26px">
-              Sed elementum turpis eu lorem interdum, sed porttitor eros commodo. Nam eu venenatis tortor, id lacinia diam. Sed aliquam in dui et porta. Sed bibendum orci non tincidunt ultrices. Vivamus fringilla, mi lacinia dapibus condimentum, ipsum urna lacinia lacus, vel tincidunt mi nibh sit amet lorem.
+              Sed elementum turpis eu lorem interdum, sed porttitor eros
+              commodo. Nam eu venenatis tortor, id lacinia diam. Sed aliquam in
+              dui et porta. Sed bibendum orci non tincidunt ultrices. Vivamus
+              fringilla, mi lacinia dapibus condimentum, ipsum urna lacinia
+              lacus, vel tincidunt mi nibh sit amet lorem.
             </Typography>
 
             <Typography variant="h6" gutterBottom fontSize="14px">
@@ -199,43 +212,71 @@ export default function ReadEmailContent() {
             </Typography>
 
             <ol>
-              <li style={{ marginBottom: '10px', lineHeight: '26px' }}>Your design preferences (Color, style, shapes, Fonts, others)</li>
-              <li style={{ marginBottom: '10px', lineHeight: '26px' }}>Tell me, why is your item different?</li>
-              <li style={{ marginBottom: '10px', lineHeight: '26px' }}>Do you want to bring up a specific feature of your item? If yes, please tell me</li>
-              <li style={{ marginBottom: '10px', lineHeight: '26px' }}>Do you have any preference or specific thing you would like to change or improve on your item page?</li>
-              <li style={{ marginBottom: '10px', lineHeight: '26px' }}>Do you want to include your item's or your provider's logo on the page? if yes, please send it to me in vector format (Ai or EPS)</li>
-              <li style={{ marginBottom: '10px', lineHeight: '26px' }}>Please provide me with the copy or text to display</li>
+              <li style={{ marginBottom: "10px", lineHeight: "26px" }}>
+                Your design preferences (Color, style, shapes, Fonts, others)
+              </li>
+              <li style={{ marginBottom: "10px", lineHeight: "26px" }}>
+                Tell me, why is your item different?
+              </li>
+              <li style={{ marginBottom: "10px", lineHeight: "26px" }}>
+                Do you want to bring up a specific feature of your item? If yes,
+                please tell me
+              </li>
+              <li style={{ marginBottom: "10px", lineHeight: "26px" }}>
+                Do you have any preference or specific thing you would like to
+                change or improve on your item page?
+              </li>
+              <li style={{ marginBottom: "10px", lineHeight: "26px" }}>
+                Do you want to include your item's or your provider's logo on
+                the page? if yes, please send it to me in vector format (Ai or
+                EPS)
+              </li>
+              <li style={{ marginBottom: "10px", lineHeight: "26px" }}>
+                Please provide me with the copy or text to display
+              </li>
             </ol>
 
             <Typography mb={2}>
-              Filling in this form with the above information will ensure that they will be able to start work quickly.
+              Filling in this form with the above information will ensure that
+              they will be able to start work quickly.
             </Typography>
 
             <Typography mb={2} lineHeight="26px">
-              You can complete your order by putting your coupon code into the Promotional code box and clicking ‘Apply Coupon’.
+              You can complete your order by putting your coupon code into the
+              Promotional code box and clicking ‘Apply Coupon’.
             </Typography>
 
             <Typography mb={2} lineHeight="26px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
             </Typography>
 
             <Typography mb={2} lineHeight="26px">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+              Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo.
             </Typography>
 
             <Typography mb={2} lineHeight="26px">
-              At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.
+              At vero eos et accusamus et iusto odio dignissimos ducimus qui
+              blanditiis praesentium voluptatum deleniti atque corrupti quos
+              dolores et quas molestias excepturi sint occaecati cupiditate non
+              provident, similique sunt in culpa qui officia deserunt mollitia
+              animi, id est laborum et dolorum fuga.
             </Typography>
           </Box>
-          
+
           <Stack direction="row" justifyContent="end" mt={2}>
-            <Button 
-              variant="contained" 
+            <Button
+              variant="contained"
               color="secondary"
-              startIcon={<ReplyIcon sx={{ color: "#fff !important", }} />}
+              startIcon={<ReplyIcon sx={{ color: "#fff !important" }} />}
               sx={{
-                borderRadius: '8px',
-                textTransform: 'capitalize',
+                borderRadius: "8px",
+                textTransform: "capitalize",
                 color: "#fff !important",
               }}
               className="mr-2"
@@ -243,12 +284,14 @@ export default function ReadEmailContent() {
               Reply
             </Button>
 
-            <Button 
-              variant="contained" 
-              startIcon={<ForwardToInboxIcon sx={{ color: "#fff !important", }} />}
+            <Button
+              variant="contained"
+              startIcon={
+                <ForwardToInboxIcon sx={{ color: "#fff !important" }} />
+              }
               sx={{
-                borderRadius: '8px',
-                textTransform: 'capitalize',
+                borderRadius: "8px",
+                textTransform: "capitalize",
                 color: "#fff !important",
               }}
             >

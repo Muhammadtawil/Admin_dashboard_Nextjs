@@ -35,7 +35,7 @@ export const SidebarData = [
   },
   {
     title: "Email",
-    path: "/email/inbox/",
+    path: "/email",
     icon: MailOutlineIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,

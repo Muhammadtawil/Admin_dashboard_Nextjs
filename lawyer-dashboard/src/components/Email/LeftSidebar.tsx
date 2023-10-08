@@ -1,5 +1,5 @@
-import React from "react";
-import { useRouter } from "next/router";
+"use client";
+import React, { useState } from "react";
 import Link from "next/link";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
@@ -19,6 +19,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import PropTypes from "prop-types";
 
 import dynamic from "next/dynamic";
+import { usePathname, useRouter } from "next/navigation";
 const RichTextEditor = dynamic(() => import("@mantine/rte"), {
   ssr: false,
 });
@@ -33,7 +34,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-function BootstrapDialogTitle(props) {
+function BootstrapDialogTitle(props: any) {
   const { children, onClose, ...other } = props;
 
   return (
@@ -62,12 +63,10 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-
 const LeftSidebar = () => {
-  const router = useRouter();
+  const router = usePathname();
 
-
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -76,7 +75,7 @@ const LeftSidebar = () => {
     setOpen(false);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
@@ -84,7 +83,6 @@ const LeftSidebar = () => {
       password: data.get("password"),
     });
   };
- 
 
   return (
     <>
@@ -106,7 +104,7 @@ const LeftSidebar = () => {
             fontSize: "14px",
             padding: "12px 20px",
             mb: "30px",
-            color: "#fff !important"
+            color: "#fff !important",
           }}
         >
           Compose
@@ -123,11 +121,8 @@ const LeftSidebar = () => {
           mailbox
         </Typography>
 
-       
         <ul className={styles.leftNav}>
-          <li
-            className={router.pathname == "/email/inbox" ? styles.active : ""}
-          >
+          <li>
             <Link href="/email/inbox">
               <span>
                 <i className="ri-mail-line"></i> Inbox
@@ -144,19 +139,19 @@ const LeftSidebar = () => {
             </Link>
           </li>
 
-          <li className={router.pathname == "#" ? styles.FormDataactive : ""}>
+          <li>
             <Link href="#">
               <i className="ri-star-fill"></i> Important
             </Link>
           </li>
 
-          <li className={router.pathname == "#" ? styles.active : ""}>
+          <li>
             <Link href="#">
               <i className="ri-time-line"></i> Snooozed
             </Link>
           </li>
 
-          <li className={router.pathname == "#" ? styles.active : ""}>
+          <li>
             <Link href="#">
               <i className="ri-file-text-line"></i> Draft
               <Badge
@@ -171,18 +166,18 @@ const LeftSidebar = () => {
             </Link>
           </li>
 
-          <li className={router.pathname == "#" ? styles.active : ""}>
+          <li>
             <Link href="#">
               <i className="ri-send-plane-2-line"></i> Sent Mail
             </Link>
           </li>
 
-          <li className={router.pathname == "#" ? styles.active : ""}>
+          <li>
             <Link href="#">
               <i className="ri-error-warning-line"></i> Spam
               <Badge
                 badgeContent={4}
-                color="danger"
+                color="error"
                 sx={{
                   position: "relative",
                   top: "15px",
@@ -193,7 +188,7 @@ const LeftSidebar = () => {
             </Link>
           </li>
 
-          <li className={router.pathname == "#" ? styles.active : ""}>
+          <li>
             <Link href="#">
               <i className="ri-delete-bin-line"></i> Trash
             </Link>
@@ -207,15 +202,9 @@ const LeftSidebar = () => {
             color: "#A9A9C8",
             mb: "10px",
           }}
-        >
-      
-        </Typography>
-
-      
-     
+        ></Typography>
       </Card>
 
-    
       <BootstrapDialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -245,10 +234,10 @@ const LeftSidebar = () => {
               New Message
             </Typography>
 
-            <IconButton 
-              aria-label="remove" 
-              size="small" 
-              onClick={handleClose} 
+            <IconButton
+              aria-label="remove"
+              size="small"
+              onClick={handleClose}
               className="modal-close"
             >
               <ClearIcon />
@@ -318,7 +307,7 @@ const LeftSidebar = () => {
                       fontWeight: "500",
                       fontSize: "13px",
                       padding: "12px 20px",
-                      color: "#fff !important"
+                      color: "#fff !important",
                     }}
                   >
                     <SendIcon
