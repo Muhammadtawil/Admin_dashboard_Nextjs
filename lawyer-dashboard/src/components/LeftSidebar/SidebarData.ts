@@ -70,8 +70,8 @@ export const SidebarData = [
     iconOpened: KeyboardArrowDownIcon,
   },
   {
-    title: "ContactsUS",
-    path: "/authentication/sign-in/",
+    title: "Services",
+    path: "/services",
     icon: LockIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,

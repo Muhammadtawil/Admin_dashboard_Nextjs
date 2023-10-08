@@ -41,7 +41,7 @@ export async function getClients() {
   }
 }
 
-// create Task
+// create Client
 
 export default async function AddClient(data: FormData) {
   // Extract client data from the FormData object
