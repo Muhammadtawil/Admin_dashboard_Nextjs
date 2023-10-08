@@ -14,9 +14,7 @@ const DashBoardLayout = async (props: Props) => {
         <Link
           className="p-3 rounded hover:bg-emerald-600 hover:text-white hover:shadow transition "
           href={`/tasks/user/${session?.userId}`}
-        >
-          User Profile
-        </Link>
+        ></Link>
       </div>
       <div className="col-span-4">{props.children}</div>
     </div>

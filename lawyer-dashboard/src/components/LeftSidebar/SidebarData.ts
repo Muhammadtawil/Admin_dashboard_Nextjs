@@ -42,7 +42,7 @@ export const SidebarData = [
   },
   {
     title: "Clients ",
-    path: "/clients/clients-list",
+    path: "/clients",
     icon: PostAddIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,
