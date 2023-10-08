@@ -2,8 +2,7 @@ import ClientsComponentList from "@/components/clients/clients";
 import Link from "next/link";
 import React from "react";
 import styles from "@/styles/PageTitle.module.css";
-// Chat Styles
-import "../../styles/chat.css";
+
 // Globals Styles
 import "../../styles/globals.css";
 // Rtl Styles

@@ -56,8 +56,8 @@ export const SidebarData = [
   },
 
   {
-    title: "Editors",
-    path: "/Doc/EditorArea",
+    title: "Editor",
+    path: "/editor",
     icon: CheckBoxOutlineBlankIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,
