@@ -1,7 +1,8 @@
-"use server";
+import React from "react";
+import Teams from "../../components/teamTest/teams";
 import Link from "next/link";
 import styles from "@/styles/PageTitle.module.css";
-import ToDoLists from "@/components/todo/todo_list";
+
 import "../page.module.css";
 import "../../styles/remixicon.css";
 // Chat Styles
@@ -14,23 +15,19 @@ import "../../styles/rtl.css";
 import "../../styles/dark.css";
 // Theme Styles
 import theme from "../../styles/theme";
-
-
-
-export default async function ToDo() {
+export default function TeamTestPage() {
   return (
     <>
       <div className={styles.pageTitle}>
-        <h1>To Do</h1>
+        <h1>Team</h1>
         <ul>
           <li>
             <Link href="/">Dashboard</Link>
           </li>
-          <li>To Do</li>
+          <li>Team</li>
         </ul>
       </div>
-
-      <ToDoLists />
+      <Teams />
     </>
   );
 }

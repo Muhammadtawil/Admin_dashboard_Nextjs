@@ -49,7 +49,7 @@ export const SidebarData = [
   },
   {
     title: "Team",
-    path: "/Team/TeamUsers",
+    path: "/team",
     icon: CopyAllIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,
@@ -64,7 +64,7 @@ export const SidebarData = [
   },
   {
     title: "Invoice",
-    path: "/Invoice/Invoice/InvoiceLists",
+    path: "/teamTest",
     icon: ContentCopyIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,

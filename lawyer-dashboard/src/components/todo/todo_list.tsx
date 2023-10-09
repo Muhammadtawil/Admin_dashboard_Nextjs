@@ -8,7 +8,6 @@ import CreateTask, {
   getAssignedToTasks,
   getTasks,
 } from "@/server/tasks/tasks";
-import TaskTable from "./task_table";
 import { revalidatePath } from "next/cache";
 import AddTaskForm from "./add_task_form";
 import { GetUser, GetUsers } from "@/server/users/users";
@@ -16,6 +15,7 @@ import { Typography } from "@mui/material";
 // import EnhancedTable from "./tableHead/table_head";
 import DataTable from "./tableHead/head2";
 import TestTable from "./tableHead/test";
+import TaskTable from "./task_table";
 
 // function BootstrapDialogTitle(props: any) {
 //   const { children, onClose, ...other } = props;

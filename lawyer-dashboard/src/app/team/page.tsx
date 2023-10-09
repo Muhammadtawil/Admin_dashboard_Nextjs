@@ -1,7 +1,6 @@
-"use server";
 import Link from "next/link";
 import styles from "@/styles/PageTitle.module.css";
-import ToDoLists from "@/components/todo/todo_list";
+
 import "../page.module.css";
 import "../../styles/remixicon.css";
 // Chat Styles
@@ -16,21 +15,23 @@ import "../../styles/dark.css";
 import theme from "../../styles/theme";
 
 
+import TeamComponent from "@/components/team/services";
 
-export default async function ToDo() {
+export default async function TeamPage() {
+
   return (
     <>
       <div className={styles.pageTitle}>
-        <h1>To Do</h1>
+        <h1>Team</h1>
         <ul>
           <li>
             <Link href="/">Dashboard</Link>
           </li>
-          <li>To Do</li>
+          <li>Team</li>
         </ul>
       </div>
 
-      <ToDoLists />
+      <TeamComponent />
     </>
   );
 }
