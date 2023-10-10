@@ -476,7 +476,9 @@ import { deleteAlert, successAlert } from "../alerts/alerts";
 import { Checkbox, Dialog, Grid, TextField, Typography } from "@mui/material";
 import EditTaskForm from "../todo/edit_Form";
 import { Truculenta } from "next/font/google";
-
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -491,7 +493,7 @@ const cellStyle = {
   fontSize: "13.5px",
 };
 
-export default function ClientTable({
+export default function TeamTable({
   dataRows,
   deleteTask,
   servicesList,
@@ -726,17 +728,22 @@ export default function ClientTable({
           >
             {user.userRole}
           </TableCell>
-          <TableCell
-            sx={{
-              ...cellStyle,
-              fontWeight: "500",
-              color: "#260944",
-              display: "flex",
-              alignItems: "center",
-              flexDirection: "row",
-            }}
-          >
-            {user.clientsCount ? user.clientsCount : "0"}
+          <TableCell sx={cellStyle}>
+            <IconButton>
+              <a href="https://www.facebook.com">
+                <FacebookIcon />
+              </a>
+            </IconButton>
+            <IconButton>
+              <a href="https://www.twitter.com">
+                <TwitterIcon />
+              </a>
+            </IconButton>
+            <IconButton>
+              <a href="https://www.linkedin.com">
+                <LinkedInIcon />
+              </a>
+            </IconButton>
           </TableCell>
 
           <TableCell align="right" sx={cellStyle}>

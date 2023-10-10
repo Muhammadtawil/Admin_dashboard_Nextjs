@@ -1,5 +1,5 @@
 import React from "react";
-import User from "../team/Team_Table";
+import User from "./Team_Table";
 import AddTeamForm from "./add_Team_form";
 import AddService, {
   DeleteService,
@@ -8,7 +8,7 @@ import AddService, {
 } from "@/server/services/services";
 import { DeleteAssignedTask } from "@/server/tasks/tasks";
 import { revalidatePath } from "next/cache";
-import { GetUsers } from "@/server/users/users";
+import { GetUsers, CreateUser, UpdateUser } from "@/server/users/users";
 
 async function Delete(serviceId: string) {
   "use server";
@@ -31,16 +31,16 @@ async function DeleteAssignedTasks(assigntaskId: string) {
 async function onCreate(formData: FormData) {
   "use server";
   try {
-    await AddService(formData);
-    revalidatePath("/teamTest", "page");
+    await CreateUser(formData);
+    revalidatePath("/team", "page");
   } catch (error) {}
 }
 
 async function onUpdate(formData: FormData, clientId: string) {
   "use server";
   try {
-    await UpdateService(formData, clientId);
-    revalidatePath("/teamTest", "page");
+    await UpdateUser(formData, clientId);
+    revalidatePath("/team", "page");
   } catch (error) {}
 }
 

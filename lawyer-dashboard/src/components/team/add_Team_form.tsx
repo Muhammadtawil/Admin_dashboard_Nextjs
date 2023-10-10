@@ -7,8 +7,6 @@ import {
   IconButton,
   Grid,
   TextField,
-  MenuItem,
-  Select,
   TextareaAutosize,
   InputLabel,
 } from "@mui/material";
@@ -18,7 +16,6 @@ import Dialog from "@mui/material/Dialog";
 import { styled } from "@mui/material/styles";
 import { successAlert } from "../alerts/alerts";
 
-const serviceStatus = ["AVAILABLE", "NOT_AVAILABLE"];
 const flagStatus = ["Yes", "No"];
 const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
@@ -211,11 +208,16 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
               className="dark-BG-101010"
             >
               <Grid container alignItems="center" spacing={2}>
-                <CustomTextField name="serviceName" label="Service Name" />
-                <CustomTextField name="serviceName" label="Position" />
-                <CustomTextField name="serviceName" label="Phone Number" />
-                <CustomTextField name="serviceName" label="Email" />
-                <CustomTextField name="serviceName" label="Password" />
+                <CustomTextField name="userName" label="user Name" />
+                <CustomTextField name="password" label="Password" />
+
+                <CustomTextField name="userPosition" label="Position" />
+                <CustomTextField
+                  name="userPhone"
+                  label="Phone Number"
+                  type="number"
+                />
+                <CustomTextField name="userEmail" label="Email" />
                 <Grid item xs={12} md={12} lg={6}>
                   <Typography
                     component="h5"
@@ -252,7 +254,7 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
                   </select>
                 </Grid>
 
-                <Grid item xs={12} md={12} lg={6}>
+                {/* <Grid item xs={12} md={12} lg={6}>
                   <Typography
                     component="h5"
                     sx={{
@@ -266,7 +268,7 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
 
                   <TextField
                     autoComplete="image"
-                    name="image"
+                    name="userImgUrl"
                     required
                     fullWidth
                     id="image"
@@ -284,7 +286,7 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
                     <h3>Preview:</h3>
                     <img src={selectedImage} alt="Selected" width="200" />
                   </div>
-                )}
+                )} */}
 
                 <Grid item xs={12} textAlign="end">
                   <Button

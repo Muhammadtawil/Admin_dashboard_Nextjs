@@ -14,11 +14,9 @@ import "../../styles/dark.css";
 // Theme Styles
 import theme from "../../styles/theme";
 
-
-import TeamComponent from "@/components/team/services";
+import TeamComponent from "@/components/team/Teams";
 
 export default async function TeamPage() {
-
   return (
     <>
       <div className={styles.pageTitle}>
