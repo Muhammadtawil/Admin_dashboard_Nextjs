@@ -479,6 +479,7 @@ import { Truculenta } from "next/font/google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EditTeamForm from "./edit_Team_Form";
 const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
   "& .MuiDialogContent-root": {
     padding: theme.spacing(2),
@@ -496,13 +497,11 @@ const cellStyle = {
 export default function TeamTable({
   dataRows,
   deleteTask,
-  servicesList,
   updateTask,
 }: {
   dataRows: any[];
   deleteTask: any;
   updateTask: any;
-  servicesList: any[];
 }) {
   const [selectedFlag, setSelectedFlag] = useState<string | boolean>("");
   const handleServiceFlagFilterChange = (event: any) => {
@@ -603,27 +602,12 @@ export default function TeamTable({
   };
 
   // In your TaskTable component, add a state to store the selected task data.
-  const [selectedService, setSelectedService] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   // Modify the Edit button click handler to set the selected task data.
-  const handleEditClick = (service: any) => {
-    setSelectedService(service);
+  const handleEditClick = (user: any) => {
+    setSelectedUser(user);
     handleClickOpen();
-  };
-
-  // Member Select
-  const [openMember, setOpenMember] = useState(false);
-  const handleCloseMember = () => {
-    setOpenMember(false);
-  };
-
-  const handleClickOpenMember = () => {
-    setOpenMember(true);
-  };
-
-  const handleSelectClick = (task: any) => {
-    setSelectedService(task);
-    handleClickOpenMember();
   };
 
   const RenderTableRows = (
@@ -711,14 +695,14 @@ export default function TeamTable({
                 padding: "4px 8px",
                 width: "100px",
                 backgroundColor:
-                  user.isFlag === true
+                  user.isTeam === true
                     ? "green"
-                    : user.isFlag === false
+                    : user.isTeam === false
                     ? "red"
                     : "inherit",
               }}
             >
-              {user.isFlag == true ? "yes" : "No"}
+              {user.isTeam == true ? "yes" : "No"}
             </Paper>
           </TableCell>
           <TableCell
@@ -754,7 +738,7 @@ export default function TeamTable({
                   size="small"
                   color="error"
                   className="error"
-                  onClick={() => deleteAlert(deleteTask(user.serviceId))}
+                  onClick={() => deleteAlert(deleteTask(user.userId))}
                 >
                   <DeleteIcon fontSize="inherit" />
                 </IconButton>
@@ -854,12 +838,11 @@ export default function TeamTable({
         aria-labelledby="customized-dialog-title"
         open={open}
       >
-        {/* <EditTaskForm
+        <EditTeamForm
           handleClose={handleClose}
-          selectedTask={selectedService}
+          selectedUser={selectedUser}
           onUpdate={updateTask}
-          servicesList={servicesList}
-        /> */}
+        />
       </StyledDialogTitle>
     </Card>
   );

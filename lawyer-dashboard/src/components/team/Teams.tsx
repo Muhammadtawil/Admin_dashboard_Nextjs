@@ -8,7 +8,13 @@ import AddService, {
 } from "@/server/services/services";
 import { DeleteAssignedTask } from "@/server/tasks/tasks";
 import { revalidatePath } from "next/cache";
-import { GetUsers, CreateUser, UpdateUser } from "@/server/users/users";
+import {
+  GetUsers,
+  CreateUser,
+  UpdateUser,
+  UpdateUserRole,
+  UpdateUserImage,
+} from "@/server/users/users";
 
 async function Delete(serviceId: string) {
   "use server";
@@ -36,12 +42,25 @@ async function onCreate(formData: FormData) {
   } catch (error) {}
 }
 
-async function onUpdate(formData: FormData, clientId: string) {
+async function onUpdate(
+  formData: FormData,
+  userId: string,
+  selectedImage: File
+) {
   "use server";
   try {
-    await UpdateUser(formData, clientId);
+    // Update the user's image separately
+    await UpdateUserImage(selectedImage, userId);
+
+    // Update other user information (excluding image) using the formDataWithImage
+    await UpdateUserRole(formData, userId);
+    await UpdateUser(formData, userId);
+
     revalidatePath("/team", "page");
-  } catch (error) {}
+  } catch (error) {
+    // Handle errors
+    console.error(error);
+  }
 }
 
 export default async function Teams() {
@@ -50,12 +69,7 @@ export default async function Teams() {
   return (
     <>
       <AddTeamForm onCreate={onCreate} />
-      <User
-        dataRows={users}
-        deleteTask={Delete}
-        updateTask={onUpdate}
-        servicesList={users}
-      />
+      <User dataRows={users} deleteTask={Delete} updateTask={onUpdate} />
     </>
   );
 }

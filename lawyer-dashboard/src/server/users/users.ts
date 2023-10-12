@@ -4,6 +4,7 @@ const users_url = process.env.USERS_URL;
 const user_url = process.env.USER_URL;
 const update_user = process.env.UPDATE_TEAM_URL;
 const createUserUrl = process.env.SIGN_UP_URL;
+const updateRoleUrl = process.env.UPDATE_ROLE_URL;
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
 
@@ -73,10 +74,10 @@ export async function CreateUser(data: FormData) {
   // Extract client data from the FormData object
   const userName = data.get("userName");
   const password = data.get("password");
-  const userPhoneStr = data.get("userPhone");
   const userEmail = data.get("userEmail");
   const userPosition = data.get("userPosition");
   // const userImgUrl = data.get("userImgUrl");
+  const userPhoneStr = data.get("userPhone");
   const userPhone = userPhoneStr as string;
   const session = await getServerSession(authOptions);
 
@@ -113,7 +114,7 @@ export async function CreateUser(data: FormData) {
     }
 
     const responseData = await response.json();
-    console.log("user Updated successfully:", responseData);
+    console.log("user created successfully:", responseData);
   } catch (error) {
     console.error("Error update updating user:", error);
   }
@@ -124,24 +125,33 @@ export async function CreateUser(data: FormData) {
 export async function UpdateUser(data: FormData, userId: string) {
   // Extract client data from the FormData object
   const userName = data.get("userName");
-  const userPhone = data.get("userPhone");
+  const userPhoneStr = data.get("userPhone");
+  const userPhone = userPhoneStr as string;
   const userEmail = data.get("userEmail");
   const userPosition = data.get("userPosition");
-  const password = data.get("passsword");
-  const userImgUrl = data.get("userImgUrl");
+  const userFacebookUrl = data.get("facebook");
+  const userLinkedInUrl = data.get("LinkedIn");
+  const userTwitterUrl = data.get("Twitter");
+  const isTeam = data.get("isTeam");
+  // const password = data.get("passsword");
+  // const userImgUrl = data.get("userImgUrl");
 
   const session = await getServerSession(authOptions);
 
-  const taskData = {
+  const userData = {
     userName: userName,
-    userPhone: userPhone,
+    userPhone: parseInt(userPhone, 10),
     userEmail: userEmail,
     userPosition: userPosition,
-    password: password,
-    userImgUrl: userImgUrl,
+    userFacebookUrl: userFacebookUrl,
+    userLinkedInUrl: userLinkedInUrl,
+    userTwitterUrl: userTwitterUrl,
+    isTeam: isTeam == "Yes" ? true : false,
+    // password: password,
+    // userImgUrl: userImgUrl,
   };
 
-  const jsonData = JSON.stringify(taskData);
+  const jsonData = JSON.stringify(userData);
 
   // Define the URL for adding a client (replace with the correct endpoint)
 
@@ -166,5 +176,78 @@ export async function UpdateUser(data: FormData, userId: string) {
     console.log("user Updated successfully:", responseData);
   } catch (error) {
     console.error("Error update updating user:", error);
+  }
+}
+
+export async function UpdateUserRole(data: FormData, userId: string) {
+  // Extract client data from the FormData object
+  const userRole = data.get("userRole");
+
+  const session = await getServerSession(authOptions);
+
+  const userData = {
+    userRole: userRole,
+  };
+
+  const jsonData = JSON.stringify(userData);
+
+  // Define the URL for adding a client (replace with the correct endpoint)
+
+  const requestOptions = {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${session?.accessToken}`,
+
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  };
+
+  try {
+    const response = await fetch(`${updateRoleUrl}/${userId}`, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    const responseData = await response.json();
+    console.log("user Role Updated successfully:", responseData);
+  } catch (error) {
+    console.error("Error update updating user Role:", error);
+  }
+}
+
+export async function UpdateUserImage(imageFile: File, userId: string) {
+  // Extract client data from the FormData object
+  const formData = new FormData();
+  formData.append("image",imageFile);
+  const session = await getServerSession(authOptions);
+
+  // const jsonData = JSON.stringify(image);
+
+  // Define the URL for adding a client (replace with the correct endpoint)
+
+  const requestOptions = {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${session?.accessToken}`,
+    },
+    body: formData,
+  };
+
+  try {
+    const response = await fetch(
+      `${user_url}/${userId}/update-image`,
+      requestOptions
+    );
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    const responseData = await response.json();
+    console.log("user Role Updated successfully:", responseData);
+  } catch (error) {
+    console.error("Error update updating user Role:", error);
   }
 }

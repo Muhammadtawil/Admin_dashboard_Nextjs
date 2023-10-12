@@ -50,12 +50,7 @@ export default async function Teams() {
   return (
     <>
       <AddTeamForm onCreate={onCreate} />
-      <User
-        dataRows={users}
-        deleteTask={Delete}
-        updateTask={onUpdate}
-        servicesList={users}
-      />
+      <User dataRows={users} deleteTask={Delete} updateTask={onUpdate} />
     </>
   );
 }

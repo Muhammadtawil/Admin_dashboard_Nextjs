@@ -27,24 +27,6 @@ const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
 }));
 
 export default function AddTeamForm({ onCreate }: { onCreate: any }) {
-  const [selectedImage, setSelectedImage] = useState(null);
-
-  const handleImageChange = (e: any) => {
-    if (e.target && e.target.files) {
-      const file = e.target.files[0];
-
-      if (file) {
-        const reader = new FileReader();
-
-        reader.onload = (e: any) => {
-          setSelectedImage(e.target.result);
-        };
-
-        reader.readAsDataURL(file);
-      }
-    }
-  };
-
   const CustomTextField = ({
     name,
     label,
@@ -104,7 +86,6 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
-    setSelectedImage(null);
     setOpen(false);
   };
 
