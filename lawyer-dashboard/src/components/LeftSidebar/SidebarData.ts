@@ -83,7 +83,7 @@ export const SidebarData = [
   },
   {
     title: "Blogs",
-    path: "pages/Blogs/index",
+    path: "/blogs",
     icon: SettingsIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,

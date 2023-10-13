@@ -217,10 +217,10 @@ export async function UpdateUserRole(data: FormData, userId: string) {
   }
 }
 
-export async function UpdateUserImage(imageFile: File, userId: string) {
+export async function UpdateUserImage(data: FormData, userId: string) {
   // Extract client data from the FormData object
-  const formData = new FormData();
-  formData.append("image",imageFile);
+  // const formData = new FormData();
+  // formData.append("image",imageFile);
   const session = await getServerSession(authOptions);
 
   // const jsonData = JSON.stringify(image);
@@ -232,7 +232,7 @@ export async function UpdateUserImage(imageFile: File, userId: string) {
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
     },
-    body: formData,
+    body: data,
   };
 
   try {

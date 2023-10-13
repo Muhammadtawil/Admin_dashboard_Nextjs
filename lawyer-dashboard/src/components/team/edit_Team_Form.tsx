@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { startTransition, useEffect, useRef, useState } from "react";
 import {
   Box,
   Typography,
@@ -14,17 +14,19 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { updateTaskAlert } from "../alerts/alerts";
+import { UpdateUserImage } from "@/server/users/users";
 
 const serviceStatusValues = ["USER", "ADMIN"];
 const flagStatusValues = ["Yes", "No"];
 export default function EditTeamForm({
   onUpdate,
   handleClose,
-  selectedUser,
+  selectedUser,UpdateImage,
 }: {
   onUpdate: any;
   handleClose: any;
   selectedUser: any;
+  UpdateImage:any
 }) {
   const [selectedImage, setSelectedImage] = useState<File>();
 
@@ -36,24 +38,18 @@ export default function EditTeamForm({
   };
 
   const handleUpdate = async () => {
-    // Create a new FormData object to hold the form data
-    // const formData = new FormData();
-    // // Append the selected image to the formData
-    // if (selectedImage) {
-    //   formData.append("image", selectedImage);
-    // }
-    // Call the onUpdate function with the formData and selectedUser.userId
-    // await onUpdate(formData, selectedUser.userId);
-    // setSelectedImage(null);
-    // handleClose();
-  };
-  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
-
-  const handleInputFocus = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
+    const formData = new FormData();
+    // Append the selected image to the formData
+    if (selectedImage) {
+      formData.append("image", selectedImage);
     }
+
+    await UpdateImage(formData, selectedUser.userId);
+
+    // setSelectedImage(null);
+    handleClose();
   };
+
   const [formData, setFormData] = useState({
     // Initialize the form data with the selected task's values
     userName: selectedUser?.userName,
@@ -101,13 +97,15 @@ export default function EditTeamForm({
           noValidate
           action={async (formData) => {
             console.log(`selected Image: ${selectedImage}`);
+            console.log(`selected user: ${selectedUser.userId}`);
+
             // if (selectedImage) {
             //   formData.append("image", selectedImage);
             // }
-
+            handleUpdate();
             handleClose();
             // handleUpdate();
-            await onUpdate(formData, selectedUser.userId,selectedImage);
+            await onUpdate(formData, selectedUser.userId, selectedImage);
             updateTaskAlert();
             // setSelectedImage('');
           }}

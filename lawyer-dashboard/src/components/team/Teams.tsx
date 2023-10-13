@@ -24,15 +24,7 @@ async function Delete(serviceId: string) {
   } catch (error) {}
 }
 
-async function DeleteAssignedTasks(assigntaskId: string) {
-  "use server";
-  try {
-    await DeleteAssignedTask(assigntaskId);
-    revalidatePath("/teamTest", "page");
-  } catch (error) {
-    console.log(error);
-  }
-}
+
 
 async function onCreate(formData: FormData) {
   "use server";
@@ -50,7 +42,7 @@ async function onUpdate(
   "use server";
   try {
     // Update the user's image separately
-    await UpdateUserImage(selectedImage, userId);
+    // await UpdateUserImage(formData, userId);
 
     // Update other user information (excluding image) using the formDataWithImage
     await UpdateUserRole(formData, userId);
@@ -62,6 +54,10 @@ async function onUpdate(
     console.error(error);
   }
 }
+async function updateImage(formData: FormData, userId: string) {
+  "use server";
+  await UpdateUserImage(formData, userId);
+}
 
 export default async function Teams() {
   const users = await GetUsers();
@@ -69,7 +65,12 @@ export default async function Teams() {
   return (
     <>
       <AddTeamForm onCreate={onCreate} />
-      <User dataRows={users} deleteTask={Delete} updateTask={onUpdate} />
+      <User
+        dataRows={users}
+        deleteTask={Delete}
+        updateTask={onUpdate}
+        UpdateImage={updateImage}
+      />
     </>
   );
 }

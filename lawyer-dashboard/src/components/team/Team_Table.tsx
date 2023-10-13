@@ -498,10 +498,12 @@ export default function TeamTable({
   dataRows,
   deleteTask,
   updateTask,
+  UpdateImage
 }: {
   dataRows: any[];
   deleteTask: any;
   updateTask: any;
+  UpdateImage:any
 }) {
   const [selectedFlag, setSelectedFlag] = useState<string | boolean>("");
   const handleServiceFlagFilterChange = (event: any) => {
@@ -842,6 +844,7 @@ export default function TeamTable({
           handleClose={handleClose}
           selectedUser={selectedUser}
           onUpdate={updateTask}
+          UpdateImage={UpdateImage}
         />
       </StyledDialogTitle>
     </Card>
