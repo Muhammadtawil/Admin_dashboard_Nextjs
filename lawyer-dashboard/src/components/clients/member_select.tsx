@@ -1,16 +1,15 @@
-import * as React from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
-import { AssignTaskAlert, updateTaskAlert } from "../alerts/alerts";
+import { AssignTaskAlert } from "../alerts/alerts";
+import CustomTypography from "../shared/formsComponents";
+import { useState } from "react";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -22,8 +21,6 @@ const MenuProps = {
     },
   },
 };
-
-
 
 function getStyles(name: string, personName: string[], theme: any) {
   return {
@@ -46,7 +43,7 @@ export default function MemberSelect({
   onSelectMember: any;
 }) {
   const theme = useTheme();
-  const [personName, setPersonName] = React.useState([]);
+  const [personName, setPersonName] = useState([]);
 
   const handleChange = (event: any) => {
     const {
@@ -80,16 +77,9 @@ export default function MemberSelect({
         >
           <Grid item xs={12} md={12} lg={6}>
             {/* <InputLabel id="demo-multiple-chip-label">Select</InputLabel> */}
-            <Typography
-              component="h5"
-              sx={{
-                fontWeight: "500",
-                fontSize: "14px",
-                mb: "12px",
-              }}
-            >
-              'Select Member'
-            </Typography>
+
+            <CustomTypography text={"Select Member"} />
+
             <Select
               fullWidth
               labelId="demo-multiple-chip-label"

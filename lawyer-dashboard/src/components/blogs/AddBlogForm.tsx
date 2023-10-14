@@ -1,5 +1,4 @@
 "use client";
-import React, { useState } from "react";
 import { Box, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
@@ -7,25 +6,9 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import { updateTaskAlert } from "../alerts/alerts";
+import CustomTypography from "../shared/formsComponents";
 
-
-export default function BlogAddComponent({
-  onCreate,
-  UpdateImage,
-}: {
-  onCreate: any;
-  UpdateImage: any;
-}) {
-  const [selectedImage, setSelectedImage] = useState<File>();
-  const handleUpdate = async () => {
-    const formData = new FormData();
-    // Append the selected image to the formData
-    if (selectedImage) {
-      formData.append("image", selectedImage);
-    }
-    await UpdateImage(formData);
-  };
-
+export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
   return (
     <>
       <Card
@@ -40,9 +23,7 @@ export default function BlogAddComponent({
           component="form"
           noValidate
           action={async (formData) => {
-            await onCreate(formData).then(() => {
-              handleUpdate();
-            });
+            await onCreate(formData);
             updateTaskAlert();
           }}
         >
@@ -72,16 +53,7 @@ export default function BlogAddComponent({
           </Grid>
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
-              <Typography
-                component="h5"
-                sx={{
-                  fontWeight: "500",
-                  fontSize: "14px",
-                  mb: "12px",
-                }}
-              >
-                Blog title
-              </Typography>
+              <CustomTypography text={"Blog title"} />
               <TextField
                 autoComplete="blogTitle"
                 name="blogTitle"
@@ -97,16 +69,7 @@ export default function BlogAddComponent({
             </Grid>
 
             <Grid item xs={12} md={12} lg={12}>
-              <Typography
-                component="h5"
-                sx={{
-                  fontWeight: "500",
-                  fontSize: "14px",
-                  mb: "12px",
-                }}
-              >
-                Bloge Description
-              </Typography>
+              <CustomTypography text={"Bloge Description"} />
               <TextField
                 multiline
                 minRows={10}
@@ -121,20 +84,11 @@ export default function BlogAddComponent({
                   style: { borderRadius: 8 },
                 }}
               />
-
             </Grid>
 
             <Grid item xs={12} md={12} lg={6}>
-              <Typography
-                component="h5"
-                sx={{
-                  fontWeight: "500",
-                  fontSize: "14px",
-                  mb: "12px",
-                }}
-              >
-                Author
-              </Typography>
+              <CustomTypography text={"Author"} />
+
               <TextField
                 autoComplete="Author"
                 name="authorName"

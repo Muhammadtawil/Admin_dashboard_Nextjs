@@ -10,11 +10,10 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import Link from "next/link";
 import dynamic from "next/dynamic";
-import Author from "@/components/author/author_component";
 import { updateTaskAlert } from "../alerts/alerts";
 import { ClearIcon } from "@mui/x-date-pickers";
+import CustomTypography from "../shared/formsComponents";
 const RichTextEditor = dynamic(() => import("@mantine/rte"), {
   ssr: false,
 });
@@ -101,22 +100,19 @@ export default function EditBlogAddComponent({
             handleClose();
             handleUpdate();
 
-            await onUpdate(formData, selectedBlog.blogId, selectedImage,selectedBlog.author.authorId);
+            await onUpdate(
+              formData,
+              selectedBlog.blogId,
+              selectedImage,
+              selectedBlog.author.authorId
+            );
             updateTaskAlert();
           }}
         >
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
-              <Typography
-                component="h5"
-                sx={{
-                  fontWeight: "500",
-                  fontSize: "14px",
-                  mb: "12px",
-                }}
-              >
-                Blog title
-              </Typography>
+              <CustomTypography text={"Blog Title"} />
+
               <TextField
                 autoComplete="blogTitle"
                 name="blogTitle"
@@ -133,16 +129,7 @@ export default function EditBlogAddComponent({
               />
             </Grid>
             <Grid item xs={12} md={12} lg={6}>
-              <Typography
-                component="h5"
-                sx={{
-                  fontWeight: "500",
-                  fontSize: "14px",
-                  mb: "12px",
-                }}
-              >
-                Image
-              </Typography>
+              <CustomTypography text={"Image"} />
 
               <input
                 autoComplete="image"
@@ -167,16 +154,8 @@ export default function EditBlogAddComponent({
             )}
 
             <Grid item xs={12} md={12} lg={12}>
-              <Typography
-                component="h5"
-                sx={{
-                  fontWeight: "500",
-                  fontSize: "14px",
-                  mb: "12px",
-                }}
-              >
-                Bloge Description
-              </Typography>
+              <CustomTypography text={"Blog Description"} />
+
               <TextField
                 multiline
                 minRows={10}
@@ -193,30 +172,10 @@ export default function EditBlogAddComponent({
                 }}
                 onChange={handleInputChange}
               />
-              {/* 
-              <RichTextEditor
-                id="blogContent"
-                
-                controls={[
-                  ["bold", "italic", "underline", "link", "image"],
-                  ["unorderedList", "h1", "h2", "h3", "h4"],
-                  ["sup", "sub"],
-                  ["alignLeft", "alignCenter", "alignRight"],
-                ]}
-              /> */}
             </Grid>
 
             <Grid item xs={12} md={12} lg={6}>
-              <Typography
-                component="h5"
-                sx={{
-                  fontWeight: "500",
-                  fontSize: "14px",
-                  mb: "12px",
-                }}
-              >
-                Blog Status
-              </Typography>
+              <CustomTypography text={"Blog Status"} />
 
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">status</InputLabel>
@@ -233,32 +192,9 @@ export default function EditBlogAddComponent({
                 </Select>
               </FormControl>
             </Grid>
-
-            {/* <Grid item xs={12} md={12} lg={6}>
-              <Typography
-                component="h5"
-                sx={{
-                  fontWeight: "500",
-                  fontSize: "14px",
-                  mb: "12px",
-                }}
-              >
-                Author
-              </Typography>
-
-              <Author />
-            </Grid> */}
             <Grid item xs={12} md={12} lg={6}>
-              <Typography
-                component="h5"
-                sx={{
-                  fontWeight: "500",
-                  fontSize: "14px",
-                  mb: "12px",
-                }}
-              >
-                Author
-              </Typography>
+              <CustomTypography text={"Author"} />
+
               <TextField
                 autoComplete="Author"
                 name="authorName"

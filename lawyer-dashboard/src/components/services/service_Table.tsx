@@ -21,7 +21,7 @@ import cellStyle from "../shared/cellStyle";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import ActionsComponent from "../shared/PaginationList";
 
-export default function ClientTable({
+export default function ServicesTable({
   dataRows,
   deleteTask,
   servicesList,
@@ -272,7 +272,6 @@ export default function ClientTable({
           handleClose={handleClose}
           selectedService={selectedService}
           onUpdate={updateTask}
-          servicesList={servicesList}
         />
       </StyledDialogTitle>
     </Card>

@@ -21,6 +21,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import events from "@/components/todo/Calendar/Events";
+import CustomTypography from "@/components/shared/formsComponents";
 
 // Add event modal style
 const style = {
@@ -186,16 +187,7 @@ const Calendar = () => {
               >
                 <Grid container alignItems="center" spacing={2}>
                   <Grid item xs={12} md={12} lg={12}>
-                    <Typography
-                      component="h5"
-                      sx={{
-                        fontWeight: "500",
-                        fontSize: "14px",
-                        mb: "12px",
-                      }}
-                    >
-                      Event Name
-                    </Typography>
+                    <CustomTypography text={"Event Name"} />
 
                     <TextField
                       autoComplete="event-name"
@@ -211,16 +203,7 @@ const Calendar = () => {
                   </Grid>
 
                   <Grid item xs={12} md={12} lg={12}>
-                    <Typography
-                      component="h5"
-                      sx={{
-                        fontWeight: "500",
-                        fontSize: "14px",
-                        mb: "12px",
-                      }}
-                    >
-                      Date & Time
-                    </Typography>
+                    <CustomTypography text={"Date & Time"} />
 
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <Stack className="date-time-picker">

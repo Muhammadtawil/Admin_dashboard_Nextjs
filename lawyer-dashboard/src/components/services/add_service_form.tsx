@@ -17,6 +17,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import Dialog from "@mui/material/Dialog";
 import { styled } from "@mui/material/styles";
 import { successAlert } from "../alerts/alerts";
+import CustomTypography, { CustomTextField } from "../shared/formsComponents";
 
 const serviceStatus = ["AVAILABLE", "NOT_AVAILABLE"];
 const flagStatus = ["Yes", "No"];
@@ -36,62 +37,6 @@ export default function AddTaskForm({
   onCreate: any;
   servicesList: any[];
 }) {
-  const CustomTextField = ({
-    name,
-    label,
-    multiline = false,
-    minRows = 1,
-  }: any) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <InputLabel htmlFor={name}>
-        <Typography
-          component="h5"
-          sx={{
-            fontWeight: "500",
-            fontSize: "14px",
-            mb: "12px",
-          }}
-        >
-          {label}
-        </Typography>
-      </InputLabel>
-      {multiline ? (
-        <Box
-          width="100%" // Set the desired width here
-          sx={{
-            borderRadius: 8,
-          }}
-        >
-          <TextareaAutosize
-            autoComplete={name}
-            name={name}
-            required={true}
-            minRows={minRows}
-            id={name}
-            autoFocus
-            style={{ width: "100%", borderRadius: 8, padding: "8px" }}
-            className="for-dark-input"
-          />
-        </Box>
-      ) : (
-        <TextField
-          autoComplete={name}
-          name={name}
-          required={true}
-          fullWidth
-          id={name}
-          type="text"
-          label={label}
-          autoFocus
-          InputProps={{
-            style: { borderRadius: 8 },
-          }}
-          className="for-dark-input"
-        />
-      )}
-    </Grid>
-  );
-
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -115,14 +60,6 @@ export default function AddTaskForm({
         }}
         className="for-dark-bottom-border"
       >
-        <Typography
-          component="h5"
-          sx={{
-            fontSize: 18,
-            fontWeight: 500,
-          }}
-        ></Typography>
-
         <Button
           onClick={handleClickOpen}
           variant="contained"
@@ -207,16 +144,8 @@ export default function AddTaskForm({
                 />
 
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    Status
-                  </Typography>
+                  <CustomTypography text={"Status"} />
+
                   <select
                     className="form-select bg-light border-0"
                     name="serviceStatus"
@@ -242,16 +171,8 @@ export default function AddTaskForm({
                   </select>
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    Draft
-                  </Typography>
+                  <CustomTypography text={"Draft"} />
+
                   <select
                     className="form-select bg-light border-0"
                     name="isFlag"

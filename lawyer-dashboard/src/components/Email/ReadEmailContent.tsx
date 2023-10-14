@@ -13,6 +13,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import ReplyIcon from "@mui/icons-material/Reply";
 import ForwardToInboxIcon from "@mui/icons-material/ForwardToInbox";
+import CustomTypography from "../shared/formsComponents";
 
 export default function ReadEmailContent() {
   // Dropdown
@@ -167,9 +168,7 @@ export default function ReadEmailContent() {
                 className="borRadius100"
               />
               <Box className="ml-1">
-                <Typography component="h5" fontSize="14px" fontWeight="500">
-                  Jordan Stevenson
-                </Typography>
+                <CustomTypography text={"Jordan Stevenson"} />
                 <Typography fontSize="13px">
                   From: jonathan@domain.com
                 </Typography>

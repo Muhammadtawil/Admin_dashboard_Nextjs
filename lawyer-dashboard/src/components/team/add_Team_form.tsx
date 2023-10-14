@@ -1,79 +1,15 @@
 "use client";
 import { useState } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  IconButton,
-  Grid,
-  TextField,
-  TextareaAutosize,
-  InputLabel,
-} from "@mui/material";
+import { Box, Typography, Button, IconButton, Grid } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { successAlert } from "../alerts/alerts";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
+import CustomTypography, { CustomTextField } from "../shared/formsComponents";
 
 const flagStatus = ["Yes", "No"];
 
 export default function AddTeamForm({ onCreate }: { onCreate: any }) {
-  const CustomTextField = ({
-    name,
-    label,
-    multiline = false,
-    minRows = 1,
-  }: any) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <InputLabel htmlFor={name}>
-        <Typography
-          component="h5"
-          sx={{
-            fontWeight: "500",
-            fontSize: "14px",
-            mb: "12px",
-          }}
-        >
-          {label}
-        </Typography>
-      </InputLabel>
-      {multiline ? (
-        <Box
-          width="100%" // Set the desired width here
-          sx={{
-            borderRadius: 8,
-          }}
-        >
-          <TextareaAutosize
-            autoComplete={name}
-            name={name}
-            required={true}
-            minRows={minRows}
-            id={name}
-            autoFocus
-            style={{ width: "100%", borderRadius: 8, padding: "8px" }}
-            className="for-dark-input"
-          />
-        </Box>
-      ) : (
-        <TextField
-          autoComplete={name}
-          name={name}
-          required={true}
-          fullWidth
-          id={name}
-          type="text"
-          label={label}
-          autoFocus
-          InputProps={{
-            style: { borderRadius: 8 },
-          }}
-          className="for-dark-input"
-        />
-      )}
-    </Grid>
-  );
-
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -97,14 +33,6 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
         }}
         className="for-dark-bottom-border"
       >
-        <Typography
-          component="h5"
-          sx={{
-            fontSize: 18,
-            fontWeight: 500,
-          }}
-        ></Typography>
-
         <Button
           onClick={handleClickOpen}
           variant="contained"
@@ -191,16 +119,7 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
                 />
                 <CustomTextField name="userEmail" label="Email" />
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    Active
-                  </Typography>
+                  <CustomTypography text={"Active"} />
                   <select
                     className="form-select bg-light border-0"
                     name="isFlag"

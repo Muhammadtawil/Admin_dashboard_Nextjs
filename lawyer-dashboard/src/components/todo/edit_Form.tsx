@@ -1,18 +1,10 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  IconButton,
-  Grid,
-  TextField,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { useEffect, useState } from "react";
+import { Box, Button, Grid } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { updateTaskAlert } from "../alerts/alerts";
+import { CustomSelect, CustomTextField } from "../shared/formsComponents";
 
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
 const priorityValues = ["HIGH", "MEDIUM", "LOW"];
@@ -57,79 +49,6 @@ export default function EditTaskForm({
       [name]: value,
     }));
   };
-
-  const CustomTextField = ({ name, label, type = "text", value }: any) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <Typography
-        component="h5"
-        sx={{
-          fontWeight: "500",
-          fontSize: "14px",
-          mb: "12px",
-        }}
-      >
-        {label}
-      </Typography>
-      <TextField
-        autoComplete={name}
-        name={name}
-        required={true}
-        fullWidth
-        id={name}
-        type={type}
-        label={label}
-        autoFocus
-        InputProps={{
-          style: { borderRadius: 8 },
-        }}
-        className="for-dark-input"
-        value={value}
-        onChange={handleInputChange}
-      />
-    </Grid>
-  );
-
-  const CustomSelect = ({
-    name,
-    label,
-    values,
-    selectedValue,
-    onChange,
-  }: any) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <Typography
-        component="h5"
-        sx={{
-          fontWeight: "500",
-          fontSize: "14px",
-          mb: "12px",
-        }}
-      >
-        {label}
-      </Typography>
-      <Select
-        fullWidth
-        value={selectedValue}
-        name={name}
-        onChange={onChange}
-        displayEmpty
-        inputProps={{
-          //   name,
-          //   id: name,
-          style: { borderRadius: 8 },
-        }}
-      >
-        <MenuItem value="" disabled>
-          {`Select ${label}`}
-        </MenuItem>
-        {values.map((value: any, index: any) => (
-          <MenuItem key={index} value={value}>
-            {value}
-          </MenuItem>
-        ))}
-      </Select>
-    </Grid>
-  );
 
   return (
     <>

@@ -57,8 +57,6 @@ export default function TaskTable({
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(8);
 
-  //   const emptyRows =
-  //     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - dataRows.length) : 0;
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -69,7 +67,6 @@ export default function TaskTable({
     setPage(0);
   };
 
-  // Edit
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {

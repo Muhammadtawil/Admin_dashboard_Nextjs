@@ -1,20 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  IconButton,
-  Grid,
-  TextField,
-  MenuItem,
-  Select,
-} from "@mui/material";
+import { useState } from "react";
+import { Box, Typography, Button, IconButton, Grid } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { successAlert } from "../alerts/alerts";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
-
+import CustomTypography, { CustomTextField } from "../shared/formsComponents";
 const clientValues = ["COMPLETED", "PENDING", "IN_PROGRESS"];
 
 export default function AddTaskForm({
@@ -24,35 +15,6 @@ export default function AddTaskForm({
   onCreate: any;
   servicesList: any[];
 }) {
-  const CustomTextField = ({ name, label, type = "text" }: any) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <Typography
-        component="h5"
-        sx={{
-          fontWeight: "500",
-          fontSize: "14px",
-          mb: "12px",
-        }}
-      >
-        {label}
-      </Typography>
-      <TextField
-        autoComplete={name}
-        name={name}
-        required={true}
-        fullWidth
-        id={name}
-        type={type}
-        label={label}
-        autoFocus
-        InputProps={{
-          style: { borderRadius: 8 },
-        }}
-        className="for-dark-input"
-      />
-    </Grid>
-  );
-
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -76,15 +38,7 @@ export default function AddTaskForm({
         }}
         className="for-dark-bottom-border"
       >
-        <Typography
-          component="h5"
-          sx={{
-            fontSize: 18,
-            fontWeight: 500,
-          }}
-        >
-          Clients
-        </Typography>
+        <CustomTypography text={"Clients"} />
 
         <Button
           onClick={handleClickOpen}
@@ -166,16 +120,8 @@ export default function AddTaskForm({
                 <CustomTextField name="clientPhone" label="Client Phone" />
 
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    Status
-                  </Typography>
+                  <CustomTypography text={"Status"} />
+
                   <select
                     className="form-select bg-light border-0"
                     name="clientStatus"
@@ -201,16 +147,7 @@ export default function AddTaskForm({
                   </select>
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    Service
-                  </Typography>
+                  <CustomTypography text={"Service"} />
 
                   <select
                     className="form-select bg-light border-0"

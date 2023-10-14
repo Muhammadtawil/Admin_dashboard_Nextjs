@@ -1,19 +1,10 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-  TextField,
-  MenuItem,
-  Select,
-  InputLabel,
-  TextareaAutosize,
-} from "@mui/material";
+import { Box, Button, Grid, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { updateTaskAlert } from "../alerts/alerts";
+import CustomTypography from "../shared/formsComponents";
 
 const serviceStatusValues = ["AVAILABLE", "NOT_AVAILABLE"];
 const flagStatusValues = ["Yes", "No"];
@@ -21,20 +12,13 @@ export default function EditTaskForm({
   onUpdate,
   handleClose,
   selectedService,
-  servicesList,
 }: {
   onUpdate: any;
   handleClose: any;
   selectedService: any;
-  servicesList: any;
 }) {
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
 
-  const handleInputFocus = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
   const [formData, setFormData] = useState({
     // Initialize the form data with the selected task's values
     serviceName: selectedService?.serviceTitle,
@@ -64,116 +48,6 @@ export default function EditTaskForm({
     }));
   };
 
-  const CustomTextField = ({
-    name,
-    label,
-    multiline = false,
-    minRows = 1,
-    value,
-    onChange,
-  }: any) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <InputLabel htmlFor={name}>
-        <Typography
-          component="h5"
-          sx={{
-            fontWeight: "500",
-            fontSize: "14px",
-            mb: "12px",
-          }}
-        >
-          {label}
-        </Typography>
-      </InputLabel>
-      {multiline ? (
-        <Box
-          width="100%" // Set the desired width here
-          sx={{
-            borderRadius: 8,
-          }}
-        >
-          <TextareaAutosize
-            autoComplete={name}
-            name={name}
-            required={true}
-            minRows={minRows}
-            id={name}
-            value={value}
-            autoFocus
-            style={{ width: "100%", borderRadius: 8, padding: "8px" }}
-            className="for-dark-input"
-            onChange={onChange}
-          />
-        </Box>
-      ) : (
-        <TextField
-          autoComplete={name}
-          name={name}
-          required={true}
-          fullWidth
-          id={name}
-          type="text"
-          label={label}
-          autoFocus
-          value={value}
-          InputProps={{
-            style: { borderRadius: 8 },
-          }}
-          className="for-dark-input"
-          onChange={onChange}
-        />
-      )}
-    </Grid>
-  );
-
-  const CustomSelect = ({
-    name,
-    label,
-    values,
-    selectedValue,
-    onChange,
-  }: {
-    name: any;
-    label: any;
-    values: string[];
-    selectedValue: any;
-    onChange: any;
-  }) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <Typography
-        component="h5"
-        sx={{
-          fontWeight: "500",
-          fontSize: "14px",
-          mb: "12px",
-        }}
-      >
-        {label}
-      </Typography>
-      <Select
-        fullWidth
-        value={selectedValue}
-        name={name}
-        onChange={onChange}
-        displayEmpty
-        inputProps={{
-          //   name,
-          //   id: name,
-          style: { borderRadius: 8 },
-        }}
-      >
-        <MenuItem value="" disabled>
-          {`Select ${label}`}
-        </MenuItem>
-        {values.map((value: any, index: any) => (
-          <MenuItem key={index} value={value}>
-            {value}
-          </MenuItem>
-        ))}
-      </Select>
-    </Grid>
-  );
-
   return (
     <>
       <Box>
@@ -195,33 +69,8 @@ export default function EditTaskForm({
             className="dark-BG-101010"
           >
             <Grid container alignItems="center" spacing={2}>
-              {/* <CustomTextField
-                name="serviceName"
-                label="Name"
-                value={formData.serviceName}
-                onChange={handleInputChange}
-                inputRef={(input: any) => input && input.focus()}
-              /> */}
-
-              {/* <CustomTextField
-                name="serviceDescription"
-                label="Description"
-                multiline
-                minRows={6}
-                value={formData.serviceDescription}
-                onChange={handleInputChange}
-              /> */}
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Name
-                </Typography>
+                <CustomTypography text={"Name"} />
 
                 <Box
                   width="100%" // Set the desired width here
@@ -248,16 +97,7 @@ export default function EditTaskForm({
               </Grid>
 
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  service
-                </Typography>
+                <CustomTypography text={"Service"} />
 
                 <Box
                   width="100%" // Set the desired width here
@@ -285,16 +125,8 @@ export default function EditTaskForm({
               </Grid>
 
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Status
-                </Typography>
+                <CustomTypography text={"Status"} />
+
                 <select
                   className="form-select bg-light border-0"
                   name="serviceStatus"
@@ -320,16 +152,8 @@ export default function EditTaskForm({
                 </select>
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Draft
-                </Typography>
+                <CustomTypography text={"Draft"} />
+
                 <select
                   className="form-select bg-light border-0"
                   name="isFlag"
@@ -354,78 +178,6 @@ export default function EditTaskForm({
                   )}
                 </select>
               </Grid>
-
-              {/* 
-              <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Status
-                </Typography>
-                <select
-                  className="form-select bg-light border-0"
-                  name="taskStatus"
-                  style={{
-                    height: "55px",
-                    color: "black",
-                    width: "100%",
-                    borderRadius: "3%",
-                  }}
-                >
-                  <option value="">Select A Status</option>
-                  {statusValues.length === 0 ? (
-                    <option value="" disabled>
-                      Loading...
-                    </option>
-                  ) : (
-                    statusValues.map((status: any, index: any) => (
-                      <option key={index} value={statusValues[index]}>
-                        {statusValues[index]}
-                      </option>
-                    ))
-                  )}
-                </select>
-              </Grid>
-              <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Priority
-                </Typography>
-                <select
-                  className="form-select bg-light border-0"
-                  name="taskPriority"
-                  style={{
-                    height: "55px",
-                    color: "black",
-                    width: "100%",
-                    borderRadius: "3%",
-                  }}
-                >
-                  <option value="">Task Priority</option>
-                  {priorityValues.length === 0 ? (
-                    <option value="" disabled>
-                      Loading...
-                    </option>
-                  ) : (
-                    priorityValues.map((service: any, index: any) => (
-                      <option key={index} value={priorityValues[index]}>
-                        {priorityValues[index]}
-                      </option>
-                    ))
-                  )}
-                </select>
-              </Grid> */}
               <Grid item xs={12} textAlign="end">
                 <Button
                   variant="contained"

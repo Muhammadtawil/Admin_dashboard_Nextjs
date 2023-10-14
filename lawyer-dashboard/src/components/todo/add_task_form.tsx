@@ -6,48 +6,17 @@ import {
   Button,
   IconButton,
   Grid,
-  TextField,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
-import Dialog from "@mui/material/Dialog";
-import { styled } from "@mui/material/styles";
 import { successAlert } from "../alerts/alerts";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
+import CustomTypography, { CustomTextField } from "../shared/formsComponents";
 
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
 const priorityValues = ["HIGH", "MEDIUM", "LOW"];
 
 export default function AddTaskForm({ onCreate }: any) {
-  const CustomTextField = ({ name, label, type = "text" }: any) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <Typography
-        component="h5"
-        sx={{
-          fontWeight: "500",
-          fontSize: "14px",
-          mb: "12px",
-        }}
-      >
-        {label}
-      </Typography>
-      <TextField
-        autoComplete={name}
-        name={name}
-        required={true}
-        fullWidth
-        id={name}
-        type={type}
-        label={label}
-        autoFocus
-        InputProps={{
-          style: { borderRadius: 8 },
-        }}
-        className="for-dark-input"
-      />
-    </Grid>
-  );
-
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -71,15 +40,8 @@ export default function AddTaskForm({ onCreate }: any) {
         }}
         className="for-dark-bottom-border"
       >
-        <Typography
-          component="h5"
-          sx={{
-            fontSize: 18,
-            fontWeight: 500,
-          }}
-        >
-          My Tasks
-        </Typography>
+
+        <CustomTypography text={"My Tasks"} />
 
         <Button
           onClick={handleClickOpen}
@@ -157,42 +119,15 @@ export default function AddTaskForm({ onCreate }: any) {
             >
               <Grid container alignItems="center" spacing={2}>
                 <CustomTextField name="taskTitle" label="Task" />
-                {/* <CustomTextField
-                  name="startDate"
-                  label="Start Date"
-                  type="date"
-                /> */}
+
                 <CustomTextField
                   name="taskDeadline"
                   label="End Date"
                   type="date"
                 />
-
-                {/* <CustomSelect
-                  name="taskStatus"
-                  label="Status"
-                  values={statusValues}
-                  selectedValue={selectedStatus}
-                  onChange={(e: any) => setSelectedStatus(e.target.value)}
-                /> */}
-                {/* <CustomSelect
-                  name="taskPriority"
-                  label="Priority"
-                  values={priorityValues}
-                  selectedValue={selectedPriority}
-                  onChange={(e: any) => setSelectedPriority(e.target.value)}
-                />   */}
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    Status
-                  </Typography>
+                  <CustomTypography text={"Status"} />
+
                   <select
                     className="form-select bg-light border-0"
                     name="taskStatus"
@@ -218,16 +153,8 @@ export default function AddTaskForm({ onCreate }: any) {
                   </select>
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    Priority
-                  </Typography>
+                  <CustomTypography text={"Priority"} />
+
                   <select
                     className="form-select bg-light border-0"
                     name="taskPriority"

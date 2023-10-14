@@ -3,7 +3,7 @@ import CreateTask, {
   DeleteAssignedTask,
   UpdateAssignedTask,
 } from "@/server/tasks/tasks";
-import ClientTable from "./service_Table";
+import ServicesTable from "./service_Table";
 import { revalidatePath } from "next/cache";
 import AddTaskForm from "./add_service_form";
 
@@ -82,73 +82,12 @@ const ServicesComponent = async () => {
   return (
     <>
       <AddTaskForm onCreate={onCreate} servicesList={services} />
-      <ClientTable
+      <ServicesTable
         dataRows={services}
         deleteTask={Delete}
         updateTask={onUpdate}
         servicesList={services}
       />
-      {/* <Typography
-        component="h2"
-        sx={{
-          fontSize: 25,
-          fontWeight: 500,
-          padding: 2,
-        }}
-      >
-        Assigned Tasks
-      </Typography>
-
-      <Typography
-        component="h2"
-        sx={{
-          fontSize: 20,
-          fontWeight: 500,
-          padding: 2,
-        }}
-      >
-        Assigned Tasks To Me
-      </Typography>
-
-      <ClientTable
-        dataRows={assignedToTasks}
-        deleteTask={DeleteAssignedTasks}
-        updateTask={onUpdateAssigned}
-        getusers={users}
-        onSelectMember={SelectMember}
-        isAssigned={true}
-        userRole={user.userRole}
-        isToMe={true}
-      />
-
-      {user.userRole === "ADMIN" ? (
-        <>
-          <Typography
-            component="h2"
-            sx={{
-              fontSize: 20,
-              fontWeight: 500,
-              padding: 2,
-            }}
-          >
-            Assigned Tasks By Me
-          </Typography>
-
-          <ClientTable
-            dataRows={assignedTasks}
-            deleteTask={DeleteAssignedTasks}
-            updateTask={onUpdateAssigned}
-            getusers={users}
-            onSelectMember={SelectMember}
-            isAssigned={true}
-            userRole={user.userRole}
-            isToMe={false}
-          />
-        </>
-      ) : null} */}
-
-      {/* <EnhancedTable /> */}
-      {/* <TestTable /> */}
     </>
   );
 };

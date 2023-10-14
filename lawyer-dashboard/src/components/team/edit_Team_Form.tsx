@@ -1,20 +1,10 @@
 "use client";
-import { startTransition, useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-  TextField,
-  MenuItem,
-  Select,
-  InputLabel,
-  TextareaAutosize,
-} from "@mui/material";
+import { useEffect, useState } from "react";
+import { Box, Typography, Button, Grid, TextField } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { updateTaskAlert } from "../alerts/alerts";
-import { UpdateUserImage } from "@/server/users/users";
+import CustomTypography from "../shared/formsComponents";
 
 const serviceStatusValues = ["USER", "ADMIN"];
 const flagStatusValues = ["Yes", "No"];
@@ -116,16 +106,7 @@ export default function EditTeamForm({
           >
             <Grid container alignItems="center" spacing={2}>
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Name
-                </Typography>
+                <CustomTypography text={"Name"} />
 
                 <Box
                   width="100%"
@@ -151,16 +132,7 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Phone
-                </Typography>
+                <CustomTypography text={"Phone"} />
 
                 <Box
                   width="100%"
@@ -186,16 +158,7 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Email
-                </Typography>
+                <CustomTypography text={"Email"} />
 
                 <TextField
                   name="userEmail"
@@ -214,16 +177,7 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Email
-                </Typography>
+                <CustomTypography text={"Position"} />
 
                 <TextField
                   name="userPosition"
@@ -242,16 +196,7 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Facebook Url
-                </Typography>
+                <CustomTypography text={"Facebook Url"} />
 
                 <TextField
                   name="facebook"
@@ -270,17 +215,7 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Twitter Url
-                </Typography>
-
+                <CustomTypography text={"Twitter Url"} />
                 <TextField
                   name="Twitter"
                   required={true}
@@ -298,17 +233,7 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  LinkedIn Url
-                </Typography>
-
+                <CustomTypography text={"LinkedIn Url"} />
                 <TextField
                   name="LinkedIn"
                   required={true}
@@ -327,16 +252,7 @@ export default function EditTeamForm({
               </Grid>
 
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Role
-                </Typography>
+                <CustomTypography text={"Role"} />
                 <select
                   className="form-select bg-light border-0"
                   name="userRole"
@@ -362,16 +278,7 @@ export default function EditTeamForm({
                 </select>
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Active
-                </Typography>
+                <CustomTypography text={"Active"} />
                 <select
                   className="form-select bg-light border-0"
                   name="isTeam"
@@ -397,17 +304,7 @@ export default function EditTeamForm({
                 </select>
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Image
-                </Typography>
-
+                <CustomTypography text={"Image"} />
                 <input
                   autoComplete="image"
                   name="image"

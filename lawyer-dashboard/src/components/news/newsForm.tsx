@@ -1,10 +1,8 @@
 "use client";
 
-import * as React from "react";
 import { Box, Typography } from "@mui/material";
 import Card from "@mui/material/Card";
 import PropTypes from "prop-types";
-import { useTheme } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
@@ -15,10 +13,6 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
-import FirstPageIcon from "@mui/icons-material/FirstPage";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import LastPageIcon from "@mui/icons-material/LastPage";
 import Grid from "@mui/material/Grid";
 import Tooltip from "@mui/material/Tooltip";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -33,6 +27,9 @@ import Link from "next/link";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
+import CustomTypography from "../shared/formsComponents";
+import { useState } from "react";
+import ActionsComponent from "../shared/PaginationList";
 
 const label = { inputProps: { "aria-label": "Checkbox demo" } };
 
@@ -65,74 +62,6 @@ BootstrapDialogTitle.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
 
-function NewsList(props: any) {
-  const theme = useTheme();
-  const { count, page, rowsPerPage, onPageChange } = props;
-
-  const handleFirstPageButtonClick = (event: any) => {
-    onPageChange(event, 0);
-  };
-
-  const handleBackButtonClick = (event: any) => {
-    onPageChange(event, page - 1);
-  };
-
-  const handleNextButtonClick = (event: any) => {
-    onPageChange(event, page + 1);
-  };
-
-  const handleLastPageButtonClick = (event: any) => {
-    onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
-  };
-
-  return (
-    <Box sx={{ flexShrink: 0, ml: 2.5 }}>
-      <IconButton
-        onClick={handleFirstPageButtonClick}
-        disabled={page === 0}
-        aria-label="first page"
-      >
-        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
-      </IconButton>
-      <IconButton
-        onClick={handleBackButtonClick}
-        disabled={page === 0}
-        aria-label="previous page"
-      >
-        {theme.direction === "rtl" ? (
-          <KeyboardArrowRight />
-        ) : (
-          <KeyboardArrowLeft />
-        )}
-      </IconButton>
-      <IconButton
-        onClick={handleNextButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="next page"
-      >
-        {theme.direction === "rtl" ? (
-          <KeyboardArrowLeft />
-        ) : (
-          <KeyboardArrowRight />
-        )}
-      </IconButton>
-      <IconButton
-        onClick={handleLastPageButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="last page"
-      >
-        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
-      </IconButton>
-    </Box>
-  );
-}
-
-NewsList.propTypes = {
-  count: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
-  rowsPerPage: PropTypes.number.isRequired,
-};
 
 function createData(title: any, image: any, desc: any, date: any) {
   return {
@@ -149,8 +78,8 @@ const rows = [
 ].sort((a, b) => (a.title < b.title ? -1 : 1));
 
 export default function NewsPageComponent() {
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
@@ -164,7 +93,7 @@ export default function NewsPageComponent() {
     setPage(0);
   };
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -320,16 +249,7 @@ export default function NewsPageComponent() {
                       className="ml-10px"
                     >
                       <Box>
-                        <Typography
-                          component="h5"
-                          sx={{
-                            fontWeight: "500",
-                            fontSize: "13.5px",
-                          }}
-                          className="ml-10px"
-                        >
-                          {row.title}
-                        </Typography>
+                        <CustomTypography text={row.title} />
 
                         <Typography
                           sx={{
@@ -441,7 +361,7 @@ export default function NewsPageComponent() {
                   }}
                   onPageChange={handleChangePage}
                   onRowsPerPageChange={handleChangeRowsPerPage}
-                  ActionsComponent={NewsList}
+                  ActionsComponent={ActionsComponent}
                   style={{ borderBottom: "none" }}
                 />
               </TableRow>
@@ -500,16 +420,8 @@ export default function NewsPageComponent() {
             >
               <Grid container alignItems="center" spacing={2}>
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    Image
-                  </Typography>
+              <CustomTypography text={"Image"} />
+
 
                   <TextField
                     autoComplete="image"
@@ -526,16 +438,8 @@ export default function NewsPageComponent() {
                 </Grid>
 
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    title
-                  </Typography>
+  
+                  <CustomTypography text={"title"} />
 
                   <TextField
                     autoComplete="name"
@@ -552,16 +456,7 @@ export default function NewsPageComponent() {
                 </Grid>
 
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    desc
-                  </Typography>
+                  <CustomTypography text={"desc"} />
 
                   <TextField
                     autoComplete="desc"
@@ -578,16 +473,7 @@ export default function NewsPageComponent() {
                 </Grid>
 
                 <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    date
-                  </Typography>
+                  <CustomTypography text={"date"} />
 
                   <TextField
                     autoComplete="date"

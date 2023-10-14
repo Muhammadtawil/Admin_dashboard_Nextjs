@@ -71,21 +71,6 @@ export default function ClientTable({
     handleClickOpen();
   };
 
-  // Member Select
-  const [openMember, setOpenMember] = useState(false);
-  const handleCloseMember = () => {
-    setOpenMember(false);
-  };
-
-  const handleClickOpenMember = () => {
-    setOpenMember(true);
-  };
-
-  const handleSelectClick = (task: any) => {
-    setSelectedClient(task);
-    handleClickOpenMember();
-  };
-
   const RenderTableRows = (
     dataRows: any[],
     page: number,

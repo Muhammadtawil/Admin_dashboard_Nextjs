@@ -12,6 +12,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import { updateTaskAlert } from "../alerts/alerts";
+import CustomTypography, { CustomSelect, CustomTextField } from "../shared/formsComponents";
 
 const clientStatusValues = ["COMPLETED", "PENDING", "IN_PROGRESS"];
 
@@ -55,84 +56,7 @@ export default function EditTaskForm({
     }));
   };
 
-  const CustomTextField = ({ name, label, type = "text", value }: any) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <Typography
-        component="h5"
-        sx={{
-          fontWeight: "500",
-          fontSize: "14px",
-          mb: "12px",
-        }}
-      >
-        {label}
-      </Typography>
-      <TextField
-        autoComplete={name}
-        name={name}
-        required={true}
-        fullWidth
-        id={name}
-        type={type}
-        label={label}
-        autoFocus={false}
-        InputProps={{
-          style: { borderRadius: 8 },
-        }}
-        className="for-dark-input"
-        value={value} // Bind the value to formData using the field name
-        onChange={handleInputChange} // Bind the onChange event to handleInputChange
-      />
-    </Grid>
-  );
 
-  const CustomSelect = ({
-    name,
-    label,
-    values,
-    selectedValue,
-    onChange,
-  }: {
-    name: any;
-    label: any;
-    values: string[];
-    selectedValue: any;
-    onChange: any;
-  }) => (
-    <Grid item xs={12} md={12} lg={6}>
-      <Typography
-        component="h5"
-        sx={{
-          fontWeight: "500",
-          fontSize: "14px",
-          mb: "12px",
-        }}
-      >
-        {label}
-      </Typography>
-      <Select
-        fullWidth
-        value={selectedValue}
-        name={name}
-        onChange={onChange}
-        displayEmpty
-        inputProps={{
-          //   name,
-          //   id: name,
-          style: { borderRadius: 8 },
-        }}
-      >
-        <MenuItem value="" disabled>
-          {`Select ${label}`}
-        </MenuItem>
-        {values.map((value: any, index: any) => (
-          <MenuItem key={index} value={value}>
-            {value}
-          </MenuItem>
-        ))}
-      </Select>
-    </Grid>
-  );
 
   return (
     <>
@@ -183,16 +107,8 @@ export default function EditTaskForm({
               />
 
               <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Service
-                </Typography>
+             
+                <CustomTypography text={"Services"} />
 
                 <select
                   className="form-select bg-light border-0"
@@ -221,77 +137,6 @@ export default function EditTaskForm({
                   )}
                 </select>
               </Grid>
-              {/* 
-              <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Status
-                </Typography>
-                <select
-                  className="form-select bg-light border-0"
-                  name="taskStatus"
-                  style={{
-                    height: "55px",
-                    color: "black",
-                    width: "100%",
-                    borderRadius: "3%",
-                  }}
-                >
-                  <option value="">Select A Status</option>
-                  {statusValues.length === 0 ? (
-                    <option value="" disabled>
-                      Loading...
-                    </option>
-                  ) : (
-                    statusValues.map((status: any, index: any) => (
-                      <option key={index} value={statusValues[index]}>
-                        {statusValues[index]}
-                      </option>
-                    ))
-                  )}
-                </select>
-              </Grid>
-              <Grid item xs={12} md={12} lg={6}>
-                <Typography
-                  component="h5"
-                  sx={{
-                    fontWeight: "500",
-                    fontSize: "14px",
-                    mb: "12px",
-                  }}
-                >
-                  Priority
-                </Typography>
-                <select
-                  className="form-select bg-light border-0"
-                  name="taskPriority"
-                  style={{
-                    height: "55px",
-                    color: "black",
-                    width: "100%",
-                    borderRadius: "3%",
-                  }}
-                >
-                  <option value="">Task Priority</option>
-                  {priorityValues.length === 0 ? (
-                    <option value="" disabled>
-                      Loading...
-                    </option>
-                  ) : (
-                    priorityValues.map((service: any, index: any) => (
-                      <option key={index} value={priorityValues[index]}>
-                        {priorityValues[index]}
-                      </option>
-                    ))
-                  )}
-                </select>
-              </Grid> */}
               <Grid item xs={12} textAlign="end">
                 <Button
                   variant="contained"
