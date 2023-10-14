@@ -16,32 +16,15 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import Box from "@mui/material/Box";
-import PropTypes from "prop-types";
-import { styled, useTheme } from "@mui/material/styles";
-import FirstPageIcon from "@mui/icons-material/FirstPage";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import LastPageIcon from "@mui/icons-material/LastPage";
 import { useState } from "react";
-import { deleteAlert, successAlert } from "../alerts/alerts";
-import { Dialog, Grid, TextField, Typography } from "@mui/material";
+import { deleteAlert } from "../alerts/alerts";
 import EditTaskForm from "./edit_Form";
 import PersonIcon from "@mui/icons-material/Person";
 import MemberSelect from "./member_select";
+import cellStyle from "../shared/cellStyle";
+import StyledDialogTitle from "../shared/StyledDialogTitle";
+import ActionsComponent from "../shared/PaginationList";
 const label = { input: { "aria-label": "Checkbox demo" } };
-const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialogContent-root": {
-    padding: theme.spacing(2),
-  },
-  "& .MuiDialogActions-root": {
-    padding: theme.spacing(1),
-  },
-}));
-// Define a reusable cell style object
-const cellStyle = {
-  borderBottom: "1px solid #F7FAFF",
-  fontSize: "13.5px",
-};
 
 export default function TaskTable({
   dataRows,
@@ -69,68 +52,6 @@ export default function TaskTable({
   const [selectedStatus, setSelectedStatus] = useState("");
   const handleStatusFilterChange = (event: any) => {
     setSelectedStatus(event.target.value);
-  };
-
-  function ToDoList(props: any) {
-    const theme = useTheme();
-    const { count, page, rowsPerPage, onPageChange } = props;
-
-    const handlePageButtonClick = (event: any, newPage: any) => {
-      onPageChange(event, newPage);
-    };
-
-    return (
-      <Box sx={{ flexShrink: 0, ml: 2.5 }}>
-        <IconButton
-          onClick={(event) => handlePageButtonClick(event, 0)}
-          disabled={page === 0}
-          aria-label="first page"
-        >
-          {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
-        </IconButton>
-        <IconButton
-          onClick={(event) => handlePageButtonClick(event, page - 1)}
-          disabled={page === 0}
-          aria-label="previous page"
-        >
-          {theme.direction === "rtl" ? (
-            <KeyboardArrowRight />
-          ) : (
-            <KeyboardArrowLeft />
-          )}
-        </IconButton>
-        <IconButton
-          onClick={(event) => handlePageButtonClick(event, page + 1)}
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="next page"
-        >
-          {theme.direction === "rtl" ? (
-            <KeyboardArrowLeft />
-          ) : (
-            <KeyboardArrowRight />
-          )}
-        </IconButton>
-        <IconButton
-          onClick={(event) =>
-            handlePageButtonClick(
-              event,
-              Math.max(0, Math.ceil(count / rowsPerPage) - 1)
-            )
-          }
-          disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-          aria-label="last page"
-        >
-          {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
-        </IconButton>
-      </Box>
-    );
-  }
-
-  ToDoList.propTypes = {
-    count: PropTypes.number.isRequired,
-    onPageChange: PropTypes.func.isRequired,
-    page: PropTypes.number.isRequired,
-    rowsPerPage: PropTypes.number.isRequired,
   };
 
   const [page, setPage] = useState(0);
@@ -437,7 +358,7 @@ export default function TaskTable({
                 }}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}
-                ActionsComponent={ToDoList}
+                ActionsComponent={ActionsComponent}
                 style={{ borderBottom: "none" }}
               />
             </TableRow>

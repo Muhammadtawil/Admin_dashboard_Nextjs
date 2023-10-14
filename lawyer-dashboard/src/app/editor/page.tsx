@@ -18,7 +18,6 @@ import theme from "../../styles/theme";
 import "draft-js/dist/Draft.css";
 
 import "react-tabs/style/react-tabs.css";
-import TextEditor from "@/components/editor/docEditor";
 import MyEditor from "@/components/editor/docEditor";
 export default function DocEditor() {
   return (

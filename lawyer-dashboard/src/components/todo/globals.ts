@@ -1,6 +1,6 @@
-// globals.js
-export let isEditClicked = false;
+// // globals.js
+// export let isEditClicked = false;
 
-export const toggleEditClicked = () => {
-  isEditClicked = true;
-};
+// export const toggleEditClicked = () => {
+//   isEditClicked = true;
+// };

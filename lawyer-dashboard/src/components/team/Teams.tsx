@@ -1,11 +1,7 @@
 import React from "react";
 import User from "./Team_Table";
 import AddTeamForm from "./add_Team_form";
-import AddService, {
-  DeleteService,
-  GetServices,
-  UpdateService,
-} from "@/server/services/services";
+import AddService, { DeleteService } from "@/server/services/services";
 import { DeleteAssignedTask } from "@/server/tasks/tasks";
 import { revalidatePath } from "next/cache";
 import {
@@ -24,8 +20,6 @@ async function Delete(serviceId: string) {
   } catch (error) {}
 }
 
-
-
 async function onCreate(formData: FormData) {
   "use server";
   try {
@@ -41,16 +35,11 @@ async function onUpdate(
 ) {
   "use server";
   try {
-    // Update the user's image separately
-    // await UpdateUserImage(formData, userId);
-
-    // Update other user information (excluding image) using the formDataWithImage
     await UpdateUserRole(formData, userId);
     await UpdateUser(formData, userId);
 
     revalidatePath("/team", "page");
   } catch (error) {
-    // Handle errors
     console.error(error);
   }
 }

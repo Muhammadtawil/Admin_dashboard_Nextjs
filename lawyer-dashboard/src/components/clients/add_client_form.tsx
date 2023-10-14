@@ -12,20 +12,10 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
-import Dialog from "@mui/material/Dialog";
-import { styled } from "@mui/material/styles";
 import { successAlert } from "../alerts/alerts";
+import StyledDialogTitle from "../shared/StyledDialogTitle";
 
 const clientValues = ["COMPLETED", "PENDING", "IN_PROGRESS"];
-
-const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialogContent-root": {
-    padding: theme.spacing(2),
-  },
-  "& .MuiDialogActions-root": {
-    padding: theme.spacing(1),
-  },
-}));
 
 export default function AddTaskForm({
   onCreate,
@@ -34,8 +24,6 @@ export default function AddTaskForm({
   onCreate: any;
   servicesList: any[];
 }) {
-  // const ref = useRef<HTMLFormElement>(null);
-  // const router = useRouter();
   const CustomTextField = ({ name, label, type = "text" }: any) => (
     <Grid item xs={12} md={12} lg={6}>
       <Typography
@@ -297,7 +285,7 @@ export default function AddTaskForm({
                       }}
                       className="mr-5px"
                     />
-                    Add Task
+                    Add Client
                   </Button>
                 </Grid>
               </Grid>

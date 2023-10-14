@@ -1,6 +1,3 @@
-import Link from "next/link";
-import styles from "@/styles/PageTitle.module.css";
-
 import "../page.module.css";
 import "../../styles/remixicon.css";
 // Chat Styles
@@ -15,19 +12,12 @@ import "../../styles/dark.css";
 import theme from "../../styles/theme";
 
 import TeamComponent from "@/components/team/Teams";
+import PageTitle from "@/components/shared/PageTitle/pageTitle";
 
 export default async function TeamPage() {
   return (
     <>
-      <div className={styles.pageTitle}>
-        <h1>Team</h1>
-        <ul>
-          <li>
-            <Link href="/">Dashboard</Link>
-          </li>
-          <li>Team</li>
-        </ul>
-      </div>
+      <PageTitle title="Team" />
 
       <TeamComponent />
     </>

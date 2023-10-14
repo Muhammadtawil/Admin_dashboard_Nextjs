@@ -1,7 +1,5 @@
 import React from "react";
 import Grid from "@mui/material/Grid";
-import Link from "next/link";
-import styles from "@/styles/PageTitle.module.css";
 import LeftSidebar from "@/components/Email/LeftSidebar";
 import EmailLists from "@/components/Email/EmailLists";
 // Chat Styles
@@ -14,19 +12,12 @@ import "../../styles/rtl.css";
 import "../../styles/dark.css";
 // Theme Styles
 import theme from "../../styles/theme";
+import PageTitle from "@/components/shared/PageTitle/pageTitle";
 export default function Inbox() {
   return (
     <>
       {/* Page title */}
-      <div className={styles.pageTitle}>
-        <h1>Email</h1>
-        <ul>
-          <li>
-            <Link href="/">Dashboard</Link>
-          </li>
-          <li>Email</li>
-        </ul>
-      </div>
+      <PageTitle title="Email" />
 
       <Grid
         container

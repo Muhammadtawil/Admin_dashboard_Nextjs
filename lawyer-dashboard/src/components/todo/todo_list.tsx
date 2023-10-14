@@ -12,39 +12,8 @@ import { revalidatePath } from "next/cache";
 import AddTaskForm from "./add_task_form";
 import { GetUser, GetUsers } from "@/server/users/users";
 import { Typography } from "@mui/material";
-// import EnhancedTable from "./tableHead/table_head";
-import DataTable from "./tableHead/head2";
-import TestTable from "./tableHead/test";
 import TaskTable from "./task_table";
 
-// function BootstrapDialogTitle(props: any) {
-//   const { children, onClose, ...other } = props;
-
-//   return (
-//     <DialogTitle sx={{ m: 0, p: 2 }} {...other}>
-//       {children}
-//       {onClose ? (
-//         <IconButton
-//           aria-label="close"
-//           onClick={onClose}
-//           sx={{
-//             position: "absolute",
-//             right: 8,
-//             top: 8,
-//             color: (theme) => theme.palette.grey[500],
-//           }}
-//         >
-//           <CloseIcon />
-//         </IconButton>
-//       ) : null}
-//     </DialogTitle>
-//   );
-// }
-
-// BootstrapDialogTitle.propTypes = {
-//   children: PropTypes.node,
-//   onClose: PropTypes.func.isRequired,
-// };
 async function Delete(taskId: string) {
   "use server";
   try {
@@ -172,9 +141,6 @@ const ToDoLists = async () => {
           />
         </>
       ) : null}
-
-      {/* <EnhancedTable /> */}
-      {/* <TestTable /> */}
     </>
   );
 };

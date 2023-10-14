@@ -1,13 +1,8 @@
-import Head from "next/head";
-import ControlPanelModal from "@/components/ControlPanelModal/control_panel";
-import TopNavbar from "@/components/TopNavbar/TopNavBar";
-import ScrollToTop from "@/components/shared/ScrollToTop";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import ClientLayout from "./client.layout";
 import { GetUser } from "@/server/users/users";
 import Providers from "@/components/providers";
-
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,10 +18,7 @@ export default async function RootLayout({
   userImageUrl: any;
 }) {
   const user = await GetUser();
-  // async function handleLogout() {
-  //   await deleteTokens();
-  // }
-  // const logout = handleLogout();
+
   return (
     <Providers>
       <ClientLayout
@@ -34,7 +26,6 @@ export default async function RootLayout({
         userName={user.userName}
         userRole={user.userRole}
         children={children}
-        // deleteTokens={logout}
       />
     </Providers>
   );

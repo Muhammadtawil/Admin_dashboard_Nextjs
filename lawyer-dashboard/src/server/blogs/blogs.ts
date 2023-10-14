@@ -105,7 +105,11 @@ export async function DeleteBlog(blogId: string) {
 
 // update Blog
 
-export async function UpdateBlog(data: FormData, blogId: string) {
+export async function UpdateBlog(
+  data: FormData,
+  blogId: string,
+  authorId: string
+) {
   const blogTitle = data.get("blogTitle");
   const blogContent = data.get("blogContent");
   const authorName = data.get("authorName");
@@ -113,10 +117,13 @@ export async function UpdateBlog(data: FormData, blogId: string) {
   const session = await getServerSession(authOptions);
 
   const blogsData = {
-    serviceTitle: blogTitle,
-    serviceDescription: blogContent,
-    serviceStatus: authorName,
+    blogTitle: blogTitle,
+    blogContent: blogContent,
     isFlag: isFlag == "ready" ? true : false,
+    author: {
+      authorId: authorId,
+      authorName: authorName,
+    },
   };
   const jsonData = JSON.stringify(blogsData);
 

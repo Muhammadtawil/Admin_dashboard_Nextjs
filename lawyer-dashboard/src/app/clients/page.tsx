@@ -1,7 +1,5 @@
 import ClientsComponentList from "@/components/clients/clients";
-import Link from "next/link";
 import React from "react";
-import styles from "@/styles/PageTitle.module.css";
 
 // Globals Styles
 import "../../styles/globals.css";
@@ -12,18 +10,11 @@ import "../../styles/dark.css";
 // Theme Styles
 import theme from "../../styles/theme";
 import "react-tabs/style/react-tabs.css";
+import PageTitle from "@/components/shared/PageTitle/pageTitle";
 export default function ClientsPage() {
   return (
     <>
-      <div className={styles.pageTitle}>
-        <h1>Clients</h1>
-        <ul>
-          <li>
-            <Link href="/">Dashboard</Link>
-          </li>
-          <li>Clients</li>
-        </ul>
-      </div>
+      <PageTitle title="Clients" />
 
       <ClientsComponentList />
     </>

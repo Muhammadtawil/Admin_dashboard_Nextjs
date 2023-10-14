@@ -12,19 +12,10 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
-import Dialog from "@mui/material/Dialog";
-import { styled } from "@mui/material/styles";
 import { successAlert } from "../alerts/alerts";
+import StyledDialogTitle from "../shared/StyledDialogTitle";
 
 const flagStatus = ["Yes", "No"];
-const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialogContent-root": {
-    padding: theme.spacing(2),
-  },
-  "& .MuiDialogActions-root": {
-    padding: theme.spacing(1),
-  },
-}));
 
 export default function AddTeamForm({ onCreate }: { onCreate: any }) {
   const CustomTextField = ({
@@ -234,41 +225,6 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
                     )}
                   </select>
                 </Grid>
-
-                {/* <Grid item xs={12} md={12} lg={6}>
-                  <Typography
-                    component="h5"
-                    sx={{
-                      fontWeight: "500",
-                      fontSize: "14px",
-                      mb: "12px",
-                    }}
-                  >
-                    Image
-                  </Typography>
-
-                  <TextField
-                    autoComplete="image"
-                    name="userImgUrl"
-                    required
-                    fullWidth
-                    id="image"
-                    type="file"
-                    autoFocus
-                    InputProps={{
-                      style: { borderRadius: 8 },
-                    }}
-                    onChange={handleImageChange}
-                  />
-                </Grid>
-
-                {selectedImage && (
-                  <div>
-                    <h3>Preview:</h3>
-                    <img src={selectedImage} alt="Selected" width="200" />
-                  </div>
-                )} */}
-
                 <Grid item xs={12} textAlign="end">
                   <Button
                     variant="contained"

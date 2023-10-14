@@ -11,12 +11,13 @@ import "../../styles/dark.css";
 import theme from "../../styles/theme";
 import "react-tabs/style/react-tabs.css";
 import Link from "next/link";
+import NewsPageComponent from "../../components/news/newsForm";
 import PageTitle from "@/components/shared/PageTitle/pageTitle";
 export default function BlogPage() {
   return (
     <>
-      <PageTitle title="Blogs" />
-      <BlogsComponent />
+      <PageTitle title="News" />
+      <NewsPageComponent />
     </>
   );
 }

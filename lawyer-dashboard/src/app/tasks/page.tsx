@@ -14,21 +14,12 @@ import "../../styles/rtl.css";
 import "../../styles/dark.css";
 // Theme Styles
 import theme from "../../styles/theme";
-
-
+import PageTitle from "@/components/shared/PageTitle/pageTitle";
 
 export default async function ToDo() {
   return (
     <>
-      <div className={styles.pageTitle}>
-        <h1>To Do</h1>
-        <ul>
-          <li>
-            <Link href="/">Dashboard</Link>
-          </li>
-          <li>To Do</li>
-        </ul>
-      </div>
+      <PageTitle title="Tasks" />
 
       <ToDoLists />
     </>

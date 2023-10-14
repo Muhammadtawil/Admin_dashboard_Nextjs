@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import {
   Box,
   Typography,
@@ -7,30 +7,18 @@ import {
   IconButton,
   Grid,
   TextField,
-  MenuItem,
-  Select,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
 import Dialog from "@mui/material/Dialog";
 import { styled } from "@mui/material/styles";
 import { successAlert } from "../alerts/alerts";
+import StyledDialogTitle from "../shared/StyledDialogTitle";
 
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
 const priorityValues = ["HIGH", "MEDIUM", "LOW"];
 
-const StyledDialogTitle = styled(Dialog)(({ theme }) => ({
-  "& .MuiDialogContent-root": {
-    padding: theme.spacing(2),
-  },
-  "& .MuiDialogActions-root": {
-    padding: theme.spacing(1),
-  },
-}));
-
 export default function AddTaskForm({ onCreate }: any) {
-  // const ref = useRef<HTMLFormElement>(null);
-  // const router = useRouter();
   const CustomTextField = ({ name, label, type = "text" }: any) => (
     <Grid item xs={12} md={12} lg={6}>
       <Typography

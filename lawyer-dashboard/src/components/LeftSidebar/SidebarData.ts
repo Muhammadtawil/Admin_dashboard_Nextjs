@@ -78,7 +78,7 @@ export const SidebarData = [
   },
   {
     title: "News",
-    path: "/notification/",
+    path: "/news",
     icon: NotificationsNoneIcon,
   },
   {
@@ -88,11 +88,11 @@ export const SidebarData = [
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,
 
-    subNav: [
-      {
-        title: "AddBlog",
-        path: "/Blogs/account/",
-      },
-    ],
+    // subNav: [
+    //   {
+    //     title: "AddBlog",
+    //     path: "/Blogs/account/",
+    //   },
+    // ],
   },
 ];
