@@ -1,11 +1,15 @@
 "use client";
 import { useState } from "react";
-import { Box, Typography, Button, IconButton, Grid } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import ClearIcon from "@mui/icons-material/Clear";
+import { Box, Grid } from "@mui/material";
 import { successAlert } from "../alerts/alerts";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
-import CustomTypography, { CustomTextField } from "../shared/formsComponents";
+import CustomTypography, {
+  CustomTextField,
+  FormFooter,
+  FormHead,
+  HeadBox,
+  ValuesSelect,
+} from "../shared/formsComponents";
 
 const flagStatus = ["Yes", "No"];
 
@@ -22,74 +26,16 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          borderBottom: "1px solid #EEF0F7",
-          paddingBottom: "10px",
-          mb: "20px",
-        }}
-        className="for-dark-bottom-border"
-      >
-        <Button
-          onClick={handleClickOpen}
-          variant="contained"
-          sx={{
-            textTransform: "capitalize",
-            borderRadius: "8px",
-            fontWeight: "500",
-            fontSize: "13px",
-            padding: "12px 20px",
-            color: "#fff !important",
-          }}
-        >
-          <AddIcon
-            sx={{ position: "relative", top: "-1px" }}
-            className="mr-5px"
-          />
-          Add Team Member
-        </Button>
-      </Box>
+      <FormHead handleClickOpen={handleClickOpen} title={"Add Team Member"} />
+
       <StyledDialogTitle
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
       >
         <Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              background: "#EDEFF5",
-              borderRadius: "8px",
-              padding: "20px 20px",
-            }}
-            className="bg-black"
-          >
-            <Typography
-              id="modal-modal-title"
-              variant="h6"
-              component="h2"
-              sx={{
-                fontWeight: "500",
-                fontSize: "20px",
-              }}
-            >
-              Add Team Member
-            </Typography>
+          <HeadBox handleClose={handleClose} title={"Add Team"} />
 
-            <IconButton
-              aria-label="remove"
-              size="small"
-              onClick={handleClose}
-              className="modal-close"
-            >
-              <ClearIcon />
-            </IconButton>
-          </Box>
           <Box
             component="form"
             noValidate={false}
@@ -120,79 +66,12 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
                 <CustomTextField name="userEmail" label="Email" />
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Active"} />
-                  <select
-                    className="form-select bg-light border-0"
-                    name="isFlag"
-                    style={{
-                      height: "55px",
-                      color: "black",
-                      width: "100%",
-                      borderRadius: "3%",
-                    }}
-                  >
-                    <option value="">Select A Status</option>
-                    {flagStatus.length === 0 ? (
-                      <option value="" disabled>
-                        Loading...
-                      </option>
-                    ) : (
-                      flagStatus.map((service: any, index: any) => (
-                        <option key={index} value={flagStatus[index]}>
-                          {flagStatus[index]}
-                        </option>
-                      ))
-                    )}
-                  </select>
+                  <ValuesSelect name={"isFlag"} values={flagStatus} />
                 </Grid>
-                <Grid item xs={12} textAlign="end">
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    sx={{
-                      mt: 1,
-                      textTransform: "capitalize",
-                      borderRadius: "8px",
-                      fontWeight: "500",
-                      fontSize: "13px",
-                      padding: "12px 20px",
-                      color: "#fff !important",
-                    }}
-                    onClick={handleClose}
-                    className="mr-15px"
-                  >
-                    <ClearIcon
-                      sx={{
-                        position: "relative",
-                        top: "-1px",
-                      }}
-                      className="mr-5px"
-                    />
-                    Cancel
-                  </Button>
-
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    sx={{
-                      mt: 1,
-                      textTransform: "capitalize",
-                      borderRadius: "8px",
-                      fontWeight: "500",
-                      fontSize: "13px",
-                      padding: "12px 20px",
-                      color: "#fff !important",
-                    }}
-                  >
-                    <AddIcon
-                      sx={{
-                        position: "relative",
-                        top: "-1px",
-                      }}
-                      className="mr-5px"
-                    />
-                    Add Team Member
-                  </Button>
-                </Grid>
+                <FormFooter
+                  handleClose={handleClose}
+                  title={"Add Team Member"}
+                />
               </Grid>
             </Box>
           </Box>

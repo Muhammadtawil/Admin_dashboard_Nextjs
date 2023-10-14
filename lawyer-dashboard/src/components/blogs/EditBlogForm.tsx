@@ -13,7 +13,7 @@ import Select from "@mui/material/Select";
 import dynamic from "next/dynamic";
 import { updateTaskAlert } from "../alerts/alerts";
 import { ClearIcon } from "@mui/x-date-pickers";
-import CustomTypography from "../shared/formsComponents";
+import CustomTypography, { FormFooter } from "../shared/formsComponents";
 const RichTextEditor = dynamic(() => import("@mantine/rte"), {
   ssr: false,
 });
@@ -210,55 +210,8 @@ export default function EditBlogAddComponent({
                 onChange={handleInputChange}
               />
             </Grid>
-            <Grid item xs={12} textAlign="end">
-              <Button
-                variant="contained"
-                color="secondary"
-                sx={{
-                  mt: 1,
-                  textTransform: "capitalize",
-                  borderRadius: "8px",
-                  fontWeight: "500",
-                  fontSize: "13px",
-                  padding: "12px 20px",
-                  color: "#fff !important",
-                }}
-                onClick={handleClose}
-                className="mr-15px"
-              >
-                <ClearIcon
-                  sx={{
-                    position: "relative",
-                    top: "-1px",
-                  }}
-                  className="mr-5px"
-                />
-                Cancel
-              </Button>
+            <FormFooter handleClose={handleClose} title={"Edit Blog"} />
 
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{
-                  mt: 1,
-                  textTransform: "capitalize",
-                  borderRadius: "8px",
-                  fontWeight: "500",
-                  fontSize: "13px",
-                  padding: "12px 20px",
-                  color: "#fff !important",
-                }}
-              >
-                <AddIcon
-                  sx={{
-                    position: "relative",
-                    top: "-1px",
-                  }}
-                  className="mr-5px"
-                />
-                Edit Task
-              </Button>
-            </Grid>
           </Grid>
         </Box>
       </Card>

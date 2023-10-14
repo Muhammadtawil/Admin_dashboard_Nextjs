@@ -54,7 +54,7 @@ export default async function BlogsComponent() {
   }
   return (
     <>
-      <BlogAddComponent onCreate={onCreate} UpdateImage={updateImage} />
+      <BlogAddComponent onCreate={onCreate} />
       <Blog
         dataRows={blogs}
         deleteTask={Delete}

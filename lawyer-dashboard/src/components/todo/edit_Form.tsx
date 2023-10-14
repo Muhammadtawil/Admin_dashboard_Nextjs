@@ -1,10 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Box, Button, Grid } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import ClearIcon from "@mui/icons-material/Clear";
+import { Box, Grid } from "@mui/material";
 import { updateTaskAlert } from "../alerts/alerts";
-import { CustomSelect, CustomTextField } from "../shared/formsComponents";
+import {
+  CustomSelect,
+  CustomTextField,
+  FormFooter,
+} from "../shared/formsComponents";
 
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
 const priorityValues = ["HIGH", "MEDIUM", "LOW"];
@@ -94,56 +96,7 @@ export default function EditTaskForm({
                 selectedValue={formData.taskPriority}
                 onChange={handleInputChange}
               />
-
-              <Grid item xs={12} textAlign="end">
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{
-                    mt: 1,
-                    textTransform: "capitalize",
-                    borderRadius: "8px",
-                    fontWeight: "500",
-                    fontSize: "13px",
-                    padding: "12px 20px",
-                    color: "#fff !important",
-                  }}
-                  onClick={handleClose}
-                  className="mr-15px"
-                >
-                  <ClearIcon
-                    sx={{
-                      position: "relative",
-                      top: "-1px",
-                    }}
-                    className="mr-5px"
-                  />
-                  Cancel
-                </Button>
-
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{
-                    mt: 1,
-                    textTransform: "capitalize",
-                    borderRadius: "8px",
-                    fontWeight: "500",
-                    fontSize: "13px",
-                    padding: "12px 20px",
-                    color: "#fff !important",
-                  }}
-                >
-                  <AddIcon
-                    sx={{
-                      position: "relative",
-                      top: "-1px",
-                    }}
-                    className="mr-5px"
-                  />
-                  Edit Task
-                </Button>
-              </Grid>
+              <FormFooter handleClose={handleClose} title={"Edit Task"} />
             </Grid>
           </Box>
         </Box>

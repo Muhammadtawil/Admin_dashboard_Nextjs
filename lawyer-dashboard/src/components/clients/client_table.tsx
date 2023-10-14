@@ -223,6 +223,7 @@ export default function ClientTable({
                     </option>
                   ))}
                 </select>
+
               </TableCell>
 
               <TableCell align="center" sx={cellStyle}>

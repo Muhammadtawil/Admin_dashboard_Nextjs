@@ -1,18 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  Grid,
-  TextField,
-  MenuItem,
-  Select,
-} from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import ClearIcon from "@mui/icons-material/Clear";
+import { Box, Grid } from "@mui/material";
 import { updateTaskAlert } from "../alerts/alerts";
-import CustomTypography, { CustomSelect, CustomTextField } from "../shared/formsComponents";
+import CustomTypography, {
+  CustomSelect,
+  CustomTextField,
+  FormFooter,
+  ValuesSelect,
+} from "../shared/formsComponents";
 
 const clientStatusValues = ["COMPLETED", "PENDING", "IN_PROGRESS"];
 
@@ -28,7 +23,6 @@ export default function EditTaskForm({
   servicesList: any;
 }) {
   const [formData, setFormData] = useState({
-    // Initialize the form data with the selected task's values
     clientName: selectedClient?.clientName,
     clientPhone: selectedClient?.clientPhone || "",
     clientEmail: selectedClient?.clientEmail || "",
@@ -37,17 +31,15 @@ export default function EditTaskForm({
   });
 
   useEffect(() => {
-    // Update the form data when the selectedTask prop changes
     setFormData({
       clientName: selectedClient?.clientName || "",
       clientPhone: selectedClient?.clientPhone || "",
       clientEmail: selectedClient?.clientEmail || "",
-      clientStatus: selectedClient?.clientStatus || "", // Add other form fields here...
-      clientService: selectedClient?.choosenServiceName || "", // Add other form fields here...
+      clientStatus: selectedClient?.clientStatus || "",
+      clientService: selectedClient?.choosenServiceName || "",
     });
   }, [selectedClient]);
 
-  // Handle form input changes
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -55,8 +47,6 @@ export default function EditTaskForm({
       [name]: value,
     }));
   };
-
-
 
   return (
     <>
@@ -107,85 +97,10 @@ export default function EditTaskForm({
               />
 
               <Grid item xs={12} md={12} lg={6}>
-             
                 <CustomTypography text={"Services"} />
-
-                <select
-                  className="form-select bg-light border-0"
-                  name="clientService"
-                  style={{
-                    height: "55px",
-                    color: "black",
-                    width: "100%",
-                    borderRadius: "3%",
-                  }}
-                >
-                  <option value="">Service</option>
-                  {servicesList.length === 0 ? (
-                    <option value="" disabled>
-                      Loading...
-                    </option>
-                  ) : (
-                    servicesList.map((service: any, index: any) => (
-                      <option
-                        key={index}
-                        value={servicesList[index].serviceTitle}
-                      >
-                        {servicesList[index].serviceTitle}
-                      </option>
-                    ))
-                  )}
-                </select>
+                <ValuesSelect name={"clientService"} values={servicesList} />
               </Grid>
-              <Grid item xs={12} textAlign="end">
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{
-                    mt: 1,
-                    textTransform: "capitalize",
-                    borderRadius: "8px",
-                    fontWeight: "500",
-                    fontSize: "13px",
-                    padding: "12px 20px",
-                    color: "#fff !important",
-                  }}
-                  onClick={handleClose}
-                  className="mr-15px"
-                >
-                  <ClearIcon
-                    sx={{
-                      position: "relative",
-                      top: "-1px",
-                    }}
-                    className="mr-5px"
-                  />
-                  Cancel
-                </Button>
-
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{
-                    mt: 1,
-                    textTransform: "capitalize",
-                    borderRadius: "8px",
-                    fontWeight: "500",
-                    fontSize: "13px",
-                    padding: "12px 20px",
-                    color: "#fff !important",
-                  }}
-                >
-                  <AddIcon
-                    sx={{
-                      position: "relative",
-                      top: "-1px",
-                    }}
-                    className="mr-5px"
-                  />
-                  Edit Task
-                </Button>
-              </Grid>
+              <FormFooter handleClose={handleClose} title={"Add Service"} />
             </Grid>
           </Box>
         </Box>

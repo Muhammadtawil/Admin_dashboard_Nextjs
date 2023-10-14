@@ -1,10 +1,11 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import { Box, Button, Grid, TextField } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import ClearIcon from "@mui/icons-material/Clear";
+import { useEffect, useState } from "react";
+import { Box, Grid, TextField } from "@mui/material";
 import { updateTaskAlert } from "../alerts/alerts";
-import CustomTypography from "../shared/formsComponents";
+import CustomTypography, {
+  FormFooter,
+  ValuesSelect,
+} from "../shared/formsComponents";
 
 const serviceStatusValues = ["AVAILABLE", "NOT_AVAILABLE"];
 const flagStatusValues = ["Yes", "No"];
@@ -17,10 +18,7 @@ export default function EditTaskForm({
   handleClose: any;
   selectedService: any;
 }) {
-  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null);
-
   const [formData, setFormData] = useState({
-    // Initialize the form data with the selected task's values
     serviceName: selectedService?.serviceTitle,
     serviceDescription: selectedService?.serviceDescription || "",
     serviceStatus: selectedService?.serviceStatus || "",
@@ -28,7 +26,6 @@ export default function EditTaskForm({
   });
 
   useEffect(() => {
-    // Update the form data when the selectedTask prop changes
     setFormData({
       serviceName: selectedService?.serviceTitle,
       serviceDescription: selectedService?.serviceDescription || "",
@@ -126,107 +123,16 @@ export default function EditTaskForm({
 
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={"Status"} />
-
-                <select
-                  className="form-select bg-light border-0"
-                  name="serviceStatus"
-                  style={{
-                    height: "55px",
-                    color: "black",
-                    width: "100%",
-                    borderRadius: "3%",
-                  }}
-                >
-                  <option value="">Select A Status</option>
-                  {serviceStatusValues.length === 0 ? (
-                    <option value="" disabled>
-                      Loading...
-                    </option>
-                  ) : (
-                    serviceStatusValues.map((service: any, index: any) => (
-                      <option key={index} value={serviceStatusValues[index]}>
-                        {serviceStatusValues[index]}
-                      </option>
-                    ))
-                  )}
-                </select>
+                <ValuesSelect
+                  name={"serviceStatus"}
+                  values={serviceStatusValues}
+                />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={"Draft"} />
-
-                <select
-                  className="form-select bg-light border-0"
-                  name="isFlag"
-                  style={{
-                    height: "55px",
-                    color: "black",
-                    width: "100%",
-                    borderRadius: "3%",
-                  }}
-                >
-                  <option value="">Select A Status</option>
-                  {flagStatusValues.length === 0 ? (
-                    <option value="" disabled>
-                      Loading...
-                    </option>
-                  ) : (
-                    flagStatusValues.map((service: any, index: any) => (
-                      <option key={index} value={flagStatusValues[index]}>
-                        {flagStatusValues[index]}
-                      </option>
-                    ))
-                  )}
-                </select>
+                <ValuesSelect name={"isFlag"} values={flagStatusValues} />
               </Grid>
-              <Grid item xs={12} textAlign="end">
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{
-                    mt: 1,
-                    textTransform: "capitalize",
-                    borderRadius: "8px",
-                    fontWeight: "500",
-                    fontSize: "13px",
-                    padding: "12px 20px",
-                    color: "#fff !important",
-                  }}
-                  onClick={handleClose}
-                  className="mr-15px"
-                >
-                  <ClearIcon
-                    sx={{
-                      position: "relative",
-                      top: "-1px",
-                    }}
-                    className="mr-5px"
-                  />
-                  Cancel
-                </Button>
-
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{
-                    mt: 1,
-                    textTransform: "capitalize",
-                    borderRadius: "8px",
-                    fontWeight: "500",
-                    fontSize: "13px",
-                    padding: "12px 20px",
-                    color: "#fff !important",
-                  }}
-                >
-                  <AddIcon
-                    sx={{
-                      position: "relative",
-                      top: "-1px",
-                    }}
-                    className="mr-5px"
-                  />
-                  Edit Task
-                </Button>
-              </Grid>
+              <FormFooter handleClose={handleClose} title={"Edit Task"} />
             </Grid>
           </Box>
         </Box>

@@ -24,13 +24,11 @@ import ActionsComponent from "../shared/PaginationList";
 export default function ServicesTable({
   dataRows,
   deleteTask,
-  servicesList,
   updateTask,
 }: {
   dataRows: any[];
   deleteTask: any;
   updateTask: any;
-  servicesList: any[];
 }) {
   const [selectedFlag, setSelectedFlag] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");

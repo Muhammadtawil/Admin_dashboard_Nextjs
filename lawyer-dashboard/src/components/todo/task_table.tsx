@@ -57,7 +57,6 @@ export default function TaskTable({
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(8);
 
-
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
   };

@@ -1,10 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Box, Typography, Button, Grid, TextField } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import ClearIcon from "@mui/icons-material/Clear";
+import { Box, Grid, TextField } from "@mui/material";
+
 import { updateTaskAlert } from "../alerts/alerts";
-import CustomTypography from "../shared/formsComponents";
+import CustomTypography, {
+  FormFooter,
+  ValuesSelect,
+} from "../shared/formsComponents";
 
 const serviceStatusValues = ["USER", "ADMIN"];
 const flagStatusValues = ["Yes", "No"];
@@ -253,55 +255,11 @@ export default function EditTeamForm({
 
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={"Role"} />
-                <select
-                  className="form-select bg-light border-0"
-                  name="userRole"
-                  style={{
-                    height: "55px",
-                    color: "black",
-                    width: "100%",
-                    borderRadius: "3%",
-                  }}
-                >
-                  <option value="">Select A Status</option>
-                  {serviceStatusValues.length === 0 ? (
-                    <option value="" disabled>
-                      Loading...
-                    </option>
-                  ) : (
-                    serviceStatusValues.map((service: any, index: any) => (
-                      <option key={index} value={serviceStatusValues[index]}>
-                        {serviceStatusValues[index]}
-                      </option>
-                    ))
-                  )}
-                </select>
+                <ValuesSelect name={"userRole"} values={serviceStatusValues} />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={"Active"} />
-                <select
-                  className="form-select bg-light border-0"
-                  name="isTeam"
-                  style={{
-                    height: "55px",
-                    color: "black",
-                    width: "100%",
-                    borderRadius: "3%",
-                  }}
-                >
-                  <option value="">Select A Status</option>
-                  {flagStatusValues.length === 0 ? (
-                    <option value="" disabled>
-                      Loading...
-                    </option>
-                  ) : (
-                    flagStatusValues.map((service: any, index: any) => (
-                      <option key={index} value={flagStatusValues[index]}>
-                        {flagStatusValues[index]}
-                      </option>
-                    ))
-                  )}
-                </select>
+                <ValuesSelect name={"isTeam"} values={flagStatusValues} />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={"Image"} />
@@ -328,55 +286,7 @@ export default function EditTeamForm({
                 </div>
               )}
 
-              <Grid item xs={12} textAlign="end">
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  sx={{
-                    mt: 1,
-                    textTransform: "capitalize",
-                    borderRadius: "8px",
-                    fontWeight: "500",
-                    fontSize: "13px",
-                    padding: "12px 20px",
-                    color: "#fff !important",
-                  }}
-                  onClick={handleClose}
-                  className="mr-15px"
-                >
-                  <ClearIcon
-                    sx={{
-                      position: "relative",
-                      top: "-1px",
-                    }}
-                    className="mr-5px"
-                  />
-                  Cancel
-                </Button>
-
-                <Button
-                  type="submit"
-                  variant="contained"
-                  sx={{
-                    mt: 1,
-                    textTransform: "capitalize",
-                    borderRadius: "8px",
-                    fontWeight: "500",
-                    fontSize: "13px",
-                    padding: "12px 20px",
-                    color: "#fff !important",
-                  }}
-                >
-                  <AddIcon
-                    sx={{
-                      position: "relative",
-                      top: "-1px",
-                    }}
-                    className="mr-5px"
-                  />
-                  Edit Task
-                </Button>
-              </Grid>
+              <FormFooter handleClose={handleClose} title={"Edit Team"} />
             </Grid>
           </Box>
         </Box>

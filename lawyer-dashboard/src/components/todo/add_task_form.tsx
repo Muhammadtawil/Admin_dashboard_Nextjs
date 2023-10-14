@@ -1,17 +1,15 @@
 "use client";
 import { useState } from "react";
-import {
-  Box,
-  Typography,
-  Button,
-  IconButton,
-  Grid,
-} from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import ClearIcon from "@mui/icons-material/Clear";
+import { Box, Grid } from "@mui/material";
 import { successAlert } from "../alerts/alerts";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
-import CustomTypography, { CustomTextField } from "../shared/formsComponents";
+import CustomTypography, {
+  CustomTextField,
+  FormFooter,
+  FormHead,
+  HeadBox,
+  ValuesSelect,
+} from "../shared/formsComponents";
 
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
 const priorityValues = ["HIGH", "MEDIUM", "LOW"];
@@ -29,77 +27,16 @@ export default function AddTaskForm({ onCreate }: any) {
 
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          borderBottom: "1px solid #EEF0F7",
-          paddingBottom: "10px",
-          mb: "20px",
-        }}
-        className="for-dark-bottom-border"
-      >
+      <FormHead handleClickOpen={handleClickOpen} title={"Add Task"} />
 
-        <CustomTypography text={"My Tasks"} />
-
-        <Button
-          onClick={handleClickOpen}
-          variant="contained"
-          sx={{
-            textTransform: "capitalize",
-            borderRadius: "8px",
-            fontWeight: "500",
-            fontSize: "13px",
-            padding: "12px 20px",
-            color: "#fff !important",
-          }}
-        >
-          <AddIcon
-            sx={{ position: "relative", top: "-1px" }}
-            className="mr-5px"
-          />
-          Add Task
-        </Button>
-      </Box>
       <StyledDialogTitle
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
       >
         <Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              background: "#EDEFF5",
-              borderRadius: "8px",
-              padding: "20px 20px",
-            }}
-            className="bg-black"
-          >
-            <Typography
-              id="modal-modal-title"
-              variant="h6"
-              component="h2"
-              sx={{
-                fontWeight: "500",
-                fontSize: "20px",
-              }}
-            >
-              Add Task
-            </Typography>
+          <HeadBox handleClose={handleClose} title={"Add Task"} />
 
-            <IconButton
-              aria-label="remove"
-              size="small"
-              onClick={handleClose}
-              className="modal-close"
-            >
-              <ClearIcon />
-            </IconButton>
-          </Box>
           <Box
             component="form"
             noValidate={false}
@@ -119,7 +56,6 @@ export default function AddTaskForm({ onCreate }: any) {
             >
               <Grid container alignItems="center" spacing={2}>
                 <CustomTextField name="taskTitle" label="Task" />
-
                 <CustomTextField
                   name="taskDeadline"
                   label="End Date"
@@ -127,107 +63,13 @@ export default function AddTaskForm({ onCreate }: any) {
                 />
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Status"} />
-
-                  <select
-                    className="form-select bg-light border-0"
-                    name="taskStatus"
-                    style={{
-                      height: "55px",
-                      color: "black",
-                      width: "100%",
-                      borderRadius: "3%",
-                    }}
-                  >
-                    <option value="">Select A Status</option>
-                    {statusValues.length === 0 ? (
-                      <option value="" disabled>
-                        Loading...
-                      </option>
-                    ) : (
-                      statusValues.map((service: any, index: any) => (
-                        <option key={index} value={statusValues[index]}>
-                          {statusValues[index]}
-                        </option>
-                      ))
-                    )}
-                  </select>
+                  <ValuesSelect name={"taskStatus"} values={statusValues} />
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Priority"} />
-
-                  <select
-                    className="form-select bg-light border-0"
-                    name="taskPriority"
-                    style={{
-                      height: "55px",
-                      color: "black",
-                      width: "100%",
-                      borderRadius: "3%",
-                    }}
-                  >
-                    <option value="">Task Priority</option>
-                    {priorityValues.length === 0 ? (
-                      <option value="" disabled>
-                        Loading...
-                      </option>
-                    ) : (
-                      priorityValues.map((service: any, index: any) => (
-                        <option key={index} value={priorityValues[index]}>
-                          {priorityValues[index]}
-                        </option>
-                      ))
-                    )}
-                  </select>
+                  <ValuesSelect name={"taskPriority"} values={priorityValues} />
                 </Grid>
-                <Grid item xs={12} textAlign="end">
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    sx={{
-                      mt: 1,
-                      textTransform: "capitalize",
-                      borderRadius: "8px",
-                      fontWeight: "500",
-                      fontSize: "13px",
-                      padding: "12px 20px",
-                      color: "#fff !important",
-                    }}
-                    onClick={handleClose}
-                    className="mr-15px"
-                  >
-                    <ClearIcon
-                      sx={{
-                        position: "relative",
-                        top: "-1px",
-                      }}
-                      className="mr-5px"
-                    />
-                    Cancel
-                  </Button>
-
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    sx={{
-                      mt: 1,
-                      textTransform: "capitalize",
-                      borderRadius: "8px",
-                      fontWeight: "500",
-                      fontSize: "13px",
-                      padding: "12px 20px",
-                      color: "#fff !important",
-                    }}
-                  >
-                    <AddIcon
-                      sx={{
-                        position: "relative",
-                        top: "-1px",
-                      }}
-                      className="mr-5px"
-                    />
-                    Add Task
-                  </Button>
-                </Grid>
+                <FormFooter handleClose={handleClose} title={"Add Task"} />
               </Grid>
             </Box>
           </Box>

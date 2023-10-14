@@ -27,7 +27,7 @@ import Link from "next/link";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
-import CustomTypography from "../shared/formsComponents";
+import CustomTypography, { HeadBox } from "../shared/formsComponents";
 import { useState } from "react";
 import ActionsComponent from "../shared/PaginationList";
 
@@ -61,7 +61,6 @@ BootstrapDialogTitle.propTypes = {
   children: PropTypes.node,
   onClose: PropTypes.func.isRequired,
 };
-
 
 function createData(title: any, image: any, desc: any, date: any) {
   return {
@@ -376,38 +375,7 @@ export default function NewsPageComponent() {
         open={open}
       >
         <Box>
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              background: "#EDEFF5",
-              borderRadius: "8px",
-              padding: "20px 20px",
-            }}
-            className="bg-black"
-          >
-            <Typography
-              id="modal-modal-title"
-              variant="h6"
-              component="h2"
-              sx={{
-                fontWeight: "500",
-                fontSize: "18px",
-              }}
-            >
-              Create New news
-            </Typography>
-
-            <IconButton
-              aria-label="remove"
-              size="small"
-              onClick={handleClose}
-              className="modal-close"
-            >
-              <ClearIcon />
-            </IconButton>
-          </Box>
+          <HeadBox handleClose={handleClose} title={"Add News"} />
 
           <Box component="form" noValidate onSubmit={handleSubmit}>
             <Box
@@ -420,8 +388,7 @@ export default function NewsPageComponent() {
             >
               <Grid container alignItems="center" spacing={2}>
                 <Grid item xs={12} md={12} lg={6}>
-              <CustomTypography text={"Image"} />
-
+                  <CustomTypography text={"Image"} />
 
                   <TextField
                     autoComplete="image"
@@ -438,7 +405,6 @@ export default function NewsPageComponent() {
                 </Grid>
 
                 <Grid item xs={12} md={12} lg={6}>
-  
                   <CustomTypography text={"title"} />
 
                   <TextField
