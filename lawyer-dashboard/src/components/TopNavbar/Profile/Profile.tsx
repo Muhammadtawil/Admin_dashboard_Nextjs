@@ -1,4 +1,3 @@
-import { cookies } from "next/headers";
 import {
   IconButton,
   Typography,
@@ -7,7 +6,6 @@ import {
   Avatar,
   Menu,
   MenuItem,
-  Link,
   ListItemIcon,
   Divider,
 } from "@mui/material";
@@ -15,17 +13,9 @@ import {
 import Logout from "@mui/icons-material/Logout";
 import React from "react";
 import { signOut, useSession } from "next-auth/react";
-const Profile = ({
-  profileImageUrl,
-  userName,
-  userRole,
-}: // logout,
-{
-  profileImageUrl: string;
-  userName: string;
-  userRole: any;
-  // logout: any;
-}) => {
+import Link from "next/link";
+import { redirect } from "next/dist/server/api-utils";
+const Profile = () => {
   const { data: session } = useSession();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -99,7 +89,7 @@ const Profile = ({
             <Avatar src={session.userImageUrl} className="mr-1" />
             <Box>
               <Typography sx={{ fontSize: "11px", color: "#757FEF" }}>
-                {userRole}
+                {session.UserRole}
               </Typography>
               <Typography
                 sx={{
@@ -118,13 +108,11 @@ const Profile = ({
           <MenuItem>
             <ListItemIcon
               sx={{ mr: "-8px", mt: "-3px" }}
-              onClick={() => signOut()}
+              onClick={() => signOut({ redirect: true, callbackUrl: "/" })}
             >
               <Logout fontSize="small" />
             </ListItemIcon>
-            {/* <Link  fontSize="13px" color="inherit" underline="none"> */}
             Logout
-            {/* </Link> */}
           </MenuItem>
         </Menu>
       </>

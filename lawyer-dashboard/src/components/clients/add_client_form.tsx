@@ -64,11 +64,38 @@ export default function AddTaskForm({
 
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Status"} />
+
                   <ValuesSelect name={"clientStatus"} values={clientValues} />
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Service"} />
-                  <ValuesSelect name={"clientService"} values={servicesList} />
+
+                  <select
+                    className="form-select bg-light border-0"
+                    name="clientService"
+                    style={{
+                      height: "55px",
+                      color: "black",
+                      width: "100%",
+                      borderRadius: "3%",
+                    }}
+                  >
+                    <option value="">Service</option>
+                    {servicesList.length === 0 ? (
+                      <option value="" disabled>
+                        Loading...
+                      </option>
+                    ) : (
+                      servicesList.map((service: any, index: any) => (
+                        <option
+                          key={index}
+                          value={servicesList[index].serviceTitle}
+                        >
+                          {servicesList[index].serviceTitle}
+                        </option>
+                      ))
+                    )}
+                  </select>
                 </Grid>
                 <FormFooter handleClose={handleClose} title={"Add Client"} />
               </Grid>

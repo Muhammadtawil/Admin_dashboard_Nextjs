@@ -6,10 +6,10 @@ import ScrollToTop from "@/components/shared/ScrollToTop";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 // import Sidebar from "@/components/LeftSidebar/SubMenu";
-import { useEffect, useRef, useState } from "react";
-import SideNavbar from "@/components/sidebar/SideBarTest";
+import { useState } from "react";
+
 import Sidebar from "@/components/LeftSidebar/LeftSideBar";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 // import SidebarTest from "@/components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
@@ -21,56 +21,47 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function ClientLayout({
   children,
-  userImageUrl,
-  userName,
-  userRole,
-}: // deleteTokens,
-{
+}: {
   children: React.ReactNode;
-  userImageUrl: any;
-  userName: string;
-  userRole: any;
-  // deleteTokens: any;
 }) {
-  const router = usePathname();
-
   const [active, setActive] = useState(false);
 
   const toggleActive = () => {
     setActive(!active);
   };
+  const router = usePathname();
+
+  const isLoginPage = router.startsWith("/login");
+
   return (
     <html lang="en">
       <Head>
         <title>Dashboard</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
+      {isLoginPage ? (
+        <body className={inter.className}>{children}</body>
+      ) : (
+        <body className={inter.className}>
+          <div className={`main-wrapper-content ${active && "active"}`}>
+            <>
+              <TopNavbar toogleActive={toggleActive} />
+              <Sidebar toggleActive={toggleActive} />
+            </>
 
-      <body className={inter.className}>
-        <div className={`main-wrapper-content ${active && "active"}`}>
+            {children}
+          </div>
+          {/* </div> */}
+
+          {/* ScrollToTop */}
+
           <>
-            <TopNavbar
-              toogleActive={toggleActive}
-              userImageUrl={userImageUrl}
-              userName={userName}
-              userRole={userRole}
-              // logout={deleteTokens}
-            />
-            <Sidebar toggleActive={toggleActive} />
+            <ScrollToTop />
+
+            <ControlPanelModal />
           </>
-
-          {children}
-        </div>
-        {/* </div> */}
-
-        {/* ScrollToTop */}
-
-        <>
-          <ScrollToTop />
-
-          <ControlPanelModal />
-        </>
-      </body>
+        </body>
+      )}
     </html>
   );
 }

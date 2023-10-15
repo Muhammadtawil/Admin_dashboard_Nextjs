@@ -1,4 +1,7 @@
-import LoginMain from "@/components/login/login_main";
+"use client";
+import ClientsComponentList from "@/components/clients/clients";
+import React from "react";
+
 // Globals Styles
 import "../../styles/globals.css";
 // Rtl Styles
@@ -9,13 +12,14 @@ import "../../styles/dark.css";
 import theme from "../../styles/theme";
 import "react-tabs/style/react-tabs.css";
 import PageTitle from "@/components/shared/PageTitle/pageTitle";
-import "./layout";
-const LoginPage = async () => {
+import { useSession } from "next-auth/react";
+export default function ClientsPage() {
+  const { data: session } = useSession();
   return (
     <>
-      <LoginMain />
+      <PageTitle title="Dashboard" />
+
+      <h1>{`Welcome ${session?.userName}`}</h1>
     </>
   );
-};
-
-export default LoginPage;
+}

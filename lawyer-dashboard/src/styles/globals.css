@@ -1181,3 +1181,14 @@ img {
   top: 0px;
   margin-left: 3px;
 }/*# sourceMappingURL=globals.css.map */
+
+@media (max-width: 768px) {
+  .main-wrapper-content {
+    /* Add CSS to hide the sidebar on mobile view */
+    transform: translateX(-100%);
+  }
+  .main-wrapper-content.active {
+    /* Add CSS to show the sidebar when active */
+    transform: translateX(0);
+  }
+}

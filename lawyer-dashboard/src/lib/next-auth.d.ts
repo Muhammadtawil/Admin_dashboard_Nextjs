@@ -4,7 +4,7 @@ declare module "next-auth" {
     userId: any;
     userName: any;
     userImageUrl: any;
-    userRole: string;
+    UserRole: string;
     accessToken: string;
     refreshToken: string;
     expiresIn: number;
@@ -18,7 +18,7 @@ declare module "next-auth/jwt" {
     userId: string;
     userName: string;
     userImageUrl: string;
-    userRole: string;
+    UserRole: string;
     accessToken: string;
     refreshToken: string;
     expiresIn: any;

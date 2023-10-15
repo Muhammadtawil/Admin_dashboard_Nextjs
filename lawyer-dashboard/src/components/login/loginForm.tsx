@@ -1,23 +1,56 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
 import { LoginAlert, successAlert } from "../alerts/alerts";
-import { redirect, useRouter } from "next/navigation";
-import { useSession } from "next-auth/react";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { signIn, useSession } from "next-auth/react";
 import ToDo from "@/app/tasks/page";
-export default function LoginForm({
-  onLogin,
-  userName,
-  isLogin,
-}: {
-  onLogin: any;
-  userName: any;
-  isLogin: boolean;
-}) {
-  // const { data: session } = useSession();
-  // console.log({ session });
 
-  // if (session && session.user) return <ToDo />;
+export default function LoginForm() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [formValues, setFormValues] = useState({
+    userName: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl") || "/main";
+
+  const onSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      setFormValues({ userName: "", password: "" });
+
+      const res = await signIn("credentials", {
+        redirect: false,
+        userName: formValues.userName,
+        password: formValues.password,
+        callbackUrl: "/main",
+      });
+
+      setLoading(false);
+
+      console.log(res);
+      if (!res?.error) {
+        // redirect("/main");
+        router.replace(callbackUrl);
+      } else {
+        setError("invalid email or password");
+      }
+    } catch (error: any) {
+      setLoading(false);
+      setError(error);
+    }
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
   return (
     <div className="user-area-all-style log-in-area ptb-100">
       <div className="container">
@@ -28,17 +61,7 @@ export default function LoginForm({
                 <h3 className="form-title">Login to your account!</h3>
               </div>
 
-              <form
-                noValidate={false}
-                action={async (formData) => {
-                  await onLogin(formData);
-                  // await LoginAlert(userName);
-                  //   const router = useRouter();
-                  //   router.replace("/tasks");
-
-                  isLogin ? redirect("/tasks") : null;
-                }}
-              >
+              <form noValidate={false} onSubmit={onSubmit}>
                 <div className="row">
                   <div className="col-12">
                     <div className="form-group">
@@ -46,6 +69,8 @@ export default function LoginForm({
                         className="form-control"
                         type="text"
                         name="userName"
+                        value={formValues.userName}
+                        onChange={handleChange}
                         placeholder="Username or Email"
                       />
                     </div>
@@ -56,7 +81,9 @@ export default function LoginForm({
                       <input
                         className="form-control"
                         type="password"
-                        name="userPassword"
+                        value={formValues.password}
+                        onChange={handleChange}
+                        name="password"
                         placeholder="Password"
                       />
                     </div>
@@ -84,11 +111,14 @@ export default function LoginForm({
                   </div>
 
                   <div className="col-12">
-                    <Link href={"/api/auth/signin"}>
-                      <button className="default-btn btn-two" type="submit">
-                        Log In Now
-                      </button>
-                    </Link>
+                    <button
+                      className="default-btn btn-two"
+                      type="submit"
+                      disabled={loading}
+                    >
+                      {loading ? "loading..." : "Sign In"}
+                      Log In Now
+                    </button>
                   </div>
                 </div>
               </form>
@@ -99,3 +129,11 @@ export default function LoginForm({
     </div>
   );
 }
+
+// action={async (formData) => {
+//   await onLogin(formData);
+// await LoginAlert(userName);
+//   const router = useRouter();
+//   router.replace("/tasks");
+
+// }}

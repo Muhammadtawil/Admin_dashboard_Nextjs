@@ -1,4 +1,3 @@
-import { GetUser } from "@/server/users/users";
 import { NextAuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import NextAuth from "next-auth/next";
@@ -6,7 +5,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { redirect, useRouter } from "next/navigation";
 
 const Backend_URL = process.env.LOGIN_URL;
-const url = "/tasks";
 // Define the structure of your token
 interface CustomToken extends JWT {}
 
@@ -35,6 +33,10 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
+  pages: {
+    signIn: "/login",
+    signOut: "/login",
+  },
   providers: [
     CredentialsProvider({
       name: "Clickers",
@@ -48,8 +50,6 @@ export const authOptions: NextAuthOptions = {
       },
 
       async authorize(credentials, req) {
-        const userInfo = await GetUser();
-
         if (!credentials?.userName || !credentials?.password) return null;
         const { userName, password } = credentials;
         const res = await fetch(`${Backend_URL}`, {
@@ -84,21 +84,13 @@ export const authOptions: NextAuthOptions = {
   ],
 
   callbacks: {
-    async redirect({ url, baseUrl }) {
-      // Check if the current URL is not the '/tasks' page
-      if (!url.includes("/tasks")) {
-        // Redirect to the '/tasks' page
-        return "/tasks";
-      }
-
-      // Check if the URL is the sign-out URL
-      if (url.includes("/signout")) {
-        // Redirect to the desired sign-out URL
-        return "/custom-sign-out-url";
-      }
-
-      return url;
-    },
+    // async redirect({ url, baseUrl }) {
+    //   // Allows relative callback URLs
+    //   if (url.startsWith("/")) return `${baseUrl}${url}`;
+    //   // Allows callback URLs on the same origin
+    //   else if (new URL(url).origin === baseUrl) return url;
+    //   return baseUrl;
+    // },
     async jwt({ token, user }) {
       if (user) return { ...token, ...user };
 
@@ -121,7 +113,7 @@ export const authOptions: NextAuthOptions = {
       session.accessToken = token.accessToken;
       session.userName = token.userName;
       session.userImageUrl = token.userImageUrl;
-      session.userRole = token.userRole;
+      session.UserRole = token.UserRole;
       console.log("Session Info:", session);
       return session;
     },

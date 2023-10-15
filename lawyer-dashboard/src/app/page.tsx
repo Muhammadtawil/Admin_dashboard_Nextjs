@@ -1,4 +1,3 @@
-
 import "./page.module.css";
 import "../styles/remixicon.css";
 // Chat Styles
@@ -18,10 +17,5 @@ import "../styles/style.css";
 import { CssBaseline } from "@mui/material";
 
 export default function Home() {
-
-  return (
-    <>
-      <CssBaseline />
-    </>
-  );
+  return <></>;
 }

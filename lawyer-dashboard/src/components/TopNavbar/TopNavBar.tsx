@@ -5,20 +5,14 @@ import SearchForm from "./search/SearchForm";
 import CurrentDate from "./Date/CurrentDate";
 import Profile from "./Profile/Profile";
 import Notifications from "./notification/Notification";
-import { GetUser } from "@/server/users/users";
+
 
 const TopNavbar = ({
   toogleActive,
-  userImageUrl,
-  userName,
-  userRole,
-  // logout,
+ 
 }: {
   toogleActive: any;
-  userImageUrl: any;
-  userName: string;
-  userRole: any;
-  // logout: any;
+
 }) => {
   return (
     <>
@@ -60,10 +54,8 @@ const TopNavbar = ({
 
               {/* Profile */}
               <Profile
-                profileImageUrl={userImageUrl}
-                userName={userName}
-                userRole={userRole}
-                // logout={logout}
+              
+  
               />
             </Stack>
           </Toolbar>

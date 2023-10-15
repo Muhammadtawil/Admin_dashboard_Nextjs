@@ -253,3 +253,14 @@ export const ValuesSelect = ({ name, values }: { name: any; values?: any }) => {
     </select>
   );
 };
+
+// export const handleInputChange = (
+
+//   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+// ) => {
+//   const { name, value } = e.target;
+//   setFormData((prevFormData) => ({
+//     ...prevFormData,
+//     [name]: value,
+//   }));
+// };

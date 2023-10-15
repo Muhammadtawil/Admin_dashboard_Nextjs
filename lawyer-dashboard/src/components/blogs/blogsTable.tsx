@@ -16,7 +16,7 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import { deleteAlert } from "../alerts/alerts";
-import { Dialog, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 import EditBlogAddComponent from "./EditBlogForm";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
