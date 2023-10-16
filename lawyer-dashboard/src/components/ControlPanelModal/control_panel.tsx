@@ -10,7 +10,6 @@ import Button from "@mui/material/Button";
 import DarkAndLightMode from "./DarkAndLightMode";
 import OnlyLeftSidebarDarkMode from "./OnlyLeftSidebarDarkMode";
 import RTLSwitch from "./RTLSwitch";
-import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";

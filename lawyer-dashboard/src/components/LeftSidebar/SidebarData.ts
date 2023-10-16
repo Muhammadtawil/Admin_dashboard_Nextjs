@@ -98,7 +98,7 @@ export const SidebarData = [
   },
   {
     title: "Testimonials",
-    path: "/ar",
+    path: "/testimonials",
     icon: RateReviewOutlinedIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,
