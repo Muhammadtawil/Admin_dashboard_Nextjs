@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import styles from "./DarkAndLightMode.module.css";
+import { FormControlLabel, Switch, styled } from "@mui/material";
+import { MaterialUISwitch } from "../shared/theme";
 
 const DarkAndLightMode = () => {
   // Light/Dark Mode
@@ -35,18 +37,16 @@ const DarkAndLightMode = () => {
   return (
     <>
       <div className={styles.darkModeBox}>
-        <h3>Dark/Light Mode</h3>
-
-        <Button
-          onClick={handleToggle}
-          variant="contained"
-          sx={{
-            textTransform: "capitalize",
-          }}
-          className="whiteColor"
-        >
-          Switch to {isDarkMode ? "Light Mode" : "Dark Mode"}
-        </Button>
+        <FormControlLabel
+          control={
+            <MaterialUISwitch
+              sx={{ m: 1 }}
+              defaultChecked
+              onClick={handleToggle}
+            />
+          }
+          label={`Switch to ${isDarkMode ? "Light Mode" : "Dark Mode"}`}
+        />
       </div>
     </>
   );

@@ -1,6 +1,3 @@
-"use server";
-import Link from "next/link";
-import styles from "@/styles/PageTitle.module.css";
 import ToDoLists from "@/components/todo/todo_list";
 import "../page.module.css";
 import "../../styles/remixicon.css";
@@ -16,7 +13,7 @@ import "../../styles/dark.css";
 import theme from "../../styles/theme";
 import PageTitle from "@/components/shared/PageTitle/pageTitle";
 
-export default async function ToDo() {
+export default function ToDo() {
   return (
     <>
       <PageTitle title="Tasks" />

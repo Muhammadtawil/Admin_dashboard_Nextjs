@@ -45,7 +45,7 @@ export default function EditBlogAddComponent({
       formData.append("image", selectedImage);
     }
 
-    await UpdateImage(formData);
+    await UpdateImage(formData,selectedBlog.blogId);
   };
 
   // Select Priority

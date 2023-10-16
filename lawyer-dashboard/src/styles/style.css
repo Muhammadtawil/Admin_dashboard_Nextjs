@@ -5017,3 +5017,9 @@ a:focus,
     color: rgba(255, 255, 255, 1) !important;
 }
 
+.eye-icon {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+}

@@ -1,27 +1,16 @@
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import GridViewIcon from "@mui/icons-material/GridView";
-import LayersIcon from "@mui/icons-material/Layers";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import LockIcon from "@mui/icons-material/Lock";
-import SettingsIcon from "@mui/icons-material/Settings";
-import PostAddIcon from "@mui/icons-material/PostAdd";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
-import CopyAllIcon from "@mui/icons-material/CopyAll";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import NewspaperIcon from "@mui/icons-material/Newspaper";
-import ArticleIcon from "@mui/icons-material/Article";
 import WorkIcon from "@mui/icons-material/Work";
-import RateReviewIcon from "@mui/icons-material/RateReview";
 import RateReviewOutlinedIcon from "@mui/icons-material/RateReviewOutlined";
-import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
-import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
-import PeopleOutlinedIcon from '@mui/icons-material/PeopleOutlined';
-import ConnectWithoutContactOutlinedIcon from '@mui/icons-material/ConnectWithoutContactOutlined';
-import AttachEmailOutlinedIcon from '@mui/icons-material/AttachEmailOutlined';
-import AddTaskOutlinedIcon from '@mui/icons-material/AddTaskOutlined';
-import EqualizerOutlinedIcon from '@mui/icons-material/EqualizerOutlined';
+import ArticleOutlinedIcon from "@mui/icons-material/ArticleOutlined";
+import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
+import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
+import ConnectWithoutContactOutlinedIcon from "@mui/icons-material/ConnectWithoutContactOutlined";
+import AttachEmailOutlinedIcon from "@mui/icons-material/AttachEmailOutlined";
+import AddTaskOutlinedIcon from "@mui/icons-material/AddTaskOutlined";
+import InfoIcon from "@mui/icons-material/Info";
 export const SidebarData = [
   {
     title: "Dashboard",
@@ -101,8 +90,15 @@ export const SidebarData = [
     // ],
   },
   {
+    title: "About",
+    path: "/about",
+    icon: InfoIcon,
+    iconClosed: KeyboardArrowRightIcon,
+    iconOpened: KeyboardArrowDownIcon,
+  },
+  {
     title: "Testimonials",
-    path: "/teamTest",
+    path: "/ar",
     icon: RateReviewOutlinedIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,

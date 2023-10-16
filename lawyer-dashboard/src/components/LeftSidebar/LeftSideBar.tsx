@@ -44,8 +44,8 @@ const Sidebar = ({ toogleActive }: any) => {
                 justifyContent: "space-between",
               }}
             >
-              <Link href="/">
-                <img src="/images/clicker.png" alt="PDF Icon" width={120} />{" "}
+              <Link href="/main">
+                <img src="/images/clicker.png" alt="PDF Icon" width={120} />
               </Link>
 
               <IconButton

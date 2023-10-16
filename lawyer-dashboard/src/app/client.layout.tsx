@@ -11,6 +11,7 @@ import { useState } from "react";
 import Sidebar from "@/components/LeftSidebar/LeftSideBar";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
+
 // import SidebarTest from "@/components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -57,8 +58,9 @@ export default function ClientLayout({
 
           <>
             <ScrollToTop />
-
-            <ControlPanelModal />
+  
+              <ControlPanelModal />
+     
           </>
         </body>
       )}

@@ -5,19 +5,46 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
-import { Box } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
 import DarkAndLightMode from "./DarkAndLightMode";
 import OnlyLeftSidebarDarkMode from "./OnlyLeftSidebarDarkMode";
-import OnlyTopNavbarDark from "./OnlyTopNavbarDark";
 import RTLSwitch from "./RTLSwitch";
+import { createTheme, ThemeProvider, useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import ToggleButton from "@mui/material/ToggleButton";
+import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 
 export default function ControlPanelModal() {
   const [isActiveSearchModal, setActiveSearchModal] = useState(true);
   const handleToggleSearchModal = () => {
     setActiveSearchModal(!isActiveSearchModal);
   };
+
+  // const { locale, setLocale } = useLocale();
+
+  // // Handle locale change
+  // const handleLocaleChange = (newLocale: any) => {
+  //   setLocale(newLocale);
+  // };
+
+  // const [locale, setLocale] = React.useState<SupportedLocales>("enUS");
+
+  // const theme = useTheme();
+
+  // const themeWithLocale = React.useMemo(
+  //   () => createTheme(theme, locales[locale]),
+  //   [locale, theme]
+  // );
+
+  // const handleLocaleChange = (
+  //   event: React.MouseEvent<HTMLElement>,
+  //   newLocale: SupportedLocales | null
+  // ) => {
+  //   if (newLocale) {
+  //     setLocale(newLocale);
+  //   }
+  // };
 
   return (
     <>
@@ -58,16 +85,24 @@ export default function ControlPanelModal() {
 
           <Box p={3} className="control-panel-content">
             {/* DarkAndLightMode */}
+            {/* <ThemeProvider theme={themeWithLocale}> */}
             <DarkAndLightMode />
 
             {/* OnlyLeftSidebarDarkMode */}
             <OnlyLeftSidebarDarkMode />
-
-            {/* OnlyTopNavbarDark */}
-            <OnlyTopNavbarDark />
-
+            {/* Toggle between English and Arabic */}
+            <ToggleButtonGroup
+              // value={locale}
+              exclusive
+              // onChange={handleLocaleChange}
+              aria-label="Choose Locale"
+            >
+              <ToggleButton value="enUS">English</ToggleButton>
+              <ToggleButton value="arSA">Arabic</ToggleButton>
+            </ToggleButtonGroup>
             {/* RTLSwitch */}
             <RTLSwitch />
+            {/* </ThemeProvider> */}
           </Box>
 
           <div className="control-panel-footer">

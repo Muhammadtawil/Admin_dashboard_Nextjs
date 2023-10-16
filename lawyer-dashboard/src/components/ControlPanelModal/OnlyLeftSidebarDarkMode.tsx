@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import styles from "./DarkAndLightMode.module.css";
+import { FormControlLabel } from "@mui/material";
+import { MaterialUISwitch } from "../shared/theme";
 
 const OnlyLeftSidebarDarkMode = () => {
   // Light/Dark Mode
@@ -33,18 +35,16 @@ const OnlyLeftSidebarDarkMode = () => {
   return (
     <>
       <div className={styles.darkModeBox}>
-        <h3>Only Left Sidebar Dark/Light Mode</h3>
-
-        <Button
-          onClick={handleToggle}
-          variant="contained"
-          sx={{
-            textTransform: "capitalize",
-          }}
-          className="whiteColor"
-        >
-          Switch to {isDarkMode ? "Light Mode" : "Dark Mode"}
-        </Button>
+        <FormControlLabel
+          control={
+            <MaterialUISwitch
+              sx={{ m: 1 }}
+              defaultChecked
+              onClick={handleToggle}
+            />
+          }
+          label={`Side Bar / ${isDarkMode ? "Light Mode" : "Dark Mode"}`}
+        />
       </div>
     </>
   );

@@ -23,7 +23,7 @@ import StyledDialogTitle from "../shared/StyledDialogTitle";
 import cellStyle from "../shared/cellStyle";
 import ActionsComponent from "../shared/PaginationList";
 
-export default function ClientTable({
+export default function BlogsTable({
   dataRows,
   deleteTask,
   updateTask,

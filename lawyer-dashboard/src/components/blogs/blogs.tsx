@@ -1,3 +1,4 @@
+
 import React from "react";
 import BlogAddComponent from "./AddBlogForm";
 import AddBlog, {
@@ -8,6 +9,7 @@ import AddBlog, {
 } from "@/server/blogs/blogs";
 import { revalidatePath } from "next/cache";
 import Blog from "./blogsTable";
+import BlogsTable from "./blogsTable";
 
 export let isEdit: boolean;
 
@@ -44,18 +46,19 @@ async function Delete(blogId: string) {
     revalidatePath("/blogs", "page");
   } catch (error) {}
 }
+async function updateImage(formData: FormData, blogId: string) {
+  "use server";
+
+  await UpdateBlogImage(formData, blogId);
+}
 
 export default async function BlogsComponent() {
   const blogs = await GetBlogs();
-  async function updateImage(formData: FormData, blogId: string) {
-    "use server";
-
-    await UpdateBlogImage(formData, blogs[0].blogId);
-  }
+ 
   return (
     <>
       <BlogAddComponent onCreate={onCreate} />
-      <Blog
+      <BlogsTable
         dataRows={blogs}
         deleteTask={Delete}
         updateTask={onUpdate}

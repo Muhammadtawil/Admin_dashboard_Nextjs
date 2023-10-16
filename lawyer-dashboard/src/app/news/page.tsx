@@ -13,11 +13,12 @@ import "react-tabs/style/react-tabs.css";
 import Link from "next/link";
 import NewsPageComponent from "../../components/news/newsForm";
 import PageTitle from "@/components/shared/PageTitle/pageTitle";
+import NewsComponent from "@/components/news/news";
 export default function BlogPage() {
   return (
     <>
       <PageTitle title="News" />
-      <NewsPageComponent />
+      <NewsComponent />
     </>
   );
 }

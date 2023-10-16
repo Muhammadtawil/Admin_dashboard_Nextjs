@@ -2,6 +2,10 @@
 import ClientsComponentList from "@/components/clients/clients";
 import React from "react";
 
+import "../page.module.css";
+import "../../styles/remixicon.css";
+// Chat Styles
+import "../../styles/chat.css";
 // Globals Styles
 import "../../styles/globals.css";
 // Rtl Styles
@@ -10,7 +14,6 @@ import "../../styles/rtl.css";
 import "../../styles/dark.css";
 // Theme Styles
 import theme from "../../styles/theme";
-import "react-tabs/style/react-tabs.css";
 import PageTitle from "@/components/shared/PageTitle/pageTitle";
 import { useSession } from "next-auth/react";
 export default function ClientsPage() {

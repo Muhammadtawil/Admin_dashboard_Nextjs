@@ -1,14 +1,21 @@
 "use client";
 import Link from "next/link";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import InputAdornment from "@mui/material/InputAdornment";
+
 import React, { ChangeEvent, useState } from "react";
 import { LoginAlert, successAlert } from "../alerts/alerts";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { signIn, useSession } from "next-auth/react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { signIn } from "next-auth/react";
 import ToDo from "@/app/tasks/page";
+import { IconButton, TextField } from "@mui/material";
 
 export default function LoginForm() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
   const [formValues, setFormValues] = useState({
     userName: "",
     password: "",
@@ -75,16 +82,31 @@ export default function LoginForm() {
                       />
                     </div>
                   </div>
-
                   <div className="col-12">
                     <div className="form-group">
-                      <input
-                        className="form-control"
-                        type="password"
+                      <TextField
+                        type={showPassword ? "text" : "password"}
                         value={formValues.password}
                         onChange={handleChange}
                         name="password"
+                        label="Password"
                         placeholder="Password"
+                        InputProps={{
+                          endAdornment: (
+                            <InputAdornment position="end">
+                              <IconButton
+                                onClick={() => setShowPassword(!showPassword)}
+                                color="primary"
+                              >
+                                {showPassword ? (
+                                  <Visibility />
+                                ) : (
+                                  <VisibilityOff />
+                                )}
+                              </IconButton>
+                            </InputAdornment>
+                          ),
+                        }}
                       />
                     </div>
                   </div>
@@ -103,7 +125,11 @@ export default function LoginForm() {
                       </div>
                     </div>
                   </div>
-
+                  {error && (
+                    <div className="col-12">
+                      <p className="text-danger">{error}</p>
+                    </div>
+                  )}
                   <div className="col-lg-6 col-sm-6">
                     <Link href="/recover" className="forget">
                       Forgot my password?
@@ -116,8 +142,7 @@ export default function LoginForm() {
                       type="submit"
                       disabled={loading}
                     >
-                      {loading ? "loading..." : "Sign In"}
-                      Log In Now
+                      {loading ? "loading..." : "Log In Now"}
                     </button>
                   </div>
                 </div>
