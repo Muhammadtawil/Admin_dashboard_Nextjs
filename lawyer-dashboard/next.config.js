@@ -5,6 +5,9 @@ const nextConfig = {
     appDir: true,
     serverActions: true, // Enable Server Actions
   },
+  devIndicators: {
+    autoPrerender: false,
+  },
   productionBrowserSourceMaps: false,
   // Add other configuration options as needed
 

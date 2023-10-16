@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import styles from "./SubMenu.module.css";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 const SidebarLabel = styled("span")(({ theme }) => ({
   position: "relative",
@@ -23,22 +23,19 @@ const SubMenu = ({ item }: any) => {
   return (
     <>
       <Link
-        
+        replace
         href={item.path}
         onClick={item.subNav && showSubnav}
         className={`${styles.sidebarLink} ${
           currentPath == item.path && "sidebarLinkActive"
         }`}
       >
- 
-         <div>
-         
-         {item.icon && (
-           <item.icon /> // Render the icon component
-         )}
-         <SidebarLabel className="ml-1">{item.title}</SidebarLabel>
-       </div>
-     
+        <div>
+          {item.icon && (
+            <item.icon /> // Render the icon component
+          )}
+          <SidebarLabel className="ml-1">{item.title}</SidebarLabel>
+        </div>
 
         <div>
           {item.subNav && subnav

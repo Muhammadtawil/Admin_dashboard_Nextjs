@@ -4,13 +4,22 @@ import ControlPanelModal from "@/components/ControlPanelModal/control_panel";
 import TopNavbar from "@/components/TopNavbar/TopNavBar";
 import ScrollToTop from "@/components/shared/ScrollToTop";
 import { Inter } from "next/font/google";
-import type { Metadata } from "next";
-// import Sidebar from "@/components/LeftSidebar/SubMenu";
-import { useState } from "react";
-
 import Sidebar from "@/components/LeftSidebar/LeftSideBar";
 import { usePathname } from "next/navigation";
 
+import ".././styles/remixicon.css";
+// Chat Styles
+import ".././styles/chat.css";
+// Globals Styles
+import ".././styles/globals.css";
+// Rtl Styles
+import ".././styles/rtl.css";
+// Dark Mode Styles
+import ".././styles/dark.css";
+// Theme Styles
+import theme from ".././styles/theme";
+import "react-tabs/style/react-tabs.css";
+import { useState } from "react";
 // import SidebarTest from "@/components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,6 +46,7 @@ export default function ClientLayout({
     <html lang="en">
       <Head>
         <title>Dashboard</title>
+        <link rel="preload" href="style.css" as="style" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       {isLoginPage ? (
@@ -47,6 +57,7 @@ export default function ClientLayout({
             <>
               <TopNavbar toogleActive={toggleActive} />
               <Sidebar toggleActive={toggleActive} />
+              {/* <SideNav onClose={() => setOpenNav(true)} open={openNav} /> */}
             </>
 
             {children}

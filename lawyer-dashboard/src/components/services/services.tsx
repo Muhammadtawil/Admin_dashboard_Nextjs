@@ -12,7 +12,7 @@ async function Delete(serviceId: string) {
   "use server";
   try {
     await DeleteService(serviceId);
-    revalidatePath("/services", "page");
+    // revalidatePath("/services", "page");
   } catch (error) {}
 }
 
@@ -20,7 +20,7 @@ async function onCreate(formData: FormData) {
   "use server";
   try {
     await AddService(formData);
-    revalidatePath("/services", "page");
+    // revalidatePath("/services", "page");
   } catch (error) {}
 }
 
@@ -28,7 +28,7 @@ async function onUpdate(formData: FormData, clientId: string) {
   "use server";
   try {
     await UpdateService(formData, clientId);
-    revalidatePath("/services", "page");
+    // revalidatePath("/services", "page");
   } catch (error) {}
 }
 
