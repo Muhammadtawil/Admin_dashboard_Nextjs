@@ -2,7 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { redirect, useRouter } from "next/navigation";
+
 
 const Backend_URL = process.env.LOGIN_URL;
 // Define the structure of your token

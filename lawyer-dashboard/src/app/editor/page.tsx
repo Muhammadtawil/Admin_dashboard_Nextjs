@@ -5,10 +5,11 @@
 // } from "@syncfusion/ej2-react-documenteditor";
 
 // import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import EditorHtml from "@/components/editor/editorHtml";
 import "draft-js/dist/Draft.css";
 
 import "react-tabs/style/react-tabs.css";
-import MyEditor from "@/components/editor/docEditor";
+
 export default function DocEditor() {
   return (
     <>
@@ -21,7 +22,7 @@ export default function DocEditor() {
           <li>Clients</li>
         </ul>
       </div> */}
-      <MyEditor />
+      <h1>Editor </h1>
     </>
   );
 }

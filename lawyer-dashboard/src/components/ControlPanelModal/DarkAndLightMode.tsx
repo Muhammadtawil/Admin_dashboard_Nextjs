@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Button from "@mui/material/Button";
 import styles from "./DarkAndLightMode.module.css";
 import { FormControlLabel, Switch, styled } from "@mui/material";
 import { MaterialUISwitch } from "../shared/theme";

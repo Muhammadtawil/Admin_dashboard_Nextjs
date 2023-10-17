@@ -1,5 +1,4 @@
 "use client";
-import React, { useState } from "react";
 import Link from "next/link";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
@@ -17,6 +16,7 @@ import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import CloseIcon from "@mui/icons-material/Close";
 import PropTypes from "prop-types";
+import React, { useState, useCallback } from "react";
 
 import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
@@ -33,6 +33,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     padding: theme.spacing(1),
   },
 }));
+
 
 function BootstrapDialogTitle(props: any) {
   const { children, onClose, ...other } = props;
@@ -64,6 +65,12 @@ BootstrapDialogTitle.propTypes = {
 };
 
 const LeftSidebar = () => {
+  const [richTextValue, setRichTextValue] = useState(""); // State to hold the value
+
+const handleRichTextChange = useCallback((value:any) => {
+  setRichTextValue(value);
+}, []);
+
   const router = usePathname();
 
   const [open, setOpen] = useState(false);
@@ -286,6 +293,8 @@ const LeftSidebar = () => {
 
                 <Grid item xs={12}>
                   <RichTextEditor
+                    value={richTextValue} // Pass the value
+                    onChange={handleRichTextChange} // Pass the change handler
                     id="rte"
                     controls={[
                       ["bold", "italic", "underline", "link", "image"],

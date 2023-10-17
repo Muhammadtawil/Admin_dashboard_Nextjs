@@ -1,11 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
-import { revalidatePath, revalidateTag } from "next/cache";
-import { cookies } from "next/headers";
-const token = cookies().get("accessToken")?.value;
-const userId = cookies().get("userId")?.value;
+import { revalidatePath } from "next/cache";
 const assignTasksUrl = process.env.ASSIGN_TASK_URL;
-const assignedTasks = process.env.ASSIGNED_TASKS_URL;
 const tasks_url = process.env.TASKS_URL;
 const update_assigned = process.env.UPDATE_ASSIGN_URL;
 // const userId = process.env.USERID;
@@ -328,14 +324,8 @@ export async function DeleteAssignedTask(taskId: string) {
     }
 
     console.log("Task deleted successfully");
-
-    // Optionally, you can revalidate tags or perform a redirect here
-    // revalidatePath("/tasks", "page");
-    // revalidateTag("tasks");
-    //      redirect("/");
   } catch (error) {
     console.error("Error Deleting task:", error);
-    // Handle the error here
   }
 }
 
@@ -380,10 +370,6 @@ export async function UpdateAssignedTask(data: FormData, taskId: string) {
 
     const responseData = await response.json();
     console.log("assigned task Updated successfully:", responseData);
-
-    // Optionally, you can revalidate tags or perform a redirect here
-    // revalidateTag("posts");
-    // redirect("/tasks");
   } catch (error) {
     console.error("Error update assigned task:", error);
     // Handle the error here

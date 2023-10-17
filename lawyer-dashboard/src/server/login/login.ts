@@ -1,7 +1,3 @@
-"use server";
-import { redirect, useRouter } from "next/navigation";
-import { Router } from "next/router";
-import { cookies } from "next/headers";
 const login_url = process.env.LOGIN_URL;
 
 export default async function SignIn(data: FormData) {
@@ -38,49 +34,21 @@ export default async function SignIn(data: FormData) {
     // Check if the response contains an accessToken
     if (responseData.accessToken) {
       // Store the token as an HTTP cookie with a specified expiration time (e.g., 1 day)
-      cookies().delete("accessToken");
-      cookies().delete("userId");
-
-      cookies().set("accessToken", `${responseData.accessToken}`, {
-        secure: true,
-      });
-      cookies().set("userId", `${responseData.userId}`, { secure: true });
 
       console.log("user login Successfully:", responseData);
       // Log the access token and user ID (optional)
       console.log("Access Token:", responseData.accessToken);
       console.log("User ID:", responseData.userId);
-      console.log(cookies().get("accessToken"));
-      console.log(cookies().get("userId"));
-      // Redirect to '/tasks' page
-      // Redirect to '/login' page using Next.js Router
+
       if (response.status == 201 || response.status == 200) {
         // redirect("/tasks");
       }
     }
-
-    // Optionally, you can revalidate tags or perform a redirect here
-    // revalidateTag("posts");
-    // redirect("/tasks");z
   } catch (error) {
     console.error("Error adding task:", error);
-    // Handle the error here
   }
 }
 
-// export async function logout() {
-//   "use server";
-//   cookies().set({
-//     name: "accessToken",
-//     value: "",
-//     path: "/",
-//   });
-// }
-
 export async function deleteTokens() {
   "use server";
-
-  cookies().delete("accessToken");
-  cookies().delete("userId");
-  // cookies().delete("PGADMIN_LANGUAGE")
 }

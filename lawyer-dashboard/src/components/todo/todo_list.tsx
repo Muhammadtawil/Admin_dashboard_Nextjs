@@ -8,7 +8,6 @@ import CreateTask, {
   getAssignedToTasks,
   getTasks,
 } from "@/server/tasks/tasks";
-import { revalidatePath } from "next/cache";
 import AddTaskForm from "./add_task_form";
 import { GetUser, GetUsers } from "@/server/users/users";
 import { Typography } from "@mui/material";
@@ -18,7 +17,6 @@ async function Delete(taskId: string) {
   "use server";
   try {
     await DeleteTask(taskId);
-    revalidatePath("/tasks", "page");
   } catch (error) {}
 }
 
@@ -26,7 +24,6 @@ async function DeleteAssignedTasks(assigntaskId: string) {
   "use server";
   try {
     await DeleteAssignedTask(assigntaskId);
-    revalidatePath("/tasks", "page");
   } catch (error) {
     console.log(error);
   }
@@ -36,7 +33,6 @@ async function onCreate(formData: FormData) {
   "use server";
   try {
     await CreateTask(formData);
-    revalidatePath("/tasks", "page");
   } catch (error) {}
 }
 
@@ -44,7 +40,6 @@ async function onUpdate(formData: FormData, taskId: string) {
   "use server";
   try {
     await UpdateTask(formData, taskId);
-    revalidatePath("/tasks", "page");
   } catch (error) {}
 }
 
@@ -52,7 +47,6 @@ async function onUpdateAssigned(formData: FormData, taskId: string) {
   "use server";
   try {
     await UpdateAssignedTask(formData, taskId);
-    revalidatePath("/tasks", "page");
   } catch (error) {}
 }
 
@@ -60,7 +54,6 @@ async function SelectMember(formData: FormData, taskId: string) {
   "use server";
   try {
     await AssignTask(formData, taskId);
-    revalidatePath("/tasks", "page");
   } catch (error) {}
 }
 
