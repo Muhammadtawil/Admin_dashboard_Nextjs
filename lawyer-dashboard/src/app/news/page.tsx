@@ -1,5 +1,11 @@
 import PageTitle from "@/components/shared/PageTitle/pageTitle";
-import NewsComponent from "@/components/news/news";
+import dynamic from "next/dynamic";
+
+const NewsComponent = dynamic(() => import("@/components/news/news"), {
+  loading: () => <p>Loading...</p>, // Optional loading component
+  ssr: false, // Disable server-side rendering for this component
+});
+
 export default function BlogPage() {
   return (
     <>

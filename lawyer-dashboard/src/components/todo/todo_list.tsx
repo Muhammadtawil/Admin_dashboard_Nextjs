@@ -28,6 +28,18 @@ async function DeleteAssignedTasks(assigntaskId: string) {
     console.log(error);
   }
 }
+const loadUserData = async () => {
+  const [users, user, assignedTasks, assignedToTasks] = await Promise.all([
+    GetUsers(),
+    GetUser(),
+    getAssignedTasks(),
+    getAssignedToTasks(),
+  ]);
+
+  const tasks = await getTasks(assignedTasks);
+
+  return { users, user, assignedTasks, assignedToTasks, tasks };
+};
 
 async function onCreate(formData: FormData) {
   "use server";
@@ -58,11 +70,9 @@ async function SelectMember(formData: FormData, taskId: string) {
 }
 
 const ToDoLists = async () => {
-  const users = await GetUsers();
-  const user = await GetUser();
-  const assignedTasks = await getAssignedTasks();
-  const assignedToTasks = await getAssignedToTasks();
-  const tasks = await getTasks(assignedTasks);
+  const { users, user, assignedTasks, assignedToTasks, tasks } =
+    await loadUserData();
+
   return (
     <>
       <AddTaskForm onCreate={onCreate} />
