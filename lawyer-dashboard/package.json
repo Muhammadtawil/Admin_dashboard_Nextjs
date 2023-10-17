@@ -12,6 +12,8 @@
     "@draft-js-plugins/inline-toolbar": "^4.2.1",
     "@draft-js-plugins/static-toolbar": "^4.1.4",
     "@emotion/styled": "^11.11.0",
+    "@fullcalendar/daygrid": "^6.1.9",
+    "@fullcalendar/react": "^6.1.9",
     "@mantine/rte": "^5.10.5",
     "@mui/icons-material": "^5.14.9",
     "@mui/material": "^5.14.10",
