@@ -11,9 +11,11 @@
   "dependencies": {
     "@draft-js-plugins/inline-toolbar": "^4.2.1",
     "@draft-js-plugins/static-toolbar": "^4.1.4",
+    "@emotion/styled": "^11.11.0",
     "@mantine/rte": "^5.10.5",
     "@mui/icons-material": "^5.14.9",
     "@mui/material": "^5.14.10",
+    "@mui/x-date-pickers": "^6.16.2",
     "@syncfusion/ej2-react-documenteditor": "^23.1.39",
     "@types/node": "20.6.3",
     "@types/react": "18.2.22",
@@ -27,7 +29,10 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-draft-wysiwyg": "^1.15.0",
+    "react-tabs": "^6.0.2",
     "simplebar-react": "^3.2.4",
+    "sweetalert2": "^11.7.32",
+    "sweetalert2-react-content": "^5.0.7",
     "typescript": "5.2.2"
   },
   "devDependencies": {

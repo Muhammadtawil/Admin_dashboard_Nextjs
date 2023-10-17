@@ -23,6 +23,7 @@ const SubMenu = ({ item }: any) => {
   return (
     <>
       <Link
+        as={item.path}
         replace
         href={item.path}
         onClick={item.subNav && showSubnav}

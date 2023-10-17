@@ -1,12 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    // serverComponents: true,
-    appDir: true,
-    serverActions: true, // Enable Server Actions
-  },
   devIndicators: {
-    autoPrerender: false,
+    buildActivity: true,
+    buildActivityPosition: "bottom-right",
   },
   productionBrowserSourceMaps: false,
   // Add other configuration options as needed
@@ -25,6 +21,12 @@ const nextConfig = {
     defaultLocale: "en",
     locales: ["en", "ar"],
     localeDetection: false,
+  },
+
+  experimental: {
+    // serverComponents: true,
+    // appDir: true,
+    serverActions: true, // Enable Server Actions
   },
 };
 
