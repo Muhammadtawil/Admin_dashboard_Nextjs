@@ -7,22 +7,18 @@
 // import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import "draft-js/dist/Draft.css";
+import PageTitle from "../../../components/shared/PageTitle/pageTitle";
 
 import "react-tabs/style/react-tabs.css";
+// import EditorHtml from '../../../components/editor/editorHtml';
+import MyEditor from "../../../components/editor/editorHtml";
 
 export default function DocEditor() {
   return (
     <>
-      {/* <div className={styles.pageTitle}>
-        <h1>Clients</h1>
-        <ul>
-          <li>
-            <Link href="/">Dashboard</Link>
-          </li>
-          <li>Clients</li>
-        </ul>
-      </div> */}
-      <h1>Editor </h1>
+        <PageTitle title="Editor" />
+        {/* <EditorHtml/> */}
+      <MyEditor />
     </>
   );
 }

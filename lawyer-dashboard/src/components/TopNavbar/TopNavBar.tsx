@@ -5,6 +5,7 @@ import SearchForm from "./search/SearchForm";
 import CurrentDate from "./Date/CurrentDate";
 import Profile from "./Profile/Profile";
 import Notifications from "./notification/Notification";
+import LocaleSwitcher from "../locale/locale-swtcher";
 
 
 const TopNavbar = ({
@@ -44,7 +45,7 @@ const TopNavbar = ({
             <SearchForm />
 
             <Typography component="div" sx={{ flexGrow: 1 }}></Typography>
-
+            <LocaleSwitcher />
             <Stack direction="row" spacing={2}>
               {/* CurrentDate */}
               <CurrentDate />

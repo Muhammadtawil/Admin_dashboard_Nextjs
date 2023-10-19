@@ -25,7 +25,7 @@ export default function LocaleSwitcher() {
     segments[1] = locale;
 
     return segments.join('/');
-  };
+  }; 
 
   return (
     <ul className='flex gap-x-3'>
