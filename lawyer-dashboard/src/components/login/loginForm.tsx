@@ -8,7 +8,7 @@ import React, { ChangeEvent, useState } from "react";
 import { LoginAlert, successAlert } from "../alerts/alerts";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import ToDo from "@/app/[lang]/tasks/page";
+import ToDo from "../../app/[lang]/tasks/page";
 import { IconButton, TextField } from "@mui/material";
 
 export default function LoginForm() {

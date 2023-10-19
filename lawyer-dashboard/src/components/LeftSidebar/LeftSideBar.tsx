@@ -7,6 +7,7 @@ import Link from "next/link";
 import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
 
+
 const SidebarNav = styled("nav")(({ theme }) => ({
   background: "#fff",
   boxShadow: "0px 4px 20px rgba(47, 143, 232, 0.07)",
@@ -44,7 +45,7 @@ const Sidebar = ({ toogleActive }: any) => {
               }}
             >
               <Link href="/main">
-                <img src="/images/clicker.png " alt="Clickers" width={120} />
+                <img src={"/images/clicker.png"} alt="Clickers" width={120} />
               </Link>
 
               <IconButton

@@ -6,7 +6,7 @@ import AddService, {
   DeleteService,
   GetServices,
   UpdateService,
-} from "@/server/services/services";
+} from "../../server/services/services";
 
 async function Delete(serviceId: string) {
   "use server";

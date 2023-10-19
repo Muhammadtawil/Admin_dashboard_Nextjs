@@ -24,6 +24,12 @@ export function middleware(request: NextRequest) {
     locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   )
 
+  // Exclude paths that lead to public assets from redirection
+if (pathname.includes('/images/') || pathname.includes('/fonts')) {
+  return;
+}
+
+
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request)
@@ -40,3 +46,6 @@ export const config = {
   // Matcher ignoring `/_next/` and `/api/`
   matcher: ['/((?!api|_next/static|_next/image|favicon.ico).*)']
 }
+
+
+

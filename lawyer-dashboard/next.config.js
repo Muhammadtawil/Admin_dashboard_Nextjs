@@ -4,10 +4,7 @@ const nextConfig = {
     buildActivity: true,
     buildActivityPosition: "bottom-right",
   },
-  images: {
-  
-    path: "/",
-  },
+
   productionBrowserSourceMaps: false,
   // Add other configuration options as needed
 

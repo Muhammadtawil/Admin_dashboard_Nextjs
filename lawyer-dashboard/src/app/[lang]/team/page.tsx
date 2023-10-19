@@ -12,10 +12,10 @@
 // import theme from "../../styles/theme";
 
 // import TeamComponent from "@/components/team/Teams";
-import PageTitle from "@/components/shared/PageTitle/pageTitle";
+import PageTitle from "../../../components/shared/PageTitle/pageTitle";
 import dynamic from "next/dynamic";
 
-const TeamsComponent = dynamic(() => import("@/components/team/Teams"), {
+const TeamsComponent = dynamic(() => import("../../../components/team/Teams"), {
   loading: () => <p>Loading...</p>, // Optional loading component
   ssr: false, // Disable server-side rendering for this component
 });

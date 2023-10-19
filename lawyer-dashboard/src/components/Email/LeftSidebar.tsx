@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import ClearIcon from "@mui/icons-material/Clear";
 import SendIcon from "@mui/icons-material/Send";
-import styles from "@/components/Email/LeftSidebar.module.css";
+import styles from "./LeftSidebar.module.css";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";

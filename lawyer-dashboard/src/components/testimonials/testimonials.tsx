@@ -4,7 +4,7 @@ import AddTestimonials, {
   DeleteTestimonials,
   GetTestimonials,
   UpdateTestimonial,
-} from "@/server/testimonials/Testimonials";
+} from "../../server/testimonials/Testimonials";
 import TestimonialAddComponent from "./testimonials_form";
 import TestimonialsTable from "./testimonials_table";
 

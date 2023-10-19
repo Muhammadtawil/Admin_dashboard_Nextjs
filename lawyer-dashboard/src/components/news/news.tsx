@@ -7,7 +7,7 @@ import AddNews, {
   GetNews,
   UpdateNews,
   UpdateNewsImage,
-} from "@/server/news/news";
+} from "../../server/news/news";
 
 export let isEdit: boolean;
 

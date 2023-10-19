@@ -23,20 +23,16 @@ export default function RootLayout({ children, params }: { children: React.React
 
   return (
 
-    <html lang={params.lang}>
-          <Head>
-        <title>Dashboard</title>
-        {/* <link rel="preload" href="style.css" as="style" /> */}
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+    // <html lang={params.lang}>
+        
         
       <Providers>
 
-          <ClientLayout children={children} />
+          <ClientLayout children={children} params={params}/>
 
 
       </Providers>
-      
-      </html>
+  
+      // </html>
   );
 }

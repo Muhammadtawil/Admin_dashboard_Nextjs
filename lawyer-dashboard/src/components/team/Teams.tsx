@@ -1,7 +1,7 @@
 import React from "react";
 import User from "./Team_Table";
 import AddTeamForm from "./add_Team_form";
-import AddService, { DeleteService } from "@/server/services/services";
+import AddService, { DeleteService } from "../../server/services/services";
 
 import { revalidatePath } from "next/cache";
 import {
@@ -10,7 +10,7 @@ import {
   UpdateUser,
   UpdateUserRole,
   UpdateUserImage,
-} from "@/server/users/users";
+} from "../../server/users/users";
 
 async function Delete(serviceId: string) {
   "use server";

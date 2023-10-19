@@ -7,11 +7,12 @@ import CreateTask, {
   getAssignedTasks,
   getAssignedToTasks,
   getTasks,
-} from "@/server/tasks/tasks";
+} from "../../server/tasks/tasks";
 import AddTaskForm from "./add_task_form";
-import { GetUser, GetUsers } from "@/server/users/users";
+
 import { Typography } from "@mui/material";
 import TaskTable from "./task_table";
+import { GetUser, GetUsers } from "../../server/users/users";
 
 async function Delete(taskId: string) {
   "use server";

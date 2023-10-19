@@ -5,7 +5,7 @@ const user_url = process.env.USER_URL;
 const update_user = process.env.UPDATE_TEAM_URL;
 const createUserUrl = process.env.SIGN_UP_URL;
 const updateRoleUrl = process.env.UPDATE_ROLE_URL;
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "../../app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
 
 export async function GetUsers() {

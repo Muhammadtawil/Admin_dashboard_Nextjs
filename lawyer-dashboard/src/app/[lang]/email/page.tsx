@@ -1,8 +1,10 @@
 import Grid from "@mui/material/Grid";
-import LeftSidebar from "@/components/Email/LeftSidebar";
-import EmailLists from "@/components/Email/EmailLists";
+import PageTitle from "../../../components/shared/PageTitle/pageTitle";
+import EmailLists from "../../../components/Email/EmailLists";
+import LeftSidebar from "../../../components/Email/LeftSidebar";
 
-import PageTitle from "@/components/shared/PageTitle/pageTitle";
+
+
 export default function Inbox() {
   return (
     <>

@@ -5,8 +5,8 @@ import AddClient, {
   DeleteClient,
   UpdateClient,
   getClients,
-} from "@/server/clients/clients";
-import { GetServices } from "@/server/services/services";
+} from "../../server/clients/clients";
+import { GetServices } from "../../server/services/services";
 
 async function Delete(taskId: string) {
   "use server";

@@ -1,14 +1,14 @@
 
-import React from "react";
+
 import BlogAddComponent from "./AddBlogForm";
 import AddBlog, {
   DeleteBlog,
   GetBlogs,
   UpdateBlog,
   UpdateBlogImage,
-} from "@/server/blogs/blogs";
+} from "../../server/blogs/blogs";
 import { revalidatePath } from "next/cache";
-import Blog from "./blogsTable";
+
 import BlogsTable from "./blogsTable";
 
 export let isEdit: boolean;
