@@ -1,37 +1,74 @@
-// const EditorHtml = ({ local }: any) => {
-//   return (
-//     <>
-//       <h1 className="text-center pt-4 text-xl">Preview</h1>
-//       <div className="preview" dangerouslySetInnerHTML={{ __html: local }} />
-//     </>
-//   );
-// };
-
-// export default EditorHtml;
-
 "use client"
-import { useState } from "react";
-import { EditorState } from "draft-js";
+// Import necessary dependencies
+import React, { useState } from "react";
+import { EditorState, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "draft-js/dist/Draft.css";
 import draftToHtml from "draftjs-to-html";
+import mammoth from "mammoth";
+import { saveAs } from "file-saver";
+import { Box, Button } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 
 const MyEditor = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+
+  const handleSaveToDocx = () => {
+    const htmlContent = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+
+    // Create a Blob from the HTML content
+    const blob = new Blob([htmlContent], {
+      type: "application/msword",
+    });
+
+    saveAs(blob, "document.docx");
+  };
+
   return (
-    <div className="App">
-   
-      <Editor
-        defaultEditorState={editorState}
-        onEditorStateChange={setEditorState}
-        wrapperClassName="wrapper-class"
-        editorClassName="editor-class"
-        toolbarClassName="toolbar-class"
+    <>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          borderBottom: "1px solid #EEF0F7",
+          paddingBottom: "10px",
+          mb: "20px",
+        }}
+        className="for-dark-bottom-border"
+      >
+        <Button
+          onClick={handleSaveToDocx}
+          style={{
+            textTransform: "capitalize",
+            borderRadius: "8px",
+            fontWeight: "500",
+            fontSize: "13px",
+            padding: "12px 20px",
+            color: "#fff",
+            backgroundColor: "#1976D2",
         
-      />
-  
-    </div>
+            border: "none",
+          }}
+        >
+          <AddIcon
+            sx={{ position: "relative", top: "-1px" }}
+            className="mr-5px"
+          />
+          Save File
+        </Button>
+      </Box>
+      <div className="App">
+        <Editor
+          editorState={editorState}
+          onEditorStateChange={setEditorState}
+          wrapperClassName="wrapper-class"
+          editorClassName="editor-class"
+          toolbarClassName="toolbar-class"
+        />
+      </div>
+    </>
   );
 };
 
