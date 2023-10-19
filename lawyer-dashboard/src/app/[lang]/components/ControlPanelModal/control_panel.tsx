@@ -7,16 +7,20 @@ import Typography from "@mui/material/Typography";
 import CloseIcon from "@mui/icons-material/Close";
 import Tooltip from "@mui/material/Tooltip";
 import Button from "@mui/material/Button";
-import DarkAndLightMode from "./DarkAndLightMode";
-import OnlyLeftSidebarDarkMode from "./OnlyLeftSidebarDarkMode";
-import RTLSwitch from "./RTLSwitch";
+
+
+
 import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
 
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { ToggleButtonGroup } from "@mui/material";
-import LocaleSwitcher from "../locale/locale-swtcher";
+import DarkAndLightMode from "@/components/ControlPanelModal/DarkAndLightMode";
+import OnlyLeftSidebarDarkMode from "@/components/ControlPanelModal/OnlyLeftSidebarDarkMode";
+import RTLSwitch from "@/components/ControlPanelModal/RTLSwitch";
+import LocaleSwitcher from "@/components/locale/locale-swtcher";
+
 
 export default function ControlPanelModal() {
   const [isActiveSearchModal, setActiveSearchModal] = useState(true);

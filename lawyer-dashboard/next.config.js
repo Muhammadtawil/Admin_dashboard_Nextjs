@@ -4,6 +4,10 @@ const nextConfig = {
     buildActivity: true,
     buildActivityPosition: "bottom-right",
   },
+  images: {
+  
+    path: "/",
+  },
   productionBrowserSourceMaps: false,
   // Add other configuration options as needed
 
@@ -17,15 +21,15 @@ const nextConfig = {
     ];
   },
 
-  i18n: {
-    defaultLocale: "en",
-    locales: ["en", "ar"],
-    localeDetection: false,
-  },
+  // i18n: {
+  //   defaultLocale: "en",
+  //   locales: ["en", "ar"],
+  //   localeDetection: false,
+  // },
 
   experimental: {
     // serverComponents: true,
-    // appDir: true,
+    appDir: true,
     serverActions: true, // Enable Server Actions
   },
 };

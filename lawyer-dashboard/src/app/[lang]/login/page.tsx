@@ -1,4 +1,6 @@
-import "../../styles/style.css";
+
+import "../../../styles/style.css";
+
 
 import LoginForm from "@/components/login/loginForm";
 import { CssBaseline } from "@mui/material";

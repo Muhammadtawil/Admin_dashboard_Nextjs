@@ -778,3 +778,20 @@
   right: 7px;
   margin: 0;
 }/*# sourceMappingURL=rtl.css.map */
+
+
+
+/* In rtl.css */
+.rtl .content-container {
+  flex-direction: row-reverse; /* Reverse the order for RTL layout */
+}
+
+.rtl .content-container .top-navbar {
+  /* Adjust styles for the top navbar in RTL */
+}
+
+.rtl .content-container .sidebar {
+  right: 0; /* Move sidebar to the right */
+  left: auto; /* Reset left position */
+  /* Other styles to adjust the sidebar for RTL */
+}

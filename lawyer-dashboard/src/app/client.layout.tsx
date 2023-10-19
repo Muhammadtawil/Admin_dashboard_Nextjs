@@ -1,10 +1,8 @@
 "use client";
 import Head from "next/head";
-import ControlPanelModal from "@/components/ControlPanelModal/control_panel";
-import TopNavbar from "@/components/TopNavbar/TopNavBar";
-import ScrollToTop from "@/components/shared/ScrollToTop";
 import { Inter } from "next/font/google";
-import Sidebar from "@/components/LeftSidebar/LeftSideBar";
+import { Locale, i18n } from '../../i18n.config'
+
 import { usePathname } from "next/navigation";
 
 import ".././styles/remixicon.css";
@@ -17,9 +15,17 @@ import ".././styles/rtl.css";
 // Dark Mode Styles
 import ".././styles/dark.css";
 // Theme Styles
-import theme from ".././styles/theme";
+import theme from "../styles/theme";
+import "react-tabs/style/react-tabs.css";
+
+
+
 import "react-tabs/style/react-tabs.css";
 import { useState } from "react";
+import TopNavbar from "../components/TopNavbar/TopNavBar";
+import ScrollToTop from "../components/shared/ScrollToTop";
+import ControlPanelModal from "../components/ControlPanelModal/control_panel";
+import Sidebar from "../components/LeftSidebar/LeftSideBar";
 // import SidebarTest from "@/components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,8 +36,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function ClientLayout({
   children,
+
 }: {
-  children: React.ReactNode;
+    children: React.ReactNode;
+  
 }) {
   const [active, setActive] = useState(false);
 
@@ -40,15 +48,13 @@ export default function ClientLayout({
   };
   const router = usePathname();
 
-  const isLoginPage = router.startsWith("/login");
+  const isLoginPage = router.includes("/login");
 
   return (
-    <html lang="en">
-      <Head>
-        <title>Dashboard</title>
-        <link rel="preload" href="style.css" as="style" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
+  <>
+  
+        
+    
       {isLoginPage ? (
         <body className={inter.className}>{children}</body>
       ) : (
@@ -62,9 +68,7 @@ export default function ClientLayout({
 
             {children}
           </div>
-          {/* </div> */}
-
-          {/* ScrollToTop */}
+    
 
           <>
             <ScrollToTop />
@@ -73,6 +77,9 @@ export default function ClientLayout({
           </>
         </body>
       )}
-    </html>
-  );
+  
+
+      </>
+      
+  )
 }

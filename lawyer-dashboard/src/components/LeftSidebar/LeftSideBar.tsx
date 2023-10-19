@@ -1,5 +1,4 @@
 "use client";
-import React, { useState } from "react";
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { SidebarData } from "./SidebarData";
@@ -45,7 +44,7 @@ const Sidebar = ({ toogleActive }: any) => {
               }}
             >
               <Link href="/main">
-                <img src="/images/clicker.png" alt="PDF Icon" width={120} />
+                <img src="/images/clicker.png " alt="Clickers" width={120} />
               </Link>
 
               <IconButton
