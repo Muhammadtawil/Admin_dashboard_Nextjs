@@ -44,9 +44,16 @@ const DarkAndLightMode = () => {
               onClick={handleToggle}
             />
           }
-          label=''
+          label=""
         />
       </div>
+      <style>
+        {`
+          .darkModeBox h3 {
+            color: ${isDarkMode ? '#AEAAA7' : 'var(--headingColor)'} !important;
+          }
+        `}
+      </style>
     </>
   );
 };

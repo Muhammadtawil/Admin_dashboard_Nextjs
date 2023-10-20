@@ -11,6 +11,7 @@ import ConnectWithoutContactOutlinedIcon from "@mui/icons-material/ConnectWithou
 import AttachEmailOutlinedIcon from "@mui/icons-material/AttachEmailOutlined";
 import AddTaskOutlinedIcon from "@mui/icons-material/AddTaskOutlined";
 import InfoIcon from "@mui/icons-material/Info";
+import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded';
 export const SidebarData = [
   {
     title: "Dashboard",
@@ -100,6 +101,13 @@ export const SidebarData = [
     title: "Testimonials",
     path: "/testimonials",
     icon: RateReviewOutlinedIcon,
+    iconClosed: KeyboardArrowRightIcon,
+    iconOpened: KeyboardArrowDownIcon,
+  },
+  {
+    title: "Subscribers",
+    path: "/subscribers",
+    icon: Groups2RoundedIcon,
     iconClosed: KeyboardArrowRightIcon,
     iconOpened: KeyboardArrowDownIcon,
   },
