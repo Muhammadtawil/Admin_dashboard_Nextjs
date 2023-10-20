@@ -3,7 +3,7 @@ import Head from "next/head";
 import { Inter } from "next/font/google";
 import { Locale, i18n } from '../../i18n.config'
 
-import { usePathname } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 
 import ".././styles/remixicon.css";
 // Chat Styles
@@ -26,6 +26,7 @@ import TopNavbar from "../components/TopNavbar/TopNavBar";
 import ScrollToTop from "../components/shared/ScrollToTop";
 import ControlPanelModal from "../components/ControlPanelModal/control_panel";
 import Sidebar from "../components/LeftSidebar/LeftSideBar";
+
 // import SidebarTest from "@/components/sidebar/Sidebar";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -40,10 +41,9 @@ export default function ClientLayout({ children, params }: { children: React.Rea
   const toggleActive = () => {
     setActive(!active);
   };
-  const router = usePathname();
-
+  let router = usePathname();
   const isLoginPage = router.includes("/login");
-
+ 
   return (
   <>
   
@@ -54,28 +54,28 @@ export default function ClientLayout({ children, params }: { children: React.Rea
         {/* <link rel="preload" href="style.css" as="style" /> */}
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      {isLoginPage ? (
-        <body className={inter.className}>{children}</body>
-      ) : (
-        <body className={inter.className}>
-          <div className={`main-wrapper-content ${active && "active"}`}>
-            <>
-              <TopNavbar toogleActive={toggleActive} />
-              <Sidebar toggleActive={toggleActive} />
-              {/* <SideNav onClose={() => setOpenNav(true)} open={openNav} /> */}
-            </>
+        { isLoginPage ? (
+            <body className={inter.className}>{children}</body>
+          ) : (
+            <body className={inter.className}>
+              <div className={`main-wrapper-content ${active && "active"}`}>
+                <>
+                  <TopNavbar toogleActive={toggleActive} />
+                  <Sidebar toggleActive={toggleActive} />
+                  {/* <SideNav onClose={() => setOpenNav(true)} open={openNav} /> */}
+                </>
 
-            {children}
-          </div>
+                {children}
+              </div>
     
 
-          <>
-            <ScrollToTop />
+              <>
+                <ScrollToTop />
 
-            <ControlPanelModal />
-          </>
-        </body>
-      )}
+                <ControlPanelModal />
+              </>
+            </body>
+          )}
   
   </html>
       </>

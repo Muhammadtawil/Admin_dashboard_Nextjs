@@ -2,6 +2,7 @@ import { NextAuthOptions } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { redirect } from "next/navigation";
 
 
 const Backend_URL = process.env.LOGIN_URL;
@@ -103,6 +104,11 @@ export const authOptions: NextAuthOptions = {
       if (timeSinceLastRefresh < oneHourInMillis) {
         return token; // Token is still valid
       }
+      
+      if (token.expiresAt && typeof token.expiresAt === 'number' && token.expiresAt <= Date.now()) {
+     redirect("/")
+      }
+      
 
       // If an hour has passed, refresh the token
       return await refreshToken(token);

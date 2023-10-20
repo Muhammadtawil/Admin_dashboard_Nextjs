@@ -1,11 +1,13 @@
 "use client";
-import { Box } from "@mui/material";
+import { Box, ListItemIcon, MenuItem } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { SidebarData } from "./SidebarData";
 import SubMenu from "./SubMenu";
 import Link from "next/link";
 import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
+import { signOut } from "next-auth/react";
+import Logout from "@mui/icons-material/Logout";
 
 
 const SidebarNav = styled("nav")(({ theme }) => ({
@@ -63,7 +65,20 @@ const Sidebar = ({ toogleActive }: any) => {
             {SidebarData.map((item: any, index: any) => {
               return <SubMenu item={item} key={index} />;
             })}
+
+<div ></div>
+            <MenuItem>
+            <ListItemIcon
+              sx={{ mr: "-8px", mt: "-3px" }}
+              onClick={() => signOut({ redirect: true, callbackUrl: "/" })}
+            >
+              <Logout fontSize="small" />
+            </ListItemIcon>
+            Logout
+          </MenuItem>
           </SidebarWrap>
+
+         
         </SidebarNav>
       </div>
     </>
