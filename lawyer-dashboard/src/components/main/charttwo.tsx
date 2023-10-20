@@ -16,6 +16,7 @@ export default function MonthlyClientChart({ clientData }: { clientData: any[] }
     width: 500,
     height: 400,
     padding: { top: 20, right: 20, bottom: 20, left: 100 },
+  
   };
 
   // Create an array of all months
@@ -53,7 +54,7 @@ export default function MonthlyClientChart({ clientData }: { clientData: any[] }
   return (
     <BarChart
       dataset={dataset}
-      yAxis={[{ scaleType: 'band', dataKey: 'month' ,textColor:'yellow' }]}
+      yAxis={[{ scaleType: 'band', dataKey: 'month' , }]}
       series={[{ dataKey: 'count', label: 'Number of Clients', valueFormatter }]}
       layout="horizontal"
       {...chartSetting}
