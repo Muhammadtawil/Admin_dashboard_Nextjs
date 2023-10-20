@@ -1,376 +1,156 @@
 "use client";
-import * as React from "react";
-import PropTypes from "prop-types";
-import { useTheme } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableFooter from "@mui/material/TableFooter";
-import TablePagination from "@mui/material/TablePagination";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import IconButton from "@mui/material/IconButton";
-import FirstPageIcon from "@mui/icons-material/FirstPage";
-import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-import LastPageIcon from "@mui/icons-material/LastPage";
-import { Box, Typography } from "@mui/material";
-import Card from "@mui/material/Card";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import Tooltip from "@mui/material/Tooltip";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import PrintIcon from "@mui/icons-material/Print";
-import DeleteIcon from "@mui/icons-material/Delete";
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import Checkbox from "@mui/material/Checkbox";
-import StarBorderIcon from "@mui/icons-material/StarBorder";
-import StarIcon from "@mui/icons-material/Star";
-import Link from "next/link";
-import { useState } from "react";
 
-const label = { inputProps: { "aria-label": "Checkbox demo" } };
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { useCallback, useState } from "react";
+import RichTextEditor from "@mantine/rte";
+import SendIcon from '@mui/icons-material/Send';
+import { updateTaskAlert } from "../alerts/alerts";
+import DOMPurify from 'dompurify';
+import he from 'he';
+import {convert} from "html-to-text";
+export default function EmailLists({ sendEmail }: any) {
 
-function EmailList(props: any) {
-  const theme = useTheme();
-  const { count, page, rowsPerPage, onPageChange } = props;
+  const [content, setContent] = useState(""); // Step 1: Create state for content
 
-  const handleFirstPageButtonClick = (event: any) => {
-    onPageChange(event, 0);
+  const handleContentChange = (newContent: any) => {
+    // Step 2: Update the content state when it changes
+    setContent(newContent);
   };
 
-  const handleBackButtonClick = (event: any) => {
-    onPageChange(event, page - 1);
-  };
+  // const handleSubmit = async (event: any) => {
+  //   event.preventDefault();
 
-  const handleNextButtonClick = (event: any) => {
-    onPageChange(event, page + 1);
-  };
+  //   const formData = new FormData(event.target);
+  //   formData.append("content", content); // Step 3: Include content in formData
 
-  const handleLastPageButtonClick = (event: any) => {
-    onPageChange(event, Math.max(0, Math.ceil(count / rowsPerPage) - 1));
-  };
-
-  return (
-    <Box sx={{ flexShrink: 0, ml: 2.5 }}>
-      <IconButton
-        onClick={handleFirstPageButtonClick}
-        disabled={page === 0}
-        aria-label="first page"
-      >
-        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
-      </IconButton>
-      <IconButton
-        onClick={handleBackButtonClick}
-        disabled={page === 0}
-        aria-label="previous page"
-      >
-        {theme.direction === "rtl" ? (
-          <KeyboardArrowRight />
-        ) : (
-          <KeyboardArrowLeft />
-        )}
-      </IconButton>
-
-      <IconButton
-        onClick={handleNextButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="next page"
-      >
-        {theme.direction === "rtl" ? (
-          <KeyboardArrowLeft />
-        ) : (
-          <KeyboardArrowRight />
-        )}
-      </IconButton>
-
-      <IconButton
-        onClick={handleLastPageButtonClick}
-        disabled={page >= Math.ceil(count / rowsPerPage) - 1}
-        aria-label="last page"
-      >
-        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
-      </IconButton>
-    </Box>
-  );
-}
-
-EmailList.propTypes = {
-  count: PropTypes.number.isRequired,
-  onPageChange: PropTypes.func.isRequired,
-  page: PropTypes.number.isRequired,
-  rowsPerPage: PropTypes.number.isRequired,
-};
-
-function createData(name: any, text: any, readEmail: any, date: any): any {
-  return { name, readEmail, text, date };
-}
-
-const rows = [
-  createData("Raneem", "Hello  ", "/email/read-email", "1 Jan 2023"),
-  createData("Raneem", "Hello  ", "/email/read-email", "1 Jan 2023"),
-  createData("Raneem", "Hello  ", "/email/read-email", "1 Jan 2023"),
-  createData("Raneem", "Hello  ", "/email/read-email", "1 Jan 2023"),
-].sort((a, b) => (a.name < b.name ? -1 : 1));
-
-export default function EmailLists() {
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-  const emptyRows =
-    page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
-
-  const handleChangePage = (event: any, newPage: any) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event: any) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: any) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  //   await sendEmail(formData);
+  //   updateTaskAlert();
+  // };
 
   return (
     <>
-      <Card
-        sx={{
-          boxShadow: "none",
-          borderRadius: "10px",
-          p: "25px 25px 10px",
-          mb: "15px",
-        }}
-      >
+
+      <Box>
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            borderBottom: "1px solid #EEF0F7",
-            paddingBottom: "10px",
-            mb: "20px",
+            background: "#EDEFF5",
+            borderRadius: "8px",
+            padding: "15px 20px",
           }}
-          className="for-dark-bottom-border"
+          className="bg-black"
         >
           <Typography
-            component="h3"
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
             sx={{
-              fontSize: 16,
-              fontWeight: 500,
+              fontWeight: "500",
+              fontSize: "18px",
             }}
           >
-            Email List
+            New Message
           </Typography>
-
-          <Box>
-            <Tooltip title="Print">
-              <IconButton
-                size="small"
-                sx={{ background: "#F2F6F8" }}
-                className="ml-5px"
-              >
-                <PrintIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-
-            <Tooltip title="Delete">
-              <IconButton
-                size="small"
-                sx={{ background: "#F2F6F8" }}
-                className="ml-5px"
-              >
-                <DeleteIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-
-            <Tooltip title="Report Spam">
-              <IconButton
-                size="small"
-                sx={{ background: "#F2F6F8" }}
-                className="ml-5px"
-              >
-                <ErrorOutlineIcon fontSize="small" />
-              </IconButton>
-            </Tooltip>
-
-            <Tooltip title="More...">
-              <IconButton
-                onClick={handleClick}
-                size="small"
-                aria-controls={open ? "account-menu" : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? "true" : undefined}
-                sx={{
-                  background: "#F2F6F8",
-                }}
-                className="ml-5px"
-              >
-                <MoreVertIcon />
-              </IconButton>
-            </Tooltip>
-          </Box>
-          <Menu
-            anchorEl={anchorEl}
-            id="account-menu"
-            open={open}
-            onClose={handleClose}
-            onClick={handleClose}
-            PaperProps={{
-              elevation: 0,
-              sx: {
-                overflow: "visible",
-                filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                mt: 1.5,
-                "& .MuiAvatar-root": {
-                  width: 32,
-                  height: 32,
-                  ml: -0.5,
-                  mr: 1,
-                },
-                "&:before": {
-                  content: '""',
-                  display: "block",
-                  position: "absolute",
-                  top: 0,
-                  right: 14,
-                  width: 10,
-                  height: 10,
-                  bgcolor: "background.paper",
-                  transform: "translateY(-50%) rotate(45deg)",
-                  zIndex: 0,
-                },
-              },
-            }}
-            transformOrigin={{ horizontal: "right", vertical: "top" }}
-            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
-          >
-            <MenuItem sx={{ fontSize: "14px" }}>Last 15 Days</MenuItem>
-            <MenuItem sx={{ fontSize: "14px" }}>Last Month</MenuItem>
-            <MenuItem sx={{ fontSize: "14px" }}>Last Year</MenuItem>
-          </Menu>
         </Box>
 
-        <TableContainer
-          component={Paper}
-          sx={{
-            boxShadow: "none",
-          }}
-        >
-          <Table
-            sx={{ minWidth: 800 }}
-            aria-label="custom pagination table"
-            className="dark-table"
+        <Box component="form" noValidate action={async (formData) => {
+    
+// Use the html-to-text library to convert HTML to plain text
+const plainTextContent = convert(content, {
+  wordwrap: 400, // Prevent line wrapping
+
+});
+
+formData.append("content", plainTextContent); // Include content in formData
+          await sendEmail(formData,plainTextContent);
+          updateTaskAlert();
+        }}>
+          <Box
+            sx={{
+              background: "#fff",
+              padding: "30px 20px",
+              borderRadius: "8px",
+            }}
+            className="dark-BG-101010"
           >
-            <TableBody>
-              {(rowsPerPage > 0
-                ? rows.slice(
-                    page * rowsPerPage,
-                    page * rowsPerPage + rowsPerPage
-                  )
-                : rows
-              ).map((row) => (
-                <TableRow key={row.name}>
-                  <TableCell
-                    style={{
-                      borderBottom: "1px solid #F7FAFF",
-                      padding: "10px",
-                    }}
-                  >
-                    <Checkbox {...label} size="small" />
-                  </TableCell>
-
-                  <TableCell
-                    style={{
-                      borderBottom: "1px solid #F7FAFF",
-                      padding: "10px",
-                    }}
-                  >
-                    <Checkbox
-                      {...label}
-                      icon={<StarBorderIcon />}
-                      checkedIcon={<StarIcon />}
-                    />
-                  </TableCell>
-
-                  <TableCell
-                    style={{
-                      borderBottom: "1px solid #F7FAFF",
-                      fontSize: "13px",
-                      padding: "10px",
-                    }}
-                  >
-                    <Link href={row.readEmail} className="readEmail">
-                      {row.name}
-                    </Link>
-                  </TableCell>
-
-                  <TableCell
-                    style={{
-                      borderBottom: "1px solid #F7FAFF",
-                      fontSize: "13px",
-                      padding: "10px",
-                    }}
-                  >
-                    <Link href={row.readEmail} className="readEmail">
-                      {row.text}
-                    </Link>
-                  </TableCell>
-
-                  <TableCell
-                    align="right"
-                    style={{
-                      borderBottom: "1px solid #F7FAFF",
-                      fontSize: "13px",
-                      padding: "10px",
-                    }}
-                  >
-                    {row.date}
-                  </TableCell>
-                </TableRow>
-              ))}
-
-              {emptyRows > 0 && (
-                <TableRow style={{ height: 53 * emptyRows }}>
-                  <TableCell
-                    colSpan={5}
-                    style={{ borderBottom: "1px solid #F7FAFF" }}
-                  />
-                </TableRow>
-              )}
-            </TableBody>
-
-            <TableFooter>
-              <TableRow>
-                <TablePagination
-                  rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-                  colSpan={5}
-                  count={rows.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  SelectProps={{
-                    inputProps: {
-                      "aria-label": "rows per page",
-                    },
-                    native: true,
+            <Grid container alignItems="center" spacing={2}>
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="to"
+                  name="receivers"
+                  required
+                  fullWidth
+                  id="to"
+                  label="To"
+                  autoFocus
+                  InputProps={{
+                    style: { borderRadius: 8 },
                   }}
-                  onPageChange={handleChangePage}
-                  onRowsPerPageChange={handleChangeRowsPerPage}
-                  ActionsComponent={EmailList}
-                  style={{ borderBottom: "none" }}
                 />
-              </TableRow>
-            </TableFooter>
-          </Table>
-        </TableContainer>
-      </Card>
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  autoComplete="subject"
+                  name="subject"
+                  required
+                  fullWidth
+                  id="subject"
+                  label="Subject"
+                  autoFocus
+                  InputProps={{
+                    style: { borderRadius: 8 },
+                  }}
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+
+                <RichTextEditor
+translate="yes"
+                  value={content}
+                  onChange={handleContentChange}
+                  id="content"
+                  controls={[
+                    ["bold", "italic", "underline", "link", "image"],
+                    ["unorderedList", "h1", "h2", "h3"],
+                    ["sup", "sub"],
+                    ["alignLeft", "alignCenter", "alignRight"],
+                  ]}
+                />
+              </Grid>
+
+              <Grid item xs={12} textAlign="end">
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    mt: 1,
+                    textTransform: "capitalize",
+                    borderRadius: "8px",
+                    fontWeight: "500",
+                    fontSize: "13px",
+                    padding: "12px 20px",
+                    color: "#fff !important",
+                  }}
+                >
+                  <SendIcon
+                    sx={{
+                      position: "relative",
+                      top: "-2px",
+                    }}
+                    className="mr-5px"
+                  />
+                  Send
+                </Button>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+      </Box>
+
     </>
   );
 }
