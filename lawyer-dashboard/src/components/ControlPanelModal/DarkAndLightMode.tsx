@@ -44,7 +44,7 @@ const DarkAndLightMode = () => {
               onClick={handleToggle}
             />
           }
-          label={`Switch to ${isDarkMode ? "Light Mode" : "Dark Mode"}`}
+          label=''
         />
       </div>
     </>

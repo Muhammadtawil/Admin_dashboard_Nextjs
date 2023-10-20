@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import { ClearIcon } from "@mui/x-date-pickers/icons";
+import SearchForm from "../TopNavbar/search/SearchForm";
 const CustomTypography = ({ text }: { text: any }) => {
   return (
     <Typography
@@ -101,6 +102,7 @@ export const FormHead = ({
       }}
       className="for-dark-bottom-border"
     >
+                  <SearchForm />
       <Button
         onClick={handleClickOpen}
         variant="contained"

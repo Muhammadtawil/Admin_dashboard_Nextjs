@@ -6,6 +6,7 @@ import CurrentDate from "./Date/CurrentDate";
 import Profile from "./Profile/Profile";
 import Notifications from "./notification/Notification";
 import LocaleSwitcher from "../locale/locale-swtcher";
+import DarkAndLightMode from "../ControlPanelModal/DarkAndLightMode";
 
 
 const TopNavbar = ({
@@ -14,7 +15,9 @@ const TopNavbar = ({
 }: {
   toogleActive: any;
 
-}) => {
+  }) => {
+  
+  
   return (
     <>
       <div className="topNavbarDark">
@@ -40,15 +43,16 @@ const TopNavbar = ({
                 <i className="ri-align-left"></i>
               </IconButton>
             </Tooltip>
-
+            <CurrentDate />
             {/* Search form */}
-            <SearchForm />
+            {/* <SearchForm /> */}
 
             <Typography component="div" sx={{ flexGrow: 1 }}></Typography>
-            <LocaleSwitcher />
+           
             <Stack direction="row" spacing={2}>
               {/* CurrentDate */}
-              <CurrentDate />
+              <LocaleSwitcher />
+           <DarkAndLightMode/>
 
               {/* Notification */}
               <Notifications />

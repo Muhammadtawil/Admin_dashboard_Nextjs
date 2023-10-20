@@ -41,6 +41,12 @@ export default function ClientLayout({ children, params }: { children: React.Rea
   const toggleActive = () => {
     setActive(!active);
   };
+
+   // Function to close the sidebar
+   const closeSidebar = () => {
+    setActive(false);
+   };
+  
   let router = usePathname();
   const isLoginPage = router.includes("/login");
  
@@ -61,7 +67,7 @@ export default function ClientLayout({ children, params }: { children: React.Rea
               <div className={`main-wrapper-content ${active && "active"}`}>
                 <>
                   <TopNavbar toogleActive={toggleActive} />
-                  <Sidebar toggleActive={toggleActive} />
+                  <Sidebar toogleActive={toggleActive} closeSidebar={closeSidebar}/>
                   {/* <SideNav onClose={() => setOpenNav(true)} open={openNav} /> */}
                 </>
 
@@ -72,7 +78,7 @@ export default function ClientLayout({ children, params }: { children: React.Rea
               <>
                 <ScrollToTop />
 
-                <ControlPanelModal />
+                {/* <ControlPanelModal /> */}
               </>
             </body>
           )}

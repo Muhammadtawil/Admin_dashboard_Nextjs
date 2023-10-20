@@ -30,7 +30,11 @@ const SidebarWrap = styled("div")(({ theme }) => ({
   width: "100%",
 }));
 
-const Sidebar = ({ toogleActive }: any) => {
+const Sidebar = ({ toogleActive ,closeSidebar }: any) => {
+  const handleSidebarClose = () => {
+    closeSidebar();
+  };
+
   const data = JSON.stringify(SidebarData);
   return (
     <>
@@ -51,7 +55,7 @@ const Sidebar = ({ toogleActive }: any) => {
               </Link>
 
               <IconButton
-                onClick={toogleActive}
+                onClick={handleSidebarClose}
                 size="small"
                 sx={{
                   background: "rgb(253, 237, 237)",
