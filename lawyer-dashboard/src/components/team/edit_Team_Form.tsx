@@ -93,9 +93,12 @@ export default function EditTeamForm({
             console.log(`selected user: ${selectedUser.userId}`);
 
             handleUpdate();
+            await onUpdate(formData, selectedUser.userId, selectedImage).then(() => {
             handleClose();
-            await onUpdate(formData, selectedUser.userId, selectedImage);
-            updateAlert();
+
+            updateAlert('user updated!');
+              
+            });
           }}
         >
           <Box
@@ -255,11 +258,11 @@ export default function EditTeamForm({
 
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={"Role"} />
-                <ValuesSelect name={"userRole"} values={serviceStatusValues} />
+                <ValuesSelect name={"userRole"} values={serviceStatusValues} isrequired={true} />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={"Active"} />
-                <ValuesSelect name={"isTeam"} values={flagStatusValues} />
+                <ValuesSelect name={"isTeam"} values={flagStatusValues} isrequired={true} />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={"Image"} />

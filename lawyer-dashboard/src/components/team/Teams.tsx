@@ -16,7 +16,7 @@ async function Delete(serviceId: string) {
   "use server";
   try {
     await DeleteService(serviceId);
-    revalidatePath("/teamTest", "page");
+    revalidatePath("/team", "page");
   } catch (error) {}
 }
 
