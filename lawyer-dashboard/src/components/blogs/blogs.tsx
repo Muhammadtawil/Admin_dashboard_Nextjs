@@ -48,7 +48,7 @@ async function Delete(blogId: string) {
 }
 async function updateImage(formData: FormData, blogId: string) {
   "use server";
-
+  revalidatePath("/blogs", "page");
   await UpdateBlogImage(formData, blogId);
 }
 

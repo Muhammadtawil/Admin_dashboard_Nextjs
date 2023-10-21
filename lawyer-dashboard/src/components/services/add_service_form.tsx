@@ -10,6 +10,7 @@ import CustomTypography, {
   ValuesSelect,
 } from "../shared/formsComponents";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
+import { revalidatePath } from "next/cache";
 
 const serviceStatus = ["AVAILABLE", "NOT_AVAILABLE"];
 const flagStatus = ["Yes", "No"];
@@ -39,10 +40,17 @@ export default function AddTaskForm({ onCreate }: { onCreate: any }) {
           <Box
             component="form"
             noValidate={false}
-            action={async (formData) => {
-              handleClose();
-              await onCreate(formData);
-              successAlert();
+            action={(formData) => {
+              onCreate(formData)
+                .then(() => {
+
+                  handleClose();
+                  successAlert('Services Added Successfully');
+                  revalidatePath('services', 'page')
+                })
+                .catch((error: any) => {
+                  console.error(error);
+                });
             }}
           >
             <Box
@@ -64,11 +72,11 @@ export default function AddTaskForm({ onCreate }: { onCreate: any }) {
 
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Status"} />
-                  <ValuesSelect name={"serviceStatus"} values={serviceStatus} />
+                  <ValuesSelect name={"serviceStatus"} values={serviceStatus} isrequired={true} />
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Draft"} />
-                  <ValuesSelect name={"isFlag"} values={flagStatus} />
+                  <ValuesSelect name={"isFlag"} values={flagStatus} isrequired={true} />
                 </Grid>
 
                 <FormFooter handleClose={handleClose} title={"Add Service"} />

@@ -1,7 +1,7 @@
 import { authOptions } from "../../app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
-import { revalidatePath, revalidateTag } from "next/cache";
-
+import { revalidatePath, } from "next/cache";
+import useSWR, { mutate } from 'swr';
 const clientUrl = process.env.CLIENTS_URL;
 
 // const userId = process.env.USERID;
@@ -15,11 +15,11 @@ export async function getClients() {
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
-      //   cache: "no-store",
+
     },
     next: {
-      revalidate: 10,
-      // revalidateTag: ["tasks"],
+      // revalidate: 10,
+      tags: ["clients"],
     },
   };
 
@@ -30,11 +30,11 @@ export async function getClients() {
       throw new Error("Request failed with status: " + response.status);
     }
 
-    const tasks = await response.json();
+    const clients = await response.json();
 
     revalidatePath("/clients", "page");
 
-    return tasks;
+    return clients;
   } catch (error) {
     console.error("Error fetching data:", error);
     return [];

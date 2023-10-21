@@ -59,11 +59,13 @@ export default function MemberSelect({
     <Box>
       <Box
         component="form"
-        noValidate
-        action={async (formData) => {
+        noValidate={false}
+        action={ (formData) => {
+           onSelectMember(formData, selectedTask.taskId).then(() => {
           handleClose();
-          await onSelectMember(formData, selectedTask.taskId);
           AssignTaskAlert();
+            
+          });
         }}
       >
         <Box

@@ -16,17 +16,14 @@ export async function GetUsers() {
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
-      cache: "no-store",
+
     },
 
-    // next: {
-    //   revalidate: 60,
-    //   // revalidateTag: ["tasks"],
-    // },
+  
   };
 
   try {
-    const response = await fetch(`${users_url}?=${Date.now()}`, requestOptions);
+    const response = await fetch(`${users_url}`, requestOptions);
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
@@ -48,7 +45,7 @@ export async function GetUser() {
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
-      cache: "no-store",
+      
     },
   };
 

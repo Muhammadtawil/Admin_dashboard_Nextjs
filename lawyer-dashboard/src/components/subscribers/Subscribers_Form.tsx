@@ -5,8 +5,9 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
-import { updateTaskAlert } from "../alerts/alerts";
+import { successAlert, updateAlert } from "../alerts/alerts";
 import CustomTypography from "../shared/formsComponents";
+import { revalidatePath } from "next/cache";
 
 export default function SubscribersAddComponent({ onCreate }: { onCreate: any }) {
   return (
@@ -21,10 +22,14 @@ export default function SubscribersAddComponent({ onCreate }: { onCreate: any })
       >
         <Box
           component="form"
-          noValidate
-          action={async (formData) => {
-            await onCreate(formData);
-            updateTaskAlert();
+          noValidate={false}
+          action={ (formData) => {
+             onCreate(formData).then(() => {
+              successAlert('Subscribers Added ')
+               document.querySelector('form')?.reset();
+        
+            });
+           
           }}
         >
           <Grid item xs={12} textAlign="end">

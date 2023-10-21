@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Box, Grid, TextField } from "@mui/material";
-import { updateTaskAlert } from "../alerts/alerts";
+import { updateAlert } from "../alerts/alerts";
 import CustomTypography, {
   FormFooter,
   ValuesSelect,
@@ -52,9 +52,12 @@ export default function EditTaskForm({
           component="form"
           noValidate
           action={async (formData) => {
+            await onUpdate(formData, selectedService.serviceId).then(() => {
             handleClose();
-            await onUpdate(formData, selectedService.serviceId);
-            updateTaskAlert();
+            updateAlert('service Updated');
+              
+
+            });
           }}
         >
           <Box
@@ -125,12 +128,11 @@ export default function EditTaskForm({
                 <CustomTypography text={"Status"} />
                 <ValuesSelect
                   name={"serviceStatus"}
-                  values={serviceStatusValues}
-                />
+                  values={serviceStatusValues} isrequired={true}                />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={"Draft"} />
-                <ValuesSelect name={"isFlag"} values={flagStatusValues} />
+                <ValuesSelect name={"isFlag"} values={flagStatusValues} isrequired={true} />
               </Grid>
               <FormFooter handleClose={handleClose} title={"Edit Task"} />
             </Grid>

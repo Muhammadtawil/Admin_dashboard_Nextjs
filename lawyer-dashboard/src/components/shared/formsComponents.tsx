@@ -228,7 +228,7 @@ export const HeadBox = ({
   );
 };
 
-export const ValuesSelect = ({ name, values }: { name: any; values?: any }) => {
+export const ValuesSelect = ({ name, values ,isrequired }: { name: any; values?: any ,isrequired:boolean}) => {
   return (
     <select
       className="form-select bg-light border-0"
@@ -239,6 +239,7 @@ export const ValuesSelect = ({ name, values }: { name: any; values?: any }) => {
         width: "100%",
         borderRadius: "3%",
       }}
+      required={isrequired}
     >
       <option value="">Select A Status</option>
       {values.length === 0 ? (

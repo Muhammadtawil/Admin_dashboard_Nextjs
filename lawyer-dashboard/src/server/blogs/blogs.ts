@@ -11,12 +11,12 @@ export async function GetBlogs() {
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
-      cache: "no-store",
+
     },
   };
 
   try {
-    const response = await fetch(`${blogs_url}?=${Date.now()}`, requestOptions);
+    const response = await fetch(`${blogs_url}`, requestOptions);
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);

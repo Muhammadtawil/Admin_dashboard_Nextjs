@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { Box, Grid, TextField } from "@mui/material";
 
-import { updateTaskAlert } from "../alerts/alerts";
+import { updateAlert } from "../alerts/alerts";
 import CustomTypography, {
   FormFooter,
   ValuesSelect,
@@ -95,7 +95,7 @@ export default function EditTeamForm({
             handleUpdate();
             handleClose();
             await onUpdate(formData, selectedUser.userId, selectedImage);
-            updateTaskAlert();
+            updateAlert();
           }}
         >
           <Box

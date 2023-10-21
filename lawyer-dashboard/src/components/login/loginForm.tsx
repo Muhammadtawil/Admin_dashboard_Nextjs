@@ -3,12 +3,9 @@ import Link from "next/link";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
-
 import React, { ChangeEvent, useState } from "react";
-import { LoginAlert, successAlert } from "../alerts/alerts";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import ToDo from "../../app/[lang]/tasks/page";
 import { IconButton, TextField } from "@mui/material";
 
 export default function LoginForm() {
@@ -155,10 +152,3 @@ export default function LoginForm() {
   );
 }
 
-// action={async (formData) => {
-//   await onLogin(formData);
-// await LoginAlert(userName);
-//   const router = useRouter();
-//   router.replace("/tasks");
-
-// }}

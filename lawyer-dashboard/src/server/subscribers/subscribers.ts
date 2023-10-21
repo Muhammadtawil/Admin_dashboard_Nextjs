@@ -9,14 +9,14 @@ export async function GetSubscribers() {
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
-      cache: "no-store",
+   
     },
 
   };
 
   try {
     const response = await fetch(
-      `${subscriberss_url}?=${Date.now()}`,
+      `${subscriberss_url}`,
       requestOptions
     );
 

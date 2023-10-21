@@ -13,6 +13,7 @@ import AddTaskForm from "./add_task_form";
 import { Typography } from "@mui/material";
 import TaskTable from "./task_table";
 import { GetUser, GetUsers } from "../../server/users/users";
+import { revalidatePath } from "next/cache";
 
 async function Delete(taskId: string) {
   "use server";
@@ -44,15 +45,17 @@ const loadUserData = async () => {
 
 async function onCreate(formData: FormData) {
   "use server";
-  try {
+  revalidatePath('tasks','page')
     await CreateTask(formData);
-  } catch (error) {}
+ 
 }
 
 async function onUpdate(formData: FormData, taskId: string) {
   "use server";
   try {
     await UpdateTask(formData, taskId);
+  revalidatePath('tasks','page')
+
   } catch (error) {}
 }
 
@@ -60,6 +63,8 @@ async function onUpdateAssigned(formData: FormData, taskId: string) {
   "use server";
   try {
     await UpdateAssignedTask(formData, taskId);
+  revalidatePath('tasks','page')
+
   } catch (error) {}
 }
 
@@ -67,6 +72,8 @@ async function SelectMember(formData: FormData, taskId: string) {
   "use server";
   try {
     await AssignTask(formData, taskId);
+  revalidatePath('tasks','page')
+
   } catch (error) {}
 }
 

@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import dynamic from "next/dynamic";
-import { updateTaskAlert } from "../alerts/alerts";
+import { updateAlert } from "../alerts/alerts";
 import { ClearIcon } from "@mui/x-date-pickers";
 import CustomTypography, { FormFooter } from "../shared/formsComponents";
 const RichTextEditor = dynamic(() => import("@mantine/rte"), {
@@ -95,12 +95,15 @@ export default function EditNewsComponent({
         <Box
           component="form"
           noValidate={false}
-          action={async (formData) => {
-            handleClose();
+          action={ (formData) => {
             handleUpdate();
+         
 
-            await onUpdate(formData, selectedNews.newsId, selectedImage);
-            updateTaskAlert();
+            onUpdate(formData, selectedNews.newsId, selectedImage).then(() => {
+              handleClose();
+            updateAlert('updated successfully');
+
+             });
           }}
         >
           <Grid container alignItems="center" spacing={2}>

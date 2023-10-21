@@ -42,7 +42,7 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
             action={async (formData) => {
               handleClose();
               await onCreate(formData);
-              successAlert();
+              successAlert('User Added Successfully');
             }}
           >
             <Box
@@ -66,7 +66,7 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
                 <CustomTextField name="userEmail" label="Email" />
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Active"} />
-                  <ValuesSelect name={"isFlag"} values={flagStatus} />
+                  <ValuesSelect name={"isFlag"} values={flagStatus} isrequired={false} />
                 </Grid>
                 <FormFooter
                   handleClose={handleClose}

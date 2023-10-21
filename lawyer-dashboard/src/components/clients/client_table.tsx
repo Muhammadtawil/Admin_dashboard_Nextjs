@@ -16,7 +16,7 @@ import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutli
 import Box from "@mui/material/Box";
 import { useState } from "react";
 import { deleteAlert } from "../alerts/alerts";
-import EditTaskForm from "./edit_client_Form";
+import EditClientForm from "./edit_client_Form";
 import cellStyle from "../shared/cellStyle";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import ActionsComponent from "../shared/PaginationList";
@@ -69,8 +69,8 @@ export default function ClientTable({
   const [selectedClient, setSelectedClient] = useState(null);
 
   // Modify the Edit button click handler to set the selected task data.
-  const handleEditClick = (task: any) => {
-    setSelectedClient(task);
+  const handleEditClick = (client: any) => {
+    setSelectedClient(client);
     handleClickOpen();
   };
 
@@ -210,7 +210,7 @@ export default function ClientTable({
               <TableCell sx={cellStyle}>Client Name</TableCell>
               <TableCell sx={cellStyle}>Client Phone</TableCell>
               <TableCell align="center" sx={cellStyle}>
-                Status
+                Services
                 <select
                   value={selectedService}
                   onChange={handleServiceFilterChange}
@@ -274,7 +274,7 @@ export default function ClientTable({
         aria-labelledby="customized-dialog-title"
         open={open}
       >
-        <EditTaskForm
+        <EditClientForm
           handleClose={handleClose}
           selectedClient={selectedClient}
           onUpdate={updateTask}

@@ -9,7 +9,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import dynamic from "next/dynamic";
-import { updateTaskAlert } from "../alerts/alerts";
+import { updateAlert } from "../alerts/alerts";
 import CustomTypography, { FormFooter } from "../shared/formsComponents";
 
 export default function EditTestimonials({
@@ -69,11 +69,13 @@ export default function EditTestimonials({
         <Box
           component="form"
           noValidate={false}
-          action={async (formData) => {
-            handleClose();
+          action={ (formData) => {
 
-            await onUpdate(formData, selectedTestimonials.testimonialId);
-            updateTaskAlert();
+             onUpdate(formData, selectedTestimonials.testimonialId).then(() => {
+            handleClose();
+            updateAlert('Testimonials Updated');
+              
+            });
           }}
         >
           <Grid container alignItems="center" spacing={2}>
@@ -129,6 +131,7 @@ export default function EditTestimonials({
                   value={status}
                   label="status"
                   onChange={handleChange}
+                  required={true}
                 >
                   <MenuItem value={"ready"}>ready</MenuItem>
                   <MenuItem value={"not ready"}>Not ready</MenuItem>

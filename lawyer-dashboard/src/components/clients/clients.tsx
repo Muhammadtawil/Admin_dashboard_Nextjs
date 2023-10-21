@@ -8,6 +8,10 @@ import AddClient, {
 } from "../../server/clients/clients";
 import { GetServices } from "../../server/services/services";
 
+
+
+
+
 async function Delete(taskId: string) {
   "use server";
   try {
@@ -21,6 +25,7 @@ async function onCreate(formData: FormData) {
   try {
     await AddClient(formData);
     revalidatePath("/clients", "page");
+   
   } catch (error) {}
 }
 
@@ -28,13 +33,14 @@ async function onUpdate(formData: FormData, clientId: string) {
   "use server";
   try {
     await UpdateClient(formData, clientId);
-    revalidatePath("/clients", "page");
+    revalidatePath("/[lang]/clients", "page");
   } catch (error) {}
 }
 
 const ClientsComponentList = async () => {
   const client = await getClients();
   const services = await GetServices();
+
   return (
     <>
       <AddTaskForm onCreate={onCreate} servicesList={services} />

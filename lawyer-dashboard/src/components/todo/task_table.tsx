@@ -9,7 +9,6 @@ import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Card from "@mui/material/Card";
-import Checkbox from "@mui/material/Checkbox";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import IconButton from "@mui/material/IconButton";
@@ -130,7 +129,7 @@ export default function TaskTable({
               flexDirection: "row",
             }}
           >
-            <Checkbox {...label} size="small" />
+     
             {task.taskTitle}
           </TableCell>
           {isAssigned && userRole === "ADMIN" && !isToMe ? (

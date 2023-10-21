@@ -11,7 +11,7 @@ export async function GetTestimonials() {
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
-      cache: "no-store",
+
     },
   };
 

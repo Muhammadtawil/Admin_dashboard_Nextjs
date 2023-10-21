@@ -5,10 +5,13 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
-import { updateTaskAlert } from "../alerts/alerts";
+import { successAlert, updateAlert } from "../alerts/alerts";
 import CustomTypography from "../shared/formsComponents";
+import { useState } from "react";
 
 export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
+
+
   return (
     <>
       <Card
@@ -21,10 +24,17 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
       >
         <Box
           component="form"
-          noValidate
+          noValidate={false}
           action={async (formData) => {
-            await onCreate(formData);
-            updateTaskAlert();
+            await onCreate(formData)
+              .then(() => {
+                successAlert('Blog Added Successfully');
+                document.querySelector('form')?.reset();
+              })
+              .catch((error: any) => {
+
+                console.error(error);
+              });
           }}
         >
           <Grid item xs={12} textAlign="end">

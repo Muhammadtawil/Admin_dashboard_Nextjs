@@ -11,7 +11,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import dynamic from "next/dynamic";
-import { updateTaskAlert } from "../alerts/alerts";
+import { updateAlert } from "../alerts/alerts";
 import { ClearIcon } from "@mui/x-date-pickers";
 import CustomTypography, { FormFooter } from "../shared/formsComponents";
 const RichTextEditor = dynamic(() => import("@mantine/rte"), {
@@ -105,8 +105,9 @@ export default function EditBlogAddComponent({
               selectedBlog.blogId,
               selectedImage,
               selectedBlog.author.authorId
-            );
-            updateTaskAlert();
+            ).then(() => {
+              updateAlert('Blog Updated Successfully')
+            });
           }}
         >
           <Grid container alignItems="center" spacing={2}>

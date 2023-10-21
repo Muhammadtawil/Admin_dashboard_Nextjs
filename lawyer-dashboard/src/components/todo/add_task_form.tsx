@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { successAlert } from "../alerts/alerts";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
@@ -10,6 +10,7 @@ import CustomTypography, {
   HeadBox,
   ValuesSelect,
 } from "../shared/formsComponents";
+
 
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
 const priorityValues = ["HIGH", "MEDIUM", "LOW"];
@@ -24,6 +25,7 @@ export default function AddTaskForm({ onCreate }: any) {
   const handleClickOpen = () => {
     setOpen(true);
   };
+
 
   return (
     <>
@@ -40,10 +42,13 @@ export default function AddTaskForm({ onCreate }: any) {
           <Box
             component="form"
             noValidate={false}
-            action={async (formData) => {
+            action={ (formData) => {
+               onCreate(formData).then(() => {
               handleClose();
-              await onCreate(formData);
-              successAlert();
+                 successAlert('Task Added Successfully');
+                
+                
+              });
             }}
           >
             <Box
@@ -60,14 +65,16 @@ export default function AddTaskForm({ onCreate }: any) {
                   name="taskDeadline"
                   label="End Date"
                   type="date"
+                  inputProps={{ min: new Date().toISOString().split('T')[0] }}
                 />
+             
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Status"} />
-                  <ValuesSelect name={"taskStatus"} values={statusValues} />
+                  <ValuesSelect name={"taskStatus"} values={statusValues} isrequired={true} />
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Priority"} />
-                  <ValuesSelect name={"taskPriority"} values={priorityValues} />
+                  <ValuesSelect name={"taskPriority"} values={priorityValues} isrequired={true} />
                 </Grid>
                 <FormFooter handleClose={handleClose} title={"Add Task"} />
               </Grid>

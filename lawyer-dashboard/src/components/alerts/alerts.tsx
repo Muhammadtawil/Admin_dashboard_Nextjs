@@ -2,10 +2,10 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 const MySwal = withReactContent(Swal);
 
-export const successAlert = () => {
-  MySwal.fire({
+export function successAlert (succesTitle: string){
+ return MySwal.fire({
     title: "Done!",
-    text: "New Task Added",
+    text: `${succesTitle}`,
     icon: "success",
     timer: 3000,
     timerProgressBar: true,
@@ -13,10 +13,10 @@ export const successAlert = () => {
   });
 };
 
-export const updateTaskAlert = () => {
+export const updateAlert = (updateTitle: string) => {
   MySwal.fire({
     title: "Done!",
-    text: " Task Updated",
+    text:`${updateTitle}`,
     icon: "success",
     timer: 2000,
     timerProgressBar: true,
@@ -44,9 +44,10 @@ export const deleteAlert = ({ deleteMethod }: any) => {
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, delete it!",
+    focusConfirm:true
   }).then((result) => {
-    if (result.isConfirmed) {
-      deleteMethod;
+    if (result.isConfirmed ) {
+deleteMethod();
       Swal.fire("Deleted!", "Your task has been deleted.", "success");
     }
   });

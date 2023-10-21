@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Box, Grid } from "@mui/material";
-import { updateTaskAlert } from "../alerts/alerts";
+import { Box, Grid, TextField } from "@mui/material";
+import { successAlert, updateAlert } from "../alerts/alerts";
 import CustomTypography, {
   CustomSelect,
   CustomTextField,
@@ -11,7 +11,7 @@ import CustomTypography, {
 
 const clientStatusValues = ["COMPLETED", "PENDING", "IN_PROGRESS"];
 
-export default function EditTaskForm({
+export default function EditClientForm({
   onUpdate,
   handleClose,
   selectedClient,
@@ -20,7 +20,7 @@ export default function EditTaskForm({
   onUpdate: any;
   handleClose: any;
   selectedClient: any;
-  servicesList: any;
+  servicesList: any[];
 }) {
   const [formData, setFormData] = useState({
     clientName: selectedClient?.clientName,
@@ -55,9 +55,15 @@ export default function EditTaskForm({
           component="form"
           noValidate
           action={async (formData) => {
-            handleClose();
-            await onUpdate(formData, selectedClient.clientId);
-            updateTaskAlert();
+    
+            await onUpdate(formData, selectedClient.clientId).then(() => {
+              handleClose();
+            updateAlert('Client updated');
+              
+            })   .catch((error: any) => {
+
+              successAlert(error);
+            });;
           }}
         >
           <Box
@@ -69,38 +75,101 @@ export default function EditTaskForm({
             className="dark-BG-101010"
           >
             <Grid container alignItems="center" spacing={2}>
-              <CustomTextField
+       
+                <Grid item xs={12} md={12} lg={12}>
+              <CustomTypography text={"Client Name"} />
+
+              <TextField
+                autoComplete="clientName"
                 name="clientName"
-                label="Name"
+                required
+                fullWidth
                 value={formData.clientName}
+                id="clientName"
+                label="Client Name"
+                autoFocus
+                InputProps={{
+                  style: { borderRadius: 8 },
+                }}
                 onChange={handleInputChange}
               />
-              <CustomTextField
+            </Grid>
+                     <Grid item xs={12} md={12} lg={12}>
+              <CustomTypography text={"Client Phone"} />
+
+              <TextField
+                autoComplete="clientPhone"
                 name="clientPhone"
-                label="Client Phone"
+                required
+                fullWidth
                 value={formData.clientPhone}
+                id="clientPhone"
+                label="Client Phone"
+                autoFocus
+                InputProps={{
+                  style: { borderRadius: 8 },
+                }}
                 onChange={handleInputChange}
               />
-              <CustomTextField
+            </Grid>
+       
+                           <Grid item xs={12} md={12} lg={12}>
+              <CustomTypography text={"Client Email"} />
+
+              <TextField
+                autoComplete="clientEmail"
                 name="clientEmail"
-                label="Email"
+                required
+                fullWidth
                 value={formData.clientEmail}
+                id="clientEmail"
+                label="Client Email"
+                autoFocus
+                InputProps={{
+                  style: { borderRadius: 8 },
+                }}
                 onChange={handleInputChange}
               />
+            </Grid>
 
               <CustomSelect
                 name="clientStatus"
-                label="Status"
+                label="Client Status"
                 values={clientStatusValues}
                 selectedValue={formData.clientStatus}
                 onChange={handleInputChange}
+                required={true}
               />
 
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={"Services"} />
-                <ValuesSelect name={"clientService"} values={servicesList} />
+                {/* <ValuesSelect name={"clientService"} values={servicesList} /> */}
+                <select
+      className="form-select bg-light border-0"
+      name='clientService'
+      style={{
+        height: "55px",
+        color: "black",
+        width: "100%",
+        borderRadius: "3%",
+      }}
+      required={true}
+    >
+      <option value="">Select A Status</option>
+      {servicesList.length === 0 ? (
+        <option value="" disabled>
+          Loading...
+        </option>
+      ) : (
+        servicesList.map((service: any, index: any) => (
+          <option key={index} value={servicesList[index].serviceTitle}>
+            {servicesList[index].serviceTitle}
+          </option>
+        ))
+      )}
+    </select>
               </Grid>
-              <FormFooter handleClose={handleClose} title={"Add Service"} />
+              <FormFooter handleClose={handleClose} title={"Edit Client"} />
             </Grid>
           </Box>
         </Box>

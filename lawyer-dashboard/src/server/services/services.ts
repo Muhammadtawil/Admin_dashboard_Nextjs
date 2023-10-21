@@ -9,26 +9,27 @@ export async function GetServices() {
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
-      cache: "no-store",
+   
     },
-
-    // next: {
-    //   revalidate: 60,
-    //   // revalidateTag: ["tasks"],
-    // },
+    next: {
+      // revalidate: 10,
+      tags: ["services"],
+    },
+ 
   };
 
   try {
     const response = await fetch(
-      `${services_url}?=${Date.now()}`,
+      `${services_url}`,
       requestOptions
     );
 
+    const services = await response.json();
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);
     }
 
-    return response.json();
+    return services;
   } catch (error) {
     console.error("Error fetching data:", error);
     return [];

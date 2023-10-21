@@ -10,6 +10,8 @@ import CustomTypography, {
   HeadBox,
   ValuesSelect,
 } from "../shared/formsComponents";
+import { revalidatePath } from "next/cache";
+
 const clientValues = ["COMPLETED", "PENDING", "IN_PROGRESS"];
 
 export default function AddTaskForm({
@@ -43,10 +45,20 @@ export default function AddTaskForm({
           <Box
             component="form"
             noValidate={false}
-            action={async (formData) => {
-              handleClose();
-              await onCreate(formData);
-              successAlert();
+            action={ (formData) => {
+               onCreate(formData)
+                .then(() => {
+
+            handleClose();
+
+
+                  successAlert('Client Added Successfully');
+                  revalidatePath('clients','page')
+                })
+                .catch((error: any) => {
+
+                  console.error(error);
+                });
             }}
           >
             <Box
@@ -65,7 +77,7 @@ export default function AddTaskForm({
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Status"} />
 
-                  <ValuesSelect name={"clientStatus"} values={clientValues} />
+                  <ValuesSelect name={"clientStatus"} values={clientValues} isrequired={true} />
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={"Service"} />

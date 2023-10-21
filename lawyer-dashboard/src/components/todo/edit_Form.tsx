@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import { Box, Grid } from "@mui/material";
-import { updateTaskAlert } from "../alerts/alerts";
-import {
+import { Box, Grid, TextField } from "@mui/material";
+import { updateAlert } from "../alerts/alerts";
+import CustomTypography, {
   CustomSelect,
   CustomTextField,
   FormFooter,
@@ -52,6 +52,7 @@ export default function EditTaskForm({
     }));
   };
 
+
   return (
     <>
       <Box>
@@ -59,12 +60,14 @@ export default function EditTaskForm({
           component="form"
           noValidate
           action={async (formData) => {
-            handleClose();
             await onUpdate(
               formData,
               isAssigned ? selectedTask.assignedTaskId : selectedTask.taskId
-            );
-            updateTaskAlert();
+            ).then(() => {
+            handleClose();
+            updateAlert('Task Updated');
+              
+            });
           }}
         >
           <Box
@@ -76,12 +79,25 @@ export default function EditTaskForm({
             className="dark-BG-101010"
           >
             <Grid container alignItems="center" spacing={2}>
-              <CustomTextField
+       
+                       <Grid item xs={12} md={12} lg={12}>
+              <CustomTypography text={"Client Name"} />
+
+              <TextField
+                autoComplete="taskTitle"
                 name="taskTitle"
-                label="Task"
+                required
+                fullWidth
                 value={formData.taskTitle}
+                id="taskTitle"
+                label="task Title "
+                autoFocus
+                InputProps={{
+                  style: { borderRadius: 8 },
+                }}
                 onChange={handleInputChange}
               />
+            </Grid>
               <CustomSelect
                 name="taskStatus"
                 label="Status"

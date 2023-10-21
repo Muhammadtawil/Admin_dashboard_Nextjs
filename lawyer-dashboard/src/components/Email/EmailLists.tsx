@@ -4,7 +4,7 @@ import { Box, Button, Grid, TextField, Typography } from "@mui/material";
 import { useCallback, useState } from "react";
 import RichTextEditor from "@mantine/rte";
 import SendIcon from '@mui/icons-material/Send';
-import { updateTaskAlert } from "../alerts/alerts";
+import { successAlert, updateAlert } from "../alerts/alerts";
 import DOMPurify from 'dompurify';
 import he from 'he';
 import {convert} from "html-to-text";
@@ -16,7 +16,9 @@ export default function EmailLists({ sendEmail }: any) {
     // Step 2: Update the content state when it changes
     setContent(newContent);
   };
-
+  const clearContent = () => {
+    setContent("");
+  };
   // const handleSubmit = async (event: any) => {
   //   event.preventDefault();
 
@@ -55,17 +57,24 @@ export default function EmailLists({ sendEmail }: any) {
           </Typography>
         </Box>
 
-        <Box component="form" noValidate action={async (formData) => {
+        <Box component="form" noValidate={false} action={async  (formData)=>{
     
 // Use the html-to-text library to convert HTML to plain text
 const plainTextContent = convert(content, {
   wordwrap: 400, // Prevent line wrapping
 
 });
+          formData.append("content", plainTextContent);       
+         
+          sendEmail(formData, plainTextContent).then(() => {
+            successAlert('Email Sent Successfully')
+            document.querySelector('form')?.reset();
+            clearContent()
+          });
 
-formData.append("content", plainTextContent); // Include content in formData
-          await sendEmail(formData,plainTextContent);
-          updateTaskAlert();
+          
+    
+         
         }}>
           <Box
             sx={{
