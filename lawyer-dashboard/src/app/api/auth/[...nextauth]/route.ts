@@ -35,7 +35,7 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   pages: {
-    signIn: "/",
+    signIn: "/en/login",
 
   },
   providers: [

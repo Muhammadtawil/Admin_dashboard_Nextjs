@@ -1,4 +1,6 @@
-import { authOptions } from "../../app/api/auth/[...nextauth]/route";
+
+
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
 const subscriberss_url = process.env.SUBSCRIBERS_URL;
 

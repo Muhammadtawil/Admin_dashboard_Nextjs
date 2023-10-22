@@ -1,6 +1,8 @@
 // create Testimonial
 
-import { authOptions } from "../../app/api/auth/[...nextauth]/route";
+
+
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
 const testimonials_url = process.env.TESTIMONIALS_URL;
 

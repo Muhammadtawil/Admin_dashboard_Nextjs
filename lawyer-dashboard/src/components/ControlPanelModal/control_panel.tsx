@@ -16,7 +16,7 @@ import ToggleButton from "@mui/material/ToggleButton";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { ToggleButtonGroup } from "@mui/material";
-import LocaleSwitcher from "../locale/locale-swtcher";
+
 
 export default function ControlPanelModal() {
   const [isActiveSearchModal, setActiveSearchModal] = useState(true);
@@ -104,7 +104,7 @@ export default function ControlPanelModal() {
               {isRtl ? "Switch to LTR" : "Switch to RTL"}
             </Button>
     
-        <LocaleSwitcher />
+        {/* <LocaleSwitcher /> */}
   
           </Box>
 

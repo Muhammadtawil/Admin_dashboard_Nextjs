@@ -19,15 +19,15 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   // Add other configuration options as needed
 
-  // async redirects() {
-  //   return [
-  //     {
-  //       source: "/",
-  //       destination: "/login",
-  //       permanent: true,
-  //     },
-  //   ];
-  // },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/api/auth/signin",
+        permanent: true,
+      },
+    ];
+  },
 
   // i18n: {
   //   defaultLocale: "en",

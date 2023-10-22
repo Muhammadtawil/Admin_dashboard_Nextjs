@@ -1,7 +1,9 @@
 
+
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
 import { revalidatePath } from "next/cache";
-import { authOptions } from "../../app/api/auth/[...nextauth]/route";
+
 const assignTasksUrl = process.env.ASSIGN_TASK_URL;
 const tasks_url = process.env.TASKS_URL;
 const update_assigned = process.env.UPDATE_ASSIGN_URL;
