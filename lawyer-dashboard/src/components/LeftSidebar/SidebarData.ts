@@ -12,103 +12,104 @@ import AttachEmailOutlinedIcon from "@mui/icons-material/AttachEmailOutlined";
 import AddTaskOutlinedIcon from "@mui/icons-material/AddTaskOutlined";
 import InfoIcon from "@mui/icons-material/Info";
 import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded';
-export const SidebarData = [
-  {
-    title: "Dashboard",
-    path: "/main",
-    icon: GridViewIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
-  },
-  {
-    title: "TODO & TASKS",
-    path: "/tasks",
-    icon: AddTaskOutlinedIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
+import { useTranslations } from 'next-intl';
 
-    subNav: [
-      {
-        title: "calendar",
-        path: "/calendar",
-      },
-    ],
-  },
-  {
-    title: "Email",
-    path: "/email",
-    icon: AttachEmailOutlinedIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
-  },
-  {
-    title: "Clients ",
-    path: "/clients",
-    icon: ConnectWithoutContactOutlinedIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
-  },
-  {
-    title: "Team",
-    path: "/team",
-    icon: PeopleOutlinedIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
-  },
+function getSidebarData() {
+  const t = useTranslations('SideBar');
 
-  {
-    title: "Editor",
-    path: "/editor",
-    icon: BorderColorOutlinedIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
-  },
+  const SidebarData = [
+    {
+      title: t("main"),
+      path: "/main",
+      icon: GridViewIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+    {
+      title: t("task"),
+      path: "/tasks",
+      icon: AddTaskOutlinedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
 
-  {
-    title: "Services",
-    path: "/services",
-    icon: WorkIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
-  },
-  {
-    title: "News",
-    path: "/news",
-    icon: NewspaperIcon,
-  },
-  {
-    title: "Blogs",
-    path: "/blogs",
-    icon: ArticleOutlinedIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
+      subNav: [
+        {
+          title: t("calendar"),
+          path: "/calendar",
+        },
+      ],
+    },
+    {
+      title: t("email"),
+      path: "/email",
+      icon: AttachEmailOutlinedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+    {
+      title: t("clients"),
+      path: "/clients",
+      icon: ConnectWithoutContactOutlinedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+    {
+      title: t("team"),
+      path: "/team",
+      icon: PeopleOutlinedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+    {
+      title: t("editor"),
+      path: "/editor",
+      icon: BorderColorOutlinedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+    {
+      title: t("services"),
+      path: "/services",
+      icon: WorkIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+    {
+      title: t("news"),
+      path: "/news",
+      icon: NewspaperIcon,
+    },
+    {
+      title: t("blogs"),
+      path: "/blogs",
+      icon: ArticleOutlinedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+    {
+      title: t("about"),
+      path: "/about",
+      icon: InfoIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+    {
+      title: t("testimonials"),
+      path: "/testimonials",
+      icon: RateReviewOutlinedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+    {
+      title: t("subscribers"),
+      path: "/subscribers",
+      icon: Groups2RoundedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+  ];
 
-    // subNav: [
-    //   {
-    //     title: "AddBlog",
-    //     path: "/Blogs/account/",
-    //   },
-    // ],
-  },
-  {
-    title: "About",
-    path: "/about",
-    icon: InfoIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
-  },
-  {
-    title: "Testimonials",
-    path: "/testimonials",
-    icon: RateReviewOutlinedIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
-  },
-  {
-    title: "Subscribers",
-    path: "/subscribers",
-    icon: Groups2RoundedIcon,
-    iconClosed: KeyboardArrowRightIcon,
-    iconOpened: KeyboardArrowDownIcon,
-  },
-];
+  return SidebarData;
+}
+
+export default getSidebarData;

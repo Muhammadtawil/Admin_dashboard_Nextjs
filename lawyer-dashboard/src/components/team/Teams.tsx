@@ -1,16 +1,21 @@
-import React from "react";
-import User from "./Team_Table";
-import AddTeamForm from "./add_Team_form";
-import AddService, { DeleteService } from "../../server/services/services";
+// TeamServer.js (Server Component)
+import { GetUsers } from "../../server/users/users";
 
+export function TeamServer() {
+  const users = GetUsers(); // Fetch data on the server side
+  return { users };
+}
+import React from "react";
+import AddTeamForm from "./add_Team_form";
+import { DeleteService } from "../../server/services/services";
 import { revalidatePath } from "next/cache";
 import {
-  GetUsers,
   CreateUser,
   UpdateUser,
   UpdateUserRole,
   UpdateUserImage,
 } from "../../server/users/users";
+import TeamTable from "./Team_Table";
 
 async function Delete(serviceId: string) {
   "use server";
@@ -48,13 +53,25 @@ async function updateImage(formData: FormData, userId: string) {
   await UpdateUserImage(formData, userId);
 }
 
+
+ async function fetchUsersData() {
+  try {
+    const users = await GetUsers(); // Fetch data on the server side
+    return { users };
+  } catch (error) {
+    console.error("Error fetching user data:", error);
+    return { users: [] }; // Return an empty array in case of an error
+  }
+}
+
 export default async function Teams() {
-  const users = await GetUsers();
+  const users =await GetUsers();
 
   return (
+    
     <>
       <AddTeamForm onCreate={onCreate} />
-      <User
+      <TeamTable
         dataRows={users}
         deleteTask={Delete}
         updateTask={onUpdate}

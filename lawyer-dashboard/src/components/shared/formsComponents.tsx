@@ -12,6 +12,7 @@ import {
 import AddIcon from "@mui/icons-material/Add";
 import { ClearIcon } from "@mui/x-date-pickers/icons";
 import SearchForm from "../TopNavbar/search/SearchForm";
+import { useTranslations } from "next-intl";
 const CustomTypography = ({ text }: { text: any }) => {
   return (
     <Typography
@@ -89,7 +90,8 @@ export const FormHead = ({
 }: {
   handleClickOpen: any;
   title: any;
-}) => {
+  }) => {
+
   return (
     <Box
       sx={{
@@ -131,7 +133,9 @@ export const FormFooter = ({
 }: {
   handleClose: any;
   title: any;
-}) => {
+  }) => {
+  
+  const t=useTranslations('taskPage')
   return (
     <Grid item xs={12} textAlign="end">
       <Button
@@ -156,7 +160,7 @@ export const FormFooter = ({
           }}
           className="mr-5px"
         />
-        Cancel
+       {t('cancel')}
       </Button>
 
       <Button

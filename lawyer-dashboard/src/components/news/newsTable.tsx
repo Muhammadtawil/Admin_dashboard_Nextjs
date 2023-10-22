@@ -17,7 +17,6 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 import { deleteAlert } from "../alerts/alerts";
 import { Typography } from "@mui/material";
-
 import EditNewsComponent from "./editNews";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import cellStyle from "../shared/cellStyle";

@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { Box, Grid, TextField } from "@mui/material";
-
+import Image from 'next/image'
 import { updateAlert } from "../alerts/alerts";
 import CustomTypography, {
   FormFooter,
@@ -281,10 +281,11 @@ export default function EditTeamForm({
               {selectedImage && (
                 <div>
                   <h3>Preview:</h3>
-                  <img
+                  <Image
                     src={URL.createObjectURL(selectedImage)}
                     alt="Selected"
                     width="200"
+                    height={180}
                   />
                 </div>
               )}

@@ -10,7 +10,8 @@ import {
   Badge,
 } from "@mui/material";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
-
+import Image from 'next/image'
+import clicker from '../../../../public/images/clicker.png'
 const Notifications = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -100,7 +101,7 @@ const Notifications = () => {
             </Typography>
 
             <div className={styles.notificationListContent}>
-              <img src="/images/clicker.png" alt="PDF Icon" width={27} />
+              <Image src={clicker} alt="PDF Icon" width={27} />
               {/* Use 'img' instead of 'image' */}
               <Typography
                 variant="h6"
@@ -134,7 +135,8 @@ const Notifications = () => {
             </Typography>
 
             <div className={styles.notificationListContent}>
-              <img src="/images/clicker.png" alt="PDF Icon" width={27} />
+            <Image src={clicker} alt="PDF Icon" width={27} />
+
               <Typography
                 variant="h6"
                 sx={{

@@ -7,10 +7,9 @@ import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import { successAlert, updateAlert } from "../alerts/alerts";
 import CustomTypography from "../shared/formsComponents";
-import { useState } from "react";
-
+import { useTranslations } from 'next-intl'
 export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
-
+  const t = useTranslations('BlogPage')
 
   return (
     <>
@@ -58,7 +57,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
                 }}
                 className="mr-5px"
               />
-              Create blog
+            {t('CreateBlog')} 
             </Button>
           </Grid>
           <Grid container alignItems="center" spacing={2}>

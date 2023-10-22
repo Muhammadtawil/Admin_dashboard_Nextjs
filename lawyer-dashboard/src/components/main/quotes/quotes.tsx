@@ -1,8 +1,13 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import quotesData from './quotesDta'; // Correct the import
+import { useTranslations } from 'next-intl';
+import { Stack } from '@mui/material';
+
+
 
 const RandomQuote = () => {
+  const t=useTranslations('mainPage')
   const [randomQuote, setRandomQuote] = useState<{ id: number; quote: string; person: string } | null>(null);
 
   useEffect(() => {
@@ -25,15 +30,19 @@ const RandomQuote = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Quote of the Day</h2>
+    <Stack  direction="row" spacing={2}> 
+    
+    <div style={{ textAlign: 'center' }}>
+
+  <h1>{t('quote')}</h1>
       {randomQuote && (
  <div style={{ backgroundColor: '#268C7E', width: '70%', padding: '10px', borderRadius: '10px' }}>
           <blockquote>{randomQuote.quote}</blockquote>
           <p>- {randomQuote.person}</p>
         </div>
       )}
-    </div>
+      </div>
+      </Stack>
   );
 };
 

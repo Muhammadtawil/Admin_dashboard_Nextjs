@@ -1,4 +1,61 @@
 {
-"welcomeMessage":"Welcome"
+
+  "mainPage":{
+        "welcomeMessage":"welcome",
+        "quote":"Quote of the Day"
+    },
+"BlogPage": {
+    "Title": "Blog",
+    "CreateBlog":"Create Blog"
+},
+"SideBar":{
+    "main":"Dashboard",
+    "task":"Tasks",
+    "email":"Email",
+    "clients":"Clients",
+    "team":"Team",
+    "editor":"Editor",
+    "blogs":"Blogs",
+    "services":"Services",
+    "news":"News",
+    "about":"About",
+    "testimonials":"Testimonials",
+    "subscribers":"Subscribers",
+    "calendar":"Calendar",
+    "signOut":"logout" 
+},
+"LocaleSwitcher": {
+    "locale": "{locale, select, ar {العربية} en {English} other {Unknown}}"
+},
+
+"taskPage": {
+    "taskTitle": "Task Title",
+    "pageTitle": "Tasks",
+    "assignedTo": "Assigned To",
+    "assignedBy":"Assigned By",
+    "assignedDate":"Assigned Date",
+    "assignedTaskTitlt":"Assigned Tasks",
+    "assignedByTitle":"Assigned Tasks By Me",
+    "assignedToMeTitile":"Assigned Tasks To Me",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "status": "Status",
+    "priority": "Priority",
+    "actions": "Actions",
+    "completed": "Completed",
+    "notCompleted": "Not Completed",
+    "inProgress": "In Progress",
+    "high": "High",
+    "medium": "Medium",
+    "All":"All",
+    "low": "Low",
+    "delete":"Delete",
+    "edit":"Edit",
+  "rowPerPage":"rows per page",
+  "addTask":"Add Task",
+  "cancel":"Cancel"
+
+  }
+
 
 }

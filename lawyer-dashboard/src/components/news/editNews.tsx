@@ -1,22 +1,18 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, } from "@mui/material";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import AddIcon from "@mui/icons-material/Add";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
-import dynamic from "next/dynamic";
 import { updateAlert } from "../alerts/alerts";
-import { ClearIcon } from "@mui/x-date-pickers";
 import CustomTypography, { FormFooter } from "../shared/formsComponents";
-const RichTextEditor = dynamic(() => import("@mantine/rte"), {
-  ssr: false,
-});
+import Image from 'next/image'
+
+
 
 export default function EditNewsComponent({
   onUpdate,
@@ -142,10 +138,11 @@ export default function EditNewsComponent({
             {selectedImage && (
               <div>
                 <h3>Preview:</h3>
-                <img
+                <Image
                   src={URL.createObjectURL(selectedImage)}
                   alt="Selected"
                   width="200"
+                  height={200}
                 />
               </div>
             )}

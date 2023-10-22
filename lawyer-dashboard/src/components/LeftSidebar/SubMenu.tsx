@@ -13,22 +13,23 @@ const SidebarLabel = styled("span")(({ theme }) => ({
 const SubMenu = ({ item }: any) => {
   const [subnav, setSubnav] = useState(false);
   const showSubnav = () => setSubnav(!subnav);
-  const [currentPath, setCurrentPath] = useState("");
+  // const [currentPath, setCurrentPath] = useState("");
   const router = usePathname();
 
-  useEffect(() => {
-    setCurrentPath(router);
-  }, [router]);
+  // useEffect(() => {
+  //   setCurrentPath(router);
+  // }, [router]);
+  const currentPath = router.startsWith("/en/") ? "/en" : "/ar"; // Assuming language prefix based on your setup
 
   return (
     <>
       <Link
-        as={item.path}
+        as={`${currentPath}${item.path}`}
         replace
-        href={item.path}
+        href={`${currentPath}${item.path}`}
         onClick={item.subNav && showSubnav}
         className={`${styles.sidebarLink} ${
-          currentPath == item.path && "sidebarLinkActive"
+          router === `${currentPath}${item.path}` && "sidebarLinkActive"
         }`}
       >
         <div>

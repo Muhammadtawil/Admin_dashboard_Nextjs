@@ -23,6 +23,10 @@ import MemberSelect from "./member_select";
 import cellStyle from "../shared/cellStyle";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import ActionsComponent from "../shared/PaginationList";
+import { useTranslations } from "next-intl";
+import { getStatusTranslationKey } from "../shared/tables";
+import { Typography } from "@mui/material";
+
 const label = { input: { "aria-label": "Checkbox demo" } };
 
 export default function TaskTable({
@@ -34,6 +38,7 @@ export default function TaskTable({
   isAssigned,
   userRole,
   isToMe,
+  tableTitle,
 }: {
   dataRows: any[];
   deleteTask: any;
@@ -42,63 +47,62 @@ export default function TaskTable({
   onSelectMember: any;
   isAssigned: boolean;
   userRole: any;
-  isToMe: boolean;
-}) {
-  const [selectedPriority, setSelectedPriority] = useState("");
-  const handlePriorityFilterChange = (event: any) => {
-    setSelectedPriority(event.target.value);
-  };
-  const [selectedStatus, setSelectedStatus] = useState("");
-  const handleStatusFilterChange = (event: any) => {
-    setSelectedStatus(event.target.value);
-  };
-
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(8);
-
-  const handleChangePage = (event: any, newPage: any) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event: any) => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
-  };
-
-  const [open, setOpen] = useState(false);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
-
-  // In your TaskTable component, add a state to store the selected task data.
-  const [selectedTask, setSelectedTask] = useState(null);
-
-  // Modify the Edit button click handler to set the selected task data.
-  const handleEditClick = (task: any) => {
-    setSelectedTask(task);
-    handleClickOpen();
-  };
-
-  // Member Select
-  const [openMember, setOpenMember] = useState(false);
-  const handleCloseMember = () => {
-    setOpenMember(false);
-  };
-
-  const handleClickOpenMember = () => {
-    setOpenMember(true);
-  };
-
-  const handleSelectClick = (task: any) => {
-    setSelectedTask(task);
-    handleClickOpenMember();
-  };
-
+    isToMe: boolean;
+    tableTitle: string;
+  }) {
+    const [selectedPriority, setSelectedPriority] = useState("");
+    const [selectedStatus, setSelectedStatus] = useState("");
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(8);
+    const [open, setOpen] = useState(false);
+    const [selectedTask, setSelectedTask] = useState(null);
+    const [openMember, setOpenMember] = useState(false);
+    const t = useTranslations('taskPage');
+  
+    const handlePriorityFilterChange = (event: any) => {
+      setSelectedPriority(event.target.value);
+    };
+  
+    const handleStatusFilterChange = (event: any) => {
+      setSelectedStatus(event.target.value);
+    };
+  
+    const handleChangePage = (event: any, newPage: any) => {
+      setPage(newPage);
+    };
+  
+    const handleChangeRowsPerPage = (event: any) => {
+      setRowsPerPage(parseInt(event.target.value, 10));
+      setPage(0);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    };
+  
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleEditClick = (task: any) => {
+      setSelectedTask(task);
+      handleClickOpen();
+    };
+  
+    const handleCloseMember = () => {
+      setOpenMember(false);
+    };
+  
+    const handleClickOpenMember = () => {
+      setOpenMember(true);
+    };
+  
+    const handleSelectClick = (task: any) => {
+      setSelectedTask(task);
+      handleClickOpenMember();
+    };
+  
+  
   const RenderTableRows = (
     dataRows: any[],
     page: number,
@@ -213,7 +217,7 @@ export default function TaskTable({
                     : "inherit", // Fallback color
               }}
             >
-              {task.taskStatus}
+                {t(getStatusTranslationKey(task.taskStatus))}
             </Paper>
           </TableCell>
 
@@ -233,14 +237,14 @@ export default function TaskTable({
                     : "inherit", // Fallback color
               }}
             >
-              {task.taskPriority}
+                    {t(getStatusTranslationKey(task.taskPriority))}
             </Paper>
           </TableCell>
           <TableCell align="right" sx={cellStyle}>
             <Box sx={{ display: "inline-block" }}>
-              <Tooltip title="Remove" placement="top">
+              <Tooltip title={t('delete')} placement="top">
                 <IconButton
-                  aria-label="remove"
+                  aria-label={t('delete')}
                   size="small"
                   color="error"
                   className="error"
@@ -253,9 +257,9 @@ export default function TaskTable({
                   <DeleteIcon fontSize="inherit" />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="edit" placement="top">
+              <Tooltip title={t('edit')} placement="top">
                 <IconButton
-                  aria-label="rename"
+                  aria-label={t('edit')}
                   size="small"
                   color="primary"
                   className="primary"
@@ -279,6 +283,17 @@ export default function TaskTable({
         mb: "15px",
       }}
     >
+        <Typography
+        component="h2"
+        sx={{
+          fontSize: 20,
+          fontWeight: 500,
+          padding: 2,
+        }}
+      >
+     {t(tableTitle)}
+      </Typography>
+
       <TableContainer
         component={Paper}
         sx={{
@@ -292,47 +307,47 @@ export default function TaskTable({
         >
           <TableHead sx={{ background: "#F7FAFF" }}>
             <TableRow>
-              <TableCell sx={cellStyle}>Name</TableCell>
+              <TableCell sx={cellStyle}>{t('taskTitle')}</TableCell>
               {userRole === "ADMIN" && !isToMe ? (
-                <TableCell sx={cellStyle}>Assigned To</TableCell>
+                <TableCell sx={cellStyle}>{t('assignedTo')}</TableCell>
               ) : isToMe ? (
-                <TableCell sx={cellStyle}>Assigned By</TableCell>
+                <TableCell sx={cellStyle}>{t('assignedBy')}</TableCell>
               ) : null}
 
-              <TableCell sx={cellStyle}>Start Date</TableCell>
-              <TableCell sx={cellStyle}>End Date</TableCell>
+              <TableCell sx={cellStyle}>{t('startDate')}</TableCell>
+              <TableCell sx={cellStyle}>{t('endDate')}</TableCell>
               {isAssigned ? (
-                <TableCell sx={cellStyle}>Assigned Date</TableCell>
+                <TableCell sx={cellStyle}>{t('assignedDate')} </TableCell>
               ) : null}
               <TableCell align="center" sx={cellStyle}>
-                Status
+              {t('status')}
                 <select
                   value={selectedStatus}
                   onChange={handleStatusFilterChange}
                   style={{ marginLeft: "8px" }}
                 >
-                  <option value="">All</option>
-                  <option value="COMPLETED">Completed</option>
-                  <option value="NOT_COMPLETED">Not Completed</option>
-                  <option value="IN_PROGRESS">In Progress</option>
+                  <option value="">{t('All')}</option>
+                  <option value="COMPLETED">{t('completed')}</option>
+                  <option value="NOT_COMPLETED">{t('notCompleted')}</option>
+                  <option value="IN_PROGRESS">{t('inProgress')}</option>
                 </select>
               </TableCell>
 
               <TableCell align="center" sx={cellStyle}>
-                Priority
+              {t('priority')}
                 <select
                   value={selectedPriority}
                   onChange={handlePriorityFilterChange}
                   style={{ marginLeft: "8px" }}
                 >
-                  <option value="">All</option>
-                  <option value="HIGH">High</option>
-                  <option value="MEDIUM">Medium</option>
-                  <option value="LOW">Low</option>
+                  <option value="">{t('All')}</option>
+                  <option value="HIGH">{t('high')}</option>
+                  <option value="MEDIUM">{t('medium')}</option>
+                  <option value="LOW">{t('low')}</option>
                 </select>
               </TableCell>
               <TableCell align="right" sx={cellStyle}>
-                Action
+              {t('actions')}
               </TableCell>
             </TableRow>
           </TableHead>
@@ -340,16 +355,17 @@ export default function TaskTable({
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
-                colSpan={8}
+                rowsPerPageOptions={[5, 10, 25, { label:t('All'), value: -1 }]}
+                colSpan={6}
                 count={dataRows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 SelectProps={{
                   inputProps: {
-                    "aria-label": "rows per page",
+                    "aria-label":t('rowPerPage'),
                   },
-                  native: true,
+                  native: false,
+
                 }}
                 onPageChange={handleChangePage}
                 onRowsPerPageChange={handleChangeRowsPerPage}

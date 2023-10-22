@@ -5,8 +5,9 @@ import SearchForm from "./search/SearchForm";
 import CurrentDate from "./Date/CurrentDate";
 import Profile from "./Profile/Profile";
 import Notifications from "./notification/Notification";
-import LocaleSwitcher from "../locale/locale-swtcher";
+
 import DarkAndLightMode from "../ControlPanelModal/DarkAndLightMode";
+import LocaleSwitcher from "../locale/LocaleSwitcher";
 
 
 const TopNavbar = ({

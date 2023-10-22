@@ -93,29 +93,11 @@ const ToDoLists = async () => {
         isAssigned={false}
         userRole={user.userRole}
         isToMe={false}
+        tableTitle="pageTitle"
       />
-      <Typography
-        component="h2"
-        sx={{
-          fontSize: 25,
-          fontWeight: 500,
-          padding: 2,
-        }}
-      >
-        Assigned Tasks
-      </Typography>
+  
 
-      <Typography
-        component="h2"
-        sx={{
-          fontSize: 20,
-          fontWeight: 500,
-          padding: 2,
-        }}
-      >
-        Assigned Tasks To Me
-      </Typography>
-
+   
       <TaskTable
         dataRows={assignedToTasks}
         deleteTask={DeleteAssignedTasks}
@@ -125,20 +107,12 @@ const ToDoLists = async () => {
         isAssigned={true}
         userRole={user.userRole}
         isToMe={true}
+        tableTitle="assignedToMeTitile"
       />
 
       {user.userRole === "ADMIN" ? (
         <>
-          <Typography
-            component="h2"
-            sx={{
-              fontSize: 20,
-              fontWeight: 500,
-              padding: 2,
-            }}
-          >
-            Assigned Tasks By Me
-          </Typography>
+      
 
           <TaskTable
             dataRows={assignedTasks}
@@ -149,6 +123,7 @@ const ToDoLists = async () => {
             isAssigned={true}
             userRole={user.userRole}
             isToMe={false}
+            tableTitle="assignedByTitle"
           />
         </>
       ) : null}

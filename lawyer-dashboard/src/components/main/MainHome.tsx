@@ -6,13 +6,14 @@ import MonthlyClientChart from "./charttwo";
 import { Box, Stack } from "@mui/material";
 import RandomQuote from "./quotes/quotes";
 import PageTitle from "@/components/shared/PageTitle/pageTitle";
+import QuoteGenerator from "./quotes/Quote_generator";
 
-export default async function MainHome({text}:any) {
+export default async function MainHome() {
     const services = await GetServices();
 const clients=await getClients()
   return (
       <>
-          <MainComponent text={text} />
+          <MainComponent  />
           <Box
         display="flex"
         flexDirection="row"
@@ -20,8 +21,9 @@ const clients=await getClients()
         justifyContent="center"
             //   height="100vh"
 
-      >
-              <RandomQuote />
+          >
+              <QuoteGenerator/>
+              {/* <RandomQuote /> */}
               </Box>
      <h1>Statistics</h1>
 

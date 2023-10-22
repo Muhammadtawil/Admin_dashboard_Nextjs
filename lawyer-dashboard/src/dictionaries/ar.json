@@ -1,3 +1,67 @@
 {
-    "welcomeMessage":"مرحبا"
-}
+
+    "mainPage":{
+        "welcomeMessage":"مرحبا",
+        "quote":"حكمة اليوم"
+    },
+
+
+    "BlogPage": {
+        "Title": "المقالات",
+        "CreateBlog":"انشئ مقال"
+    },
+
+
+    "SideBar":{
+        "main":"الرئيسية",
+        "task":"المهام",
+        "email":"البريد",
+        "clients":"الزبائن",
+        "team":"الفريق",
+        "editor":"محرر النصوص",
+        "blogs":"المقالات",
+        "services":"الخدمات",
+        "news":"اﻷخبار",
+        "about":"معلومات المكتب",
+        "testimonials":"التقييم",
+        "subscribers":"المشتركون",
+        "calendar":"الرزنامة",
+        "signOut":"الخروج"
+
+        
+    },
+
+    
+    "LocaleSwitcher": {
+        "locale": "{locale, select, ar {العربية} en {English} other {Unknown}}"
+    },
+
+    "taskPage": {
+        "taskTitle": "العنوان",
+        "pageTitle": " المهام",
+        "assignedTo": "موكلة إلى",
+        "assignedBy":"موكلة من",
+        "assignedDate":"تاريخ التوكيل",
+        "assignedTaskTitlt":"المهام الموكلة",
+        "assignedByTitle":"المهام الموكلة من قبلي",
+        "assignedToMeTitile":"المهام الموكلة لي",
+        "startDate": "تاريخ البدء",
+        "endDate": "تاريخ الانتهاء",
+        "status": "الحالة",
+        "priority": "الأولوية",
+        "actions": "الإجراءات",
+        "completed": "منجز",
+        "notCompleted": "غير منجز",
+        "inProgress": "قيد التنفيذ",
+        "high": "عالية",
+        "medium": "متوسطة",
+        "low": "منخفضة",
+        "All":"الجميع",
+        "delete":"مسح",
+        "edit":"تعديل",
+        "rowPerPage":"عدد المهام لكل صفحة",
+        "addTask":"إضافة مهام",
+        "cancel":"إلغاء"
+
+      }
+} 

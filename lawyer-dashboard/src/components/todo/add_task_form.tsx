@@ -10,12 +10,14 @@ import CustomTypography, {
   HeadBox,
   ValuesSelect,
 } from "../shared/formsComponents";
+import { useTranslations } from "next-intl";
 
 
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
 const priorityValues = ["HIGH", "MEDIUM", "LOW"];
 
 export default function AddTaskForm({ onCreate }: any) {
+  const t=useTranslations('taskPage')
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -29,7 +31,7 @@ export default function AddTaskForm({ onCreate }: any) {
 
   return (
     <>
-      <FormHead handleClickOpen={handleClickOpen} title={"Add Task"} />
+      <FormHead handleClickOpen={handleClickOpen} title={t('addTask')} />
 
       <StyledDialogTitle
         onClose={handleClose}
@@ -37,7 +39,7 @@ export default function AddTaskForm({ onCreate }: any) {
         open={open}
       >
         <Box>
-          <HeadBox handleClose={handleClose} title={"Add Task"} />
+          <HeadBox handleClose={handleClose} title={t('addTask')}  />
 
           <Box
             component="form"
@@ -60,23 +62,23 @@ export default function AddTaskForm({ onCreate }: any) {
               className="dark-BG-101010"
             >
               <Grid container alignItems="center" spacing={2}>
-                <CustomTextField name="taskTitle" label="Task" />
+                <CustomTextField name="taskTitle" label={t('taskTitle')}  />
                 <CustomTextField
                   name="taskDeadline"
-                  label="End Date"
+                  label={t('endDate')} 
                   type="date"
                   inputProps={{ min: new Date().toISOString().split('T')[0] }}
                 />
              
                 <Grid item xs={12} md={12} lg={6}>
-                  <CustomTypography text={"Status"} />
+                  <CustomTypography text={t('status')} />
                   <ValuesSelect name={"taskStatus"} values={statusValues} isrequired={true} />
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
-                  <CustomTypography text={"Priority"} />
+                  <CustomTypography text={t('priority')}/>
                   <ValuesSelect name={"taskPriority"} values={priorityValues} isrequired={true} />
                 </Grid>
-                <FormFooter handleClose={handleClose} title={"Add Task"} />
+                <FormFooter handleClose={handleClose} title={t('addTask')}  />
               </Grid>
             </Box>
           </Box>

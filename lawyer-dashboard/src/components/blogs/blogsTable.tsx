@@ -17,7 +17,7 @@ import Box from "@mui/material/Box";
 import { useState } from "react";
 import { deleteAlert } from "../alerts/alerts";
 import { Typography } from "@mui/material";
-
+import Image from 'next/image'
 import EditBlogAddComponent from "./EditBlogForm";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import cellStyle from "../shared/cellStyle";
@@ -108,12 +108,13 @@ export default function BlogsTable({
                 }}
                 className="ml-10px"
               >
-                <img
+                <Image
                   src={blog.blogImageUrl}
                   alt="User"
                   width={40}
                   height={40}
                   className="borRadius100"
+                  // placeholder="blur"
                 />
                 <Box>
                   <Typography

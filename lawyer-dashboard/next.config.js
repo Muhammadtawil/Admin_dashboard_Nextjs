@@ -5,18 +5,29 @@ const nextConfig = {
     buildActivityPosition: "bottom-right",
   },
 
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'storage.googleapis.com',
+        port: '',
+        pathname: '/**',
+      
+      },
+    ],
+  },
   productionBrowserSourceMaps: false,
   // Add other configuration options as needed
 
-  async redirects() {
-    return [
-      {
-        source: "/",
-        destination: "/api/auth/signin",
-        permanent: true,
-      },
-    ];
-  },
+  // async redirects() {
+  //   return [
+  //     {
+  //       source: "/",
+  //       destination: "/login",
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 
   // i18n: {
   //   defaultLocale: "en",
@@ -26,7 +37,7 @@ const nextConfig = {
 
   experimental: {
     // serverComponents: true,
-    appDir: true,
+    // appDir: true,
     serverActions: true, // Enable Server Actions
   },
 };
