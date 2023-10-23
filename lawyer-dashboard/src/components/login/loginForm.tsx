@@ -32,7 +32,7 @@ export default function LoginForm() {
         redirect: false,
         userName: formValues.userName,
         password: formValues.password,
-        callbackUrl: "/main",
+        callbackUrl: "/en/main",
       });
 
       setLoading(false);

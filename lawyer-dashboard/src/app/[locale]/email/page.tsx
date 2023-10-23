@@ -1,8 +1,13 @@
 
+import dynamic from "next/dynamic";
 import PageTitle from "../../../components/shared/PageTitle/pageTitle";
-import EmailComponent from "@/components/Email/email";
 
 
+
+const EmailComponent = dynamic(() => import("../../../components/Email/email"), {
+  loading: () => <p>Loading...</p>, // Optional loading component
+  ssr: false, // Disable server-side rendering for this component
+});
 
 
 export default function Inbox() {
