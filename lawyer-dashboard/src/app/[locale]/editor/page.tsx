@@ -7,8 +7,9 @@ import "react-tabs/style/react-tabs.css";
 // import EditorHtml from '../../../components/editor/editorHtml';
 
 import dynamic from "next/dynamic";
+import LoadingSpinner from "@/components/loading spinner/loadinSpinner";
 const EditorComponent = dynamic(() => import("../../../components/editor/editorHtml"), {
-  loading: () => <p>Loading...</p>, // Optional loading component
+  loading: () => <LoadingSpinner />,  // Optional loading component
   ssr: false, // Disable server-side rendering for this component
 });
 

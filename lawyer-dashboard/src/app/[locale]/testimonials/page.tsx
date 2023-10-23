@@ -1,10 +1,11 @@
+import LoadingSpinner from "@/components/loading spinner/loadinSpinner";
 import PageTitle from "../../../components/shared/PageTitle/pageTitle";
 import dynamic from "next/dynamic";
 
 const TestimonialsComponent = dynamic(
   () => import("../../../components/testimonials/testimonials"),
   {
-    loading: () => <p>Loading...</p>, // Optional loading component
+    loading: () => <LoadingSpinner />, 
     ssr: false, // Disable server-side rendering for this component
   }
 );

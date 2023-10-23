@@ -1,19 +1,19 @@
 // import "./page.module.css";
-import ".././styles/remixicon.css";
+// import ".././styles/remixicon.css";
 // Chat Styles
-import ".././styles/chat.css";
+// import ".././styles/chat.css";
 // Globals Styles
-import ".././styles/globals.css";
-// Rtl Styles
-import ".././styles/rtl.css";
+// import ".././styles/globals.css";
+
 // Dark Mode Styles
 import ".././styles/dark.css";
+import ".././styles/style.css";
+
+
 // Theme Styles
-import theme from ".././styles/theme";
-import "react-tabs/style/react-tabs.css";
-// import "swiper/css";
-// import "swiper/css/bundle";
-// import "../styles/style.css";
+// import theme from ".././styles/theme";
+// import "react-tabs/style/react-tabs.css";
+
 
 
 
@@ -29,7 +29,9 @@ export default function RootLayout({
 <html>
       
 
-          {children}
+        {children}
+
+
 
 
 </html>

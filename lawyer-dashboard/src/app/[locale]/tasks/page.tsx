@@ -1,9 +1,10 @@
 // import ToDoLists from "@/components/todo/todo_list";
+import LoadingSpinner from "@/components/loading spinner/loadinSpinner";
 import PageTitle from "../../../components/shared/PageTitle/pageTitle";
 import dynamic from "next/dynamic";
 
 const TasksComponent = dynamic(() => import("../../../components/todo/todo_list"), {
-  loading: () => <p>Loading...</p>, // Optional loading component
+  loading: () => <LoadingSpinner />, 
   ssr: false, // Disable server-side rendering for this component
 });
 

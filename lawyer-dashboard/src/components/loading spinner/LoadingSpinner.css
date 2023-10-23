@@ -1,0 +1,59 @@
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Stack the icon and spinner vertically */
+    height: 100vh; /* Center the spinner vertically */
+  }
+  
+  .icon {
+    text-align: center;
+    animation: pulse 2s ease infinite; /* Apply fade and scale animation */
+    font-size: 6rem;
+    margin-bottom: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .loading-text {
+    font-size: 1.5rem;
+  }
+  
+  .rotating-icon {
+    display: inline-block;
+    font-size: 4rem; /* Adjust the size as needed */
+    animation: rotate 2s linear infinite; /* Apply rotation animation */
+  }
+  
+  .spinner {
+    margin-top: 20px; /* Add spacing between the icon and spinner */
+  }
+  
+  .custom-large-icon {
+    font-size: 1.2em; /* Adjust the size as needed */
+ 
+  }
+  @keyframes rotate {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2); /* Scale up by 20% */
+      opacity: 1; /* Fade in */
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0; /* Fade out */
+    }
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.3; /* Start and end at lower opacity */
+    }
+    50% {
+      opacity: 1; /* Peak at full opacity */
+    }
+  }
+  

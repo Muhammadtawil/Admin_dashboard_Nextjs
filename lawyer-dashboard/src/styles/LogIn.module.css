@@ -1,0 +1,542 @@
+.user-area-all-style {
+    position: relative;
+    z-index: 1;
+  }
+  .user-area-all-style .contact-form-action {
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 0 40px rgba(82, 85, 90, 0.1);
+    padding: 40px;
+    max-width: 570px;
+    margin: auto;
+  }
+  .user-area-all-style .contact-form-action .form-heading {
+    margin-bottom: 33px;
+  }
+  .user-area-all-style .contact-form-action .form-heading .form-title {
+    font-size: 35px;
+    color: #233d63;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  .user-area-all-style .contact-form-action .form-heading .form-desc {
+    font-size: 18px;
+    color: #677286;
+    font-weight: 500;
+  }
+  .user-area-all-style .contact-form-action .form-heading .reset-desc {
+    line-height: 30px;
+    margin-top: 15px;
+  }
+  .user-area-all-style .contact-form-action .form-heading .reset-desc a {
+    color: #1dd3f8;
+  }
+  .user-area-all-style .contact-form-action .form-heading .reset-desc {
+    font-size: 16px;
+  }
+  .user-area-all-style .contact-form-action .form-heading .reset-desc a {
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action form .submit-btn {
+    margin-top: 24px;
+  }
+  .user-area-all-style .contact-form-action form .default-btn {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+  .user-area-all-style .contact-form-action form .default-btn.btn-two {
+    display: table;
+    margin: 0px auto 0;
+    padding: 20px 35px;
+  }
+  .user-area-all-style .contact-form-action form .col-lg-4:nth-child(1) .default-btn {
+    background-color: #ff5733;
+  }
+  .user-area-all-style .contact-form-action form .col-lg-4:nth-child(2) .default-btn {
+    background-color: #3955bc;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .user-area-all-style .contact-form-action form .col-lg-4:nth-child(3) .default-btn {
+    background-color: #1dd3f8;
+    float: right;
+  }
+  .user-area-all-style .contact-form-action form .reset-btn {
+    margin-top: 0;
+  }
+  .user-area-all-style .contact-form-action form .form-condition {
+    margin-bottom: 20px;
+  }
+  .user-area-all-style .contact-form-action form .form-condition .agree-label {
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action form .form-condition .agree-label a {
+    color: #1dd3f8;
+  }
+  .user-area-all-style .contact-form-action form .form-group {
+    margin-bottom: 30px;
+  }
+  .user-area-all-style .contact-form-action .account-desc {
+    margin: 25px auto 0;
+    display: table;
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action .account-desc a {
+    color: #1dd3f8;
+    margin-left: 10px;
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action #chb1 {
+    position: relative;
+    top: 1px;
+  }
+  .user-area-all-style .contact-form-action #chb2 {
+    position: relative;
+    top: 1px;
+  }
+  .user-area-all-style .contact-form-action .forget {
+    float: right;
+    color: #1dd3f8;
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action .now-register {
+    font-weight: 600;
+    float: right;
+    margin-bottom: 30px;
+  }
+  .user-area-all-style .contact-form-action .now-register a {
+    color: #1dd3f8;
+  }
+  .user-area-all-style .contact-form-action .now-log-in {
+    color: #1dd3f8;
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action .now-log-in .font-q {
+    font-weight: 600;
+  }
+  
+  
+  /* Text container */
+  .text-container h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+  .text-container h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+  }
+  .text-container h3 {
+    font-size: 30px;
+    margin-bottom: 15px;
+  }
+  .text-container h4 {
+    font-size: 25px;
+    margin-bottom: 15px;
+  }
+  .text-container h5 {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  .text-container h6 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  
+  .user-area-all-style {
+    position: relative;
+    z-index: 1;
+  }
+  .user-area-all-style .contact-form-action {
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-shadow: 0 0 40px rgba(82, 85, 90, 0.1);
+    padding: 40px;
+    max-width: 570px;
+    margin: auto;
+  }
+  .user-area-all-style .contact-form-action .form-heading {
+    margin-bottom: 33px;
+  }
+  .user-area-all-style .contact-form-action .form-heading .form-title {
+    font-size: 35px;
+    color: #233d63;
+    margin-bottom: 10px;
+    text-transform: capitalize;
+  }
+  .user-area-all-style .contact-form-action .form-heading .form-desc {
+    font-size: 18px;
+    color: #677286;
+    font-weight: 500;
+  }
+  .user-area-all-style .contact-form-action .form-heading .reset-desc {
+    line-height: 30px;
+    margin-top: 15px;
+  }
+  .user-area-all-style .contact-form-action .form-heading .reset-desc a {
+    color: #1dd3f8;
+  }
+  .user-area-all-style .contact-form-action .form-heading .reset-desc {
+    font-size: 16px;
+  }
+  .user-area-all-style .contact-form-action .form-heading .reset-desc a {
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action form .submit-btn {
+    margin-top: 24px;
+  }
+  .user-area-all-style .contact-form-action form .default-btn {
+    font-size: 14px;
+    padding: 12px 20px;
+  }
+  .user-area-all-style .contact-form-action form .default-btn.btn-two {
+    display: table;
+    margin: 0px auto 0;
+    padding: 20px 35px;
+  }
+  .user-area-all-style .contact-form-action form .col-lg-4:nth-child(1) .default-btn {
+    background-color: #ff5733;
+  }
+  .user-area-all-style .contact-form-action form .col-lg-4:nth-child(2) .default-btn {
+    background-color: #3955bc;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .user-area-all-style .contact-form-action form .col-lg-4:nth-child(3) .default-btn {
+    background-color: #1dd3f8;
+    float: right;
+  }
+  .user-area-all-style .contact-form-action form .reset-btn {
+    margin-top: 0;
+  }
+  .user-area-all-style .contact-form-action form .form-condition {
+    margin-bottom: 20px;
+  }
+  .user-area-all-style .contact-form-action form .form-condition .agree-label {
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action form .form-condition .agree-label a {
+    color: #1dd3f8;
+  }
+  .user-area-all-style .contact-form-action form .form-group {
+    margin-bottom: 30px;
+  }
+  .user-area-all-style .contact-form-action .account-desc {
+    margin: 25px auto 0;
+    display: table;
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action .account-desc a {
+    color: #1dd3f8;
+    margin-left: 10px;
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action #chb1 {
+    position: relative;
+    top: 1px;
+  }
+  .user-area-all-style .contact-form-action #chb2 {
+    position: relative;
+    top: 1px;
+  }
+  .user-area-all-style .contact-form-action .forget {
+    float: right;
+    color: #1dd3f8;
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action .now-register {
+    font-weight: 600;
+    float: right;
+    margin-bottom: 30px;
+  }
+  .user-area-all-style .contact-form-action .now-register a {
+    color: #1dd3f8;
+  }
+  .user-area-all-style .contact-form-action .now-log-in {
+    color: #1dd3f8;
+    font-weight: 600;
+  }
+  .user-area-all-style .contact-form-action .now-log-in .font-q {
+    font-weight: 600;
+  }
+  
+  /*
+  Ask Question Area Style
+  =====================================================*/
+  .ask-question {
+    background-color: #ffffff;
+    box-shadow: 0px 0px 29px 0px rgba(102, 102, 102, 0.08);
+    padding: 50px;
+  }
+  .ask-question .section-title {
+    margin: -9px auto 40px;
+  }
+  .ask-question h3 {
+    margin-bottom: 30px !important;
+    text-align: center;
+  }
+  .ask-question .form-group {
+    margin-bottom: 30px;
+  }
+  .ask-question .form-group .form-control {
+    border-radius: 4px;
+  }
+  .ask-question .default-btn {
+    margin: auto;
+    display: table;
+  }
+  
+  .list-unstyled {
+    color: #dc3545 !important;
+    margin-top: 10px;
+  }
+  
+  #msgSubmit {
+    position: absolute;
+    bottom: 8px;
+    right: 15px;
+  }
+  
+  .text-danger {
+    color: #dc3545 !important;
+  }
+  
+  .text-success {
+    color: #28a745 !important;
+  }
+  
+  .inner-client-page {
+    background-color: #f5f5f5 !important;
+  }
+  .inner-client-page .single-client {
+    margin-bottom: 193px;
+  }
+  .inner-client-page .client-img h3 {
+    color: #212121;
+  }
+  .inner-client-page .client-img span {
+    color: #4d4d4d;
+  }
+  
+  
+  form-control {
+    height: 50px;
+    color: #212121;
+    border: 1px solid #e8e8e8;
+    background-color: #f7f7f7;
+    border-radius: 0;
+    padding: 0;
+    font-size: 15px;
+    padding: 10px 20px;
+    width: 100%;
+  }
+  .form-control::-moz-placeholder {
+    color: #495057;
+  }
+  .form-control::placeholder {
+    color: #495057;
+  }
+  .form-control:focus {
+    color: #000000;
+    background-color: transparent;
+    box-shadow: unset;
+    outline: 0;
+    border: 1px solid #1dd3f8;
+  }
+  
+  .form-control:hover:focus,
+  .form-control:focus {
+    box-shadow: unset;
+  }
+  
+  textarea.form-control {
+    height: auto;
+  }
+  
+  newsletter-wrap .newsletter-form .form-control {
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+  
+  .ask-question .form-group .form-control {
+    border-radius: 4px;
+  }
+  
+  
+  .default-btn {
+    font-size: 15px;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 18px 35px;
+    line-height: 1;
+    transition: all 0.6s ease;
+    z-index: 1;
+    text-transform: capitalize;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    background-color: #1dd3f8;
+    display: inline-block;
+  }
+  .default-btn::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: -40px;
+    width: 10px;
+    height: 100px;
+    background-color: #ffffff;
+    opacity: 0.5;
+    transition: all 0.6s ease;
+    transform: rotate(45deg);
+  }
+  .default-btn::after {
+    content: "";
+    position: absolute;
+    top: -20px;
+    right: -40px;
+    width: 10px;
+    height: 100px;
+    background-color: #ffffff;
+    opacity: 0.5;
+    transition: all 0.6s ease;
+    transform: rotate(45deg);
+  }
+  .default-btn.active {
+    background-color: #ffffff;
+    color: #1dd3f8;
+  }
+  .default-btn.active:hover {
+    color: #ffffff;
+    background-color: #1dd3f8;
+  }
+  .default-btn:hover {
+    color: #ffffff;
+    transition: all 0.6s ease;
+  }
+  .default-btn:hover::before {
+    left: 200px;
+  }
+  .default-btn:hover::after {
+    right: 200px;
+  }
+  
+  .popup-youtube {
+    cursor: pointer;
+  }
+  
+  
+  .col-lg-4:nth-child(1) .single-features {
+    border-radius: 4px 0 0 4px;
+    position: relative;
+  }
+  .col-lg-4:nth-child(1) .single-features::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 80px;
+    background-position: left;
+    background-repeat: no-repeat;
+  }
+  .col-lg-4:nth-child(2) .single-features {
+    border-right: 1px solid #eeeeee;
+    border-left: 1px solid #eeeeee;
+  }
+  .col-lg-4:nth-child(3) .single-features {
+    border-radius: 0 4px 4px 0;
+    position: relative;
+  }
+  .col-lg-4:nth-child(3) .single-features::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background-position: right;
+    background-repeat: no-repeat;
+  }
+  
+  .ptb-100 {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+  
+  .pt-100 {
+    padding-top: 100px;
+  }
+  
+  .pb-100 {
+    padding-bottom: 100px;
+  }
+  
+  .pb-50 {
+    padding-bottom: 50px;
+  }
+  
+  .pt-70 {
+    padding-top: 70px;
+  }
+  
+  .pb-70 {
+    padding-bottom: 70px;
+  }
+  
+  .mb-30 {
+    margin-bottom: 30px;
+  }
+  
+  .pl-30 {
+    padding-left: 30px;
+  }
+  
+  .pr-30 {
+    padding-right: 30px;
+  }
+  
+  .mt-30 {
+    margin-top: 30px;
+  }
+  
+  .mt-20 {
+    margin-top: 20px;
+  }
+  
+  .mt-100 {
+    margin-top: 100px;
+  }
+  
+  .mtb-100 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  
+  .mb-20 {
+    margin-bottom: 20px;
+  }
+  
+  .mt-minus-70 {
+    margin-top: -70px;
+  }
+  
+  .mb-minus-70 {
+    margin-bottom: -70px;
+  }
+  
+  .ml-30 {
+    margin-left: 30px;
+  }
+  
+  .mr-30 {
+    margin-right: 30px;
+  }
+  
+  .fun-blue-bg {
+    background-color: #24416b;
+  }
+  

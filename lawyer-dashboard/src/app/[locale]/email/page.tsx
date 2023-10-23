@@ -1,11 +1,12 @@
 
 import dynamic from "next/dynamic";
 import PageTitle from "../../../components/shared/PageTitle/pageTitle";
+import LoadingSpinner from "@/components/loading spinner/loadinSpinner";
 
 
 
 const EmailComponent = dynamic(() => import("../../../components/Email/email"), {
-  loading: () => <p>Loading...</p>, // Optional loading component
+  loading: () => <LoadingSpinner />, 
   ssr: false, // Disable server-side rendering for this component
 });
 

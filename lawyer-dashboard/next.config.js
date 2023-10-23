@@ -40,6 +40,7 @@ const nextConfig = {
     // appDir: true,
     serverActions: true, // Enable Server Actions
   },
+  
 };
 
 module.exports = nextConfig;

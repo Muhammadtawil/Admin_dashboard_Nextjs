@@ -1,19 +1,18 @@
 "use client";
-import Head from "next/head";
+
 import { Inter } from "next/font/google";
 import {usePathname } from "next/navigation";
 import "../../styles/remixicon.css";
 // Chat Styles
-import "../../styles/chat.css";
+// import "../../styles/chat.css";
 // Globals Styles
 import "../../styles/globals.css";
-// Rtl Styles
-import "../../styles/rtl.css";
+
 // Dark Mode Styles
-import "../../styles/dark.css";
+// import "../../styles/dark.css";
 // Theme Styles
-import theme from "../../styles/theme";
-import "react-tabs/style/react-tabs.css";
+// import theme from "../../styles/theme";
+// import "react-tabs/style/react-tabs.css";
 import "react-tabs/style/react-tabs.css";
 import {useState } from "react";
 import TopNavbar from "../../components/TopNavbar/TopNavBar";
