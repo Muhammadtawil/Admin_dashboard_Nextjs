@@ -27,7 +27,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
           action={async (formData) => {
             await onCreate(formData)
               .then(() => {
-                successAlert('Blog Added Successfully');
+                successAlert(t('success'));
                 document.querySelector('form')?.reset();
               })
               .catch((error: any) => {
@@ -62,14 +62,14 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
           </Grid>
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Blog title"} />
+              <CustomTypography text={t('blogTitle')}/>
               <TextField
                 autoComplete="blogTitle"
                 name="blogTitle"
                 required
                 fullWidth
                 id="Blog title"
-                label="Blog title"
+                label={t('blogTitle')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -78,7 +78,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
             </Grid>
 
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Bloge Description"} />
+              <CustomTypography text={t('blogContent')} />
               <TextField
                 multiline
                 minRows={10}
@@ -87,7 +87,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
                 required
                 fullWidth
                 id="blogContent"
-                label="Blog Content"
+                label={t('blogContent')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -96,7 +96,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
             </Grid>
 
             <Grid item xs={12} md={12} lg={6}>
-              <CustomTypography text={"Author"} />
+              <CustomTypography text={t('author')} />
 
               <TextField
                 autoComplete="Author"
@@ -104,7 +104,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
                 required
                 fullWidth
                 id="authorName"
-                label="Author"
+                label={t('author')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },

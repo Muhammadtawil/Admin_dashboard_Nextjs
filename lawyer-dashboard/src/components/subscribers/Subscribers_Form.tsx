@@ -7,11 +7,15 @@ import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import { successAlert, updateAlert } from "../alerts/alerts";
 import CustomTypography from "../shared/formsComponents";
-import { revalidatePath } from "next/cache";
+import { useTranslations } from "next-intl";
+import PageTitle from "../shared/PageTitle/pageTitle";
+
 
 export default function SubscribersAddComponent({ onCreate }: { onCreate: any }) {
+ const t=useTranslations('subscribersPage')
   return (
     <>
+      <PageTitle title={t('pageTitle') } />
       <Card
         sx={{
           boxShadow: "none",
@@ -25,7 +29,7 @@ export default function SubscribersAddComponent({ onCreate }: { onCreate: any })
           noValidate={false}
           action={ (formData) => {
              onCreate(formData).then(() => {
-              successAlert('Subscribers Added ')
+              successAlert(t('success'))
                document.querySelector('form')?.reset();
         
             });
@@ -53,19 +57,19 @@ export default function SubscribersAddComponent({ onCreate }: { onCreate: any })
                 }}
                 className="mr-5px"
               />
-              Add Subcriber
+             {t('addSubscriber')}
             </Button>
           </Grid>
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Subscriber Email"} />
+              <CustomTypography text={t('subscriberEmail')} />
               <TextField
                 autoComplete="subscriberEmail"
                 name="subscriberEmail"
                 required
                 fullWidth
                 id="subscriberEmail"
-                label="subscriber Email "
+                label={t('subscriberEmail')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },

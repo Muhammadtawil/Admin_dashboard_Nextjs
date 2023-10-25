@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import {useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { successAlert } from "../alerts/alerts";
 import StyledDialogTitle from "../shared/StyledDialogTitle";

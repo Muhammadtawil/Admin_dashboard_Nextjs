@@ -10,7 +10,7 @@ import CreateTask, {
 } from "../../server/tasks/tasks";
 import AddTaskForm from "./add_task_form";
 
-import { Typography } from "@mui/material";
+
 import TaskTable from "./task_table";
 import { GetUser, GetUsers } from "../../server/users/users";
 import { revalidatePath } from "next/cache";

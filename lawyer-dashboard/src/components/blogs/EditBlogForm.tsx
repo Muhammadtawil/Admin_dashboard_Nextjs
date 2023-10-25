@@ -11,6 +11,7 @@ import Select from "@mui/material/Select";
 import Image from 'next/image'
 import CustomTypography, { FormFooter } from "../shared/formsComponents";
 import { updateAlert } from "../alerts/alerts";
+import { useTranslations } from "next-intl";
 
 export default function EditBlogAddComponent({
   onUpdate,
@@ -22,7 +23,8 @@ export default function EditBlogAddComponent({
   UpdateImage: any;
   selectedBlog: any;
   handleClose: any;
-}) {
+  }) {
+  const t=useTranslations('BlogPage')
   const [selectedImage, setSelectedImage] = useState<File>();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -100,13 +102,13 @@ export default function EditBlogAddComponent({
               selectedImage,
               selectedBlog.author.authorId
             ).then(() => {
-              updateAlert('Blog Updated Successfully')
+              updateAlert(     t('update'))
             });
           }}
         >
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Blog Title"} />
+              <CustomTypography text={t('blogTitle')}/>
 
               <TextField
                 autoComplete="blogTitle"
@@ -114,7 +116,7 @@ export default function EditBlogAddComponent({
                 required
                 fullWidth
                 id="Blog title"
-                label="Blog title"
+                label={t('blogTitle')}
                 value={formData.blogTitle}
                 autoFocus
                 InputProps={{
@@ -124,7 +126,7 @@ export default function EditBlogAddComponent({
               />
             </Grid>
             <Grid item xs={12} md={12} lg={6}>
-              <CustomTypography text={"Image"} />
+              <CustomTypography text={t('image')}/>
 
               <input
                 autoComplete="image"
@@ -139,7 +141,7 @@ export default function EditBlogAddComponent({
 
             {selectedImage && (
               <div>
-                <h3>Preview:</h3>
+                <h3>{t('Preview')}:</h3>
                 <Image
                   src={URL.createObjectURL(selectedImage)}
                   alt="Selected"
@@ -151,7 +153,7 @@ export default function EditBlogAddComponent({
             )}
 
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Blog Description"} />
+              <CustomTypography text={t('blogContent')} />
 
               <TextField
                 multiline
@@ -162,7 +164,7 @@ export default function EditBlogAddComponent({
                 fullWidth
                 value={formData.blogContent}
                 id="blogContent"
-                label="Blog Content"
+                label={t('blogContent')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -172,7 +174,7 @@ export default function EditBlogAddComponent({
             </Grid>
 
             <Grid item xs={12} md={12} lg={6}>
-              <CustomTypography text={"Blog Status"} />
+              <CustomTypography text={t('status')}/>
 
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">status</InputLabel>
@@ -181,16 +183,16 @@ export default function EditBlogAddComponent({
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={status}
-                  label="status"
+                  label={t('status')}
                   onChange={handleChange}
                 >
-                  <MenuItem value={"ready"}>ready</MenuItem>
-                  <MenuItem value={"not ready"}>Not ready</MenuItem>
+                  <MenuItem value={"ready"}>{t('ready')}</MenuItem>
+                  <MenuItem value={"not ready"}>{t('notReady')}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
             <Grid item xs={12} md={12} lg={6}>
-              <CustomTypography text={"Author"} />
+              <CustomTypography text={t('author')} />
 
               <TextField
                 autoComplete="Author"
@@ -199,7 +201,7 @@ export default function EditBlogAddComponent({
                 fullWidth
                 value={formData.authorName}
                 id="authorName"
-                label="Author"
+                label={t('author')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -207,7 +209,7 @@ export default function EditBlogAddComponent({
                 onChange={handleInputChange}
               />
             </Grid>
-            <FormFooter handleClose={handleClose} title={"Edit Blog"} />
+            <FormFooter handleClose={handleClose} title={t('editBlog')} />
 
           </Grid>
         </Box>

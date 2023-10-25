@@ -43,11 +43,13 @@ export default async function RootLayout({
   params: { locale },
 }: Props) {
   const messages = await getMessages(locale)
+
+  const lang = locale === 'ar' ? 'ar' : 'en';
   return (
 
-    // <html lang={params.lang}>
+
         
-    <html lang={locale}>
+    <html lang={lang}>
           <Head>
         <title>Dashboard</title>
         {/* <link rel="preload" href="style.css" as="style" /> */}

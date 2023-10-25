@@ -7,8 +7,10 @@ import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import { successAlert } from "../alerts/alerts";
 import CustomTypography from "../shared/formsComponents";
+import { useTranslations } from "next-intl";
 
 export default function NewsAddComponent({ onCreate }: { onCreate: any }) {
+  const t=useTranslations('newsPage')
   return (
     <>
       <Card
@@ -24,7 +26,7 @@ export default function NewsAddComponent({ onCreate }: { onCreate: any }) {
           noValidate={false}
           action={ (formData) => {
              onCreate(formData).then(() => {
-            successAlert('news Added');
+            successAlert(t('success'));
             document.querySelector('form')?.reset();
 
             });
@@ -51,19 +53,19 @@ export default function NewsAddComponent({ onCreate }: { onCreate: any }) {
                 }}
                 className="mr-5px"
               />
-              Create News
+             {t('addNews')}
             </Button>
           </Grid>
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"News title"} />
+              <CustomTypography text={t('newsTitle')} />
               <TextField
                 autoComplete="NewsTitle"
                 name="NewsTitle"
                 required
                 fullWidth
                 id="NewsTitle"
-                label="News Title"
+                label={t('newsTitle')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -72,16 +74,16 @@ export default function NewsAddComponent({ onCreate }: { onCreate: any }) {
             </Grid>
 
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"News Content"} />
+              <CustomTypography text={t('newsContent')}/>
               <TextField
                 multiline
                 minRows={5}
                 autoComplete="NewsContent"
-                name="NewsContent"
+                name={t('newsContent')}
                 required
                 fullWidth
                 id="NewsContent"
-                label="News Content"
+                label={t('newsContent')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },

@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 
 const TasksComponent = dynamic(() => import("../../../components/todo/todo_list"), {
   loading: () => <LoadingSpinner />, 
-  ssr: false, // Disable server-side rendering for this component
+  ssr: false, 
 });
 
 export default function ToDo() {

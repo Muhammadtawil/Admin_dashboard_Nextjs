@@ -11,6 +11,7 @@ import Select from "@mui/material/Select";
 import { updateAlert } from "../alerts/alerts";
 import CustomTypography, { FormFooter } from "../shared/formsComponents";
 import Image from 'next/image'
+import { useTranslations } from "next-intl";
 
 
 
@@ -24,7 +25,8 @@ export default function EditNewsComponent({
   UpdateImage: any;
   selectedNews: any;
   handleClose: any;
-}) {
+  }) {
+  const t=useTranslations('newsPage')
   const [selectedImage, setSelectedImage] = useState<File>();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,14 +99,14 @@ export default function EditNewsComponent({
 
             onUpdate(formData, selectedNews.newsId, selectedImage).then(() => {
               handleClose();
-            updateAlert('updated successfully');
+            updateAlert(t('update'));
 
              });
           }}
         >
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"News Title"} />
+              <CustomTypography text={t('newsTitle')} />
 
               <TextField
                 autoComplete="NewsTitle"
@@ -112,7 +114,7 @@ export default function EditNewsComponent({
                 required
                 fullWidth
                 id="newsTitle"
-                label="News title"
+                label={t('newsTitle')}
                 value={formData.newsTitle}
                 autoFocus
                 InputProps={{
@@ -122,13 +124,13 @@ export default function EditNewsComponent({
               />
             </Grid>
             <Grid item xs={12} md={12} lg={6}>
-              <CustomTypography text={"Image"} />
+              <CustomTypography text={t('image')} />
 
               <input
                 autoComplete="image"
                 name="image"
                 accept="image/png"
-                id="image"
+                id={t('image')}
                 type="file"
                 autoFocus
                 onChange={(files) => handleImageChange(files)}
@@ -137,7 +139,7 @@ export default function EditNewsComponent({
 
             {selectedImage && (
               <div>
-                <h3>Preview:</h3>
+                <h3>{t('Preview')}:</h3>
                 <Image
                   src={URL.createObjectURL(selectedImage)}
                   alt="Selected"
@@ -148,7 +150,7 @@ export default function EditNewsComponent({
             )}
 
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"News Content"} />
+              <CustomTypography text={t('newsContent')} />
 
               <TextField
                 multiline
@@ -159,7 +161,7 @@ export default function EditNewsComponent({
                 fullWidth
                 value={formData.newsContent}
                 id="newsContent"
-                label="News Content"
+                label={t('newsContent')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -169,20 +171,20 @@ export default function EditNewsComponent({
             </Grid>
 
             <Grid item xs={12} md={12} lg={6}>
-              <CustomTypography text={"News Status"} />
+              <CustomTypography text={t('status')}/>
 
               <FormControl fullWidth>
-                <InputLabel id="demo-simple-select-label">status</InputLabel>
+                <InputLabel id="demo-simple-select-label">{t('status')}</InputLabel>
                 <Select
                   name="isFlag"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={status}
-                  label="status"
+                  label={t('status')}
                   onChange={handleChange}
                 >
-                  <MenuItem value={"ready"}>ready</MenuItem>
-                  <MenuItem value={"not ready"}>Not ready</MenuItem>
+                  <MenuItem value={"ready"}>{t('ready')}</MenuItem>
+                  <MenuItem value={"not ready"}>{t('notReady')}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

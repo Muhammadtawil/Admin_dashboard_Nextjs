@@ -13,6 +13,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { ClearIcon } from "@mui/x-date-pickers/icons";
 import SearchForm from "../TopNavbar/search/SearchForm";
 import { useTranslations } from "next-intl";
+import { getStatusTranslationKey } from "./tables";
 const CustomTypography = ({ text }: { text: any }) => {
   return (
     <Typography
@@ -57,27 +58,27 @@ export const CustomSelect = ({
   values,
   selectedValue,
   onChange,
+  t, // Add this prop for translation
 }: any) => (
+
   <Grid item xs={12} md={12} lg={6}>
     <CustomTypography text={label} />
     <Select
       fullWidth
-      value={selectedValue}
+      value={t(getStatusTranslationKey(selectedValue))}
       name={name}
       onChange={onChange}
       displayEmpty
       inputProps={{
-        //   name,
-        //   id: name,
         style: { borderRadius: 8 },
       }}
     >
       <MenuItem value="" disabled>
         {`Select ${label}`}
       </MenuItem>
-      {values.map((value: any, index: any) => (
-        <MenuItem key={index} value={value}>
-          {value}
+      {values.map((key: any, index: any) => (
+        <MenuItem key={index} value={key}>
+          {t(key)} {/* Translate the value using the t function */}
         </MenuItem>
       ))}
     </Select>

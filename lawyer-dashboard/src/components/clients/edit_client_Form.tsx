@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { Box, Grid, TextField } from "@mui/material";
+import { Box, FormControl, Grid, InputLabel, MenuItem, Select, TextField } from "@mui/material";
 import { successAlert, updateAlert } from "../alerts/alerts";
 import CustomTypography, {
   CustomSelect,
@@ -8,6 +8,8 @@ import CustomTypography, {
   FormFooter,
   ValuesSelect,
 } from "../shared/formsComponents";
+import { useTranslations } from "next-intl";
+import { getStatusTranslationKey } from "../shared/tables";
 
 const clientStatusValues = ["COMPLETED", "PENDING", "IN_PROGRESS"];
 
@@ -21,7 +23,8 @@ export default function EditClientForm({
   handleClose: any;
   selectedClient: any;
   servicesList: any[];
-}) {
+  }) {
+    const t=useTranslations('clientPage')
   const [formData, setFormData] = useState({
     clientName: selectedClient?.clientName,
     clientPhone: selectedClient?.clientPhone || "",
@@ -58,7 +61,7 @@ export default function EditClientForm({
     
             await onUpdate(formData, selectedClient.clientId).then(() => {
               handleClose();
-            updateAlert('Client updated');
+            updateAlert(t('update'));
               
             })   .catch((error: any) => {
 
@@ -77,7 +80,7 @@ export default function EditClientForm({
             <Grid container alignItems="center" spacing={2}>
        
                 <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Client Name"} />
+              <CustomTypography text={t("clientName")} />
 
               <TextField
                 autoComplete="clientName"
@@ -86,7 +89,7 @@ export default function EditClientForm({
                 fullWidth
                 value={formData.clientName}
                 id="clientName"
-                label="Client Name"
+                label={t("clientName")} 
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -95,7 +98,7 @@ export default function EditClientForm({
               />
             </Grid>
                      <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Client Phone"} />
+              <CustomTypography text={t("clientPhone")}  />
 
               <TextField
                 autoComplete="clientPhone"
@@ -104,7 +107,7 @@ export default function EditClientForm({
                 fullWidth
                 value={formData.clientPhone}
                 id="clientPhone"
-                label="Client Phone"
+                label={t("clientPhone")} 
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -114,7 +117,7 @@ export default function EditClientForm({
             </Grid>
        
                            <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Client Email"} />
+              <CustomTypography text={t("clientEmail")} />
 
               <TextField
                 autoComplete="clientEmail"
@@ -123,7 +126,7 @@ export default function EditClientForm({
                 fullWidth
                 value={formData.clientEmail}
                 id="clientEmail"
-                label="Client Email"
+                label={t("clientEmail")}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -131,18 +134,38 @@ export default function EditClientForm({
                 onChange={handleInputChange}
               />
             </Grid>
-
-              <CustomSelect
+           
+              {/* <CustomSelect
                 name="clientStatus"
-                label="Client Status"
-                values={clientStatusValues}
+                label={t("status")}
+                values= {clientStatusValues}
                 selectedValue={formData.clientStatus}
                 onChange={handleInputChange}
                 required={true}
-              />
+              /> */}
+                     <Grid item xs={12} md={12} lg={6}>
+              <CustomTypography text={t('status')}/>
+
+              <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">{t("status")}</InputLabel>
+                <Select
+                  name="clientStatus"
+                  labelId="demo-simple-select-label"
+                  id="clientStatus"
+                  value={formData.clientStatus}
+                  label={t('status')}
+                  onChange={handleInputChange}
+                >
+                  <MenuItem value={"COMPLETED"}>{t('completed')}</MenuItem>
+                    <MenuItem value={"PENDING"}>{t('pending')}</MenuItem>
+                  <MenuItem value={"IN_PROGRESS"}>{t('inProgress')}</MenuItem>
+                    
+                </Select>
+              </FormControl>
+            </Grid>
 
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Services"} />
+                <CustomTypography text={t("service")}/>
                 {/* <ValuesSelect name={"clientService"} values={servicesList} /> */}
                 <select
       className="form-select bg-light border-0"
@@ -169,7 +192,7 @@ export default function EditClientForm({
       )}
     </select>
               </Grid>
-              <FormFooter handleClose={handleClose} title={"Edit Client"} />
+              <FormFooter handleClose={handleClose} title={t("editClient")}/>
             </Grid>
           </Box>
         </Box>

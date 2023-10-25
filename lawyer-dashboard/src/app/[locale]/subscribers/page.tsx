@@ -11,7 +11,7 @@ const SubscribersComponent = dynamic(() => import("../../../components/subscribe
 export default function SubscribersPage() {
   return (
       <>
-          <PageTitle title="Subscribers" />
+          {/* <PageTitle title="Subscribers" /> */}
           <SubscribersComponent/>
       </>
   )

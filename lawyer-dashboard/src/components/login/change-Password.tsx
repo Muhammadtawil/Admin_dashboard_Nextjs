@@ -8,7 +8,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { IconButton, TextField } from "@mui/material";
 
-export default function LoginForm() {
+export default function ChangePassowrdComponent() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);

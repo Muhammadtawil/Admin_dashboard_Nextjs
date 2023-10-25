@@ -20,6 +20,7 @@ import { deleteAlert } from "../alerts/alerts";
 
 import cellStyle from "../shared/cellStyle";
 import ActionsComponent from "../shared/PaginationList";
+import { useTranslations } from "next-intl";
 
 export default function SubscribersTable({
   dataRows,
@@ -31,7 +32,7 @@ export default function SubscribersTable({
 
 }) {
 
-
+const t=useTranslations('subscribersPage')
   
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(8);
@@ -72,9 +73,9 @@ export default function SubscribersTable({
 
             <TableCell align="right" sx={cellStyle}>
               <Box sx={{ display: "inline-block" }}>
-                <Tooltip title="Remove" placement="top">
+                <Tooltip title={t('delete')} placement="top">
                   <IconButton
-                    aria-label="remove"
+                    aria-label={t('delete')}
                     size="small"
                     color="error"
                     className="error"
@@ -112,9 +113,9 @@ export default function SubscribersTable({
         >
           <TableHead sx={{ background: "#F7FAFF" }}>
             <TableRow>
-              <TableCell sx={cellStyle}>Subscriber Email</TableCell>
+              <TableCell sx={cellStyle}>{t('subscriberEmail')}</TableCell>
               <TableCell align="right" sx={cellStyle}>
-                Action
+              {t('actions')}
               </TableCell>
             </TableRow>
           </TableHead>
@@ -122,7 +123,7 @@ export default function SubscribersTable({
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                rowsPerPageOptions={[5, 10, 25, { label: t('All'), value: -1 }]}
                 colSpan={8}
                 count={dataRows.length}
                 rowsPerPage={rowsPerPage}

@@ -13,7 +13,8 @@ import AddTaskOutlinedIcon from "@mui/icons-material/AddTaskOutlined";
 import InfoIcon from "@mui/icons-material/Info";
 import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded';
 import { useTranslations } from 'next-intl';
-
+import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
+import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 function getSidebarData() {
   const t = useTranslations('SideBar');
 
@@ -107,6 +108,22 @@ function getSidebarData() {
       iconClosed: KeyboardArrowRightIcon,
       iconOpened: KeyboardArrowDownIcon,
     },
+    {
+      title: t("files"),
+      path: "/subscribers",
+      icon: AttachFileOutlinedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+    {
+      title: t("references"),
+      path: "/subscribers",
+      icon: ClassOutlinedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
+    },
+
+
   ];
 
   return SidebarData;

@@ -9,6 +9,8 @@ export function getStatusTranslationKey(status: any) {
             return "notCompleted";
         case "IN_PROGRESS":
             return "inProgress";
+            case "PENDING":
+                return "pending";
         case "HIGH":
             return "high";
         case "MEDIUM":

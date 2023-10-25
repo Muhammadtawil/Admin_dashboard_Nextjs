@@ -1,14 +1,11 @@
 "use client";
-import Link from "next/link";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import InputAdornment from "@mui/material/InputAdornment";
 import React, { ChangeEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { IconButton, TextField } from "@mui/material";
+import Link from 'next/link';
 
-export default function LoginForm() {
+
+export default function RecoverForm() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -62,7 +59,7 @@ export default function LoginForm() {
           <div className="col-12">
             <div className="contact-form-action">
               <div className="form-heading text-center">
-                <h3 className="form-title">Login to your account!</h3>
+                <h3 className="form-title">Please insert Your Email below</h3>
               </div>
 
               <form noValidate={false} onSubmit={onSubmit}>
@@ -75,71 +72,27 @@ export default function LoginForm() {
                         name="userName"
                         value={formValues.userName}
                         onChange={handleChange}
-                        placeholder="Username or Email"
+                        placeholder="Email"
                       />
                     </div>
                   </div>
-                  <div className="col-12">
-                    <div className="form-group">
-                      <TextField
-                        type={showPassword ? "text" : "password"}
-                        value={formValues.password}
-                        onChange={handleChange}
-                        name="password"
-                        label="Password"
-                        placeholder="Password"
-                        InputProps={{
-                          endAdornment: (
-                            <InputAdornment position="end">
-                              <IconButton
-                                onClick={() => setShowPassword(!showPassword)}
-                                color="primary"
-                              >
-                                {showPassword ? (
-                                  <Visibility />
-                                ) : (
-                                  <VisibilityOff />
-                                )}
-                              </IconButton>
-                            </InputAdornment>
-                          ),
-                        }}
-                      />
-                    </div>
-                  </div>
-
-                  {/* <div className="col-lg-6 col-sm-6 form-condition">
-                    <div className="agree-label">
-                      <div className="form-check">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          id="gridCheck"
-                        />
-                        <label className="form-check-label" htmlFor="gridCheck">
-                          Remember me
-                        </label>
-                      </div>
-                    </div>
-                  </div> */}
+           
                   {error && (
                     <div className="col-12">
                       <p className="text-danger">{error}</p>
                     </div>
                   )}
-                  <div className="col-lg-6 col-sm-6">
-                    <Link href="/en/login/recover" className="forget">
-                      Forgot my password?
-                    </Link>
-                  </div>
+    
 
                   <div className="col-12">
                     <button
                       className="default-btn btn-two"
-                      type="submit"
+                    //   type="submit"
                       disabled={loading}
                     >
-                      {loading ? "loading..." : "Log In Now"}
+                                          <Link href={'/en/login/recover/verify'}>
+                                          {loading ? "loading..." : "Send Code"}
+                                          </Link>
                     </button>
                   </div>
                 </div>

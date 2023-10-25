@@ -20,6 +20,8 @@ import EditClientForm from "./edit_client_Form";
 import cellStyle from "../shared/cellStyle";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import ActionsComponent from "../shared/PaginationList";
+import { useTranslations } from "next-intl";
+import { getStatusTranslationKey } from "../shared/tables";
 
 export default function ClientTable({
   dataRows,
@@ -31,7 +33,8 @@ export default function ClientTable({
   deleteTask: any;
   updateTask: any;
   servicesList: any[];
-}) {
+  }) {
+  const t=useTranslations('clientPage')
   const [selectedService, setSelectedService] = useState("");
   const handleServiceFilterChange = (event: any) => {
     setSelectedService(event.target.value);
@@ -138,7 +141,8 @@ export default function ClientTable({
                     : "inherit", // Fallback color
               }}
             >
-              {client.clientStatus}
+                 {t(getStatusTranslationKey(client.clientStatus))}
+             
             </Paper>
           </TableCell>
 
@@ -157,9 +161,9 @@ export default function ClientTable({
 
           <TableCell align="right" sx={cellStyle}>
             <Box sx={{ display: "inline-block" }}>
-              <Tooltip title="Remove" placement="top">
+              <Tooltip title={t('delete') }placement="top">
                 <IconButton
-                  aria-label="remove"
+                  aria-label={t('delete') }
                   size="small"
                   color="error"
                   className="error"
@@ -168,9 +172,9 @@ export default function ClientTable({
                   <DeleteIcon fontSize="inherit" />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="edit" placement="top">
+              <Tooltip title={t('edit') } placement="top">
                 <IconButton
-                  aria-label="rename"
+                  aria-label={t('edit') }
                   size="small"
                   color="primary"
                   className="primary"
@@ -207,16 +211,16 @@ export default function ClientTable({
         >
           <TableHead sx={{ background: "#F7FAFF" }}>
             <TableRow>
-              <TableCell sx={cellStyle}>Client Name</TableCell>
-              <TableCell sx={cellStyle}>Client Phone</TableCell>
+              <TableCell sx={cellStyle}>{t('clientName') }</TableCell>
+              <TableCell sx={cellStyle}>{t('clientPhone') }</TableCell>
               <TableCell align="center" sx={cellStyle}>
-                Services
+              {t('service') }
                 <select
                   value={selectedService}
                   onChange={handleServiceFilterChange}
                   style={{ marginLeft: "8px" }}
                 >
-                  <option value="">All</option>
+                  <option value="">{t('All') }</option>
                   {servicesList.map((service, index) => (
                     <option key={index} value={service.serviceTitle}>
                       {service.serviceTitle}
@@ -227,21 +231,21 @@ export default function ClientTable({
               </TableCell>
 
               <TableCell align="center" sx={cellStyle}>
-                Status
+              {t('status') }
                 <select
                   value={selectedStatus}
                   onChange={handleStatusFilterChange}
                   style={{ marginLeft: "8px" }}
                 >
-                  <option value="">All</option>
-                  <option value="PENDING">Pending</option>
-                  <option value="IN_PROGRESS">In Progress</option>
-                  <option value="COMPLETED">Completed</option>
+                  <option value="">{t('All') }</option>
+                  <option value="PENDING">{t('pending') }</option>
+                  <option value="IN_PROGRESS">{t('inProgress') }</option>
+                  <option value="COMPLETED">{t('completed') }</option>
                 </select>
               </TableCell>
-              <TableCell sx={cellStyle}>Client Email</TableCell>
+              <TableCell sx={cellStyle}>{t('clientEmail') }</TableCell>
               <TableCell align="right" sx={cellStyle}>
-                Action
+              {t('actions') }
               </TableCell>
             </TableRow>
           </TableHead>
@@ -249,7 +253,7 @@ export default function ClientTable({
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                rowsPerPageOptions={[5, 10, 25, { label:t('All'), value: -1 }]}
                 colSpan={8}
                 count={dataRows.length}
                 rowsPerPage={rowsPerPage}

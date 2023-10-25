@@ -1,42 +1,62 @@
 {
-
-  "mainPage":{
-        "welcomeMessage":"welcome",
-        "quote":"Quote of the Day"
-    },
-"BlogPage": {
+  "mainPage": {
+    "welcomeMessage": "welcome",
+    "quote": "Quote of the Day"
+  },
+  "BlogPage": {
     "Title": "Blog",
-    "CreateBlog":"Create Blog"
-},
-"SideBar":{
-    "main":"Dashboard",
-    "task":"Tasks",
-    "email":"Email",
-    "clients":"Clients",
-    "team":"Team",
-    "editor":"Editor",
-    "blogs":"Blogs",
-    "services":"Services",
-    "news":"News",
-    "about":"About",
-    "testimonials":"Testimonials",
-    "subscribers":"Subscribers",
-    "calendar":"Calendar",
-    "signOut":"logout" 
-},
-"LocaleSwitcher": {
+    "CreateBlog": "Create Blog",
+    "blogTitle": "Blog Title",
+    "blogContent": "Blog Content",
+    "author": "Author",
+    "ready": "Deployed",
+    "notReady": "Draft",
+    "status": "Status",
+    "actions": "Actions",
+    "All": "All",
+    "delete": "Delete",
+    "edit": "Edit",
+    "rowPerPage": "Row Per Pages",
+    "cancel": "Cancel",
+    "success": "Blog Successfully added",
+    "update": "Blog Successfully Updated",
+    "image": "Image",
+    "Preview": "Preview",
+    "editBlog": "Edit Blog",
+    "yes": "Deployed",
+    "no": "Draft"
+  },
+  "SideBar": {
+    "main": "Dashboard",
+    "task": "Tasks",
+    "email": "Email",
+    "clients": "Clients",
+    "team": "Team",
+    "editor": "Editor",
+    "blogs": "Blogs",
+    "services": "Services",
+    "news": "News",
+    "about": "About",
+    "testimonials": "Testimonials",
+    "subscribers": "Subscribers",
+    "calendar": "Calendar",
+    "files": "Files",
+    "references":"References",
+    "signOut": "logout"
+  },
+  "LocaleSwitcher": {
     "locale": "{locale, select, ar {العربية} en {English} other {Unknown}}"
-},
+  },
 
-"taskPage": {
+  "taskPage": {
     "taskTitle": "Task Title",
     "pageTitle": "Tasks",
     "assignedTo": "Assigned To",
-    "assignedBy":"Assigned By",
-    "assignedDate":"Assigned Date",
-    "assignedTaskTitlt":"Assigned Tasks",
-    "assignedByTitle":"Assigned Tasks By Me",
-    "assignedToMeTitile":"Assigned Tasks To Me",
+    "assignedBy": "Assigned By",
+    "assignedDate": "Assigned Date",
+    "assignedTaskTitlt": "Assigned Tasks",
+    "assignedByTitle": "Assigned Tasks By Me",
+    "assignedToMeTitile": "Assigned Tasks To Me",
     "startDate": "Start Date",
     "endDate": "End Date",
     "status": "Status",
@@ -47,15 +67,90 @@
     "inProgress": "In Progress",
     "high": "High",
     "medium": "Medium",
-    "All":"All",
+    "All": "All",
     "low": "Low",
-    "delete":"Delete",
-    "edit":"Edit",
-  "rowPerPage":"rows per page",
-  "addTask":"Add Task",
-  "cancel":"Cancel"
+    "delete": "Delete",
+    "edit": "Edit",
+    "rowPerPage": "rows per page",
+    "addTask": "Add Task",
+    "cancel": "Cancel"
+  },
 
+  "clientPage": {
+    "pageTitle": "Clients",
+    "clientName": "Client Name",
+    "service": "Service",
+    "clientPhone": "Client Phone",
+    "clientEmail": "Client Email",
+    "status": "Status",
+    "delete": "Delete",
+    "edit": "Edit",
+    "completed": "Completed",
+    "pending": "Pending",
+    "inProgress": "In Progress",
+    "addClient": "Add Client",
+    "cancel": "Cancel",
+    "All": "All",
+    "actions": "Actions",
+    "success": "client Successfully added",
+    "update": "client Successfully Updated",
+    "image": "Image",
+    "Preview": "Preview",
+    "editClient": "Edit Client",
+    "yes": "Deployed",
+    "no": "Draft"
+  },
+
+  "newsPage": {
+    "pageTitle": "News",
+    "newsTitle": "Title",
+    "newsContent": "Content",
+    "newsDate": "Date",
+    "status": "Status",
+    "cancel": "Cancel",
+    "All": "All",
+    "actions": "Actions",
+    "success": "client Successfully added",
+    "update": "client Successfully Updated",
+    "image": "Image",
+    "Preview": "Preview",
+    "editClient": "Edit Client",
+    "yes": "Deployed",
+    "no": "Draft",
+    "ready": "Deployed",
+    "notReady": "Draft",
+    "addNews": "Add News",
+    "delete": "Delete",
+    "edit": "Edit"
+  },
+
+  "subscribersPage": {
+    "pageTitle": "Subscribers",
+    "subscriberEmail": "Subscriber Email",
+    "addSubscriber": "Add Subscriber",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "All": "All",
+    "actions": "Actions",
+    "success": "Subscreber added"
+  },
+
+  "testimonialsPage": {
+    "pageTitle": "Testimonials",
+    "senderName": "Sender Name",
+    "addSubscriber": "Add Subscriber",
+    "TestimonialContent": "Content",
+    "status": "Status",
+    "delete": "Delete",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "All": "All",
+    "actions": "Actions",
+    "success": "Testimonial added",
+    "update": "Testimonial Updated",
+    "yes": "Deployed",
+    "no": "Draft",
+    "ready": "Deployed",
+    "notReady": "Draft"
   }
-
-
 }

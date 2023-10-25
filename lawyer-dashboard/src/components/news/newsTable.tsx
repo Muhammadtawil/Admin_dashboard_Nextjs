@@ -21,6 +21,7 @@ import EditNewsComponent from "./editNews";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import cellStyle from "../shared/cellStyle";
 import ActionsComponent from "../shared/PaginationList";
+import { useTranslations } from "next-intl";
 
 export default function NewsTable({
   dataRows,
@@ -32,7 +33,8 @@ export default function NewsTable({
   deleteTask: any;
   updateTask: any;
   UpdateImage: any;
-}) {
+  }) {
+  const t=useTranslations('newsPage')
   const [selectedStatus, setSelectedStatus] = useState("");
 
   const handleStatusFilterChange = (event: any) => {
@@ -76,10 +78,15 @@ export default function NewsTable({
     rowsPerPage: number
   ) => {
     // Filter tasks based on selected priority and status
-    const filteredNews = dataRows.filter(
-      (news) => !selectedStatus || news.isFlag === selectedStatus
-    );
 
+    const filteredNews = dataRows.filter((news) => {
+      if (selectedStatus === "") {
+        return true; // No filtering applied
+      }
+    
+      return news.isFlag === (selectedStatus === "true");
+    });
+    
     if (filteredNews.length === 0) {
       return <TableRow>{/* ... */}</TableRow>;
     }
@@ -158,15 +165,15 @@ export default function NewsTable({
                       : "inherit",
                 }}
               >
-                {news.isFlag == true ? "yes" : "No"}
+                  {news.isFlag == true ? t('yes'): t('no')}
               </Paper>
             </TableCell>
 
             <TableCell align="right" sx={cellStyle}>
               <Box sx={{ display: "inline-block" }}>
-                <Tooltip title="Remove" placement="top">
+                <Tooltip title={t('delete')}  placement="top">
                   <IconButton
-                    aria-label="remove"
+                    aria-label={t('delete')} 
                     size="small"
                     color="error"
                     className="error"
@@ -175,9 +182,9 @@ export default function NewsTable({
                     <DeleteIcon fontSize="inherit" />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="edit" placement="top">
+                <Tooltip title={t('edit')} placement="top">
                   <IconButton
-                    aria-label="rename"
+                    aria-label={t('edit')} 
                     size="small"
                     color="primary"
                     className="primary"
@@ -214,23 +221,23 @@ export default function NewsTable({
         >
           <TableHead sx={{ background: "#F7FAFF" }}>
             <TableRow>
-              <TableCell sx={cellStyle}>Title</TableCell>
-              <TableCell sx={cellStyle}>Content</TableCell>
-              <TableCell sx={cellStyle}>Date</TableCell>
+              <TableCell sx={cellStyle}>{t('newsTitle')}</TableCell>
+              <TableCell sx={cellStyle}>{t('newsContent')}</TableCell>
+              <TableCell sx={cellStyle}>{t('newsDate')}</TableCell>
               <TableCell align="center" sx={cellStyle}>
-                Status
+              {t('status')}
                 <select
                   value={selectedStatus}
                   onChange={handleStatusFilterChange}
                   style={{ marginLeft: "8px" }}
                 >
-                  <option value="">All</option>
-                  <option value="ready">ready</option>
-                  <option value="Not ready">not ready</option>
+                  <option value="">{t('All')}</option>
+                  <option value="true">{t('ready')}</option>
+                  <option value="false">{t('notReady')}</option>
                 </select>
               </TableCell>
               <TableCell align="right" sx={cellStyle}>
-                Action
+              {t('actions')}
               </TableCell>
             </TableRow>
           </TableHead>
@@ -238,7 +245,7 @@ export default function NewsTable({
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                rowsPerPageOptions={[5, 10, 25, { label: t("All"), value: -1 }]}
                 colSpan={8}
                 count={dataRows.length}
                 rowsPerPage={rowsPerPage}
