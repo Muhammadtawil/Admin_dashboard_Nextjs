@@ -1,11 +1,31 @@
 {
   "mainPage": {
     "welcomeMessage": "مرحبا",
-    "quote": "حكمة اليوم"
+    "quote": "حكمة اليوم",
+    "pageTitle":"الرئيسبة",
+    "Statistic":"اﻹحصاءات",
+    "copy":"نسخ",
+    "coppied":"نسخت",
+    "nextQuote":"اﻹقتباس التالي",
+    "clinetsNumber":"مجموع الزبائن حسب كل خدمة",
+    "clientsPerMonth":"مجموع الزبائن حسب كل شهر",
+    "month":"الشهر",
+    "January": "كانون الثاني",
+    "February": "شباط",
+    "March": "آذار",
+    "April": "نيسان",
+    "May": "أيار",
+    "June": "حزيران",
+    "July": "تموز",
+    "August": "آب",
+    "September": "أبلول",
+    "October": "تشرين اﻷول",
+    "November": "نوتشرين الثاني",
+    "December": "كانون اﻷول"
   },
 
   "BlogPage": {
-    "Title": "المقالات",
+    "pageTitle": "المقالات",
     "CreateBlog": "انشئ مقال",
     "blogTitle": "العنوان",
     "blogContent": "المحتوى",
@@ -143,9 +163,10 @@
 
   "testimonialsPage":{
     "pageTitle":"المراجعات",
-    "senderName":"غاسمسم المرسل",
-    "addTestimonial":"اسم المرسل",
-    "TestimonialContent":"المحتوي",
+    "senderName":"اسم المرسل",
+    "addTestimonial":"أضف المرسل",
+    "editTestimonial":"عدل المراجعة",
+    "TestimonialContent":"المحتوى",
     "status": "الحالة",
     "edit":"Edit",
     "delete":"مسح",
@@ -159,5 +180,73 @@
     "ready": "نشرت",
     "notReady": "مسودة"
     
-  }
+  },
+  "emailPage":{
+   "pageTitle":"البريد",
+   "newMessage":"رسالة جديدة",
+   "send":"أرسل",
+   "to":"إلى",
+   "subject":"الموضوع"
+  },
+  
+  "editorPage":{
+"pageTitle":"محرر النصوص",
+"saveFile":"حفظ الملف"
+  },
+
+  "teamPage": {
+    "pageTitle": "الفريق",
+    "userName": "اسم المستخدم",
+    "email": "البريد الإلكتروني",
+    "phone": " رقم الهاتف ",
+    "role": "الدور",
+    "position": "المنصب",
+    "active": "نشط",
+    "social": "التواصل اﻹجتماعي",
+    "admin": "مدير",
+    "user": "مستخدم",
+    "edit": "تعديل",
+    "delete":"مسح",
+    "cancel": "إلغاء",
+    "All": "الكل",
+    "actions": "الإجراءات",
+    "success": "تمت إضافة عضو للفريق",
+    "update": "تم تحديث عضو الفريق",
+    "yes": "نعم",
+    "no": "كلا",
+    "addTeam": "إضافة عضو في الفريق",
+    "status":"الحالة",
+    "password":"كلمة السر",
+    "admin":"مسؤول",
+    "user":"مستخدم",
+    "image": "الصورة",
+    "Preview": "عرض الصورة",
+    "facebookUrl":" رابط الفايسبوك",
+    "linkedInUrl":"رابط اللينكدان ",
+    "twitterUrl":" رابط توتير"
+},
+
+"servicesPage":{
+  "pageTitle":"الخدمات",
+  "serviceTitle":"العنوان",
+  "serviceDescription":"الوصف",
+  "status":"الحالة",
+  "onWeb":"معروضة للزبائن",
+"clientPerService":"عدد الزبائن بالخدمة",
+"edit": "تعديل",
+"delete":"مسح",
+"cancel": "إلغاء",
+"All": "الكل",
+"actions": "الإجراءات",
+"success": "تمت إضافة خدمة جديدة",
+"update": "تم تحديث الخدمة بنجاح",
+"available":"متاحة",
+"notAvailable":"غير متاحة",
+"addService":"إضافة خدمة",
+"editService":"تعديل الخدمة",
+"yes":"نعم",
+"no":"كلا"
+}
+
+
 }

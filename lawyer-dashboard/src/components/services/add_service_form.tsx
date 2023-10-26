@@ -11,11 +11,14 @@ import CustomTypography, {
 } from "../shared/formsComponents";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import { revalidatePath } from "next/cache";
+import PageTitle from "../shared/PageTitle/pageTitle";
+import { useTranslations } from "next-intl";
 
 const serviceStatus = ["AVAILABLE", "NOT_AVAILABLE"];
 const flagStatus = ["Yes", "No"];
 
 export default function AddTaskForm({ onCreate }: { onCreate: any }) {
+const t=useTranslations('servicesPage')
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -28,7 +31,8 @@ export default function AddTaskForm({ onCreate }: { onCreate: any }) {
 
   return (
     <>
-      <FormHead handleClickOpen={handleClickOpen} title={"Add Service"} />
+               <PageTitle title={t('pageTitle')} />
+      <FormHead handleClickOpen={handleClickOpen} title={t('addService')} />
 
       <StyledDialogTitle
         onClose={handleClose}
@@ -36,7 +40,7 @@ export default function AddTaskForm({ onCreate }: { onCreate: any }) {
         open={open}
       >
         <Box>
-          <HeadBox handleClose={handleClose} title={"Add Service"} />
+          <HeadBox handleClose={handleClose} title={t('addService')} />
           <Box
             component="form"
             noValidate={false}
@@ -45,7 +49,7 @@ export default function AddTaskForm({ onCreate }: { onCreate: any }) {
                 .then(() => {
 
                   handleClose();
-                  successAlert('Services Added Successfully');
+                  successAlert(t('success'));
                   revalidatePath('services', 'page')
                 })
                 .catch((error: any) => {
@@ -62,24 +66,24 @@ export default function AddTaskForm({ onCreate }: { onCreate: any }) {
               className="dark-BG-101010"
             >
               <Grid container alignItems="center" spacing={2}>
-                <CustomTextField name="serviceName" label="Service Name" />
+                <CustomTextField name="serviceName" label={t('serviceTitle')} />
                 <CustomTextField
                   name="serviceDescription"
-                  label="Description"
+                  label={t('serviceDescription')}
                   multiline
                   minRows={6}
                 />
 
                 <Grid item xs={12} md={12} lg={6}>
-                  <CustomTypography text={"Status"} />
+                  <CustomTypography text={t('status')} />
                   <ValuesSelect name={"serviceStatus"} values={serviceStatus} isrequired={true} />
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
-                  <CustomTypography text={"Draft"} />
+                  <CustomTypography text={t('onWeb')}/>
                   <ValuesSelect name={"isFlag"} values={flagStatus} isrequired={true} />
                 </Grid>
 
-                <FormFooter handleClose={handleClose} title={"Add Service"} />
+                <FormFooter handleClose={handleClose} title={t('addService')} />
               </Grid>
             </Box>
           </Box>

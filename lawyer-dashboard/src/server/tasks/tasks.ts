@@ -1,6 +1,7 @@
 
 
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import next from "next";
 import { getServerSession } from "next-auth/next";
 import { revalidatePath } from "next/cache";
 
@@ -15,11 +16,13 @@ export async function getTasks(assignedTasks: any) {
 
   const requestOptions = {
     method: "GET",
+    
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
       "Content-Type": "application/json",
      
     },
+    
 
   };
 
@@ -74,10 +77,14 @@ export default async function CreateTask(data: FormData) {
 
   const requestOptions = {
     method: "POST",
+    next: {
+  revalidate:60,
+},
     headers: {
       Authorization: `Bearer ${session?.accessToken}`,
 
       "Content-Type": "application/json",
+ 
     },
     body: jsonData,
   };
@@ -92,9 +99,6 @@ export default async function CreateTask(data: FormData) {
     const responseData = await response.json();
     console.log("task added successfully:", responseData);
 
-    // Optionally, you can revalidate tags or perform a redirect here
-    // revalidateTag("posts");
-    // redirect("/tasks");
   } catch (error) {
     console.error("Error adding task:", error);
     // Handle the error here
@@ -175,12 +179,10 @@ export async function UpdateTask(data: FormData, taskId: string) {
     const responseData = await response.json();
     console.log("task Updated successfully:", responseData);
 
-    // Optionally, you can revalidate tags or perform a redirect here
-    // revalidateTag("posts");
-    // redirect("/tasks");
+
   } catch (error) {
     console.error("Error update task:", error);
-    // Handle the error here
+ 
   }
 }
 

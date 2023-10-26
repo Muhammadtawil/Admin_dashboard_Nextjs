@@ -15,7 +15,7 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import Box from "@mui/material/Box";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteAlert } from "../alerts/alerts";
 import EditTaskForm from "./edit_Form";
 import PersonIcon from "@mui/icons-material/Person";
@@ -26,6 +26,7 @@ import ActionsComponent from "../shared/PaginationList";
 import { useTranslations } from "next-intl";
 import { getStatusTranslationKey } from "../shared/tables";
 import { Typography } from "@mui/material";
+import { AssignTask, getTasks } from "@/server/tasks/tasks";
 
 const label = { input: { "aria-label": "Checkbox demo" } };
 
@@ -56,7 +57,7 @@ export default function TaskTable({
     const [rowsPerPage, setRowsPerPage] = useState(8);
     const [open, setOpen] = useState(false);
     const [selectedTask, setSelectedTask] = useState(null);
-    const [openMember, setOpenMember] = useState(false);
+  const [openMember, setOpenMember] = useState(false);
     const t = useTranslations('taskPage');
   
     const handlePriorityFilterChange = (event: any) => {
@@ -102,7 +103,7 @@ export default function TaskTable({
       handleClickOpenMember();
     };
   
-  
+
   const RenderTableRows = (
     dataRows: any[],
     page: number,
@@ -356,7 +357,7 @@ export default function TaskTable({
             <TableRow>
               <TablePagination
                 rowsPerPageOptions={[5, 10, 25, { label:t('All'), value: -1 }]}
-                colSpan={6}
+                colSpan={8}
                 count={dataRows.length}
                 rowsPerPage={rowsPerPage}
                 page={page}

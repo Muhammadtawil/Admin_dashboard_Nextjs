@@ -1,0 +1,392 @@
+:root {
+  --background-color-light: #f9f9f9;
+  --text-color-light: #333;
+  --background-color-dark: #1e1e1e;
+  --text-color-dark: #ccc;
+}
+
+body {
+  background-color: var(--background-color-light);
+  color: var(--text-color-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark {
+  background-color: var(--background-color-dark);
+  color: var(--text-color-dark);
+}
+
+a {
+  display: inline-block;
+  transition: all 0.6s ease;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #212121;
+}
+
+a:focus {
+  text-decoration: none;
+}
+
+button {
+  outline: 0 !important;
+  box-shadow: none;
+  border: none;
+  background-color: transparent;
+}
+
+button:focus {
+  box-shadow: none;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #212121;
+  font-family: "Dosis", sans-serif;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 22px;
+}
+
+.d-table {
+  width: 100%;
+  height: 100%;
+}
+
+.d-table-cell {
+  vertical-align: middle;
+}
+
+p {
+  font-size: 15px;
+  margin-bottom: 15px;
+  line-height: 1.8;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.bg-fafafa {
+  background-color: #f5f5f5;
+}
+
+.form-control {
+  height: 50px;
+  color: #212121;
+  border: 1px solid #e8e8e8;
+  background-color: #f7f7f7;
+  border-radius: 0;
+  padding: 0;
+  font-size: 15px;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.form-control::-moz-placeholder {
+  color: #495057;
+}
+
+.form-control::placeholder {
+  color: #495057;
+}
+
+.form-control:focus {
+  color: #000000;
+  background-color: transparent;
+  box-shadow: unset;
+  outline: 0;
+  border: 1px solid #1dd3f8;
+}
+
+.form-control:hover:focus,
+.form-control:focus {
+  box-shadow: unset;
+}
+
+textarea.form-control {
+  height: auto;
+}
+
+.ptb-100 {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.pt-100 {
+  padding-top: 100px;
+}
+
+.pb-100 {
+  padding-bottom: 100px;
+}
+
+.pb-50 {
+  padding-bottom: 50px;
+}
+
+.pt-70 {
+  padding-top: 70px;
+}
+
+.pb-70 {
+  padding-bottom: 70px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
+}
+
+.pl-30 {
+  padding-left: 30px;
+}
+
+.pr-30 {
+  padding-right: 30px;
+}
+
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-100 {
+  margin-top: 100px;
+}
+
+.mtb-100 {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.mt-minus-70 {
+  margin-top: -70px;
+}
+
+.mb-minus-70 {
+  margin-bottom: -70px;
+}
+
+.ml-30 {
+  margin-left: 30px;
+}
+
+.mr-30 {
+  margin-right: 30px;
+}
+
+.fun-blue-bg {
+  background-color: #24416b;
+}
+
+.user-area-all-style {
+  position: relative;
+  z-index: 1;
+}
+.user-area-all-style .contact-form-action {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 40px rgba(82, 85, 90, 0.1);
+  padding: 40px;
+  max-width: 570px;
+  margin: auto;
+}
+.user-area-all-style .contact-form-action .form-heading {
+  margin-bottom: 33px;
+}
+.user-area-all-style .contact-form-action .form-heading .form-title {
+  font-size: 35px;
+  color: #233d63;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+.user-area-all-style .contact-form-action .form-heading .form-desc {
+  font-size: 18px;
+  color: #677286;
+  font-weight: 500;
+}
+.user-area-all-style .contact-form-action .form-heading .reset-desc {
+  line-height: 30px;
+  margin-top: 15px;
+}
+.user-area-all-style .contact-form-action .form-heading .reset-desc a {
+  color: #1dd3f8;
+}
+.user-area-all-style .contact-form-action .form-heading .reset-desc {
+  font-size: 16px;
+}
+.user-area-all-style .contact-form-action .form-heading .reset-desc a {
+  font-weight: 600;
+}
+.user-area-all-style .contact-form-action form .submit-btn {
+  margin-top: 24px;
+}
+.user-area-all-style .contact-form-action form .default-btn {
+  font-size: 14px;
+  padding: 12px 20px;
+}
+.user-area-all-style .contact-form-action form .default-btn.btn-two {
+  display: table;
+  margin: 0px auto 0;
+  padding: 20px 35px;
+}
+.user-area-all-style .contact-form-action form .col-lg-4:nth-child(1) .default-btn {
+  background-color: #ff5733;
+}
+.user-area-all-style .contact-form-action form .col-lg-4:nth-child(2) .default-btn {
+  background-color: #3955bc;
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+}
+.user-area-all-style .contact-form-action form .col-lg-4:nth-child(3) .default-btn {
+  background-color: #1dd3f8;
+  float: right;
+}
+.user-area-all-style .contact-form-action form .reset-btn {
+  margin-top: 0;
+}
+.user-area-all-style .contact-form-action form .form-condition {
+  margin-bottom: 20px;
+}
+.user-area-all-style .contact-form-action form .form-condition .agree-label {
+  font-weight: 600;
+}
+.user-area-all-style .contact-form-action form .form-condition .agree-label a {
+  color: #1dd3f8;
+}
+.user-area-all-style .contact-form-action form .form-group {
+  margin-bottom: 30px;
+}
+.user-area-all-style .contact-form-action .account-desc {
+  margin: 25px auto 0;
+  display: table;
+  font-weight: 600;
+}
+.user-area-all-style .contact-form-action .account-desc a {
+  color: #1dd3f8;
+  margin-left: 10px;
+  font-weight: 600;
+}
+.user-area-all-style .contact-form-action #chb1 {
+  position: relative;
+  top: 1px;
+}
+.user-area-all-style .contact-form-action #chb2 {
+  position: relative;
+  top: 1px;
+}
+.user-area-all-style .contact-form-action .forget {
+  float: right;
+  color: #1dd3f8;
+  font-weight: 600;
+}
+.user-area-all-style .contact-form-action .now-register {
+  font-weight: 600;
+  float: right;
+  margin-bottom: 30px;
+}
+.user-area-all-style .contact-form-action .now-register a {
+  color: #1dd3f8;
+}
+.user-area-all-style .contact-form-action .now-log-in {
+  color: #1dd3f8;
+  font-weight: 600;
+}
+.user-area-all-style .contact-form-action .now-log-in .font-q {
+  font-weight: 600;
+}
+
+.default-btn {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 18px 35px;
+  line-height: 1;
+  transition: all 0.6s ease;
+  z-index: 1;
+  text-transform: capitalize;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #1dd3f8;
+  display: inline-block;
+}
+.default-btn::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -40px;
+  width: 10px;
+  height: 100px;
+  background-color: #ffffff;
+  opacity: 0.5;
+  transition: all 0.6s ease;
+  transform: rotate(45deg);
+}
+.default-btn::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -40px;
+  width: 10px;
+  height: 100px;
+  background-color: #ffffff;
+  opacity: 0.5;
+  transition: all 0.6s ease;
+  transform: rotate(45deg);
+}
+.default-btn.active {
+  background-color: #ffffff;
+  color: #1dd3f8;
+}
+.default-btn.active:hover {
+  color: #ffffff;
+  background-color: #1dd3f8;
+}
+.default-btn:hover {
+  color: #ffffff;
+  transition: all 0.6s ease;
+}
+.default-btn:hover::before {
+  left: 200px;
+}
+.default-btn:hover::after {
+  right: 200px;
+}
+
+.popup-youtube {
+  cursor: pointer;
+}
+
+.text-danger {
+  color: #dc3545 !important;
+}

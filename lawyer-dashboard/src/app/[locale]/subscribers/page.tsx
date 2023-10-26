@@ -1,5 +1,4 @@
 import LoadingSpinner from "@/components/loading spinner/loadinSpinner";
-import PageTitle from "@/components/shared/PageTitle/pageTitle";
 import dynamic from "next/dynamic";
 
 
@@ -11,7 +10,7 @@ const SubscribersComponent = dynamic(() => import("../../../components/subscribe
 export default function SubscribersPage() {
   return (
       <>
-          {/* <PageTitle title="Subscribers" /> */}
+
           <SubscribersComponent/>
       </>
   )

@@ -10,13 +10,15 @@ import mammoth from "mammoth";
 import { saveAs } from "file-saver";
 import { Box, Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import PageTitle from "../shared/PageTitle/pageTitle";
+import { useTranslations } from "next-intl";
 
 const MyEditor = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const t=useTranslations('editorPage')
 
   const handleSaveToDocx = () => {
     const htmlContent = draftToHtml(convertToRaw(editorState.getCurrentContent()));
-
     // Create a Blob from the HTML content
     const blob = new Blob([htmlContent], {
       type: "application/msword",
@@ -27,6 +29,7 @@ const MyEditor = () => {
 
   return (
     <>
+         <PageTitle title={t('pageTitle')}/>
       <Box
         sx={{
           display: "flex",
@@ -56,7 +59,7 @@ const MyEditor = () => {
             sx={{ position: "relative", top: "-1px" }}
             className="mr-5px"
           />
-          Save File
+        {t('saveFile')}
         </Button>
       </Box>
       <div className="App">

@@ -1,6 +1,5 @@
 
 import LoadingSpinner from "@/components/loading spinner/loadinSpinner";
-import PageTitle from "../../../components/shared/PageTitle/pageTitle";
 import dynamic from "next/dynamic";
 
 const TeamsComponent = dynamic(() => import("../../../components/team/Teams"), {
@@ -11,7 +10,7 @@ const TeamsComponent = dynamic(() => import("../../../components/team/Teams"), {
 export default  function TeamPage({ params: { lang } }:any) {
   return (
     <>
-      <PageTitle title="Team" />
+
 
       <TeamsComponent />
     </>

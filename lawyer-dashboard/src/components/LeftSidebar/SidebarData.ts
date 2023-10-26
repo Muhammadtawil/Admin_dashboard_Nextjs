@@ -15,6 +15,7 @@ import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded';
 import { useTranslations } from 'next-intl';
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
+import EditCalendarOutlinedIcon from '@mui/icons-material/EditCalendarOutlined';
 function getSidebarData() {
   const t = useTranslations('SideBar');
 
@@ -33,12 +34,19 @@ function getSidebarData() {
       iconClosed: KeyboardArrowRightIcon,
       iconOpened: KeyboardArrowDownIcon,
 
-      subNav: [
-        {
-          title: t("calendar"),
-          path: "/calendar",
-        },
-      ],
+      // subNav: [
+      //   {
+      //     title: t("calendar"),
+      //     path: "/calendar",
+      //   },
+      // ],
+    },
+    {
+      title: t("calendar"),
+      path: "/calendar",
+      icon: EditCalendarOutlinedIcon,
+      iconClosed: KeyboardArrowRightIcon,
+      iconOpened: KeyboardArrowDownIcon,
     },
     {
       title: t("email"),
@@ -89,7 +97,7 @@ function getSidebarData() {
     },
     {
       title: t("about"),
-      path: "/about",
+      path: "/about-lawfirm",
       icon: InfoIcon,
       iconClosed: KeyboardArrowRightIcon,
       iconOpened: KeyboardArrowDownIcon,
@@ -110,14 +118,14 @@ function getSidebarData() {
     },
     {
       title: t("files"),
-      path: "/subscribers",
+      path: "/files",
       icon: AttachFileOutlinedIcon,
       iconClosed: KeyboardArrowRightIcon,
       iconOpened: KeyboardArrowDownIcon,
     },
     {
       title: t("references"),
-      path: "/subscribers",
+      path: "/references",
       icon: ClassOutlinedIcon,
       iconClosed: KeyboardArrowRightIcon,
       iconOpened: KeyboardArrowDownIcon,

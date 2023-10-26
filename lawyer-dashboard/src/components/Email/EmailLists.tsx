@@ -1,15 +1,16 @@
 "use client";
 
 import { Box, Button, Grid, TextField, Typography } from "@mui/material";
-import { useCallback, useState } from "react";
+import {useState } from "react";
 import RichTextEditor from "@mantine/rte";
 import SendIcon from '@mui/icons-material/Send';
-import { successAlert, updateAlert } from "../alerts/alerts";
-import DOMPurify from 'dompurify';
-import he from 'he';
-import {convert} from "html-to-text";
-export default function EmailLists({ sendEmail }: any) {
+import { successAlert } from "../alerts/alerts";
 
+import {convert} from "html-to-text";
+import PageTitle from "../shared/PageTitle/pageTitle";
+import { useTranslations } from "next-intl";
+export default function EmailLists({ sendEmail }: any) {
+const t=useTranslations('emailPage')
   const [content, setContent] = useState(""); // Step 1: Create state for content
 
   const handleContentChange = (newContent: any) => {
@@ -31,6 +32,7 @@ export default function EmailLists({ sendEmail }: any) {
 
   return (
     <>
+      <PageTitle title={t('pageTitle')}/>
 
       <Box>
         <Box
@@ -44,17 +46,7 @@ export default function EmailLists({ sendEmail }: any) {
           }}
           className="bg-black"
         >
-          <Typography
-            id="modal-modal-title"
-            variant="h6"
-            component="h2"
-            sx={{
-              fontWeight: "500",
-              fontSize: "18px",
-            }}
-          >
-            New Message
-          </Typography>
+     
         </Box>
 
         <Box component="form" noValidate={false} action={async  (formData)=>{
@@ -92,7 +84,7 @@ const plainTextContent = convert(content, {
                   required
                   fullWidth
                   id="to"
-                  label="To"
+                  label={t('to')}
                   autoFocus
                   InputProps={{
                     style: { borderRadius: 8 },
@@ -107,7 +99,7 @@ const plainTextContent = convert(content, {
                   required
                   fullWidth
                   id="subject"
-                  label="Subject"
+                  label={t('subject')}
                   autoFocus
                   InputProps={{
                     style: { borderRadius: 8 },
@@ -152,7 +144,7 @@ translate="yes"
                     }}
                     className="mr-5px"
                   />
-                  Send
+           {t('send')}
                 </Button>
               </Grid>
             </Grid>

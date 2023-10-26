@@ -7,6 +7,7 @@ import CustomTypography, {
   FormFooter,
   ValuesSelect,
 } from "../shared/formsComponents";
+import { useTranslations } from "next-intl";
 
 const serviceStatusValues = ["USER", "ADMIN"];
 const flagStatusValues = ["Yes", "No"];
@@ -20,7 +21,8 @@ export default function EditTeamForm({
   handleClose: any;
   selectedUser: any;
   UpdateImage: any;
-}) {
+  }) {
+  const t = useTranslations('teamPage')
   const [selectedImage, setSelectedImage] = useState<File>();
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,7 +98,7 @@ export default function EditTeamForm({
             await onUpdate(formData, selectedUser.userId, selectedImage).then(() => {
             handleClose();
 
-            updateAlert('user updated!');
+            updateAlert(t('update'));
               
             });
           }}
@@ -111,7 +113,7 @@ export default function EditTeamForm({
           >
             <Grid container alignItems="center" spacing={2}>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Name"} />
+                <CustomTypography text={t('userName')} />
 
                 <Box
                   width="100%"
@@ -126,7 +128,7 @@ export default function EditTeamForm({
                   fullWidth
                   id="userName"
                   type="text"
-                  label="user Name"
+                  label={t('userName')} 
                   autoFocus
                   value={formData.userName}
                   InputProps={{
@@ -137,7 +139,7 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Phone"} />
+                <CustomTypography text={t('phone')} />
 
                 <Box
                   width="100%"
@@ -152,7 +154,7 @@ export default function EditTeamForm({
                   fullWidth
                   id="userPhone"
                   type="number"
-                  label="Phone number"
+                  label={t('userName')} 
                   autoFocus
                   value={formData.userPhone}
                   InputProps={{
@@ -163,7 +165,7 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Email"} />
+                <CustomTypography text={t('email')}  />
 
                 <TextField
                   name="userEmail"
@@ -171,7 +173,7 @@ export default function EditTeamForm({
                   fullWidth
                   id="userEmail"
                   type="text"
-                  label="Email"
+                  label={t('email')} 
                   autoFocus
                   value={formData.userEmail}
                   InputProps={{
@@ -182,7 +184,7 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Position"} />
+                <CustomTypography text={t('position')} />
 
                 <TextField
                   name="userPosition"
@@ -190,7 +192,7 @@ export default function EditTeamForm({
                   fullWidth
                   id="userPosition"
                   type="text"
-                  label="Position"
+                  label={t('position')} 
                   autoFocus
                   value={formData.userPosition}
                   InputProps={{
@@ -201,7 +203,7 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Facebook Url"} />
+                <CustomTypography text={t('facebookUrl')}/>
 
                 <TextField
                   name="facebook"
@@ -209,7 +211,7 @@ export default function EditTeamForm({
                   fullWidth
                   id="facebook"
                   type="text"
-                  label="Facebook URL"
+                  label={t('facebookUrl')}
                   autoFocus
                   value={formData.userFacebookUrl}
                   InputProps={{
@@ -220,14 +222,14 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Twitter Url"} />
+                <CustomTypography text={t('twitterUrl')} />
                 <TextField
                   name="Twitter"
                   required={true}
                   fullWidth
                   id="Twitter"
                   type="text"
-                  label="Twitter url"
+                  label={t('twitterUrl')}
                   autoFocus
                   value={formData.userTwitterUrl}
                   InputProps={{
@@ -238,14 +240,14 @@ export default function EditTeamForm({
                 />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"LinkedIn Url"} />
+                <CustomTypography text={t('linkedInUrl')} />
                 <TextField
                   name="LinkedIn"
                   required={true}
                   fullWidth
                   id="LinkedIn"
                   type="text"
-                  label="LinkedIn Url"
+                  label={t('linkedInUrl')}
                   autoFocus
                   value={formData.userLinkedInUrl}
                   InputProps={{
@@ -257,15 +259,15 @@ export default function EditTeamForm({
               </Grid>
 
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Role"} />
+                <CustomTypography text={t('role')} />
                 <ValuesSelect name={"userRole"} values={serviceStatusValues} isrequired={true} />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Active"} />
+                <CustomTypography text={t('active')} />
                 <ValuesSelect name={"isTeam"} values={flagStatusValues} isrequired={true} />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Image"} />
+                <CustomTypography text={t('image')} />
                 <input
                   autoComplete="image"
                   name="image"
@@ -280,7 +282,7 @@ export default function EditTeamForm({
 
               {selectedImage && (
                 <div>
-                  <h3>Preview:</h3>
+                  <h3>{t('Preview')}:</h3>
                   <Image
                     src={URL.createObjectURL(selectedImage)}
                     alt="Selected"

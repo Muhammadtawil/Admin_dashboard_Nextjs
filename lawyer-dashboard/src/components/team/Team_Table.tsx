@@ -26,6 +26,8 @@ import ActionsComponent from "../shared/PaginationList";
 import { Typography } from "@mui/material";
 import { GetUsers } from "@/server/users/users";
 import { getServerSession } from "next-auth";
+import { useTranslations } from "next-intl";
+import { getStatusTranslationKey } from "../shared/tables";
 
 
 export default function TeamTable({
@@ -40,7 +42,7 @@ export default function TeamTable({
   UpdateImage: any;
   }) {
   
-  
+const t=useTranslations('teamPage')
   const [selectedFlag, setSelectedFlag] = useState<string | boolean>("");
   const handleServiceFlagFilterChange = (event: any) => {
     setSelectedFlag(event.target.value);
@@ -172,7 +174,7 @@ export default function TeamTable({
                     : "inherit",
               }}
             >
-              {user.isTeam == true ? "yes" : "No"}
+              {user.isTeam == true ? t('yes') : t('no')}
             </Paper>
           </TableCell>
           <TableCell
@@ -180,21 +182,23 @@ export default function TeamTable({
               ...cellStyle,
             }}
           >
-            {user.userRole}
+            {/* {user.userRole} */}
+            {t(getStatusTranslationKey(user.userRole))}
+
           </TableCell>
           <TableCell sx={cellStyle}>
             <IconButton>
-              <a href="https://www.facebook.com">
+              <a href={user.facebookUrl}>
                 <FacebookIcon />
               </a>
             </IconButton>
             <IconButton>
-              <a href="https://www.twitter.com">
+              <a href={user.twitterUrl}>
                 <TwitterIcon />
               </a>
             </IconButton>
             <IconButton>
-              <a href="https://www.linkedin.com">
+              <a href={user.linkedInUrl}>
                 <LinkedInIcon />
               </a>
             </IconButton>
@@ -202,9 +206,9 @@ export default function TeamTable({
 
           <TableCell align="right" sx={cellStyle}>
             <Box sx={{ display: "inline-block" }}>
-              <Tooltip title="Remove" placement="top">
+              <Tooltip title={t('delete')} placement="top">
                 <IconButton
-                  aria-label="remove"
+                  aria-label={t('delete')}
                   size="small"
                   color="error"
                   className="error"
@@ -213,9 +217,9 @@ export default function TeamTable({
                   <DeleteIcon fontSize="inherit" />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="edit" placement="top">
+              <Tooltip title={t('edit')} placement="top">
                 <IconButton
-                  aria-label="rename"
+                  aria-label={t('edit')}
                   size="small"
                   color="primary"
                   className="primary"
@@ -252,14 +256,14 @@ export default function TeamTable({
         >
           <TableHead sx={{ background: "#F7FAFF" }}>
             <TableRow>
-              <TableCell sx={cellStyle}>UserName</TableCell>
-              <TableCell sx={cellStyle}>Email</TableCell>
-              <TableCell sx={cellStyle}>Phone</TableCell>
+              <TableCell sx={cellStyle}>{t('userName')}</TableCell>
+              <TableCell sx={cellStyle}>{t('email')}</TableCell>
+              <TableCell sx={cellStyle}>{t('phone')}</TableCell>
 
-              <TableCell sx={cellStyle}>Position</TableCell>
+              <TableCell sx={cellStyle}>{t('position')}</TableCell>
 
               <TableCell align="center" sx={cellStyle}>
-                Active
+              {t('active')}
                 {/* <select
                   value={selectedFlag}
                   onChange={handleServiceFlagFilterChange}
@@ -270,12 +274,12 @@ export default function TeamTable({
                   <option value="">No</option>
                 </select> */}
               </TableCell>
-              <TableCell sx={cellStyle}>Role</TableCell>
+              <TableCell sx={cellStyle}>{t('role')}</TableCell>
 
-              <TableCell sx={cellStyle}>Social</TableCell>
+              <TableCell sx={cellStyle}>{t('social')}</TableCell>
 
               <TableCell align="right" sx={cellStyle}>
-                Action
+              {t('actions')}
               </TableCell>
             </TableRow>
           </TableHead>
@@ -283,7 +287,7 @@ export default function TeamTable({
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                rowsPerPageOptions={[5, 10, 25, { label: t('All'), value: -1 }]}
                 colSpan={8}
                 count={dataRows.length}
                 rowsPerPage={rowsPerPage}

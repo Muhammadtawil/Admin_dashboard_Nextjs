@@ -1,11 +1,5 @@
 
 import Head from "next/head";
-
-// import { Locale, i18n } from '../../../i18n.config';
-// import { Inter } from "next/font/google";
-
-// import theme from "../../styles/theme";
-// import "react-tabs/style/react-tabs.css";
 import ClientLayout from "./client.layout";
 import { Metadata } from "next";
 import Providers from "../../components/providers";
@@ -57,6 +51,7 @@ export default async function RootLayout({
       </Head>
       <Providers>
       <NextIntlClientProvider locale={locale?locale:"en"} messages={messages}>
+        
       <body >
           <ClientLayout children={children}/>
           </body>

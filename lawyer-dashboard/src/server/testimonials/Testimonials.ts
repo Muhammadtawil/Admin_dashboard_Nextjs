@@ -114,7 +114,7 @@ export async function UpdateTestimonial(data: FormData, testimonialId: string) {
   const TestimonialsData = {
     senderName: senderName,
     testimonialContent: testimonialContent,
-    isFlag: isFlag == "ready" ? true : false,
+    isFlag: isFlag == "true" ? true : false,
   };
 
   const jsonData = JSON.stringify(TestimonialsData);

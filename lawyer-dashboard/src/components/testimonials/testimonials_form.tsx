@@ -7,14 +7,18 @@ import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import { successAlert, updateAlert } from "../alerts/alerts";
 import CustomTypography from "../shared/formsComponents";
+import { useTranslations } from "next-intl";
+import PageTitle from "../shared/PageTitle/pageTitle";
 
 export default function TestimonialAddComponent({
   onCreate,
 }: {
   onCreate: any;
 }) {
+  const t = useTranslations('testimonialsPage')
   return (
     <>
+      <PageTitle title={t('pageTitle')} />
       <Card
         sx={{
           boxShadow: "none",
@@ -26,11 +30,11 @@ export default function TestimonialAddComponent({
         <Box
           component="form"
           noValidate={false}
-          action={ (formData) => {
-             onCreate(formData).then(() => {
-            successAlert('Testimonial Added');
-            document.querySelector('form')?.reset();
-              
+          action={(formData) => {
+            onCreate(formData).then(() => {
+              successAlert(t('success'));
+              document.querySelector('form')?.reset();
+
             });
           }}
         >
@@ -55,19 +59,19 @@ export default function TestimonialAddComponent({
                 }}
                 className="mr-5px"
               />
-              Create Testimonial
+              {t('addTestimonial')}
             </Button>
           </Grid>
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Sender Name"} />
+              <CustomTypography text={t('senderName')} />
               <TextField
                 autoComplete="senderName"
                 name="senderName"
                 required
                 fullWidth
                 id="senderName"
-                label="Sender Name"
+                label={t('senderName')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -76,7 +80,7 @@ export default function TestimonialAddComponent({
             </Grid>
 
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Testimonial Content"} />
+              <CustomTypography text={t('TestimonialContent')} />
               <TextField
                 multiline
                 minRows={3}
@@ -85,7 +89,7 @@ export default function TestimonialAddComponent({
                 required
                 fullWidth
                 id="testimonialContent"
-                label="Testimonial Content"
+                label={t('TestimonialContent')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },

@@ -22,6 +22,7 @@ import StyledDialogTitle from "../shared/StyledDialogTitle";
 import cellStyle from "../shared/cellStyle";
 import ActionsComponent from "../shared/PaginationList";
 import EditTestimonials from "./edit_testimonial";
+import { useTranslations } from "next-intl";
 
 export default function TestimonialsTable({
   dataRows,
@@ -31,7 +32,8 @@ export default function TestimonialsTable({
   dataRows: any[];
   deleteTestimonials: any;
   updateTestimonials: any;
-}) {
+  }) {
+  const t=useTranslations('testimonialsPage')
   const [selectedStatus, setSelectedStatus] = useState("");
 
   const handleStatusFilterChange = (event: any) => {
@@ -75,11 +77,17 @@ export default function TestimonialsTable({
     rowsPerPage: number
   ) => {
     // Filter tasks based on selected priority and status
-    const filteredTestimonial = dataRows.filter(
-      (testimonials) =>
-        !selectedStatus || testimonials.isFlag === selectedStatus
-    );
-
+    // const filteredTestimonial = dataRows.filter(
+    //   (testimonials) =>
+    //     !selectedStatus || testimonials.isFlag === selectedStatus
+    // );
+    const filteredTestimonial = dataRows.filter((testimonial) => {
+      if (selectedStatus === "") {
+        return true; // No filtering applied
+      }
+    
+      return testimonial.isFlag === (selectedStatus === "true");
+    })
     if (filteredTestimonial.length === 0) {
       return <TableRow>{/* ... */}</TableRow>;
     }
@@ -118,15 +126,15 @@ export default function TestimonialsTable({
                       : "inherit",
                 }}
               >
-                {testimonial.isFlag == true ? "yes" : "No"}
+                {testimonial.isFlag == true ? t('yes'): t('no')}
               </Paper>
             </TableCell>
 
             <TableCell align="right" sx={cellStyle}>
               <Box sx={{ display: "inline-block" }}>
-                <Tooltip title="Remove" placement="top">
+                <Tooltip title={t('delete')} placement="top">
                   <IconButton
-                    aria-label="remove"
+                    aria-label={t('delete')}
                     size="small"
                     color="error"
                     className="error"
@@ -137,9 +145,9 @@ export default function TestimonialsTable({
                     <DeleteIcon fontSize="inherit" />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="edit" placement="top">
+                <Tooltip title={t('edit')} placement="top">
                   <IconButton
-                    aria-label="rename"
+                    aria-label={t('edi')}
                     size="small"
                     color="primary"
                     className="primary"
@@ -176,23 +184,23 @@ export default function TestimonialsTable({
         >
           <TableHead sx={{ background: "#F7FAFF" }}>
             <TableRow>
-              <TableCell sx={cellStyle}>Sender Name</TableCell>
-              <TableCell sx={cellStyle}>Content</TableCell>
+              <TableCell sx={cellStyle}>{t('senderName')}</TableCell>
+              <TableCell sx={cellStyle}>{t('TestimonialContent')}</TableCell>
 
               <TableCell align="center" sx={cellStyle}>
-                Status
+               {t('status')}
                 <select
                   value={selectedStatus}
                   onChange={handleStatusFilterChange}
                   style={{ marginLeft: "8px" }}
                 >
-                  <option value="">All</option>
-                  <option value="ready">ready</option>
-                  <option value="Not ready">not ready</option>
+                  <option value="">   {t('All')}</option>
+                  <option value="true">   {t('ready')}</option>
+                  <option value="false">   {t('notReady')}</option>
                 </select>
               </TableCell>
               <TableCell align="right" sx={cellStyle}>
-                Action
+              {t('actions')}
               </TableCell>
             </TableRow>
           </TableHead>
@@ -200,7 +208,7 @@ export default function TestimonialsTable({
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                rowsPerPageOptions={[5, 10, 25, { label: t('All'), value: -1 }]}
                 colSpan={8}
                 count={dataRows.length}
                 rowsPerPage={rowsPerPage}

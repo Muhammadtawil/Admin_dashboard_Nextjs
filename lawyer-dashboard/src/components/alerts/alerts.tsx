@@ -47,7 +47,7 @@ export const deleteAlert = ({ deleteMethod }: any) => {
     focusConfirm:true
   }).then((result) => {
     if (result.isConfirmed ) {
-deleteMethod();
+deleteMethod;
       Swal.fire("Deleted!", "Your task has been deleted.", "success");
     }
   });

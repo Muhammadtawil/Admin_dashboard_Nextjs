@@ -8,11 +8,13 @@ import AddIcon from "@mui/icons-material/Add";
 import { successAlert } from "../alerts/alerts";
 import CustomTypography from "../shared/formsComponents";
 import { useTranslations } from "next-intl";
+import PageTitle from "../shared/PageTitle/pageTitle";
 
 export default function NewsAddComponent({ onCreate }: { onCreate: any }) {
   const t=useTranslations('newsPage')
   return (
     <>
+               <PageTitle title={t('pageTitle')} />
       <Card
         sx={{
           boxShadow: "none",

@@ -11,6 +11,7 @@ import CustomTypography, {
   ValuesSelect,
 } from "../shared/formsComponents";
 import { useTranslations } from "next-intl";
+import PageTitle from "../shared/PageTitle/pageTitle";
 
 
 const statusValues = ["COMPLETED", "NOT_COMPLETED", "IN_PROGRESS"];
@@ -31,6 +32,8 @@ export default function AddTaskForm({ onCreate }: any) {
 
   return (
     <>
+      <PageTitle title={t('pageTitle')} />
+      
       <FormHead handleClickOpen={handleClickOpen} title={t('addTask')} />
 
       <StyledDialogTitle

@@ -25,7 +25,6 @@ const clients=await getClients()
               <QuoteGenerator/>
               {/* <RandomQuote /> */}
               </Box>
-     <h1>Statistics</h1>
 
   
               <ServiceClientChart servicesData={services} />

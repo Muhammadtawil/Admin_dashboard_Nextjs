@@ -1,5 +1,4 @@
 import LoadingSpinner from "@/components/loading spinner/loadinSpinner";
-import PageTitle from "../../../components/shared/PageTitle/pageTitle";
 import dynamic from "next/dynamic";
 
 const TestimonialsComponent = dynamic(
@@ -11,6 +10,6 @@ const TestimonialsComponent = dynamic(
 );
 
 export default function TestimonialsPage() {
-  <PageTitle title="Testimonials" />;
+
   return <TestimonialsComponent />;
 }

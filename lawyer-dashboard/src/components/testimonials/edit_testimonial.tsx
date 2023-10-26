@@ -11,6 +11,7 @@ import Select from "@mui/material/Select";
 import dynamic from "next/dynamic";
 import { updateAlert } from "../alerts/alerts";
 import CustomTypography, { FormFooter } from "../shared/formsComponents";
+import { useTranslations } from "next-intl";
 
 export default function EditTestimonials({
   onUpdate,
@@ -23,6 +24,7 @@ export default function EditTestimonials({
   handleClose: any;
 }) {
   // Select Priority
+  const t=useTranslations('testimonialsPage')
   const [status, setstatus] = useState("");
   const handleChange = (event: any) => {
     setstatus(event.target.value);
@@ -73,14 +75,14 @@ export default function EditTestimonials({
 
              onUpdate(formData, selectedTestimonials.testimonialId).then(() => {
             handleClose();
-            updateAlert('Testimonials Updated');
+            updateAlert(t('update'));
               
             });
           }}
         >
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Sender Name"} />
+              <CustomTypography text={t('senderName')} />
 
               <TextField
                 autoComplete="senderName"
@@ -88,7 +90,7 @@ export default function EditTestimonials({
                 required
                 fullWidth
                 id="senderName"
-                label="Sender Name"
+                label={t('senderName')}
                 value={formData.senderName}
                 autoFocus
                 InputProps={{
@@ -99,7 +101,7 @@ export default function EditTestimonials({
             </Grid>
 
             <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Testimonials Content"} />
+              <CustomTypography text={t('TestimonialContent')} />
 
               <TextField
                 multiline
@@ -110,7 +112,7 @@ export default function EditTestimonials({
                 fullWidth
                 value={formData.testimonialContent}
                 id="testimonialContent"
-                label="Testimonial Content"
+                label={t('TestimonialContent')} 
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
@@ -120,7 +122,7 @@ export default function EditTestimonials({
             </Grid>
 
             <Grid item xs={12} md={12} lg={6}>
-              <CustomTypography text={"testimonial Status"} />
+              <CustomTypography text={t('status')} />
 
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">status</InputLabel>
@@ -129,17 +131,17 @@ export default function EditTestimonials({
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={status}
-                  label="status"
+                  label={t('senderName')}
                   onChange={handleChange}
                   required={true}
                 >
-                  <MenuItem value={"ready"}>ready</MenuItem>
-                  <MenuItem value={"not ready"}>Not ready</MenuItem>
+                  <MenuItem value={"true"}>{t('ready')}</MenuItem>
+                  <MenuItem value={"false"}>{t('notReady')}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            <FormFooter handleClose={handleClose} title={"Edit Testimonial"} />
+            <FormFooter handleClose={handleClose} title={t('editTestimonial')} />
           </Grid>
         </Box>
       </Card>

@@ -9,9 +9,12 @@ import TopNavbar from "../../components/TopNavbar/TopNavBar";
 import ScrollToTop from "../../components/shared/ScrollToTop";
 import Sidebar from "../../components/LeftSidebar/LeftSideBar";
 
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function ClientLayout({ children }: { children: React.ReactNode }) {
+
+  
   const [active, setActive] = useState(false);
 
   const toggleActive = () => {
@@ -25,18 +28,25 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
   const router = usePathname();
   const isLoginPage = router.includes("/login");
 
+
   return (
+ 
     <div className={inter.className}>
       {isLoginPage ? (
         <div>{children}</div>
       ) : (
+      
+            
         <div className={`main-wrapper-content ${active && "active"}`}>
           <TopNavbar toogleActive={toggleActive} />
           <Sidebar toogleActive={toggleActive} closeSidebar={closeSidebar} />
           {children}
           <ScrollToTop />
-        </div>
+            </div>
+            
       )}
-    </div>
+        </div>
+  
+      
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 import { successAlert } from "../alerts/alerts";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import CustomTypography, {
@@ -10,10 +10,14 @@ import CustomTypography, {
   HeadBox,
   ValuesSelect,
 } from "../shared/formsComponents";
+import { useTranslations } from "next-intl";
+import PageTitle from "../shared/PageTitle/pageTitle";
+import { getStatusTranslationKey } from "../shared/tables";
 
 const flagStatus = ["Yes", "No"];
 
 export default function AddTeamForm({ onCreate }: { onCreate: any }) {
+  const t=useTranslations('teamPage')
   const [open, setOpen] = useState(false);
 
   const handleClose = () => {
@@ -26,7 +30,8 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
 
   return (
     <>
-      <FormHead handleClickOpen={handleClickOpen} title={"Add Team Member"} />
+            <PageTitle title={t('pageTitle')} />
+      <FormHead handleClickOpen={handleClickOpen} title={t('addTeam')} />
 
       <StyledDialogTitle
         onClose={handleClose}
@@ -34,7 +39,7 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
         open={open}
       >
         <Box>
-          <HeadBox handleClose={handleClose} title={"Add Team"} />
+          <HeadBox handleClose={handleClose} title={t('addTeam')} />
 
           <Box
             component="form"
@@ -42,7 +47,7 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
             action={async (formData) => {
               handleClose();
               await onCreate(formData);
-              successAlert('User Added Successfully');
+              successAlert(t('success'));
             }}
           >
             <Box
@@ -54,23 +59,21 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
               className="dark-BG-101010"
             >
               <Grid container alignItems="center" spacing={2}>
-                <CustomTextField name="userName" label="user Name" />
-                <CustomTextField name="password" label="Password" />
+                <CustomTextField name="userName" label={t('userName')} />
+                <CustomTextField name="password" label={t('password')} />
 
-                <CustomTextField name="userPosition" label="Position" />
+                <CustomTextField name="userPosition" label={t('position')}/>
                 <CustomTextField
                   name="userPhone"
-                  label="Phone Number"
+                  label={t('phone')}
                   type="number"
                 />
-                <CustomTextField name="userEmail" label="Email" />
-                <Grid item xs={12} md={12} lg={6}>
-                  <CustomTypography text={"Active"} />
-                  <ValuesSelect name={"isFlag"} values={flagStatus} isrequired={false} />
-                </Grid>
+                <CustomTextField name="userEmail" label={t('email')} />
+   
+          
                 <FormFooter
                   handleClose={handleClose}
-                  title={"Add Team Member"}
+                  title={t('addTeam')}
                 />
               </Grid>
             </Box>

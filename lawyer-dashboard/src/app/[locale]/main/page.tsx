@@ -19,7 +19,6 @@ const MainHome  = dynamic(() => import("../../../components/main/MainHome"), {
 });
   return (
     <>
-      <PageTitle title="Dashboard" />
 <MainHome/>
      
     </>

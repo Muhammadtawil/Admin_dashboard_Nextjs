@@ -6,6 +6,7 @@ import CustomTypography, {
   FormFooter,
   ValuesSelect,
 } from "../shared/formsComponents";
+import { useTranslations } from "next-intl";
 
 const serviceStatusValues = ["AVAILABLE", "NOT_AVAILABLE"];
 const flagStatusValues = ["Yes", "No"];
@@ -44,7 +45,7 @@ export default function EditTaskForm({
       [name]: value,
     }));
   };
-
+const t=useTranslations('servicesPage')
   return (
     <>
       <Box>
@@ -54,7 +55,7 @@ export default function EditTaskForm({
           action={async (formData) => {
             await onUpdate(formData, selectedService.serviceId).then(() => {
             handleClose();
-            updateAlert('service Updated');
+            updateAlert(t('update'));
               
 
             });
@@ -70,7 +71,7 @@ export default function EditTaskForm({
           >
             <Grid container alignItems="center" spacing={2}>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Name"} />
+                <CustomTypography text={t('serviceTitle')} />
 
                 <Box
                   width="100%" // Set the desired width here
@@ -85,7 +86,7 @@ export default function EditTaskForm({
                   fullWidth
                   id="serviceName"
                   type="text"
-                  label="Name"
+                  label={t('serviceTitle')}
                   autoFocus
                   value={formData.serviceName}
                   InputProps={{
@@ -97,7 +98,7 @@ export default function EditTaskForm({
               </Grid>
 
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Service"} />
+                <CustomTypography text={t('serviceDescription')} />
 
                 <Box
                   width="100%" // Set the desired width here
@@ -113,7 +114,7 @@ export default function EditTaskForm({
                   fullWidth
                   id="serviceDescription"
                   type="text"
-                  label="Description"
+                  label={t('serviceDescription')}
                   autoFocus
                   value={formData.serviceDescription}
                   InputProps={{
@@ -125,16 +126,16 @@ export default function EditTaskForm({
               </Grid>
 
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Status"} />
+                <CustomTypography text={t('status')} />
                 <ValuesSelect
                   name={"serviceStatus"}
                   values={serviceStatusValues} isrequired={true}                />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={"Draft"} />
+                <CustomTypography text={t('onWeb')} />
                 <ValuesSelect name={"isFlag"} values={flagStatusValues} isrequired={true} />
               </Grid>
-              <FormFooter handleClose={handleClose} title={"Edit Task"} />
+              <FormFooter handleClose={handleClose} title={t('editService')} />
             </Grid>
           </Box>
         </Box>

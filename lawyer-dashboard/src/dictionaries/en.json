@@ -1,10 +1,32 @@
 {
   "mainPage": {
     "welcomeMessage": "welcome",
-    "quote": "Quote of the Day"
+    "quote": "Quote of the Day",
+    "pageTitle":"Dashboard",
+    "Statistic":"Statistic",
+    "copy":"Copy",
+    "coppied":"Coppied",
+    "nextQuote":"Next Quote",
+    "clinetsNumber":"Total Clients/Services",
+    "clientsPerMonth":"Total Clients/Month",
+    "month":"Month",
+    "January": "January",
+    "February": "February",
+    "March": "March",
+    "April": "April",
+    "May": "May",
+    "June": "June",
+    "July": "July",
+    "August": "August",
+    "September": "September",
+    "October": "October",
+    "November": "November",
+    "December": "December"
+
+
   },
   "BlogPage": {
-    "Title": "Blog",
+    "pageTitle": "Blog",
     "CreateBlog": "Create Blog",
     "blogTitle": "Blog Title",
     "blogContent": "Blog Content",
@@ -138,7 +160,8 @@
   "testimonialsPage": {
     "pageTitle": "Testimonials",
     "senderName": "Sender Name",
-    "addSubscriber": "Add Subscriber",
+    "addTestimonial": "Add Testimonial",
+    "editTestimonial":"Edit Testimonial",
     "TestimonialContent": "Content",
     "status": "Status",
     "delete": "Delete",
@@ -152,5 +175,68 @@
     "no": "Draft",
     "ready": "Deployed",
     "notReady": "Draft"
-  }
+  },
+   "emailPage":{
+    "pageTitle":"Email",
+    "newMessage":"new Message",
+    "send":"send",
+    "to":"To",
+    "subject":"Subject"
+   },
+
+   "teamPage":{
+    "pageTitle":"Team",
+    "userName":"User Name",
+    "email":"Email",
+    "phone":"Phone Number",
+    "role":"Role",
+    "position":"Position",
+    "active":"Active",
+    "social":"Social",
+    "admin":"Admin",
+    "user":"User",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "All": "All",
+    "actions": "Actions",
+    "success": "Team Member added",
+    "update": "Team Member Updated",
+    "yes": "Yes",
+    "no": "No",
+    "addTeam":"Add Team Member",
+    "status":"Status",
+    "password":"Password",
+    "admin":"Admin",
+    "user":"User",
+    "image": "Image",
+    "Preview": "Preview",
+    "facebookUrl":"Facebook Url",
+    "linkedInUrl":"LinkedIn Url",
+    "twitterUrl":"Twitter Url"
+   },
+   "editorPage":{
+    "pageTitle":"Editor",
+    "saveFile":"Save File"
+      },
+
+      "servicesPage":{
+        "pageTitle":"Services",
+        "serviceTitle":"Title",
+        "serviceDescription":"Description",
+        "status":"status",
+        "onWeb":"on Web",
+      "clientPerService":"CLients in service",
+      "edit": "Edit",
+      "delete":"delete",
+      "cancel": "Cancel",
+      "All": "All",
+      "actions": "Actions",
+      "success": "Service Added Sussessfully",
+      "update": "Service Updated Sussessfully",
+      "available":"Available",
+      "notAvailable":"Not Available",
+      "yes":"Yes",
+"no":"No"
+      }
+
 }

@@ -20,6 +20,8 @@ import EditTaskForm from "./edit_Service_Form";
 import cellStyle from "../shared/cellStyle";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import ActionsComponent from "../shared/PaginationList";
+import { useTranslations } from "next-intl";
+import { getStatusTranslationKey } from "../shared/tables";
 
 export default function ServicesTable({
   dataRows,
@@ -29,7 +31,9 @@ export default function ServicesTable({
   dataRows: any[];
   deleteTask: any;
   updateTask: any;
-}) {
+  }) {
+  
+  const t=useTranslations('servicesPage')
   const [selectedFlag, setSelectedFlag] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("");
 
@@ -44,6 +48,13 @@ export default function ServicesTable({
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+  const handleStatusFilterChange = (event: any) => {
+    setSelectedStatus(event.target.value);
+  };
+  const handleFlagFilterChange = (event: any) => {
+    setSelectedFlag(event.target.value);
+  };
+
 
   // Edit
   const [open, setOpen] = useState(false);
@@ -69,17 +80,29 @@ export default function ServicesTable({
     rowsPerPage: number
   ) => {
     // Filter tasks based on selected priority and status
-    const filteredClients = dataRows.filter(
-      (client) =>
-        (!selectedFlag || client.chosenServiceName === selectedFlag) &&
-        (!selectedStatus || client.clientStatus === selectedStatus)
-    );
+    const filteredServices = dataRows.filter((service) => {
+      if (selectedFlag === "" && selectedStatus === "") {
+        return true; // No filtering applied
+      }
+    
+      let flagFilterPassed = true;
+      let statusFilterPassed = true;
+    
+      // Apply the isFlag filter if selectedFlag is not empty
+      if (selectedFlag !== "") {
+        flagFilterPassed = service.isFlag === (selectedFlag === "true");
+      }
+    
+      // Apply the serviceStatus filter if selectedStatus is not empty
+      if (selectedStatus !== "") {
+        statusFilterPassed = service.serviceStatus === selectedStatus;
+      }
+    
+      // Return true only if both filters pass
+      return flagFilterPassed && statusFilterPassed;
+    });
 
-    if (filteredClients.length === 0) {
-      return <TableRow>{/* ... */}</TableRow>;
-    }
-
-    return filteredClients
+    return filteredServices
       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
       .map((service: any, index: number) => (
         <TableRow key={service.serviceId}>
@@ -111,14 +134,15 @@ export default function ServicesTable({
                 padding: "4px 8px",
                 width: "100px",
                 backgroundColor:
-                  service.clientStatus === "AVAILABLE"
+                  service.serviceStatus === "AVAILABLE"
                     ? "green"
-                    : service.clientStatus === "NOT_AVAILABLE"
+                    : service.serviceStatus === "NOT_AVAILABLE"
                     ? "red"
                     : "inherit",
               }}
             >
-              {service.serviceStatus}
+              {t(getStatusTranslationKey(service.serviceStatus))}
+              {/* {service.serviceStatus} */}
             </Paper>
           </TableCell>
           <TableCell align="center" sx={{ ...cellStyle, fontSize: "10px" }}>
@@ -127,15 +151,15 @@ export default function ServicesTable({
               sx={{
                 padding: "4px 8px",
                 width: "100px",
-                // backgroundColor:
-                //   service.isFlag === true
-                //     ? "green"
-                //     : service.isFlag === false
-                //     ? "red"
-                //     : "inherit",
+                backgroundColor:
+                  service.isFlag === true
+                    ? "green"
+                    : service.isFlag === false
+                    ? "red"
+                    : "inherit",
               }}
             >
-              {service.isFlag == true ? "yes" : "No"}
+              {service.isFlag == true ? t('yes') : t('no')}
             </Paper>
           </TableCell>
 
@@ -154,9 +178,9 @@ export default function ServicesTable({
 
           <TableCell align="right" sx={cellStyle}>
             <Box sx={{ display: "inline-block" }}>
-              <Tooltip title="Remove" placement="top">
+              <Tooltip title={t('delete')} placement="top">
                 <IconButton
-                  aria-label="remove"
+                  aria-label={t('delete')}
                   size="small"
                   color="error"
                   className="error"
@@ -165,9 +189,9 @@ export default function ServicesTable({
                   <DeleteIcon fontSize="inherit" />
                 </IconButton>
               </Tooltip>
-              <Tooltip title="edit" placement="top">
+              <Tooltip title={t('edit')} placement="top">
                 <IconButton
-                  aria-label="rename"
+                  aria-label={t('edit')}
                   size="small"
                   color="primary"
                   className="primary"
@@ -204,36 +228,36 @@ export default function ServicesTable({
         >
           <TableHead sx={{ background: "#F7FAFF" }}>
             <TableRow>
-              <TableCell sx={cellStyle}>Title</TableCell>
-              <TableCell sx={cellStyle}>Description</TableCell>
+              <TableCell sx={cellStyle}>{t('serviceTitle')}</TableCell>
+              <TableCell sx={cellStyle}>{t('serviceDescription')}</TableCell>
 
               <TableCell align="center" sx={cellStyle}>
-                Status
-                {/* <select
+              {t('status')}
+                <select
                   value={selectedStatus}
                   onChange={handleStatusFilterChange}
                   style={{ marginLeft: "8px" }}
                 >
-                  <option value="">All</option>
-                  <option value="AVAILABLE">Available</option>
-                  <option value="NOT_AVAILABLE">Not Available</option>
-                </select> */}
+                  <option value="">{t('All') }</option>
+                  <option value="AVAILABLE">{t('available') }</option>
+                  <option value="NOT_AVAILABLE">{t('notAvailable') }</option>
+                </select>
               </TableCell>
               <TableCell align="center" sx={cellStyle}>
-                on Website
-                {/* <select
+              {t('onWeb')}
+                <select
                   value={selectedFlag}
-                  onChange={handleServiceFlagFilterChange}
+                  onChange={handleFlagFilterChange}
                   style={{ marginLeft: "8px" }}
                 >
-                  <option value="">All</option>
-                  <option value="true">yes</option>
-                  <option value="false">No</option>
-                </select> */}
+                  <option value="">{t('All') }</option>
+                  <option value="true">{t('yes')}</option>
+                  <option value="false">{t('no') }</option>
+                </select>
               </TableCell>
-              <TableCell sx={cellStyle}>Service Client Count</TableCell>
+              <TableCell sx={cellStyle}>{t('clientPerService')}</TableCell>
               <TableCell align="right" sx={cellStyle}>
-                Action
+              {t('actions')}
               </TableCell>
             </TableRow>
           </TableHead>
@@ -241,7 +265,7 @@ export default function ServicesTable({
           <TableFooter>
             <TableRow>
               <TablePagination
-                rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+                rowsPerPageOptions={[5, 10, 25, { label: t('All'), value: -1 }]}
                 colSpan={8}
                 count={dataRows.length}
                 rowsPerPage={rowsPerPage}

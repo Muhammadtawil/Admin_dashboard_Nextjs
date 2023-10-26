@@ -1,11 +1,12 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import styles from '../../../styles/Quotes.module.css';
-import { Grid } from '@mui/material';
+import { useTranslations } from 'next-intl';
 export default function QuoteGenerator() {
     const [quote, setQuote] = useState('');
     const [author, setAuthor] = useState('');
     const [copied, setCopied] = useState(false);
+    const t=useTranslations('mainPage')
  
     const generateQuote = async () => {
         try {
@@ -41,8 +42,10 @@ export default function QuoteGenerator() {
         setTimeout(() => setCopied(false), 2000);
     };
     return (
-       
-    <div className={styles.container}>
+       <>
+            
+        <div className={styles.container}>
+            
     <div className={styles.boxSize}>
         <h1 className={styles.QuoteText}>{quote}</h1>
         <p className={styles.author} id="author">
@@ -55,16 +58,18 @@ export default function QuoteGenerator() {
                 onClick={copyToClipboard}
                 disabled={copied}
             >
-                {copied ? 'Copied!' : 'Copy'}
+                {copied ? t('coppied') : t('copy')}
             </button>
             <button 
                 className={styles.GenerateQuote_next} 
                 onClick={generateQuote}>
-                Next quote
+           {t('nextQuote')}
             </button>
         </div>
     </div>
             </div>
+
+       </>
             
   )
 }
