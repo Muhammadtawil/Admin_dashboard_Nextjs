@@ -1,0 +1,278 @@
+
+.navbar-area nav {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    transition: all 0.6s ease;
+  }
+  .navbar-area nav .navbar-brand .logo {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 25px;
+  }
+  .navbar-area nav .navbar-nav .nav-item {
+    position: relative;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .navbar-area nav .navbar-nav .nav-item a {
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    text-transform: uppercase;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .navbar-area nav .navbar-nav .nav-item a:hover, .navbar-area nav .navbar-nav .nav-item a:focus, .navbar-area nav .navbar-nav .nav-item a.active {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item a i {
+    font-size: 22px;
+    position: relative;
+    top: 3px;
+  }
+  .navbar-area nav .navbar-nav .nav-item:last-child a {
+    margin-right: 0;
+  }
+  .navbar-area nav .navbar-nav .nav-item:first-child a {
+    margin-left: 0;
+  }
+  .navbar-area nav .navbar-nav .nav-item:hover a, .navbar-area nav .navbar-nav .nav-item.active a {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu {
+    box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.05);
+    background: #ffffff;
+    position: fixed;
+    border: none;
+    top: 80px;
+    left: 0;
+    width: 250px;
+    z-index: 99;
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    padding-top: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 18px;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li a {
+    padding: 5px 15px;
+    margin: 0;
+    color: #000000;
+    text-transform: capitalize;
+    font-size: 14.5px;
+    font-weight: 400;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li a:hover, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li a:focus, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li a.active {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu {
+    left: -250px;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a {
+    color: #000000;
+    text-transform: capitalize;
+    font-size: 14px;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:hover, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a:focus, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li a.active {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu {
+    left: 220px;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
+    color: #000000;
+    text-transform: capitalize;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+    left: -250px;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
+    color: #000000;
+    text-transform: capitalize;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+    left: -250px;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
+    color: #000000;
+    text-transform: capitalize;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+    left: -250px;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
+    color: #000000;
+    text-transform: capitalize;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu {
+    left: -250px;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a {
+    color: #000000;
+    text-transform: capitalize;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:hover, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a:focus, .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li a.active {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: -15px;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: -15px;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: -15px;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li.active a {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: -15px;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li.active a {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li .dropdown-menu li:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: -15px;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li.active a {
+    color: #1dd3f8;
+  }
+  .navbar-area nav .navbar-nav .nav-item .dropdown-menu li:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: -15px;
+  }
+  .navbar-area nav .navbar-nav .nav-item:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+  }
+  .navbar-area .dropdown-toggle::after {
+    display: none;
+  }
+  .navbar-area .others-options {
+    position: relative;
+    top: 3px;
+  }
+  .navbar-area .others-options .default-btn {
+    padding: 15px 35px;
+  }
+  .navbar-area .others-options .default-btn i {
+    position: relative;
+    top: 1px;
+    margin-left: 5px;
+  }
+  .navbar-area.is-sticky nav {
+    background-color: #000000;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+  
+  .navbar-toggler {
+    border: none;
+    background: #eee !important;
+    padding: 10px;
+    border-radius: 0;
+  }
+  .navbar-toggler .icon-bar {
+    width: 28px;
+    transition: all 0.3s;
+    background: #1dd3f8;
+    height: 2px;
+    display: block;
+  }
+  .navbar-toggler .top-bar {
+    transform: rotate(45deg);
+    transform-origin: 10% 10%;
+    left: 4px;
+    position: relative;
+  }
+  .navbar-toggler .middle-bar {
+    opacity: 0;
+    margin: 6px 0;
+  }
+  .navbar-toggler .bottom-bar {
+    transform: rotate(-45deg);
+    transform-origin: 10% 90%;
+    left: 4px;
+    position: relative;
+  }
+  .navbar-toggler.collapsed .top-bar {
+    transform: rotate(0);
+    left: 0;
+  }
+  .navbar-toggler.collapsed .middle-bar {
+    opacity: 1;
+  }
+  .navbar-toggler.collapsed .bottom-bar {
+    transform: rotate(0);
+    left: 0;
+  }
+  
+  

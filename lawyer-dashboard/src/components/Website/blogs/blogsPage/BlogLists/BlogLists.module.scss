@@ -1,0 +1,51 @@
+.blogListStyle :global {
+  .blogCard {
+    position: relative;
+    margin-bottom: 1.5rem;
+    .image {
+      width: 100%;
+      min-height: 20rem;
+      overflow: hidden;
+      position: relative;
+      img {
+        border-radius: 8px;
+        cursor: pointer;
+      }
+    }
+    .blogContent {
+      position: relative;
+      border-radius: 8px;
+      > div {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin: 1rem 0;
+        span > svg {
+          color: #6154f2;
+        }
+      }
+      h4 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        &:hover {
+          color: #6154f2;
+          transition: all 0.3s;
+        }
+      }
+      button {
+        background: none;
+        border: none;
+        font-weight: 500;
+        padding: 0;
+        transition: all 0.2s;
+        &:hover {
+          color: #6154f2;
+          transition: all 0.3s;
+        }
+      }
+    }
+  }
+}

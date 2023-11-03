@@ -20,7 +20,7 @@ export default function LoginForm() {
   const [error, setError] = useState("");
 
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/en/main";
+  const callbackUrl = searchParams.get("callbackUrl") || "/en/dashboard/main";
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,7 +32,7 @@ export default function LoginForm() {
         redirect: false,
         userName: formValues.userName,
         password: formValues.password,
-        callbackUrl: "/en/main",
+        callbackUrl: "/en/dashboard/main",
       });
 
       setLoading(false);

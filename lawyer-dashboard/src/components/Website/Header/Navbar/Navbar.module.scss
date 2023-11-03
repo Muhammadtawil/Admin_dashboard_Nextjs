@@ -1,0 +1,119 @@
+.navbarStyle :global {
+  padding: 1.5rem 0;
+  // Logo css start
+  .logo {
+    width: 10px;
+    overflow: hidden;
+  }
+  // Logo css end
+  // Menu items css start
+  .menuItems {
+    span > a {
+      padding: 5px 10px;
+      margin-left: 10px;
+      letter-spacing: 0.7px;
+      color: darken($color: #fafafa, $amount: 10);
+      transition: all 0.2s;
+      font-weight: 400;
+      font-size: 1.1rem;
+      position: relative;
+      text-decoration: none;
+      &::after {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 999px;
+        background-color: #f6a546;
+        position: absolute;
+        top: -1.5rem;
+        left: calc(50% - 3px);
+        opacity: 0;
+      }
+      &:hover {
+        color: #fafafa;
+        transition: all 0.2s;
+        &::after {
+          transition: all 0.2s;
+          opacity: 1;
+          top: -0.5rem;
+        }
+      }
+    }
+    .active {
+      > a::after {
+        opacity: 1 !important;
+        top: -0.5rem;
+      }
+    }
+  }
+  // Menu items css end
+  // Menu toggle css start
+  .toggleBtn {
+    color: #6154F2;
+    font-size: 2.3rem;
+    border: 0;
+    padding: 0.3rem;
+    outline: none;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  // Menu toggle css end
+  // Responsive css start
+  @media screen and (max-width: 767px) {
+    padding: 0.5rem 0;
+    .menuItemContainer {
+      margin-top: 3px;
+      z-index: 10;
+    }
+    .menuItems {
+      span {
+        margin-bottom: 5px;
+        
+      }
+      span > a {
+        padding: 3px 0px;
+        margin-left: 0px;
+        letter-spacing: 0.5px;
+        font-size: 1.05rem;
+        &::after {
+          width: 0%;
+          height: 3px;
+          border-radius: 2px;
+          bottom: 0 !important;
+          top: inherit !important;
+          left: 0;
+          opacity: 0;
+     
+        }
+        &:hover {
+          &::after {
+            transition: all 0.5s;
+            opacity: 1;
+            width: 100%;
+            top: inherit !important;
+            bottom: 0 !important;
+          }
+        }
+      }
+      .active {
+        > a::after {
+          opacity: 1;
+          width: 100%;
+          left: 0;
+          top: inherit !important;
+          bottom: 0 !important;
+        }
+      }
+    }
+    .menuItemContainer {
+      position: absolute;
+      top: 100%;
+      background-color: #6154f2;
+      width: calc(100% - 1.5rem);
+      border-radius: 0 0 8px 8px;
+      padding: 2px 5px;
+    }
+  }
+  // Responsive css end
+}

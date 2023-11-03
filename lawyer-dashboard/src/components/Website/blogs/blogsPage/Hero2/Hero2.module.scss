@@ -1,0 +1,36 @@
+.heroSection :global {
+  overflow: hidden;
+  .heroContainer {
+    position: relative;
+    .polygon {
+      position: absolute;
+      top: -10vh;
+      left: 15vw;
+      z-index: 0;
+    }
+    .circle1,
+    .circle2 {
+      position: absolute;
+      top: 0;
+      z-index: 0;
+    }
+    .circle1 {
+      right: 0;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .heroContainer {
+      padding: 2rem 0;
+    }
+    .polygon {
+      display: none !important;
+    }
+  }
+  @media screen and (max-width: 1199px) {
+    .polygon {
+      top: -8vh !important;
+      left: 15vw;
+    }
+  }
+}

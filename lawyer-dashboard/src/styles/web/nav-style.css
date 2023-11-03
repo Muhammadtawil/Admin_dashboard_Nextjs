@@ -1,0 +1,87 @@
+/* Initial styles for the navbar */
+nav {
+    display: flex;
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent; /* Set to transparent initially */
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    transition: background-color 0.2s, padding 0.2s; /* Added padding transition */
+  }
+  
+  /* Menu button styles (for mobile) */
+  .nav__menu-bar {
+    display: flex;
+    flex-direction: column;
+    row-gap: 6px;
+    cursor: pointer;
+  }
+  
+  /* Menu list styles (for mobile) */
+  .nav__menu-list {
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Fixed position for mobile menu */
+    top: 60px;
+    right: -288px;
+    width: 288px;
+    row-gap: 24px;
+    padding: 24px 16px;
+    transition: all 0.2s;
+    min-height: calc(100vh - 60px);
+    background-color: #f1f1f1;
+  }
+  
+  /* Active class for mobile menu */
+  .nav__menu-list.active {
+    right: 0;
+  }
+  
+  /* Menu link styles */
+  .nav__link {
+    font-size: 18px;
+    position: relative; /* Added relative position */
+    transition: all 0.2s;
+    color: black; /* Text color for mobile menu */
+  }
+  
+  /* Add a background color to the navbar after scrolling */
+  .nav-scrolled {
+    background-color: #f1f1f1; /* Set to your desired background color */
+    padding: 12px 16px; /* Adjust padding after scrolling */
+  }
+  
+  /* Centered content */
+  .center {
+    min-height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Media query for larger screens */
+  @media screen and (min-width: 768px) {
+    /* Navbar becomes fixed and opaque on larger screens */
+    nav {
+      background-color: #f1f1f1; /* Set the background color for larger screens */
+      position: sticky;
+      top: 0;
+    }
+  
+    /* Remove transparent background and add padding */
+    nav.transparent {
+      background-color: #f1f1f1;
+      padding: 12px 16px;
+    }
+  
+    /* Hide the mobile menu button on larger screens */
+    .nav__menu-bar {
+      display: none;
+    }
+  
+    /* Adjust styles for larger screens as needed */
+  }
+  

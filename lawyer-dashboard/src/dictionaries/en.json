@@ -237,6 +237,48 @@
       "notAvailable":"Not Available",
       "yes":"Yes",
 "no":"No"
+      },
+
+      "webMainPage":{
+        "home":"Home",
+        "about":"About",
+        "services":"Services",
+        "blogs":"Blogs",
+        "news":"News",
+        "contact":"Contact",
+        "welcomeMessage":"Welcome To our LawFirm",
+        "welcomeMessageTwo":"Your Trusted Legal Companion on the Path to justice",
+        "booking":"Contuct Us"
+      },
+      "webAboutUs":{
+        "title":"About us",
+        "mainTitle":"Welcome to our law Firm!",
+        "description":"We are dedicated to providing top-notch legal services to our clients. With our team of experienced lawyers, we offer a wide range of specialized services to meet your legal needs",
+        "contact":"Contact Us",
+        "fair":"Fair Prices",
+        "expert":"Experts In Law",
+        "group":"Group Of Lawyers"
+      },
+      "webChooseUs":{
+        "description":"Choose our law firm for a dedicated team of experienced attorneys who consistently achieve outstanding results. We prioritize your unique legal needs, providing personalized solutions to ensure your peace of mind and satisfaction, making us the ideal choice for all your legal matters.",
+        "title":"Why Choose Us ",
+        "expert":"Experts In Law",
+        "group":"Group of unique Lawyers",
+        "fast":"Fast",
+        "clients":"Clients",
+        "consulting":"Consulting",
+        "visits":"Visits"
+      },
+      "webBooking":{
+        "title":"Contact Us",
+        "mainTitle":"Drop us a message for any query",
+        "description":"Seeking justice, guidance, or legal wisdom? Don't hesitate to reach out to our team of legal eagles. We're here to navigate the intricate labyrinth of laws for you. Whether it's a burning question or a pressing concern, our chambers are open to listen. Your story is our mission, and we're just a message away from making a difference in your legal journey.",
+        "email":"Email if found",
+        "name":"Name",
+        "Phone":"Phone Number",
+        "service":"Service",
+        "success":"Your Info Successfuly sent",
+        "book":"Booking"
       }
 
 }

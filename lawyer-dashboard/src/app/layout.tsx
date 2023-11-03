@@ -6,6 +6,7 @@
 // import ".././styles/globals.css";
 
 // Dark Mode Styles
+import Head from "next/head";
 import ".././styles/dark.css";
 // import ".././styles/style.css";
 import '.././styles/LogIn.css'
@@ -26,6 +27,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
+    <>
+    
+      <Head>
+      <link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
+    rel="stylesheet"
+  />
+      </Head >
 <html>
       
 
@@ -36,6 +45,7 @@ export default function RootLayout({
 
 </html>
        
+</>
 
   )
 }

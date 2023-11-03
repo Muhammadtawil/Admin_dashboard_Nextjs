@@ -1,0 +1,82 @@
+.blogStyle :global {
+  .blogCard {
+    .image {
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.2s;
+      img {
+        transition: all 0.2s;
+      }
+      // padding-bottom:30px;
+    }
+    .blogContent {
+      padding: 10px;
+      position: relative;
+      transition: all 0.2s;
+      border-radius: 8px;
+      > div {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        margin: 0.5rem 0 1rem 0;
+        span > svg {
+          color: #6154f2;
+          transition: all 0.2s;
+        }
+      }
+      h4 {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        cursor: pointer;
+      }
+      button {
+        background: none;
+        border: none;
+        font-weight: 500;
+        padding: 0;
+        transition: all 0.2s;
+      }
+      &::after {
+        content: "";
+        width: 100%;
+        height: 0%;
+        background-color: #6154f2;
+        position: absolute;
+        border-radius: 0 0 8px 8px;
+        bottom: 0;
+        left: 0;
+        transition: all 0.2s;
+      }
+    }
+    &:hover {
+      .image {
+        border-radius: 8px 8px 0 0;
+        transition: all 0.3s;
+        img {
+          transform: scale(1.1);
+          transition: all 0.3s;
+        }
+      }
+      .blogContent {
+        color: white !important;
+        transition: all 0.3s;
+        box-shadow: #6154f2 0px 2px 8px 1px;
+        &::after {
+          height: 100%;
+          transition: all 0.3s;
+          z-index: -1;
+        }
+        span > svg {
+          color: white;
+          transition: all 0.3s;
+        }
+        button {
+          color: white;
+          transition: all 0.3s;
+        }
+      }
+    }
+  }
+}

@@ -14,6 +14,8 @@
 
 // import "../styles/style.css";
 
+import { Button } from "@mui/material";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 
@@ -22,7 +24,9 @@ export default function Home() {
 
   return ( 
     <>
- {redirect('api/auth/signin')}
+        {redirect('ar/home')}
+        
+
     
     </>
        )
