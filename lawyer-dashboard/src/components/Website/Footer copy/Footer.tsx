@@ -6,7 +6,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import Ellipse from "../../../../public/images/common/Ellipse1.svg";
+import Ellipse from "../../../../public/images/common/judge.svg";
 import footerData from "./footerData";
 import style from "./Footer.module.scss";
 

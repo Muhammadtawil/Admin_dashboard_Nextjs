@@ -1,22 +1,24 @@
-import React from 'react';
 import { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
 import { ReactNode } from 'react';
 import "../../../styles/web/style.css";
-import "../../../styles/web/responsive.css";
-import "../../../styles/web/bootstrap.min.css";
-import "../../../styles/web/flaticon.css";
-import "/public/fonts/flaticon.css";
-import "../../../styles/web/animate.css";
-import "../../../styles/web/boxicons.min.css";
-import "../../../styles/web/animate.css";
-import Navbar from '@/components/Website/Navbar/Navbar';
 import "../../../styles/web/dark.css";
-import "../../../components/Website/Hero/Hero.module.scss";
-import NavBarTest from '@/components/Website/Header/Navbar/Navbar';
-import  "../../../components/Website/Header/Navbar/Navbar.module.scss";
+import "../../../styles/web/bootstrap.min.css";
 import "./globals.css";
+import "../../../styles/web/animate.css";
+import "/public/fonts/flaticon.css";
+
+// import "../../../styles/web/responsive.css";
+// import "../../../styles/web/flaticon.css";
+// import "../../../styles/web/boxicons.min.css";
+// import "../../../styles/web/animate.css";
+// import Navbar from '@/components/Website/Navbar/Navbar';
+// import "../../../components/Website/Hero/Hero.module.scss";
+// import NavBarTest from '@/components/Website/Header/Navbar/Navbar';
+// import  "../../../components/Website/Header/Navbar/Navbar.module.scss";
+// import "../../../components/Website/News/Project.module.scss"
 import FooterMain from '@/components/Website/Footer copy/Footer';
+import GoTop from '@/components/Website/Shared/GoTop';
 
 type Props = {
   children: ReactNode;
@@ -57,8 +59,11 @@ export default async function RootLayout({ children, params: { locale } }: Props
           {/* <Navbar /> */}
           {/* <NavBarTest/> */}
 
-          {children}</body>
+          {children}
           <FooterMain/>
+        {/* <GoTop/> */}
+        
+        </body>
       </NextIntlClientProvider>
     </html>
   );

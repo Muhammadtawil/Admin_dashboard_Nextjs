@@ -1,15 +1,17 @@
+import { usePathname } from "next/navigation";
 import LogoImg from "../../../../../public/mainLogo.png";
 import { useTranslations } from "next-intl";
 
 const NavbarData = () => {
   const t = useTranslations('webMainPage');
-
+  const path = usePathname();
+  const en=path.includes('/en')
   return {
     logo: LogoImg,
     menus: [
       {
         name: t('home'),
-        link: "/",
+        link:"/",
       },
       {
         name: t('about'),
@@ -21,15 +23,15 @@ const NavbarData = () => {
       },
       {
         name: t('blogs'),
-        link: "/ar/blogs",
+        link: en?"/en/blogs":"/ar/blogs",
       },
       {
         name: t('news'),
-        link: "/#news",
+        link: "#news",
       },
       {
         name: t('contact'),
-        link: "/#news",
+        link: en?"/en/contact":"/ar/contact",
       },
     ],
   };

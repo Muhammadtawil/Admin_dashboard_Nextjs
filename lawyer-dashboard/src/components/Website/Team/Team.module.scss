@@ -1,0 +1,106 @@
+/* // Assuming your component has a unique className like "teamCard"* */
+.teamStyle :global {
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px; /* Adjust the gap as needed */
+  }
+  .team-item {
+    text-align: center;
+    padding: 20px;
+    border: 5px solid transparent;
+    border-image: linear-gradient(45deg, #eb7494, #ae77b2, #97b5da, #0099ca) 1;
+    border-image-slice: 1;
+    border-radius: 20px;
+  }
+  
+  .team-item:hover {
+    background: #6154f2;
+    color: white;
+  }
+  
+  .team-item h3 {
+    color: #454545;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all .25s ease-in-out;
+  }
+  
+  .team-info p {
+    color: #acacac;
+    font-style: italic;
+  }
+  
+  .team-info::after {
+    background: #008aff;
+    display: inline-block;
+    vertical-align: middle;
+    content: "";
+    width: 50px;
+    height: 3px;
+  }
+  
+  .team-img {
+    max-width: 140px;
+    padding: 6px;
+    background-color: #dedede;
+    border-radius: 50%;
+  }
+  
+  ul.team-icon li {
+    display: inline-block;
+    margin: 0 3px;
+    transition: all 0.25s ease-in-out;
+  }
+  
+  ul.team-icon li a {
+    display: inline-block;
+    padding: 8px;
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    line-height: 18px;
+    border-radius: 50%;
+    color: #fff;
+  }
+  
+  ul.team-icon li a.twitter {
+    background-color: #4099ff;
+  }
+  
+  ul.team-icon li a.pinterest {
+    background-color: #14171A;
+  }
+  
+  ul.team-icon li a.facebook {
+    background-color: #3b5998;
+  }
+  
+  ul.team-icon li a.dribble {
+    background-color: #0A66C2;
+  }
+  
+  .team-icon li a:hover {
+    color: #dedede;
+    transition: all 0.25s ease-in-out;
+  }
+  @media (min-width: 1200px) {
+    .team-grid {
+      grid-template-columns: repeat(4, 1fr); /* Display four cards per row on large screens (>= 1200px) */
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    .team-grid {
+      grid-template-columns: repeat(3, 1fr); /* Display three cards per row on tablet-sized screens (768px to 1199px) */
+    }
+  }
+
+  @media (max-width: 767px) {
+    .team-grid {
+      grid-template-columns: repeat(2, 1fr); /* Display two cards per row on mobile screens (< 768px) */
+    }
+  }
+}
+

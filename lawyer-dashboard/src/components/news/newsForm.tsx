@@ -81,7 +81,7 @@ export default function NewsAddComponent({ onCreate }: { onCreate: any }) {
                 multiline
                 minRows={5}
                 autoComplete="NewsContent"
-                name={t('newsContent')}
+                name="NewsContent"
                 required
                 fullWidth
                 id="NewsContent"

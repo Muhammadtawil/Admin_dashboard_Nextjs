@@ -1,17 +1,26 @@
 .projectStyle :global {
   overflow: hidden;
-  background-color: lighten($color: #6154f2, $amount: 34);
+  // padding: 3rem 5rem;
+  // background-color: lighten($color: #6154f2, $amount: 34);
   // Card css start
+  .no-padding {
+    padding: 0;
+
+  }
   .projectCard {
     height: 100%;
+    // margin-left:0;
+    // padding:0;
+    // margin:0;
+          // padding: 3rem 5rem;
     > div {
-      width: 100%;
-      height: 100%;
-      padding: 3rem 1.5rem;
+      // width: 100%;
+      // height: 100%;
+      // padding: 3rem 1.5rem;
       color: white;
       transition: all 0.1s;
       position: relative;
-      overflow: hidden;
+      // overflow: hidden;
       border: 0;
       border-radius: 8px;
       display: flex;
@@ -28,6 +37,7 @@
           font-size: 1.5rem;
           font-weight: bold;
           margin-bottom: 30px;
+          // padding:10px;
         }
         button {
           color: white;
@@ -42,6 +52,16 @@
             transform: scale(1.03);
           }
         }
+        // .sectionStyle{
+        //   padding-top: 30px;
+        //   padding-bottom: 30px;
+        // }
+        // .sectionTitle {
+        //   font-size: 2.5rem;
+        //   font-weight: 500;
+        //   margin-bottom: 30px;
+        //   color: #11142d;
+        // }
       }
       &::after {
         content: "";

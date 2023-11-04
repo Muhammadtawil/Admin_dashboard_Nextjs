@@ -1,0 +1,65 @@
+.contactFormSection :global {
+  // background-color: lighten($color: #6154f2, $amount: 34);
+  overflow: hidden;
+  .contactDetails {
+    .firstTitle {
+      margin-bottom: 0;
+    }
+    p {
+      margin-bottom: 0;
+      line-height: 1.2rem;
+      letter-spacing: 0.3px;
+    }
+  }
+  .contactForm {
+    .inputStyle {
+      width: 100%;
+      label {
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+        margin-bottom: 5px;
+        color: lighten($color: #000000, $amount: 30);
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 10px 8px;
+        font-size: 1rem;
+        color: lighten($color: #000000, $amount: 35);
+        background-color: lighten($color: #6154f2, $amount: 31);
+        letter-spacing: 0.3px;
+        border-radius: 5px;
+        margin-bottom: 1.5rem;
+        border: 2px solid lighten($color: #6154f2, $amount: 31);
+        outline: none;
+        &:focus {
+          border: 2px solid #6154f2;
+        }
+      }
+      .inputErrorStyle {
+        border: 2px solid lighten($color: red, $amount: 20) !important;
+      }
+    }
+    .submitBtn {
+      padding: 0.8rem 1.8rem;
+      color: white;
+      background: #6154f2;
+      border: 0;
+      border-radius: 5px;
+      letter-spacing: 0.3px;
+      font-weight: 600;
+      margin-top: 5px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .contactForm {
+      .inputStyle {
+        input,
+        textarea {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+  }
+}

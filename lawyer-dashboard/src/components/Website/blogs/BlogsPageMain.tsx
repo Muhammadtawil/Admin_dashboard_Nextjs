@@ -8,8 +8,8 @@
 // } from "react-icons/fa";
 
 import { getBlogs } from "@/server/web/services/blogs/blogs";
-import BlogsPageComp from "./blogPage-list";
-import Project from "../Project/Project";
+
+import NewsList from "../News/newsList";
 import Blogs from "./blogsPage/blogs";
 
 // import style from "./Blog.module.scss";

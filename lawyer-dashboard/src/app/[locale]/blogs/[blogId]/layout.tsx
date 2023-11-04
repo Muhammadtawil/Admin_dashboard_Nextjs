@@ -12,7 +12,7 @@ import "../../../../styles/web/boxicons.min.css";
 import "../../../../styles/web/animate.css";
 import "../../../../components/Website/Footer copy/Footer.module.scss"
 import "../../../../styles/web/dark.css";
-import Navbar from '@/components/Website/Navbar/Navbar';
+// import Navbar from '@/components/Website/Navbar/Navbar';
 import Footer from '@/components/Website/Footer/Footer';
 import FooterMain from '@/components/Website/Footer copy/Footer';
 import NavBarTest from '@/components/Website/Header/Navbar/Navbar';

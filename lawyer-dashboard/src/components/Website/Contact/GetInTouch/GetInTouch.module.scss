@@ -1,0 +1,28 @@
+.getInTouchSection :global {
+  .contactCard {
+    padding: 2rem 1.5rem;
+    // background-color: lighten($color: #6154f2, $amount: 30);
+    border: 0;
+    border-radius: 8px;
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #11142d;
+      margin-bottom: 2rem;
+    }
+    p {
+      margin-bottom: 1rem;
+      color: lighten($color: #000000, $amount: 30);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      svg {
+        color: #6154f2;
+        font-size: 1.5rem;
+      }
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+}

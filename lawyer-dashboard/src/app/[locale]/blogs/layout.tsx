@@ -13,8 +13,7 @@ import "../../../styles/web/animate.css";
 import "../../../styles/web/dark.css";
 
 import "../../../styles/web/dark.css";
-import Navbar from '@/components/Website/Navbar/Navbar';
-import Footer from '@/components/Website/Footer/Footer';
+
 import "../home/globals.css";
 import FooterMain from '@/components/Website/Footer copy/Footer';
 
