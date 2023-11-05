@@ -1,16 +1,14 @@
 "use client"
 import { motion } from "framer-motion";
 import Image from "next/image";
-
-import React from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import { MdOutlineArrowForwardIos } from "react-icons/md";
-
 import style from "./Project.module.scss";
-
 import { Stack } from "@mui/material";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+
+
 
 const BlogWebList = ({blogsData}:{blogsData:any}) => {
 const router=useRouter()
@@ -77,7 +75,7 @@ const router=useRouter()
                   </div>
       
 
-                    <Image layout="fill" src={data.blogImageUrl} alt="Project image"   onClick={()=>router.push(`/ar/blogs/${data.blogId}`)}/>
+                    <Image fill src={data.blogImageUrl} alt="Project image"   onClick={()=>router.push(`/ar/blogs/${data.blogId}`)}/>
                 
                     
                   </div>

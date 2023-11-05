@@ -1,10 +1,11 @@
+"use client"
 import Image from "next/image";
-
-
 import style from "./SideBar.module.scss";
-import blogData from "../blogData";
+import { useRouter } from "next/navigation";
 
-const SideBar = () => {
+const SideBarSection = ({ blogsData }: { blogsData: any}) => {
+  const router = useRouter();
+  const filteredBlogs = blogsData.slice(1, 4);
   return (
     <div className={style.sideBarStyle}>
       <div className="lists">
@@ -42,22 +43,26 @@ const SideBar = () => {
       </div>
       <div className="popularPost">
         <h4>Popular Post</h4>
-        {blogData.blogs.slice(0, 3).map((data, index) => (
-          <div className="postCard" key={index}>
+        {filteredBlogs.map((data:any, index:any) => (
+            //  <Link href={`/ar/blogs/${data.blogId}`}>
+          <div className="postCard" key={index} onClick={()=>router.push(`ar/blogs/${data.blogId}`)}>
+         
             <div>
               <Image
                 layout="responsive"
                 width={200}
                 height={200}
-                src={data?.image}
+                src={data?.blogImageUrl}
                 alt="blog image"
               />
-            </div>
+              </div>
             <div>
-              <h5>{data.title.slice(0, 20)}...</h5>
-              <span>{data.posted}</span>
+              <h5>{data.blogTitle.slice(0, 20)}...</h5>
+              <span>{data.createdAt}</span>
             </div>
           </div>
+          // </Link>
+            
         ))}
       </div>
       <div className="lists archive">
@@ -83,19 +88,9 @@ const SideBar = () => {
           <span>27</span>
         </div>
       </div>
-      <div className="tags">
-        <h4>Tags</h4>
-        <button>Logo</button>
-        <button>Technology</button>
-        <button>Designing</button>
-        <button>Programming</button>
-        <button>Marketing</button>
-        <button>Business</button>
-        <button>Photography</button>
-        <button>News</button>
-      </div>
+
     </div>
   );
 };
 
-export default SideBar;
+export default SideBarSection;

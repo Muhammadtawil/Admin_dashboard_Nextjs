@@ -1,13 +1,14 @@
 
-import BlogsDetails from "@/components/Website/blogs/blogDetails";
-import React from "react";
+
+
+import PostContent from "./Post/PostContent/PostContent";
 
 export default async function BlogsDetailsMain({
   params,
 }: {
   params: { blogId: string };
     }) {
-    
+
         const token = process.env.TOKEN;
     const requestOptions = {
       method: "GET",
@@ -20,12 +21,12 @@ export default async function BlogsDetailsMain({
       },
     };
     const blogUrl = process.env.BLOGIDURL;
-    const response = await fetch(`${blogUrl}/${params.blogId}`, requestOptions);
+  const response = await fetch(`${blogUrl}/${params.blogId}`, requestOptions);
     const blog = await response.json();
   
   return (
     <>
-    <BlogsDetails params={params}  blog={blog} />
+      <PostContent params={params} blog={blog}  />
     </>
 
 

@@ -1,4 +1,10 @@
-/* Main Contact Area Style */
+
+/*
+Offer Area Two Style
+======================================================*/
+
+/* Main Contact Area Style
+===================================================== */
 .main-contact-area .contact-wrap {
   max-width: unset;
 }
@@ -35,6 +41,60 @@
   border-radius: 4px !important;
 } 
 
+/*
+Contact Info Area Style 
+================================*/
+/* .contact-info-area .single-contact-info {
+  text-align: center;
+  box-shadow: 0 0 20px 3px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  margin-bottom: 30px;
+  padding: 30px;
+  transition: all 0.5s;
+  border-radius: 4px;
+}
+.contact-info-area .single-contact-info i {
+  display: block;
+  color: #1dd3f8;
+  transition: all 0.5s;
+  font-size: 25px;
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 20px;
+  line-height: 50px;
+  border: 2px dotted #1dd3f8;
+  border-radius: 50%;
+}
+.contact-info-area .single-contact-info h3 {
+  transition: all 0.5s;
+}
+.contact-info-area .single-contact-info p {
+  margin: 0;
+}
+.contact-info-area .single-contact-info a {
+  color: #4d4d4d;
+  transition: all 0.5s;
+}
+.contact-info-area .single-contact-info:hover {
+  background-color: #1dd3f8;
+}
+.contact-info-area .single-contact-info:hover i {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+.contact-info-area .single-contact-info:hover h3 {
+  color: #ffffff;
+}
+.contact-info-area .single-contact-info:hover p {
+  color: #ffffff;
+}
+.contact-info-area .single-contact-info:hover a {
+  color: #ffffff;
+}
+
+#map {
+  height: 445px;
+} */
 
 /*
 404 Error Area Style
@@ -84,6 +144,10 @@
 
 
 
+
+/*
+Business  Area Style
+======================================================*/
 .business-area .default-btn {
   margin-top: 10px;
 }
@@ -177,10 +241,16 @@
   color: #c05234;
 } 
 
+
+/*
+About Area Style
+======================================================*/
 .about-img {
   text-align: center;
 }
 
+
+/* Navbar  */
 
 .navbar-toggler {
   border: none;
@@ -224,9 +294,109 @@
 } 
 
 
+/*
+Keyframes Area Style
+======================================================*/
+/* @keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@keyframes movebounceShort {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes moVebounce {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(50px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+@keyframes animationFramesOne {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  80% {
+    transform: translate(-300px, 0px) rotate(360deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+@keyframes focus-one {
+  0% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes animationFramesOne {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  20% {
+    transform: translate(73px, -1px) rotate(36deg);
+  }
+  40% {
+    transform: translate(141px, 72px) rotate(72deg);
+  }
+  60% {
+    transform: translate(83px, 122px) rotate(108deg);
+  }
+  80% {
+    transform: translate(-40px, 72px) rotate(144deg);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+@keyframes border-transform {
+  0%, 100% {
+    border-radius: 63% 37% 54% 46%/55% 48% 52% 45%;
+  }
+  14% {
+    border-radius: 40% 60% 54% 46%/49% 60% 40% 51%;
+  }
+  28% {
+    border-radius: 54% 46% 38% 62%/49% 70% 30% 51%;
+  }
+  42% {
+    border-radius: 61% 39% 55% 45%/61% 38% 62% 39%;
+  }
+  56% {
+    border-radius: 61% 39% 67% 33%/70% 50% 50% 30%;
+  }
+  70% {
+    border-radius: 50% 50% 34% 66%/56% 68% 32% 44%;
+  }
+  84% {
+    border-radius: 46% 54% 50% 50%/35% 61% 39% 65%;
+  }
+} */
 
 
-
+/*
+Section Title Area Style
+======================================================*/
 .section-title {
   max-width: 625px;
   margin: -9px auto 60px;
@@ -250,8 +420,74 @@
 }
 
 
+/*
+Default Btn Area Style
+======================================================*/
+/* .default-btn {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 18px 35px;
+  line-height: 1;
+  transition: all 0.6s ease;
+  z-index: 1;
+  text-transform: capitalize;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #1dd3f8;
+  display: inline-block;
+}
+.default-btn::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -40px;
+  width: 10px;
+  height: 100px;
+  background-color: #ffffff;
+  opacity: 0.5;
+  transition: all 0.6s ease;
+  transform: rotate(45deg);
+}
+.default-btn::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: -40px;
+  width: 10px;
+  height: 100px;
+  background-color: #ffffff;
+  opacity: 0.5;
+  transition: all 0.6s ease;
+  transform: rotate(45deg);
+}
+.default-btn.active {
+  background-color: #ffffff;
+  color: #1dd3f8;
+}
+.default-btn.active:hover {
+  color: #ffffff;
+  background-color: #1dd3f8;
+}
+.default-btn:hover {
+  color: #ffffff;
+  transition: all 0.6s ease;
+}
+.default-btn:hover::before {
+  left: 200px;
+}
+.default-btn:hover::after {
+  right: 200px;
+}
 
-/* Go Top Style
+.popup-youtube {
+  cursor: pointer;
+} */
+
+/* 
+Go Top Style
 ====================================================== */
 .scroll-to-top .top {
   position: fixed;
@@ -341,7 +577,8 @@
   margin: -9px auto 40px;
 }
 .sectionStyleNews {
-
+  /* padding-top: 30px;
+  padding-bottom: 30px; */
 }
 .sectionTitle {
   font-size: 2.5rem;

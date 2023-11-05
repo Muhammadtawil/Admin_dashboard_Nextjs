@@ -6,8 +6,8 @@ import BlogLists from "./BlogLists/BlogLists";
 import Hero from "./Hero/Hero";
 import NavBarTest from "../../Header/Navbar/Navbar";
 import Hero2 from "./Hero2/Hero2";
-import SideBar from "./SideBar/SideBar";
 import HeaderWrapper from "./HeaderWrapper/HeaderWrapper";
+import SideBarBlogPage from "./SideBar/sideBar";
 
 
 const Blogs = ({ blogData }: { blogData: any }) => {
@@ -49,7 +49,7 @@ const Blogs = ({ blogData }: { blogData: any }) => {
   return (
     <div>
       <Head>
-        <title>Cedex - Blogs</title>
+        <title>lawFirm - Blogs</title>
         <meta
           name="description"
           content="Cedex | Personal portfolio React Next.JS template"
@@ -80,7 +80,7 @@ const Blogs = ({ blogData }: { blogData: any }) => {
             </Col>
 
             <Col md={5} lg={4}>
-              <SideBar />
+              <SideBarBlogPage />
             </Col>
           </Row>
         </Container>

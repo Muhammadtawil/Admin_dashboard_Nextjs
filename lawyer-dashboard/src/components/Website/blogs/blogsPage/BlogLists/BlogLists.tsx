@@ -37,7 +37,7 @@ const BlogLists = ({ blogsData }:any) => {
               className="blogCard"
             >
               <div className="image">
-                <Image layout="fill" src={blog?.blogImageUrl} alt="blog image" />
+                <Image fill src={blog?.blogImageUrl} alt="blog image" />
               </div>
               <div className="blogContent" onClick={()=>router.push(`/ar/blogs/${blog.blogId}`)}>
                 <div>

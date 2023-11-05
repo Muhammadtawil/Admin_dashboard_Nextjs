@@ -1,6 +1,6 @@
 
-import BlogsDetails from "@/components/Website/blogs/blogDetails";
-import BlogsDetailsMain from "@/components/Website/blogs/blogDetails_main";
+
+import BlogsDetailsMain from "@/components/Website/blogs/blogsDetailsPage/blogsDetailsSection";
 import React from "react";
 
 

@@ -60,7 +60,7 @@ export default async function blogsPageLayout({ children, params: { locale } }: 
 
 
           {children}
-   <FooterMain/>
+   {/* <FooterMain/> */}
         </body>
       </NextIntlClientProvider>
     </html>

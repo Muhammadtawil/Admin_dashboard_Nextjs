@@ -72,7 +72,8 @@ const Testimonial = () => {
                 <div className="d-flex gap-2 align-items-center">
                   <div className="clientImage">
                     <Image
-                      layout="responsive"
+                      width={150}
+                      height={150}
                       src={data?.image}
                       alt="client image"
                     />

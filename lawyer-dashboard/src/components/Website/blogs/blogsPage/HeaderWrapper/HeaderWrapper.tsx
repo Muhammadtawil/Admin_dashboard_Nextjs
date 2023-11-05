@@ -1,4 +1,4 @@
-import React from "react";
+
 import style from "./HeaderWrapper.module.scss";
 
 const HeaderWrapper = ({ children }:any) => {

@@ -3,7 +3,6 @@ import Image from "next/image";
 import React from "react";
 import Ellipse from "../../../../../../public/images/common/Ellipse1.svg";
 import Polygon from "../../../../../../public/images/common/Polygon1.svg";
-import lawBook from "../../../../../../public/images/common/lawbook.svg";
 import style from "./Hero2.module.scss";
 
 const Hero2 = ({ children }:any) => {

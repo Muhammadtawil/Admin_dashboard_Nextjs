@@ -109,7 +109,7 @@ a {
 .about-list {
   display: flex;
   align-items: center;
-  margin-bottom: 10px; 
+  margin-bottom: 10px; /* Adjust the spacing as needed */
 }
 
 .about-list i {
@@ -177,13 +177,34 @@ a {
   animation: slideInFromRight 1s ease-out; 
 }
 
-.nav-link.active {
-  /* background-color: 
-  border-radius:  */
-  padding: 5px 15px; 
+@font-face {
+  font-family: 'CustomFontEnglish';
+  src: url('/path-to-custom-font-english.woff2') format('woff2');
 }
 
 
+@font-face {
+  font-family: 'CustomFontArabic';
+  src: url('/font/NotoSansArabic-VariableFont_wdth,wght.ttf') format('woff2');
+}
+
+
+:lang(en) {
+  font-family: 'CustomFontEnglish', sans-serif;
+}
+
+:lang(ar) {
+  font-family: 'CustomFontArabic', sans-serif;
+}
+
+.nav-link.active {
+  /* background-color: /* Your desired background color for the active link */ 
+  /* color: /* Your desired text color for the active link */
+  /* border-radius:  */
+  padding: 5px 15px; 
+}
+
+/* CSS for Header component */
 .header {
   width: 100%;
   padding: 1rem;
@@ -191,7 +212,7 @@ a {
   justify-content: space-between;
 }
 
-
+/* CSS for the button */
 .button {
   display: inline-block;
   z-index: 50;
@@ -217,6 +238,7 @@ a {
   transition: all 0.2s ease;
 }
 
+/* CSS for the navigation menu */
 .nav-menu {
   width: max-content;
   padding: 0.75rem 1.5rem;
@@ -255,12 +277,12 @@ a {
   transition: all 0.3s ease;
 }
 
-
+/* CSS for the moon and sun icons */
 .fill-dark {
   fill: #333;
 }
 
-
+/* CSS for the social media icons */
 .social-icons {
   display: none;
   align-items: center;
@@ -273,7 +295,7 @@ a {
   margin-right: 0.5rem;
 }
 
-
+/* CSS for hover effects on social media icons */
 .social-icons a:hover {
   transform: scale(1.25);
   transition: all 0.2s ease;

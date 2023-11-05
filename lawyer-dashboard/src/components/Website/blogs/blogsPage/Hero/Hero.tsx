@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Col, Row } from "react-bootstrap";
 import { CgSearch } from "react-icons/cg";
 import style from "./Hero.module.scss";
