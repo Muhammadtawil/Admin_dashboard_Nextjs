@@ -5,7 +5,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
 const blogs_url = process.env.BLOGS_URL;
-
+const blog_Id_Url=process.env.BLOGIDURL
 export async function GetBlogs() {
   const session = await getServerSession(authOptions);
   const requestOptions = {
@@ -179,5 +179,31 @@ export async function UpdateBlogImage(data: FormData, blogId: string) {
     console.log("user Role Updated successfully:", responseData);
   } catch (error) {
     console.error("Error update updating user Role:", error);
+  }
+}
+
+
+export async function GetAuthorBlogs(authorId:string) {
+  const session = await getServerSession(authOptions);
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${session?.accessToken}`,
+      "Content-Type": "application/json",
+
+    },
+  };
+
+  try {
+    const response = await fetch(`${blog_Id_Url}/authors/all/${authorId}`, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return [];
   }
 }

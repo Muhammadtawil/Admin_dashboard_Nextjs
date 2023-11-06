@@ -1,10 +1,10 @@
 import React from "react";
 import style from "./Hero.module.scss";
 
-const Hero = () => {
+const Hero = ({title}:{title:any}) => {
   return (
     <div className={style.postHero}>
-      <h2>How to become a UI Designer</h2>
+      <h2>{title}</h2>
     </div>
   );
 };

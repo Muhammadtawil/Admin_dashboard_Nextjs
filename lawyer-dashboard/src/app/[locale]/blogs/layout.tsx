@@ -16,6 +16,7 @@ import "../../../styles/web/dark.css";
 
 import "../home/globals.css";
 import FooterMain from '@/components/Website/Footer copy/Footer';
+import NavBarTest from '@/components/Website/Header/Navbar/Navbar';
 
 
 type Props = {
@@ -54,7 +55,7 @@ export default async function blogsPageLayout({ children, params: { locale } }: 
       <NextIntlClientProvider locale={locale ? locale : 'en'} messages={messages}>
 
         <body>
-
+{/* <NavBarTest/> */}
 
 
           {children}

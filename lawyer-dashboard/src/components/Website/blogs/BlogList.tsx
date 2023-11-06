@@ -75,7 +75,7 @@ const router=useRouter()
                   </div>
       
 
-                    <Image fill src={data.blogImageUrl} alt="Project image"   onClick={()=>router.push(`/ar/blogs/${data.blogId}`)}/>
+                    <Image fill src={data.blogImageUrl} alt="Project image"   onClick={()=>router.replace(`/ar/blogs/${data.blogId}`)}/>
                 
                     
                   </div>

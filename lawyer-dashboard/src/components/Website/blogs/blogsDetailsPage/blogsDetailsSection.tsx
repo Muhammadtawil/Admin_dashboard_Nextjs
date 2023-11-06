@@ -2,11 +2,14 @@
 
 
 import PostContent from "./Post/PostContent/PostContent";
+import DetailsComponent from "./blogsDetailsMain";
 
 export default async function BlogsDetailsMain({
   params,
+  children
 }: {
-  params: { blogId: string };
+    params: { blogId: string };
+    children: any;
     }) {
 
         const token = process.env.TOKEN;
@@ -16,18 +19,18 @@ export default async function BlogsDetailsMain({
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      next: {
-        revalidate: 120,
-      },
+      // next: {
+      //   revalidate: 120,
+      // },
     };
     const blogUrl = process.env.BLOGIDURL;
   const response = await fetch(`${blogUrl}/${params.blogId}`, requestOptions);
     const blog = await response.json();
   
   return (
-    <>
-      <PostContent params={params} blog={blog}  />
-    </>
+    
+    <DetailsComponent params={params} blogs={blog} children={children}/>
+
 
 
   );

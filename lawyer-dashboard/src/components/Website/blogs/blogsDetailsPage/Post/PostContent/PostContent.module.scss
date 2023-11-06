@@ -41,17 +41,41 @@
       }
     }
 
+    ul.team-icon li {
+      display: inline-block;
+      margin: 0 3px;
+      transition: all 0.25s ease-in-out;
+    }
     
-    li.twitter {
+    ul.team-icon li a {
+      display: inline-block;
+      padding: 8px;
+      width: 34px;
+      height: 34px;
+      font-size: 18px;
+      line-height: 18px;
+      border-radius: 50%;
+      // color: #fff;
+    }
+    // ul.team-icon li a.twitter {
+    //   background-color: #4099ff;
+    // }
+    
+    ul.team-icon li a.twitter {
       background-color: #14171A;
     }
     
-     li.facebook {
+    ul.team-icon li a.facebook {
       background-color: #3b5998;
     }
     
     ul.team-icon li a.dribble {
       background-color: #0A66C2;
     }
+    .team-icon li a:hover {
+      color: #dedede;
+      transition: all 0.25s ease-in-out;
+    }
+    
   }
 }

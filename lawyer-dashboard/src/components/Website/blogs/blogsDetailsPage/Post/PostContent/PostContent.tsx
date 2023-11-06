@@ -4,15 +4,15 @@ import React, { useState } from "react";
 import { FaEnvelope, FaFacebook, FaRegUserCircle, FaTwitter,FaCalendarAlt } from "react-icons/fa";
 import { FaXTwitter } from 'react-icons/fa6';
 import style from "./PostContent.module.scss";
-import Head from "next/head";
-import HeaderWrapper from "../../../blogsPage/HeaderWrapper/HeaderWrapper";
-import NavBarTest from "@/components/Website/Header/Navbar/Navbar";
-import Hero2 from "../../../blogsPage/Hero2/Hero2";
-import Hero from "../Hero/Hero";
-import { Container } from "react-bootstrap";
 import Link from "next/link";
 import CopyToClipboard from "react-copy-to-clipboard";
-import SideBarBlogDetails from "../../SideBar/sideBar";
+import SideBarSection from "../../SideBar/SideBar-section";
+
+
+// const SideBarSection = dynamic(() => import("../../SideBar/SideBar-section"), {
+//   loading: () => <p>Loading Sidebar...</p>,
+//   ssr: false,
+// });
 
 
 
@@ -32,12 +32,13 @@ const PostContent = ({
   blog,
 
 }: {
-  params: { blogId: string };
+  params: { blogId: string};
       blog: any;
  
   }) => {
   
-    const blogId = params.blogId;
+  const blogId = params.blogId;
+  // const blogTitle = params.blogTitle;
     const [isCopied, setIsCopied] = useState(false);
 
     // Check if the blog object and its content exist
@@ -60,17 +61,10 @@ const PostContent = ({
 
     const randomQuote = getRandomQuote(blog.blogContent);
   return (
-    <>
-      <main>
-        <HeaderWrapper>
-          <NavBarTest />
-          <Hero2>
-            <Hero />
-          </Hero2>
-        </HeaderWrapper>
-        <Container>
-        <div className="row sectionStyle d-md-flex overflow-hidden gy-4 gy-lg-0">
-            <div className="col-lg-8">
+
+   
+ 
+
     <div className={style.postContentSection}>
       <div className="blogContent">
         <Image width={1000} height={800} src={blog.blogImageUrl} alt="post image" />
@@ -104,48 +98,52 @@ const PostContent = ({
           
                   </div>
                   <div className="article-share" style={{ display: "flex", alignItems: "center" }}>
-                                    <h4 style={{ marginRight: "10px" }}>Share:</h4>
-                                    <ul style={{ display: "flex", alignItems: "center", listStyle: "none", margin: 0, padding: 0 }}>
-                                        <li style={{ marginRight: "10px" }} className="facebook">
-                                            {typeof window !== 'undefined' && (
-                                                <CopyToClipboard text={window.location.href} onCopy={() => setIsCopied(true)}>
-                                                    <Link href="www.facebook.com" style={{ textDecoration: "none" }}>
-                                                        <FaFacebook />
-                                                    </Link>
-                                                </CopyToClipboard>
-                                            )}
+    <h4 style={{ marginRight: "10px" }}>Share:</h4>
+    <ul style={{ display: "flex", alignItems: "center", listStyle: "none", margin: 0, padding: 0 }} className="team-icon">
+        {typeof window !== 'undefined' && (
+            <li style={{ marginRight: "10px" }} className="facebook">
+                <CopyToClipboard text={window.location.href} onCopy={() => setIsCopied(true)}>
+                    <Link href="https://www.facebook.com" style={{ textDecoration: "none" }}>
+                        <FaFacebook />
+                    </Link>
+                </CopyToClipboard>
+            </li>
+        )}
+        {typeof window !== 'undefined' && (
+            <li style={{ marginRight: "10px" }} className="twitter">
+                <Link href={`https://twitter.com/share?url=http://localhost:3000/ar/blogs/${blogId}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                    <FaXTwitter />
+                </Link>
+            </li>
+        )}
+        {typeof window !== 'undefined' && (
+            <li>
+                <Link href={`mailto:?body=${window.location.href}`} style={{ textDecoration: "none" }}>
+                    <FaEnvelope />
+                </Link>
+            </li>
+        )}
+    </ul>
+    {isCopied && <div style={{ marginLeft: "10px" }}>URL copied to clipboard!</div>}
+</div>
 
-                                        </li>
-                                        <li style={{ marginRight: "10px" }} className="twitter">
-                                            <Link href={`https://twitter.com/share?url=http://localhost:3000/ar/blogs/${blogId}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
-                                                <FaXTwitter />
-                                            </Link>
-                                        </li>
-                                        <li>
-                                        {typeof window !== 'undefined' && (
-                                            <Link href={`mailto:?body=${window.location.href}`} style={{ textDecoration: "none" }}>
-                                                <FaEnvelope />
-                                                </Link>
-                                                     )}
-                                        </li>
-                                    </ul>
-                                    {isCopied && <div style={{ marginLeft: "10px" }}>URL copied to clipboard!</div>}
-                                </div>
                 </div>
    
                 
-              </div>
-            </div>
-            <div className="col-lg-4">
-              <SideBarBlogDetails currentBlogId={blog.blogId} />
-            </div>
-      </div>
-        </Container>
-          
-        </main>
-    </>
+                </div>
+    
+         
+        
+    
+
       
   );
 };
 
 export default PostContent;
+
+     {/* <div className="col-lg-4">
+       
+       <SideBarSection currentBlogId={blogId} />
+    
+   </div> */}
