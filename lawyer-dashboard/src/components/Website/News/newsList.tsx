@@ -8,29 +8,31 @@ import {
 
 import style from "./Blog.module.scss";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { Stack } from "@mui/material";
+import { useTranslations } from "next-intl";
 
 const NewsList = ({ newsData,sliceTarget,shouldSlice}:{newsData:any,sliceTarget:number,shouldSlice:boolean}) => {
   const router = useRouter();
+  const path = usePathname();
+  const arabic=path.includes('ar')
+const t=useTranslations('webNews')
   let slicedBlogData = shouldSlice ? newsData.slice(0, sliceTarget) : newsData;
   return (
     <div id="news" className={`${style.blogStyle} sectionStyle `}>
             <div className="section-title">
-            <span>Latest News</span>
-            <h2>Our Recent News</h2>
+            <span>   {t('title')}</span>
+            <h2>   {t('firstTitle')}</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aut
-              ipsum fugit temporibus possimus itaque accusamus voluptatibus
-              dignissimos nobis eaque.
+   {t('description')}
             </p>
            </div>
       <Container>
 
       <Stack spacing={3} direction={"row"} alignItems="center" justifyContent="space-between">
-  <h2 className="sectionTitle">Recent Blogs</h2>
+  <h2 className="sectionTitle">{t('firstTitle')}</h2>
           <Link href='/ar/news'>
-          <h5 className="view-all"><span>View all</span></h5>
+          <h5 className="view-all"><span>   {t('viewAll')}</span></h5>
           </Link>
 </Stack>
 
@@ -62,10 +64,11 @@ const NewsList = ({ newsData,sliceTarget,shouldSlice}:{newsData:any,sliceTarget:
                   {news?.posted && news?.createdAt}
                   {news?.createdAt && (
                                    <span>
-                                   {new Date(news.createdAt).toLocaleDateString("en-US", {
+                                   {new Date(news.createdAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
                                      day: "numeric",
                                      month: "long",
                                      year: "2-digit",
+                                     hour:"numeric"
                                    })}
                                  </span>
                   )}

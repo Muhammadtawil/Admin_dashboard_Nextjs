@@ -10,19 +10,23 @@ import {
   FaRegUserCircle
 } from "react-icons/fa";
 import style from "./BlogLists.module.scss";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 const BlogLists = ({ blogsData }:any) => {
   const router = useRouter();
-
+  const path = usePathname();
+  const arabic=path.includes('ar')
+const t=useTranslations('WebBlog')
   return (
     <div className={style.blogListStyle}>
       <Row className="row-cols-1 row-cols-md-1 row-cols-lg-2">
         {/* Blog cards start */}
-        {blogsData?.map((blog:any, index:any) => (
+        {blogsData?.map((blog: any, index: any) => (
+        
           <motion.div
-            initial={{ opacity: 1, y: 50 }}
+            initial={{ opacity: 1, y: 10 }}
             whileHover={{
               opacity: 1,
               y: 0,
@@ -49,7 +53,7 @@ const BlogLists = ({ blogsData }:any) => {
                   {blog?.posted && blog?.createdAt}
                   {blog?.createdAt && (
                                    <span>
-                                   {new Date(blog.createdAt).toLocaleDateString("en-US", {
+                                   {new Date(blog.createdAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
                                      day: "numeric",
                                      month: "long",
                                      year: "2-digit",
@@ -60,7 +64,7 @@ const BlogLists = ({ blogsData }:any) => {
                 <h4 >{blog.blogTitle}</h4>
                 <Link href={`/ar/blogs/${blog.blogId}`} className="read-more">
                 <button>
-                  Read More <FaLongArrowAltRight />
+                {t('readMore') } <FaLongArrowAltRight />
                 </button>
                 </Link>
               </div>

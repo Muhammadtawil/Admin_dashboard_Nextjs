@@ -8,10 +8,13 @@ import NavBarTest from "../../Header/Navbar/Navbar";
 import Hero2 from "./Hero2/Hero2";
 import HeaderWrapper from "./HeaderWrapper/HeaderWrapper";
 import SideBarBlogPage from "./SideBar/sideBar";
+import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 
-const Blogs = ({ blogData }: { blogData: any }) => {
+const Blogs = ({ blogData ,children}: { blogData: any,children:any }) => {
   // State for search functionality implement
+  const t=useTranslations('WebBlog')
   const [blogsData, setBlogsData] = useState(blogData);
   const [visibleCount, setVisibleCount] = useState(3);
   const loadMore = () => {
@@ -52,7 +55,7 @@ const Blogs = ({ blogData }: { blogData: any }) => {
         <title>lawFirm - Blogs</title>
         <meta
           name="description"
-          content="Cedex | Personal portfolio React Next.JS template"
+          content="LawFirm | your way to Justice"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
@@ -73,14 +76,14 @@ const Blogs = ({ blogData }: { blogData: any }) => {
               {visibleCount < blogsData.length && (
                 <div className="text-center" style={{ paddingTop: "50px" }}>
                   <button onClick={loadMore} className="btn btn-primary">
-                    Load More
+                   {t('loadMore')}
                   </button>
                 </div>
               )}
             </Col>
 
             <Col md={5} lg={4}>
-              <SideBarBlogPage />
+              {children}
             </Col>
           </Row>
         </Container>

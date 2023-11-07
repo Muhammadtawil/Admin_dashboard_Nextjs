@@ -36,7 +36,7 @@ const DetailsComponent = ({ params, blogs ,children}: { params: any, blogs: any,
           </div>
           </div>
         </Container>
-        {/* <Footer /> */}
+
   
     </div>
   );

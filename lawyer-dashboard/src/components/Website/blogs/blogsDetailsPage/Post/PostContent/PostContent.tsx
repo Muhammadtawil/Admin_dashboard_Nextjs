@@ -6,17 +6,12 @@ import { FaXTwitter } from 'react-icons/fa6';
 import style from "./PostContent.module.scss";
 import Link from "next/link";
 import CopyToClipboard from "react-copy-to-clipboard";
-import SideBarSection from "../../SideBar/SideBar-section";
-
-
-// const SideBarSection = dynamic(() => import("../../SideBar/SideBar-section"), {
-//   loading: () => <p>Loading Sidebar...</p>,
-//   ssr: false,
-// });
+import { useTranslations } from "next-intl";
 
 
 
 function getRandomQuote(blogContent: string) {
+  const t=useTranslations('WebBlog')
   const sentences = blogContent.split(". ");
   if (sentences.length < 2) {
       return "Not enough content for a quote.";
@@ -36,7 +31,7 @@ const PostContent = ({
       blog: any;
  
   }) => {
-  
+  const t = useTranslations('WebBlog')
   const blogId = params.blogId;
   // const blogTitle = params.blogTitle;
     const [isCopied, setIsCopied] = useState(false);
@@ -98,7 +93,7 @@ const PostContent = ({
           
                   </div>
                   <div className="article-share" style={{ display: "flex", alignItems: "center" }}>
-    <h4 style={{ marginRight: "10px" }}>Share:</h4>
+    <h4 style={{ marginRight: "10px" }}>{t('share')}:</h4>
     <ul style={{ display: "flex", alignItems: "center", listStyle: "none", margin: 0, padding: 0 }} className="team-icon">
         {typeof window !== 'undefined' && (
             <li style={{ marginRight: "10px" }} className="facebook">

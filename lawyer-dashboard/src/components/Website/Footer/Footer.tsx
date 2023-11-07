@@ -1,138 +1,139 @@
+"use client"
+import { motion } from "framer-motion";
+import Image from "next/image";
 import React from "react";
-import Link from "next/link";
+import { Col, Container, Row } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import Ellipse from "../../../../public/images/common/judge.svg";
+import footerData from "./footerData";
+import style from "./Footer.module.scss";
+import { successAlert } from "@/components/alerts/alerts";
+import { useTranslations } from "next-intl";
+import createFooterData from "./footerData";
 
-const Footer = () => {
-  async function Subscribe(data: FormData) {
-    "use server";
-    const subscriberUrl = process.env.SUBSCRIBERS_URL;
-    const subscriberEmail = data.get("subscriberEmail");
-    const subscriber = {
-      subscriberEmail,
-    };
+const FooterSection = ({Subscribe}:{Subscribe:any}) => {
+const t=useTranslations('webSubscriber')
+const footerData = createFooterData();
+  // Sweetalert package configure in react
+  const MySwal = withReactContent(Swal);
 
-    // Convert the client data to JSON
-    const jsonData = JSON.stringify(subscriber);
+  // react hook form
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-    // Define the URL for adding a client (replace with the correct endpoint)
-    const apiUrl = ` ${subscriberUrl}`; // Replace with the correct endpoint for adding a client
+  // Form submit function
+  const onSubmit = (data:any) => {
+    console.log(data);
+    MySwal.fire({
+      icon: "success",
+      title: "Thanks",
+      showConfirmButton: false,
+      showCloseButton: true,
+      timer: 2000,
+    });
+    reset();
+  };
 
-    // Define the token
-    const token = process.env.TOKEN;
-
-    // Define the request options
-    const requestOptions = {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`, // Include the token in the request headers
-        "Content-Type": "application/json",
-      },
-      body: jsonData,
-    };
-
-    try {
-      // Send the POST request to add the client
-      const response = await fetch(apiUrl, requestOptions);
-
-      if (!response.ok) {
-        throw new Error("Request failed with status: " + response.status);
-      }
-
-      const responseData = await response.json();
-      console.log("Client added successfully:", responseData);
-    } catch (error) {
-      console.error("Error adding client:", error);
-      // Handle the error here
-    }
-  }
-
-  const currentYear = new Date().getFullYear();
   return (
     <>
-      <footer className="footer-top-area pt-100 pb-70">
-        <div className="container">
-          <div className="row">
-            <div className="col-lg-3 col-md-6">
-              <div
-                className="single-widget"
-                data-aos="fade-in"
-                data-aos-duration="1200"
-                data-aos-delay="200"
+    <div className={style.footerStyle}>
+      <div className="sectionStyle">
+        <Container>
+          <motion.div
+            initial={{ rotate: 0, scale: 0.5 }}
+            animate={{
+              rotate: [0, 100, 180, 90, 200, 80, 230, 90, 200, -360],
+              scale: 0.5,
+            }}
+            transition={{ duration: 7, repeat: Infinity }}
+            className="circle1"
+          >
+            <Image src={Ellipse} alt="ellipse" />
+          </motion.div>
+          <Row className="gy-4 gy-md-0 justify-content-between">
+            <Col md={4} lg={3} className="newsLetter">
+              <motion.div
+                initial={{ rotate: 0, scale: 0.8 }}
+                animate={{
+                  rotate: [0, 150, 250, 130, 280, 180, 290, 190, 300, -360],
+                  scale: 0.8,
+                }}
+                transition={{ duration: 7, repeat: Infinity }}
+                className="circle2"
               >
-                <Link href="/" className="logo">
-                  {/* <img src="/images/white-logo.png" alt="Image" /> */}
-                </Link>
-
-                <p>
-                  Lorem ipsum dolor sit Lorem, consectetur Lorem Lorem. Lorem
-                  Lorem Lorem sit Lorem sed Lorem Lorem minus Lorem dolores
-                  dicta.
-                </p>
-
-                <ul className="social-icon">
-                  <li>
-                    <Link href="https://www.facebook.com/" target="_blank">
-                      <i className="bx bxl-facebook"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://twitter.com/" target="_blank">
-                      <i className="bx bxl-twitter"></i>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="https://www.linkedin.com/" target="_blank">
-                      <i className="bx bxl-linkedin"></i>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="d-flex flex-column align-items-center justify-content-center text-center h-100 bg-primary p-4">
-              <Link className="navbar-brand" href="index.html">
-                <h1 className="m-0 text-white">
-                  <i className="me-2"></i>Subscribe{" "}
-                </h1>
-              </Link>
-              <p className="mt-3 mb-4">
-                Subscribe Now to get all latest news and blogs
-              </p>
-              <form action={Subscribe}>
-                <div className="input-group">
-                  <input
-                    className="form-control border-white p-3"
-                    type="email"
-                    placeholder="Your Email"
+                <Image src={Ellipse} alt="ellipse" />
+              </motion.div>
+              <Image src={footerData?.logo} alt="logo" />
+              <form
+  action={async (formData) => {
+    try {
+      await Subscribe(formData);
+      // If the subscription is successful, reset the form
+      reset();
+      successAlert(t('alert'));
+      document.querySelector('form')?.reset();
+    } catch (error) {
+      console.error(error);
+    }
+  }}
+>
+                <label>{t('title')}</label>
+                <br />
+                <input
+                  className={errors.email && "inputErrorStyle"}
+                  {...register("email", { required: true })}
+                  type="email"
+                    placeholder={t('email')}
                     name="subscriberEmail"
-                    pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
-                  />
-                  <button className="btn btn-dark">subscribe</button>
-                </div>
+                />
+                <button type="submit">{t('subscribe')}</button>
               </form>
-            </div>
-          </div>
-        </div>
-
-        <div className="footer-shape">
-          <img src="/images/shape/footer-shape-one.png" alt="Image" />
-          <img src="/images/shape/footer-shape-two.png" alt="Image" />
-        </div>
-      </footer>
-
-      {/* Footer Bottom Area   */}
-      <footer className="footer-bottom-area">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-lg-4">
-              <div className="copy-right">
-                <p>Copyright &copy; 2023 . All Rights Reserved</p>
+            </Col>
+ 
+            <Col md={4} lg={3} className="information">
+              {/* Contact start */}
+              {footerData?.contacts?.map((data, index) => (
+                <div key={index}>
+                  {data?.icon}
+                  <p>{data?.message}</p>
+                </div>
+              ))}
+              {/* Contact end */}
+              {/* Socila link start */}
+              <div className="d-flex gap-2 socialLink">
+                {footerData?.socialLinks.map((data, index) => (
+                  <div key={index}>
+                    <a href={data?.link}>{data?.icon}</a>
+                  </div>
+                ))}
               </div>
-            </div>
-          </div>
-        </div>
-      </footer>
+              {/* Socila link end */}
+              <motion.div
+                initial={{ rotate: 0, scale: 0.5 }}
+                animate={{
+                  rotate: [0, -100, -180, -90, -200, -80, -230, -90, -200, 360],
+                  scale: 0.5,
+                }}
+                transition={{ duration: 7, repeat: Infinity }}
+                className="circle3"
+              >
+                <Image src={Ellipse} alt="ellipse" />
+              </motion.div>
+            </Col>
+          </Row>
+          <p className="mt-3 mb-0">{footerData?.copyRightMsg}</p>
+        </Container>
+      </div>
+      </div>
     </>
+      
   );
 };
 
-export default Footer;
+export default FooterSection;

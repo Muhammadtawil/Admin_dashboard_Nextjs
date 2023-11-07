@@ -1,9 +1,11 @@
-
+"use client"
 import { Col, Row } from "react-bootstrap";
 import { CgSearch } from "react-icons/cg";
 import style from "./Hero.module.scss";
+import { useTranslations } from "next-intl";
 
 const Hero = ({ searcHandler }: any) => {
+  const t=useTranslations('WebBlog')
   return (
     <div className={style.blogHero}>
       {/* Blog search start */}
@@ -13,7 +15,7 @@ const Hero = ({ searcHandler }: any) => {
             <div className="centered-content">
             </div>
             <div className="searchBox">
-              <input onChange={searcHandler} placeholder="Search articles here" />
+              <input onChange={searcHandler} placeholder=      {t('search') } />
               <button>
                 <CgSearch />
               </button>

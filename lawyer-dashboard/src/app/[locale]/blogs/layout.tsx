@@ -15,8 +15,9 @@ import "../../../styles/web/dark.css";
 import "../../../styles/web/dark.css";
 
 import "../home/globals.css";
-import FooterMain from '@/components/Website/Footer copy/Footer';
+import FooterSection from '@/components/Website/Footer/Footer';
 import NavBarTest from '@/components/Website/Header/Navbar/Navbar';
+import FooterMain from '@/components/Website/Footer/Footer-main';
 
 
 type Props = {

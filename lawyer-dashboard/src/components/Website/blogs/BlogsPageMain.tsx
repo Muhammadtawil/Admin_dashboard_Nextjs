@@ -1,6 +1,7 @@
 
 import { getBlogs } from "@/server/web/services/blogs/blogs";
 import Blogs from "./blogsPage/blogs";
+import SideBarBlogPage from "./blogsPage/SideBar/sideBar";
 
 
 export default async function BlogsPageMain() {
@@ -8,7 +9,7 @@ export default async function BlogsPageMain() {
 
   return (
    <>
-      <Blogs blogData={blogData}/>
+      <Blogs blogData={blogData} children={<SideBarBlogPage/>}/>
       </>
   )
 }

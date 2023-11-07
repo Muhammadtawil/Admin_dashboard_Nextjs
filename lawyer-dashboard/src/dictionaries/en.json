@@ -279,6 +279,52 @@
         "service":"Service",
         "success":"Your Info Successfuly sent",
         "book":"Booking"
+      },
+
+      "WebBlog":{
+        "title":"Blogs",
+        "description":"Discover the latest articles that will inspire and inform you. Dive into a world of knowledge and insight that awaits",
+        "recentBlogs":"Our Recent Blogs",
+        "readMore":"Read More",
+        "viewAll":"View All",
+        "popularPosts":"Popular Blogs",
+        "author":"Author",
+        "readAuthor":"Read more for this author",
+        "share":"Share",
+        "categories":"Categories",
+        "archive":"Archive",
+        "loadMore":"Load More",
+        "search":"search articles here",
+        "firstTitle":"Latest Blogs"
+      },
+      "webSubscriber":{
+        "title":"Subscribe to our Newsletter",
+        "subscribe":"Subscribe",
+        "email":"input your Email here",
+        "alert":"Thank you for subscription"
+      },
+
+      "webFooter":{
+        "title":"Subscribe to our Newsletter",
+        "subscribe":"Subscribe",
+        "email":"input your Email here",
+        "alert":"Thank you for subscription",
+        "address":"Lebanon,Chtoura,LawFirm Building ",
+        "copyRightMsg": "© LawFirm 2022 all rights reserved."
+      },
+
+      "webNews":{
+        "title":"News",
+        "description":"Discover Our Latest Stories",
+        "recentBlogs":"Our Recent News",
+        "readMore":"Read More",
+        "viewAll":"View All",
+        "popularPosts":"Popular News",
+        "share":"Share",
+        "archive":"Archive",
+        "loadMore":"Load More",
+        "search":"search news here",
+        "firstTitle":"Latest News"
       }
 
 }

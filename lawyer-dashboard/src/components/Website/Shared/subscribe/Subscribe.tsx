@@ -8,10 +8,12 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import footerData from "./footerData";
 import style from "./Footer.module.scss";
+import { successAlert } from "@/components/alerts/alerts";
+import { useTranslations } from "next-intl";
 
-const SubscribeSide = () => {
+const SubscribeSide = ({Subscribe}:{Subscribe:any}) => {
 
-
+const t=useTranslations('webSubscriber')
   // Sweetalert package configure in react
   const MySwal = withReactContent(Swal);
 
@@ -53,7 +55,7 @@ const SubscribeSide = () => {
           
           </motion.div>
           {/* <Row className="gy-4 gy-md-0 justify-content-between"> */}
-            <Col md={4} lg={3} className="newsLetter">
+            <Col md={3} lg={10} className="newsLetter">
               <motion.div
                 initial={{ rotate: 0, scale: 0.8 }}
                 animate={{
@@ -66,16 +68,34 @@ const SubscribeSide = () => {
          
               </motion.div>
               <Image src={footerData?.logo} alt="logo" />
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <label>{footerData?.formTitle}</label>
+              <form
+  action={ (formData) => {
+    try {
+       Subscribe(formData);
+      // If the subscription is successful, reset the form
+      reset();
+      successAlert(t('alert'));
+      document.querySelector('form')?.reset();
+    } catch (error) {
+      console.error(error);
+    }
+                }}
+                
+              >
+                <label>
+
+                {t('title')}
+
+                </label>
                 <br />
                 <input
                   className={errors.email && "inputErrorStyle"}
                   {...register("email", { required: true })}
                   type="email"
-                  placeholder="Input your email here"
+                  placeholder={t('email')}
+                  name="subscriberEmail"
                 />
-                <button type="submit">Subscribe</button>
+                <button type="submit">{t('subscribe') }</button>
               </form>
             </Col>
  

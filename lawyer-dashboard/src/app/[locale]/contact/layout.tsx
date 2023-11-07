@@ -17,9 +17,10 @@ import "/public/fonts/flaticon.css";
 // import NavBarTest from '@/components/Website/Header/Navbar/Navbar';
 // import  "../../../components/Website/Header/Navbar/Navbar.module.scss";
 // import "../../../components/Website/News/Project.module.scss"
-import FooterMain from '@/components/Website/Footer copy/Footer';
+import FooterSection from '@/components/Website/Footer/Footer';
 import GoTop from '@/components/Website/Shared/GoTop';
 import NavBarTest from '@/components/Website/Header/Navbar/Navbar';
+import FooterMain from '@/components/Website/Footer/Footer-main';
 
 type Props = {
   children: ReactNode;

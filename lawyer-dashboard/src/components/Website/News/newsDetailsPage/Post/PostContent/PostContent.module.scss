@@ -1,0 +1,81 @@
+.postContentSection :global {
+  .blogContent {
+    img {
+      border-radius: 8px;
+    }
+    .comment {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin: 1rem 0;
+      svg {
+        color: #6154f2;
+      }
+    }
+    .content {
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      p {
+        margin-bottom: 1rem;
+      }
+      h4 {
+        margin-bottom: 1rem;
+      }
+    }
+    .quote {
+      // background: #f9f9f9; /* Set the background color for the quote */
+      padding: 20px; /* Add padding to the quote */
+      border-left: 4px solid #6154f2; /* Add a left border to the quote for styling */
+      quotes: '\201C' '\201D'; /* Define double quotes */
+      font-size: 30px;
+      font-style: italic; /* Make the text italic */
+    }
+    
+    .quote :hover {
+      background: #6154f2;
+      color: white;
+      .text-center{
+          color:white;
+      }
+    }
+
+    ul.team-icon li {
+      display: inline-block;
+      margin: 0 3px;
+      transition: all 0.25s ease-in-out;
+    }
+    
+    ul.team-icon li a {
+      display: inline-block;
+      padding: 8px;
+      width: 34px;
+      height: 34px;
+      font-size: 18px;
+      line-height: 18px;
+      border-radius: 50%;
+      // color: #fff;
+    }
+    // ul.team-icon li a.twitter {
+    //   background-color: #4099ff;
+    // }
+    
+    ul.team-icon li a.twitter {
+      background-color: #14171A;
+    }
+    
+    ul.team-icon li a.facebook {
+      background-color: #3b5998;
+    }
+    
+    ul.team-icon li a.dribble {
+      background-color: #0A66C2;
+    }
+    .team-icon li a:hover {
+      color: #dedede;
+      transition: all 0.25s ease-in-out;
+    }
+    
+  }
+}

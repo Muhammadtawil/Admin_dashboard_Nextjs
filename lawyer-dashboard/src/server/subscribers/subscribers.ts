@@ -39,7 +39,6 @@ export default async function AddSubscribers(data: FormData) {
 
   const subscriberEmail = data.get("subscriberEmail");
 
-  const session = await getServerSession(authOptions);
 
   const subscribersData = {
     subscriberEmail: subscriberEmail,
@@ -52,7 +51,6 @@ export default async function AddSubscribers(data: FormData) {
   const requestOptions = {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${session?.accessToken}`,
 
       "Content-Type": "application/json",
     },
@@ -60,7 +58,7 @@ export default async function AddSubscribers(data: FormData) {
   };
 
   try {
-    const response = await fetch(`${subscriberss_url}`, requestOptions);
+    const response = await fetch(`${subscriberss_url}/web`, requestOptions);
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);

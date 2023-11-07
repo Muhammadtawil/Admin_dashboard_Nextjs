@@ -1,0 +1,112 @@
+.sideBarStyle :global {
+  padding-left: 3rem;
+  overflow: hidden;
+  min-width: 23rem;
+  .lists {
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 1.2rem;
+      padding: 0.7rem 0;
+      color: lighten($color: #000000, $amount: 10);
+      border-bottom: 1px solid lighten($color: #000000, $amount: 80);
+      cursor: pointer;
+      transition: all 0.1s;
+      &:last-child {
+        border-bottom: 0;
+      }
+      &:hover {
+        color: #6154f2;
+        transition: all 0.2s;
+      }
+    }
+  }
+  .popularPost {
+    margin-top: 2rem;
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .postCard {
+      display: flex;
+      gap: 5px;
+      padding: 1rem 0;
+      border-bottom: 1px solid lighten($color: #000000, $amount: 80);
+      > div:first-child {
+        width: 6rem;
+        height: auto;
+        position: relative;
+        overflow: hidden;
+        img {
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      }
+      > div:last-child {
+        overflow: hidden;
+        h5 {
+          font-size: 1.1rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.1s;
+          &:hover {
+            color: #6154f2;
+            transition: all 0.2s;
+          }
+        }
+        span {
+          font-size: 0.9rem;
+        }
+      }
+      &:last-child {
+        border: 0;
+      }
+    }
+  }
+  .archive {
+    margin-top: 2rem;
+  }
+  .tags {
+    margin-top: 2rem;
+    h4 {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 5px 10px;
+      background: none;
+      border-radius: 5px;
+      margin-right: 1rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid lighten($color: #000000, $amount: 50);
+      transition: all 0.2s;
+      &:hover {
+        background: #6154f2;
+        color: white;
+        border-color: #6154f2;
+        transition: all 0.3s;
+      }
+    }
+  }
+
+  .date{
+    font-size:15px;
+  }
+
+  @media screen and (max-width: 1199px) {
+    padding-left: 0;
+    min-width: 18rem;
+  }
+  @media screen and (max-width: 767px) {
+    padding-left: 0;
+    min-width: 20rem;
+  }
+}

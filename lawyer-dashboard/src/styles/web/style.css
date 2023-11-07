@@ -423,7 +423,7 @@ Section Title Area Style
 /*
 Default Btn Area Style
 ======================================================*/
-/* .default-btn {
+.default-btn {
   font-size: 15px;
   font-weight: 600;
   color: #ffffff;
@@ -436,9 +436,10 @@ Default Btn Area Style
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  background-color: #1dd3f8;
+  background-color: #6154f2;
   display: inline-block;
 }
+/* 
 .default-btn::before {
   content: "";
   position: absolute;

@@ -25,9 +25,7 @@ const LatestNews = async () => {
   export default LatestNews;
 
     
-            {/* Start News */}
-
-            {/* <NewsSwiper news={news} /> */}
+     
     
 
 

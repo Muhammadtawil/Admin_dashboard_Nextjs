@@ -4,8 +4,8 @@
   overflow: hidden;
   color: white;
   border-radius:10px;
-  justify-content: center;
-  align-items: center; 
+  // justify-content: center;
+  // align-items: center; 
   padding: 10px; 
 
   .sectionStyle {
@@ -14,27 +14,29 @@
   }
   .newsLetter {
     position: relative;
-    text-align: center; 
+    // text-align: center; 
     margin: 0 ;
 
     img {
-      width: 5.8rem !important;
+      width: 6.8rem !important;
       justify-content: center;
       display: block; 
       // margin: 0 ;
     }
     label {
-      // margin-top: 1.5rem;
-      // margin-bottom: 1.5rem;
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
       font-size: 1rem;
       font-weight: 500;
-      letter-spacing: 0.5px;
+      // letter-spacing: 0.5px;
+
     }
+  
     input {
       width: 290px;
       font-size: 1rem;
       letter-spacing: 0.5px;
-      padding: 0.6rem 1rem;
+      padding: 1rem ;
       outline: none;
       border: 2px solid #ffffff00;
       border-radius: 8px;
@@ -93,6 +95,24 @@
         margin: 0;
       }
     }
+    .titlediv {
+      display: flex; /* Display children in a flex container */
+      align-items: center; /* Vertically center the children */
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.5rem; /* Add some spacing below the text */
+      width:300px;
+    }
+    
+    .titlediv::before,
+    .titlediv::after {
+      content: "";
+      flex: 1; /* Distribute space evenly between the pseudo-elements */
+      border-top: 1px solid white; /* Add a horizontal line */
+      margin: 0 0.5rem; /* Add some spacing between the text and the line */
+    }
+    
     .socialLink {
       margin-top: 1.5rem;
       margin-bottom: 0;
@@ -126,6 +146,7 @@
         }
       }
     }
+
     .circle3 {
       bottom: -10vh;
       position: absolute;

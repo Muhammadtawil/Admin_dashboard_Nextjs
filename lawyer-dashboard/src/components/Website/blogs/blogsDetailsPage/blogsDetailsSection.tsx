@@ -1,7 +1,6 @@
 
 
 
-import PostContent from "./Post/PostContent/PostContent";
 import DetailsComponent from "./blogsDetailsMain";
 
 export default async function BlogsDetailsMain({
