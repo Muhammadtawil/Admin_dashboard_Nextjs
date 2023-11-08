@@ -2,6 +2,7 @@
 import { successAlert } from "@/components/alerts/alerts";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 
 
@@ -14,12 +15,14 @@ const INITIAL_STATE = {
   clientService: "",
 };
 
-const MakeYourBooking =  ({onCreate,services}:{onCreate:any,services:any[]}) => {
+const MakeYourBooking =  ({onCreate,services,translatedServices}:{onCreate:any,services:any[],translatedServices:any[]}) => {
   let chosenServiceName = "";
   let chosenServiceId = "";
 
 const t=useTranslations('webBooking')
-
+const path = usePathname()
+  const arabic = path.includes('ar')
+  const servicesData=arabic?translatedServices:services
   return (
     <div id="booking" className="main-contact-area pb-120">
       <div className="container">
@@ -93,16 +96,16 @@ const t=useTranslations('webBooking')
                           <select
                             className="form-select bg-light border-0 select-dropdown"
                             name="clientService"
-                            style={{ height: "55px", color: "black", width: "100%" }}
+                            style={{ height: "55px", color: "black", width: "200px" }}
                             required
                           >
-                            <option value="">{t('service')}</option>
-                            {services.length === 0 ? (
+                            <option value=""       style={{ height: "55px", color: "black", width: "200px" }}>{t('service')}</option>
+                            {servicesData.length === 0 ? (
                               <option value="" disabled>
                                 Loading...
                               </option>
                             ) : (
-                              services.map(
+                              servicesData.map(
                                 (service: any, index: any) => (
                                   (chosenServiceName = service.serviceTitle),
                                   (chosenServiceId = service.serviceId),
@@ -111,8 +114,9 @@ const t=useTranslations('webBooking')
                                     <option
                                       key={service.serviceId}
                                       value={service.serviceTitle}
+                                      style={{ height: "55px", color: "black", width: "200px" }}
                                     >
-                                      {service.serviceTitle}
+                                      {arabic?service.serviceTitle.text:service.serviceTitle}
                                     </option>
                                   )
                                 )

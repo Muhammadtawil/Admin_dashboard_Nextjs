@@ -8,8 +8,7 @@ import Hero from "@/components/Website/Hero/Hero";
 import NavBarTest from "@/components/Website/Header/Navbar/Navbar";
 import style from "../../../components/Website/Header/Header.module.scss";
 import Testimonial from "@/components/Website/Testimonial/Testimonial";
-// import Services from "@/components/Website/Services/services";
-import ServicesSection from "@/components/Website/Services/Services-section";
+import Services from "@/components/Website/Services/services";
 
 
 
@@ -27,7 +26,7 @@ export default function HomePage() {
 
             <About />
             <WhyChooseUs />
-            < ServicesSection/>
+            < Services/>
             <Booking />
             <BlogsComponentHome />
             <LatestNews />

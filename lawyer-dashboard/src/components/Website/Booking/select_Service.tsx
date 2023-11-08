@@ -1,8 +1,11 @@
+"use client"
 import { getServices } from "@/server/web/services/services/services";
+import { usePathname } from "next/navigation";
 
-
-const ServiceSelect = async () => {
-  const services = await getServices();
+const ServiceSelect = ({ services, translated }: { services: any, translated: any }) => {
+  const path = usePathname()
+  const arabic=path.includes('ar')
+const servicesData=arabic?translated:services
   return (
     <select
       className="form-select bg-light border-0"
@@ -17,7 +20,7 @@ const ServiceSelect = async () => {
       ) : (
         services.map((service: any, index: any) => (
           <option key={index} value={service.serviceTitle}>
-            {service.serviceTitle}
+            {arabic?service.serviceTitle.text:service.serviceTitle}
           </option>
         ))
       )}

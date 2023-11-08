@@ -329,6 +329,12 @@
       "webTeam":{
         "title":"The Team Behind LawFirm",
         "description":"At our LawFirm, we are more than just legal professionals; we are guardians of justice, champions of your rights, and partners in your journey through the complexities of the legal world. With a deep-rooted commitment to upholding the law and a passion for ensuring a fair and just society, we stand by your side, providing expert counsel and unwavering support. Our mission is not only to win cases but to make a positive impact"
+      },
+     "webServices" :{
+"firstTitle":"Services",
+"title":"Our Professional Services For You",
+"description":"We are dedicated to providing top-notch legal services to our clients. With our team of experienced lawyers, we offer a wide range of specialized services to meet your legal needs."
+
       }
 
 }
