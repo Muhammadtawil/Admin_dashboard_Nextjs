@@ -19,10 +19,13 @@ export default function RootLayout({
     <>
     
       <Head>
+
       <link
     href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
     rel="stylesheet"
-  />
+        />
+
+  next();
       </Head >
 <html>
       

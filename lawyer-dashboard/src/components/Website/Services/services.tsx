@@ -1,15 +1,17 @@
-import { getServices } from "@/server/web/services/services/services";
-import ServicesSection from "./Services-section";
+// import { getServices } from "@/server/web/services/services/services";
+// import ServicesSection from "./Services-section";
+// import { Translator } from "google-translate-api-x";
 
 
 
 
-export default async function Services() {
-  const services = await getServices();
+// export default async function Services() {
+//   const services = await getServices();
 
-  return (
-      <>
-          <ServicesSection services={services}/>
-      </>
-  )
-}
+
+//   return (
+//       <>
+//           <ServicesSection services={services}/>
+//       </>
+//   )
+// }

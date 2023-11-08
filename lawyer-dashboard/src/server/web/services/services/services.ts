@@ -1,10 +1,10 @@
 export async function getServices() {
-  const token = process.env.TOKEN;
-  const services_url = process.env.SERVICES_URL;
+
+  const services_url = process.env.SERVICESWEB_URL;
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
+   
       "Content-Type": "application/json",
     },
 
@@ -15,7 +15,7 @@ export async function getServices() {
 
   try {
     const response = await fetch(
-      `${services_url}?=${Date.now()}`,
+      `${services_url}`,
       requestOptions
     );
 
