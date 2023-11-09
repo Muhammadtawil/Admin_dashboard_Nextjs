@@ -12,8 +12,8 @@ export default async function Services() {
 
   const translatedServices = await Promise.all(services.map(async (service: any) => {
     return {
-      serviceTitle: (await translator.translate(service.serviceTitle)).toString(),
-      serviceDescription: (await translator.translate(service.serviceDescription)).toString(),
+      serviceTitle: await translator.translate(service.serviceTitle),
+      serviceDescription: await translator.translate(service.serviceDescription),
 
     };
   }));
