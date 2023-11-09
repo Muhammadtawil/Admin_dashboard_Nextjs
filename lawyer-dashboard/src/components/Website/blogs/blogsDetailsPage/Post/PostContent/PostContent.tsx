@@ -7,6 +7,7 @@ import style from "./PostContent.module.scss";
 import Link from "next/link";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 
 
@@ -25,18 +26,24 @@ function getRandomQuote(blogContent: string) {
 const PostContent = ({
   params,
   blog,
+ translatedValues,
 
 }: {
   params: { blogId: string};
       blog: any;
- 
+      translatedValues:any
   }) => {
   const t = useTranslations('WebBlog')
   const blogId = params.blogId;
+  const path = usePathname()
+  const arabic = path.includes('ar')
+  const { translatedBlogContent, translatedBlogTitle, translatedBlogAuthor } = translatedValues;
   // const blogTitle = params.blogTitle;
     const [isCopied, setIsCopied] = useState(false);
+  // const blogsData = arabic ? translatedBlog : blog;
+  const blogContent = arabic ? translatedBlogContent.text: blog.blogContent;
+ 
 
-    // Check if the blog object and its content exist
     if (!blog || !blog.blogContent) {
         return (
             <div>
@@ -46,7 +53,7 @@ const PostContent = ({
         );
     }
 
-    const blogContentArray = blog.blogContent.split(". ");
+    const blogContentArray = blogContent.split(". ");
     const firstPart = blogContentArray
         .slice(0, Math.floor(blogContentArray.length / 2))
         .join(". ");
@@ -54,7 +61,7 @@ const PostContent = ({
         .slice(Math.floor(blogContentArray.length / 2))
         .join(". ");
 
-    const randomQuote = getRandomQuote(blog.blogContent);
+    const randomQuote = getRandomQuote(blogContent);
   return (
 
    
@@ -66,15 +73,15 @@ const PostContent = ({
         <div className="comment">
           {blog.author.authorName && (
             <span>
-              <FaRegUserCircle fontSize={25} /> {blog.author.authorName}
-            </span>
+            <FaRegUserCircle fontSize={25} /> {arabic ? translatedBlogAuthor.text : blog.author.authorName}
+          </span>
           )}
           {blog?.createdAt && blog?.createdAt && (
             <span> / </span>
           )}
           {blog?.createdAt && (
             <span>
-              <FaCalendarAlt fontSize={25} />      {new Date(blog.createdAt).toLocaleDateString("en-US", {
+              <FaCalendarAlt fontSize={25} />      {new Date(blog.createdAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
                                                     day: "numeric",
                                                     month: "long",
                                                     year: "numeric",
@@ -83,7 +90,7 @@ const PostContent = ({
           )}
         </div>
         <div className="content">
-          <h2>{blog.blogTitle}</h2>
+          <h2>{arabic?translatedBlogTitle.text:blog.blogTitle}</h2>
           <p>{firstPart}</p>
           <blockquote className="flaticon-quote quote">
                                         <p>{randomQuote}</p>

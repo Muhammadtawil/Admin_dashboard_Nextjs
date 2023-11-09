@@ -1,29 +1,34 @@
 "use client"
 import Stack from "@mui/material/Stack";
 import { useTranslations } from "next-intl";
-
+import Style from "./chooseUs.module.scss"
 const WhyChooseUs = () => {
   const t = useTranslations('webChooseUs')
 const whyList=[t('expert'),t('group'),t('fast')]
   
   return (
     <>
-      <section className="choose-ue-area pb-100">
-      <div className="container">
+      
+      <section className={`${Style.ChooseUsStyle} choose-ue-area pb-100`}>
+    
+        <div className="container">
+          <span className="main">{t('title') as string}</span>
+          <h2 className="mains">{t('mainTitle')}</h2>
           <div className="row align-items-center">
+            
             <div className="col-lg-6">
             <div 
-                className="choose-title"
+                className="choose-title "
                 data-aos="fade-in"
                 data-aos-duration="1200"
                 data-aos-delay="100"
               >
-<span style={{ fontSize: '24px' }}>{t('title') as string}</span>
+
 
 
 
                 <div className="business-content">
-                  <h5>{t('description') }</h5>
+                  <p className=" description">{t('description') }</p>
               </div>
            </div>
           
@@ -95,5 +100,3 @@ const whyList=[t('expert'),t('group'),t('fast')]
 };
 
 export default WhyChooseUs;
-
-

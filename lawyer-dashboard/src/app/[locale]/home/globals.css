@@ -108,16 +108,7 @@ a {
 
 }
 
-.about-list {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px; /* Adjust the spacing as needed */
-}
 
-.about-list i {
-  margin-right: 10px;
-  padding: 10px;
-}
 
 
 
@@ -332,5 +323,21 @@ a {
   font-size:14px;
 }
 
+.default-btn {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+  padding: 18px 35px;
+  line-height: 1;
+  transition: all 0.6s ease;
+  z-index: 1;
+  text-transform: capitalize;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #6154f2;
+  display: inline-block;
+}
 
 

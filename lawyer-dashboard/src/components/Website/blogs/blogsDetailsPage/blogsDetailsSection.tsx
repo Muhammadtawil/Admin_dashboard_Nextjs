@@ -1,6 +1,7 @@
 
 
 
+import { Translator } from "google-translate-api-x";
 import DetailsComponent from "./blogsDetailsMain";
 
 export default async function BlogsDetailsMain({
@@ -25,10 +26,24 @@ export default async function BlogsDetailsMain({
     const blogUrl = process.env.BLOGIDURL;
   const response = await fetch(`${blogUrl}/${params.blogId}`, requestOptions);
     const blog = await response.json();
+    const translator = new Translator({ from: 'en', to: 'ar', forceBatch: false});
+    
+  const translatedBlogContent = await translator.translate(blog.blogContent);
+  const translatedBlogTitle = await translator.translate(blog.blogTitle);
+  const translatedBlogAuthor = await translator.translate(blog.author.authorName);
+
+  const translatedValues = {
+    translatedBlogContent,
+    translatedBlogTitle,
+    translatedBlogAuthor,
+  };
+
   
+    
+
   return (
     
-    <DetailsComponent params={params} blogs={blog} children={children}/>
+    <DetailsComponent params={params} blogs={blog} children={children} translatedValues={translatedValues}/>
 
 
 

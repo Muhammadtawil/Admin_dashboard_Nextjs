@@ -1,4 +1,13 @@
 .servicesStyle :global {
+  .mains{
+    font-size:90px;
+    font-weight:bold;
+    text-align:center;
+    // margin: auto;
+    // width: 50%;
+    // padding: 10px;
+
+  } 
     .offer-area {
         position: relative;
         z-index: 1;
@@ -44,7 +53,15 @@
         left: 700px;
         animation: animationFramesOne 10s infinite linear;
       }
-      
+      .main{
+        font-size:90px;
+        font-weight:bold;
+        text-align:center;
+        // margin: auto;
+        // width: 50%;
+        // padding: 10px;
+  
+      } 
       .single-offer {
         position: relative;
         padding-right: 30px;

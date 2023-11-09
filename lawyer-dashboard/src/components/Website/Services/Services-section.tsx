@@ -17,8 +17,8 @@ const ServicesSection = ({services,translatedServices}:{services:any,translatedS
     <section id="services" className={`${Style.servicesStyle}about-area pt-100 pb-70`}>
       <div className="container">
         <div className="section-title">
-          <span>{t('firstTitle')}</span>
-          <h2 className="servicesHead">{t('title')}</h2>
+          <span className="mains">{t('firstTitle')}</span>
+          <h2 className="servicesHead mains">{t('title')}</h2>
           <p className="servicesHead">
           {t('description')}
           </p>

@@ -1,0 +1,191 @@
+.ChooseUsStyle :global{
+  
+    .business-area .default-btn {
+        margin-top: 10px;
+      }
+    
+    .pt-100 {
+      padding-top: 100px;
+    }
+    .about-list {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px; /* Adjust the spacing as needed */
+      // padding:0;
+  }
+    
+    .about-list i {
+      margin-right: 10px;
+      padding: 10px;
+    }
+
+    .title{
+     
+      width:50%;
+      margin: auto;
+    }
+    .main{
+      font-size:90px;
+      font-weight:bold;
+      text-align:center;
+      // margin: auto;
+      // width: 50%;
+      // padding: 10px;
+
+    }
+    .description{
+      font-size:25px;
+      padding:10px;
+  }
+  .center {
+    // border: 5px solid;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  left:50%;
+    // text-align:right
+  }
+      .business-content h2 {
+        font-size: 40px;
+        margin-top: -9px;
+        margin-bottom: 40px;
+      }
+      
+      .single-business {
+        padding-left: 70px;
+        transition: all 0.6s ease;
+        margin-bottom: 30px;
+        position: relative;
+      }
+      .single-business i {
+        position: absolute;
+        left: 0;
+        top: 5px;
+        background-color: #eeeefe;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 0px 30px 30px 30px;
+        font-size: 25px;
+        color: #9898f0;
+      }
+      .single-business h3 {
+        margin-bottom: 10px;
+      }
+      .single-business:hover {
+        transform: translateY(-5px);
+      }
+      
+      .single-counter {
+        background-color: #e2e2fc;
+        text-align: center;
+        padding: 50px;
+        border-radius: 4px;
+        margin-bottom: 30px;
+        transition: all 0.6s ease;
+      }
+      .single-counter h2 {
+        margin-bottom: 0;
+      }
+      .single-counter h2 span {
+        font-size: 50px;
+        color: #6b6bd4;
+        font-family: "Dosis", sans-serif;
+        font-weight: 700;
+        line-height: 1;
+      }
+      .single-counter h2 .target {
+        line-height: 1;
+        position: relative;
+        top: 7px;
+      }
+      .single-counter p {
+        font-family: "Dosis", sans-serif;
+        font-size: 18px;
+        font-weight: 500;
+        margin: 10px 0 0;
+      }
+      .single-counter:hover {
+        animation: rubberBand 1s linear;
+      }
+      
+      .counter-nth:nth-child(2) .single-counter {
+        margin-top: 30px;
+        background-color: #cae5fe;
+      }
+      .counter-nth:nth-child(2) .single-counter h2 span {
+        color: #3785ca;
+      }
+      .counter-nth:nth-child(3) .single-counter {
+        background-color: #c0fedc;
+        margin-top: -30px;
+        margin-bottom: 0;
+      }
+      .counter-nth:nth-child(3) .single-counter h2 span {
+        color: #23bc68;
+      }
+      .counter-nth:nth-child(4) .single-counter {
+        background-color: #fbc7ba;
+        margin-bottom: 0;
+      }
+      .counter-nth:nth-child(4) .single-counter h2 span {
+        color: #c05234;
+      } 
+      .mains{
+        font-size:30px;
+        font-weight:bold;
+        text-align:left;
+        
+      }
+      .mainsEn{
+        font-size:30px;
+        font-weight:bold;
+        text-align:left;
+      }
+      
+      @media (max-width: 767px) {
+        .choose-title {
+          display: flex;
+          flex-direction: column;
+        }
+      
+        .business-content {
+          order: 1;
+        }
+      
+        .image-with-border {
+          border: 0px solid transparent;
+          border-image: linear-gradient(45deg, #eb7494, #ae77b2, #97b5da, #0099ca) 1;
+          border-image-slice: 1;
+          align-items:center;
+          padding-left:20px;
+          padding-right:20px;
+          text-align:center;
+          width:100%;
+        }
+        .main{
+          font-size:50px;
+          text-align:center;
+        
+     
+        }
+      
+        .description{
+          font-size:19px;
+          align-items:center;
+          text-align:center;
+
+        }
+        .counter-nth{
+          width:50%;
+        }
+        .mains{
+          font-size:30px;
+          font-weight:bold;
+          text-align:center;
+          
+        }
+      }
+}

@@ -148,106 +148,10 @@ Contact Info Area Style
 /*
 Business  Area Style
 ======================================================*/
-.business-area .default-btn {
-  margin-top: 10px;
-}
-
-.business-content h2 {
-  font-size: 40px;
-  margin-top: -9px;
-  margin-bottom: 40px;
-}
-
-.single-business {
-  padding-left: 70px;
-  transition: all 0.6s ease;
-  margin-bottom: 30px;
-  position: relative;
-}
-.single-business i {
-  position: absolute;
-  left: 0;
-  top: 5px;
-  background-color: #eeeefe;
-  display: inline-block;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
-  border-radius: 0px 30px 30px 30px;
-  font-size: 25px;
-  color: #9898f0;
-}
-.single-business h3 {
-  margin-bottom: 10px;
-}
-.single-business:hover {
-  transform: translateY(-5px);
-}
-
-.single-counter {
-  background-color: #e2e2fc;
-  text-align: center;
-  padding: 50px;
-  border-radius: 4px;
-  margin-bottom: 30px;
-  transition: all 0.6s ease;
-}
-.single-counter h2 {
-  margin-bottom: 0;
-}
-.single-counter h2 span {
-  font-size: 50px;
-  color: #6b6bd4;
-  font-family: "Dosis", sans-serif;
-  font-weight: 700;
-  line-height: 1;
-}
-.single-counter h2 .target {
-  line-height: 1;
-  position: relative;
-  top: 7px;
-}
-.single-counter p {
-  font-family: "Dosis", sans-serif;
-  font-size: 18px;
-  font-weight: 500;
-  margin: 10px 0 0;
-}
-.single-counter:hover {
-  animation: rubberBand 1s linear;
-}
-
-.counter-nth:nth-child(2) .single-counter {
-  margin-top: 30px;
-  background-color: #cae5fe;
-}
-.counter-nth:nth-child(2) .single-counter h2 span {
-  color: #3785ca;
-}
-.counter-nth:nth-child(3) .single-counter {
-  background-color: #c0fedc;
-  margin-top: -30px;
-  margin-bottom: 0;
-}
-.counter-nth:nth-child(3) .single-counter h2 span {
-  color: #23bc68;
-}
-.counter-nth:nth-child(4) .single-counter {
-  background-color: #fbc7ba;
-  margin-bottom: 0;
-}
-.counter-nth:nth-child(4) .single-counter h2 span {
-  color: #c05234;
-} 
-
 
 /*
 About Area Style
 ======================================================*/
-.about-img {
-  text-align: center;
-}
 
 
 /* Navbar  */
@@ -423,22 +327,7 @@ Section Title Area Style
 /*
 Default Btn Area Style
 ======================================================*/
-.default-btn {
-  font-size: 15px;
-  font-weight: 600;
-  color: #ffffff;
-  padding: 18px 35px;
-  line-height: 1;
-  transition: all 0.6s ease;
-  z-index: 1;
-  text-transform: capitalize;
-  border-radius: 10px;
-  position: relative;
-  cursor: pointer;
-  overflow: hidden;
-  background-color: #6154f2;
-  display: inline-block;
-}
+
 /* 
 .default-btn::before {
   content: "";
@@ -567,12 +456,7 @@ Go Top Style
   visibility: visible;
   top: 50%;
 }
-.pt-100 {
-  padding-top: 100px;
-}
-.pb-70 {
-  padding-bottom: 70px;
-}
+
 
 .ask-question .section-title {
   margin: -9px auto 40px;

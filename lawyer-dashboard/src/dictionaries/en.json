@@ -257,7 +257,8 @@
         "contact":"Contact Us",
         "fair":"Fair Prices",
         "expert":"Experts In Law",
-        "group":"Group Of Lawyers"
+        "group":"Group Of Lawyers",
+        "speed":"speed in completing transactions"
       },
       "webChooseUs":{
         "description":"Choose our law firm for a dedicated team of experienced attorneys who consistently achieve outstanding results. We prioritize your unique legal needs, providing personalized solutions to ensure your peace of mind and satisfaction, making us the ideal choice for all your legal matters.",
@@ -267,18 +268,21 @@
         "fast":"Fast",
         "clients":"Clients",
         "consulting":"Consulting",
-        "visits":"Visits"
+        "visits":"Visits",
+        "mainTitle":"The perfect choice"
       },
       "webBooking":{
         "title":"Contact Us",
-        "mainTitle":"Drop us a message for any query",
+        "mainTitle":"Let's Talk",
+        "mainTitle1":"With Us",
         "description":"Seeking justice, guidance, or legal wisdom? Don't hesitate to reach out to our team of legal eagles. We're here to navigate the intricate labyrinth of laws for you. Whether it's a burning question or a pressing concern, our chambers are open to listen. Your story is our mission, and we're just a message away from making a difference in your legal journey.",
         "email":"Email if found",
         "name":"Name",
         "Phone":"Phone Number",
         "service":"Service",
         "success":"Your Info Successfuly sent",
-        "book":"Booking"
+        "book":"Booking",
+        "message":"Get in touch with our law firm for the legal services you need. Leave us a message, and we'll respond as soon as possible."
       },
 
       "WebBlog":{

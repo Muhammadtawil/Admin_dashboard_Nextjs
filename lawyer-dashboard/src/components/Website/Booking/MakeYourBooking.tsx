@@ -3,6 +3,15 @@ import { successAlert } from "@/components/alerts/alerts";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
+
+import { Col, Container, Row } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import style from "../Contact/ContactForm/ContactForm.module.scss";
+import createFooterData from "../Footer/footerData";
+
 
 
 
@@ -18,81 +27,181 @@ const INITIAL_STATE = {
 const MakeYourBooking =  ({onCreate,services,translatedServices}:{onCreate:any,services:any[],translatedServices:any[]}) => {
   let chosenServiceName = "";
   let chosenServiceId = "";
-
+  const footerData = createFooterData();
 const t=useTranslations('webBooking')
 const path = usePathname()
   const arabic = path.includes('ar')
-  const servicesData=arabic?translatedServices:services
+  const servicesData = arabic ? translatedServices : services
+    // Sweetalert package configure in react
+    const MySwal = withReactContent(Swal);
+    // react hook form
+    const {
+      register,
+      handleSubmit,
+      reset,
+      formState: { errors },
+    } = useForm();
+    // Form submit function
+    const onSubmit = (data:any) => {
+      console.log(data);
+      MySwal.fire({
+        icon: "success",
+        title: "Successful",
+        showConfirmButton: false,
+        showCloseButton: true,
+        timer: 2000,
+      });
+      reset();
+    };
+  
   return (
-    <div id="booking" className="main-contact-area pb-120">
-      <div className="container">
-        <div className="section-title">
-        <span style={{ fontSize: '24px' }}>{t('title') as string}</span>
-          <h2>{t('mainTitle')}</h2>
-          <p>
-        {t('description')}
-          </p>
+    <div className={`${style.contactFormSection} sectionStyle`}>
+    <Container>
+        <Row className="row-cols-1 row-cols-md-2 gy-5 gy-md-0 gx-5">
+          
+        <Col className="contactDetails">
+          <motion.h2
+            initial={{ y: 1, opacity: 1 }}
+            whileHover={{ y: 0, opacity: 1, transition: { duration: 0.3 } }}
+            // viewport={{ once: true }}
+            className={arabic?"sectionTitle firstTitle":"sectionTitle firstTitleEng"}
+          >
+            {t('mainTitle')}
+          </motion.h2>
+          <motion.h2
+            initial={{ y: 1, opacity: 1}}
+            whileHover={{
+              y: 0,
+              opacity: 1,
+              transition: { duration: 0.3, delay: 0.1 },
+            }}
+            // viewport={{ once: true }}
+            className={arabic?"sectionTitle firstTitle":"sectionTitle firstTitleEng"}
+          >
+           {t('mainTitle1')}
+          </motion.h2>
+
+   
+           {/* <Image src="/contact6.png" alt="Image" height={550} width={550} /> */}
+  
+       <p >  {t('message')}</p>
+            <br />
+            <br />
+
+            
+            <Row>
+            <Col md={4} lg={5} className="information">
+  {/* Contact start */}
+
+    {footerData?.contacts?.map((data, index) => (
+      <li key={index} className="d-flex align-items-center" style={{ width: "100%" ,padding:"10px" }}>
+        {data?.icon}
+        <span style={{ padding:"10px", fontSize:"12px"}}>{data?.message}</span>
+      </li>
+    ))}
+  
+  {/* Contact end */}
+  {/* Social link start */}
+  <div className="d-flex gap-2 socialLink" style={{ padding:"10px"}}  >
+    {footerData?.socialLinks.map((data, index) => (
+      <div key={index}>
+        <a   href={data?.link}>{data?.icon}</a>
+      </div>
+    ))}
+  </div>
+  {/* Social link end */}
+              </Col>
+        <Col>
+              <div
+          className="overflow-hidden rounded-3"
+          style={{ width: "100%", height: "80%" }}
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830913564!2d-74.11976373946231!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1648396699742!5m2!1sen!2sbd"
+            width="100%"
+            height="250"
+            // allowFullScreen=""
+            loading="lazy"
+            style={{ border: 0 }}
+            referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
         </div>
+            </Col>
+              </Row>
 
-        <div className="row align-items-center">
-          <div className="col-lg-6 col-md-12">
-            <div className="contact-wrap contact-pages mb-0">
-              <div className="contact-form form-border custom-card image-with-border">
-              <div className="col-12 text-center"> {/* Centered container */}
-              <span style={{ fontSize: '24px' }}>{t('title') as string}</span>
-                    </div>
-                <form           action={async (formData) => {
-            await onCreate(formData)
-              .then(() => {
-                successAlert(t('success'));
-                document.querySelector('form')?.reset();
-              })
-              .catch((error: any) => {
-
-                console.error(error);
-              });
-          }}>
-                  <div className="row">
-             
-                    <div className="col-lg-6 col-sm-6 ">
-                      <div className="form-group image-with-border">
-                        <input
-                          type="text"
-                          name="clientName"
-                          placeholder={t('name')}
-                          className="form-control"
-                          id="clientName"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-sm-6 ">
-                      <div className="form-group image-with-border">
-                        <input
-                          type="text"
-                          name="clientEmail"
-                          placeholder={t('email')}
-                          className="form-control"
-                          id="clientEmail"
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-sm-6">
-                      <div className="form-group image-with-border">
-                        <input
-                          type="text"
-                          name="clientPhone"
-                          placeholder={t('Phone')}
-                          className="form-control"
-                          id="clientPhone"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="col-lg-6 col-sm-6">
-                      <div className="col-lg-6 col-sm-6">
-                        <div className="col-12 image-with-border">
-                       
+     
+      
+        </Col>
+        <Col>
+          <form onSubmit={handleSubmit(onSubmit)} className="contactForm">
+            <div className="d-lg-flex gap-3">
+              <motion.div
+                initial={{ y: 1, opacity: 1 }}
+                whileHover={{
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 0.3 },
+                }}
+                // viewport={{ once: true }}
+                className="inputStyle"
+              >
+                <label>{t('name')}</label>
+                <input
+                  className={errors.fullName && "inputErrorStyle"}
+                  {...register("fullName", { required: true })}
+                  type="text"
+                  placeholder={t('name')}
+                />
+              </motion.div>
+              <motion.div
+                initial={{ y: 1, opacity: 1}}
+                whileHover={{
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 0.3, delay: 0.05 },
+                }}
+                // viewport={{ once: true }}
+                className="inputStyle"
+              >
+                <label>{t('email')}</label>
+                <input
+                  className={errors.email && "inputErrorStyle"}
+                  {...register("email", { required: true })}
+                  type="email"
+                  placeholder={t('Phone')}
+                />
+              </motion.div>
+            </div>
+            <div className="d-lg-flex gap-3">
+              <motion.div
+                initial={{ y: 1, opacity: 1 }}
+                whileHover={{
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 0.3, delay: 0.1 },
+                }}
+                // viewport={{ once: true }}
+                className="inputStyle"
+              >
+                <label>{t('Phone')}</label>
+                <input
+                    className={errors.phone && "inputErrorStyle"}
+                    {...register(t('Phone'), { required: true, minLength: 10 })}
+                    type="number"
+                    placeholder={t('Phone')}
+                />
+              </motion.div>
+              <motion.div
+                initial={{ y: 1, opacity: 1 }}
+                whileHover={{
+                  y: 0,
+                  opacity: 1,
+                  transition: { duration: 0.3, delay: 0.15 },
+                }}
+                // viewport={{ once: true }}
+                className="inputStyle"
+                >
+                     <label>Service</label>
                           <select
                             className="form-select bg-light border-0 select-dropdown"
                             name="clientService"
@@ -122,30 +231,174 @@ const path = usePathname()
                                 )
                               )
                             )}
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="form-group">
-                      <button type="submit" className="default-btn btn-two">
-                      {t('book')}
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
+                  </select>
+                  </motion.div>
             </div>
-          </div>
+            <motion.div
+              initial={{ y: 1, opacity: 1 }}
+              whileHover={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 0.3, delay: 0.2 },
+              }}
+              // viewport={{ once: true }}
+              className="inputStyle"
+            >
+              <label>Message</label>
+              <textarea
+                rows={3}
+                className={errors.message && "inputErrorStyle"}
+                {...register("message", { required: true })}
+                placeholder="Message"
+              />
+            </motion.div>
+            <motion.button
+              initial={{ y: 1, opacity: 1 }}
+              whileTap={{
+                y: 0,
+                opacity: 1,
+                transition: { duration: 0.3, delay: 0.2 },
+              }}
+              // viewport={{ once: true }}
+              whileHover={{ y: -5, transition: { duration: 0.3 } }}
+              className="submitBtn"
+              type="submit"
+            >
+             {t('book')}
+            </motion.button>
+          </form>
+        </Col>
+      </Row>
+    </Container>
+  </div>
 
-          <div className="col-lg-6 col-md-12">
-            <div className="contact-img">
-              <Image src="/contact6.png" alt="Image" height={550} width={550} />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 };
 
 export default MakeYourBooking;
+
+
+
+    // <div id="booking" className="main-contact-area pb-120">
+    //   <div className="container">
+    //     <div className="section-title">
+    //     <span style={{ fontSize: '24px' }}>{t('title') as string}</span>
+    //       <h2>{t('mainTitle')}</h2>
+    //       <p>
+    //     {t('description')}
+    //       </p>
+    //     </div>
+
+    //     <div className="row align-items-center">
+    //       <div className="col-lg-6 col-md-12">
+    //         <div className="contact-wrap contact-pages mb-0">
+    //           <div className="contact-form form-border custom-card image-with-border">
+    //           <div className="col-12 text-center"> {/* Centered container */}
+    //           <span style={{ fontSize: '24px' }}>{t('title') as string}</span>
+    //                 </div>
+    //             <form           action={async (formData) => {
+    //         await onCreate(formData)
+    //           .then(() => {
+    //             successAlert(t('success'));
+    //             document.querySelector('form')?.reset();
+    //           })
+    //           .catch((error: any) => {
+
+    //             console.error(error);
+    //           });
+    //       }}>
+    //               <div className="row">
+             
+    //                 <div className="col-lg-6 col-sm-6 ">
+    //                   <div className="form-group image-with-border">
+    //                     {/* <input
+    //                       type="text"
+    //                       name="clientName"
+    //                       placeholder={t('name')}
+    //                       className="form-control"
+    //                       id="clientName"
+    //                       required
+    //                     /> */}
+                        
+    //                   </div>
+    //                 </div>
+    //                 <div className="col-lg-6 col-sm-6 ">
+    //                   <div className="form-group image-with-border">
+    //                     {/* <input
+    //                       type="text"
+    //                       name="clientEmail"
+    //                       placeholder={t('email')}
+    //                       className="form-control"
+    //                       id="clientEmail"
+    //                     /> */}
+             
+    //                   </div>
+    //                 </div>
+    //                 <div className="col-lg-6 col-sm-6">
+    //                   <div className="form-group image-with-border">
+    //                     <input
+    //                       type="text"
+    //                       name="clientPhone"
+    //                       placeholder={t('Phone')}
+    //                       className="form-control"
+    //                       id="clientPhone"
+    //                       required
+    //                     />
+    //                   </div>
+    //                 </div>
+    //                 <div className="col-lg-6 col-sm-6">
+    //                   <div className="col-lg-6 col-sm-6">
+    //                     <div className="col-12 image-with-border">
+                       
+    //                       <select
+    //                         className="form-select bg-light border-0 select-dropdown"
+    //                         name="clientService"
+    //                         style={{ height: "55px", color: "black", width: "200px" }}
+    //                         required
+    //                       >
+    //                         <option value=""       style={{ height: "55px", color: "black", width: "200px" }}>{t('service')}</option>
+    //                         {servicesData.length === 0 ? (
+    //                           <option value="" disabled>
+    //                             Loading...
+    //                           </option>
+    //                         ) : (
+    //                           servicesData.map(
+    //                             (service: any, index: any) => (
+    //                               (chosenServiceName = service.serviceTitle),
+    //                               (chosenServiceId = service.serviceId),
+    //                               console.log(chosenServiceId),
+    //                               (
+    //                                 <option
+    //                                   key={service.serviceId}
+    //                                   value={service.serviceTitle}
+    //                                   style={{ height: "55px", color: "black", width: "200px" }}
+    //                                 >
+    //                                   {arabic?service.serviceTitle.text:service.serviceTitle}
+    //                                 </option>
+    //                               )
+    //                             )
+    //                           )
+    //                         )}
+    //                       </select>
+    //                     </div>
+    //                   </div>
+    //                 </div>
+    //                 <div className="form-group">
+    //                   <button type="submit" className="default-btn btn-two">
+    //                   {t('book')}
+    //                   </button>
+    //                 </div>
+    //               </div>
+    //             </form>
+    //           </div>
+    //         </div>
+    //       </div>
+
+    //       <div className="col-lg-6 col-md-12">
+    //         <div className="contact-img">
+    //           <Image src="/contact6.png" alt="Image" height={550} width={550} />
+    //         </div>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
