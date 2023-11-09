@@ -11,15 +11,15 @@ const NavbarData = () => {
     menus: [
       {
         name: t('home'),
-        link:"/",
+        link: en?"/en/home":"/ar/home",
       },
       {
         name: t('about'),
-        link: "#about",
+        link: en?"/en/home#about":"/ar/home#about",
       },
       {
         name: t('services'),
-        link: "#services",
+        link: en?"/en/home#services":"/ar/home#services",
       },
       {
         name: t('blogs'),

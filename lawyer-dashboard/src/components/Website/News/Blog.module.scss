@@ -1,4 +1,49 @@
 .blogStyle :global {
+  .blogTitle{
+    padding-bottom:10px;
+   
+  }
+  .mains{
+    font-size:40px;
+    font-weight:bold;
+    text-align:right;
+    // margin: auto;
+    // width: 50%;
+    // padding: 10px;
+    color:#6b6bd4
+  } 
+  .mainsEng{
+    font-size:40px;
+    font-weight:bold;
+    text-align:left;
+    color:#6b6bd4
+  }
+  .main{
+    font-size:80px;
+    font-weight:bold;
+    text-align:right;
+ 
+    // margin: auto;
+    // width: 50%;
+    // padding: 10px;
+
+  }
+  .mainsEn{
+    font-size:90px;
+    font-weight:bold;
+    text-align:left;
+  }
+
+  .mainD{
+    font-size:20px;
+    padding-top:10px;
+
+  }
+
+ .mainDEn{
+    font-size:20px;
+    padding-top:10px;
+  }
   .blogCard {
     .image {
       border-radius: 8px;
@@ -26,7 +71,7 @@
         }
       }
       h4 {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
         font-weight: 500;
         margin-bottom: 1rem;
         cursor: pointer;
@@ -78,5 +123,155 @@
         }
       }
     }
+  }
+  @media (max-width: 768px) {
+    .blogTitle{
+      padding-bottom:10px;
+      padding-top:10px;
+      font-size:15px;
+     
+    }
+    .mains{
+      font-size:30px;
+      font-weight:bold;
+      text-align:right;
+      // margin: auto;
+      // width: 50%;
+      // padding: 10px;
+  
+    } 
+    .mainsEng{
+      font-size:25px;
+      font-weight:bold;
+      text-align:left;
+      padding-bottom:10px;
+    }
+    .main{
+      font-size:80px;
+      font-weight:bold;
+      text-align:right;
+  
+      // margin: auto;
+      // width: 50%;
+      // padding: 10px;
+  
+    }
+    .mainsEn{
+      font-size:80px;
+      font-weight:bold;
+      text-align:left;
+    }
+  
+    .mainD{
+      font-size:20px;
+      padding-top:10px;
+      text-align:right;
+    }
+  
+   .mainDEn{
+      font-size:20px;
+      padding-top:10px;
+      text-align:left;
+    }
+    .single-offer{
+      align-items:center;
+      text-align:right;
+      padding-top:10px;
+    }
+    .custom-card{
+      align-items:center;
+      text-align:right;
+    }
+    .services-item{
+      align-items:center;
+      text-align:right;
+    }
+    .blogCard {
+display:flex;
+      .image {
+        height:100%;
+        width:100%;
+        object-fit: fill;
+        display:fit-content;
+        border-radius: 7px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.2s;
+        img {
+          transition: all 0.2s;
+        }
+        // padding-bottom:30px;
+      }
+      .blogContent {
+        height:90%;
+        padding: 10px;
+        position: relative;
+        transition: all 0.2s;
+        border-radius: 8px;
+        > div {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          margin: 0.5rem 0 1rem 0;
+          span > svg {
+            color: #6154f2;
+            transition: all 0.2s;
+          }
+        }
+        h4 {
+          font-size: 1rem;
+          font-weight: 500;
+          margin-bottom: 1rem;
+          cursor: pointer;
+        }
+        button {
+          background: none;
+          border: none;
+          font-weight: 500;
+          padding: 0;
+          transition: all 0.2s;
+        }
+        &::after {
+          content: "";
+          width: 100%;
+          height: 0%;
+          background-color: #6154f2;
+          position: absolute;
+          border-radius: 0 0 8px 8px;
+          bottom: 0;
+          left: 0;
+          transition: all 0.2s;
+        }
+      }
+      &:hover {
+        .image {
+          border-radius: 8px 8px 0 0;
+          transition: all 0.3s;
+          img {
+            transform: scale(1.1);
+            transition: all 0.3s;
+          }
+        }
+        .blogContent {
+          color: white !important;
+          transition: all 0.3s;
+          box-shadow: #6154f2 0px 2px 8px 1px;
+          &::after {
+            height: 100%;
+            transition: all 0.3s;
+            z-index: -1;
+          }
+          span > svg {
+            color: white;
+            transition: all 0.3s;
+          }
+          button {
+            color: white;
+            transition: all 0.3s;
+          }
+        }
+      }
+    }
+
   }
 }

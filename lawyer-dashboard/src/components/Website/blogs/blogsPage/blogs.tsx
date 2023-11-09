@@ -7,9 +7,8 @@ import Hero from "./Hero/Hero";
 import NavBarTest from "../../Header/Navbar/Navbar";
 import Hero2 from "./Hero2/Hero2";
 import HeaderWrapper from "./HeaderWrapper/HeaderWrapper";
-import SideBarBlogPage from "./SideBar/sideBar";
 import { useTranslations } from "next-intl";
-import { usePathname } from "next/navigation";
+
 
 
 const Blogs = ({ blogData ,children}: { blogData: any,children:any }) => {

@@ -46,26 +46,24 @@ const path = usePathname();
                 <p className="title description">{t('description')}</p>
                 <div className="row ">
                   {aboutList.map((item, index) => (
-                    <div className="center">
-                      {arabic ? (
-                          <Stack key={index} direction="row" spacing={3} className="about-list">
-            
-                         
+                    <div key={index} className="center">
+                      {/* {arabic ? (
+                          <Stack key={index}direction="row" spacing={5} className="about-list">
                           {item}
                           <i className="flaticon-checked title"></i>
                         </Stack>
-                      ) : (
+                      ) : ( */}
                         <Stack key={index} direction="row" spacing={3} className="about-list">
             
                         <i className="flaticon-checked title"></i>
                         {item}
                       </Stack>
-                    )}
+                    {/* )} */}
                     </div>
                   ))}
                 </div>
                 <div className="contactBtn"> 
-                <Link href="/contact-2" className="default-btn">
+                <Link href={arabic?"/ar/home#contact":"/en/home#contact"} className="default-btn">
                   {t('contact')}
                 </Link>
 

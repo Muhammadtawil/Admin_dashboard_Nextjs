@@ -19,20 +19,24 @@ const BlogWebList = ({ blogsData }: { blogsData: any }) => {
 
   return (
     <div className={`${style.projectStyle} sectionStyle`}>
+        <div className="container">
+      <div className={arabic ? "main" : "mainsEn"}>
+      <span className={arabic ? "main" : "mainsEn"}>{t('firstTitle')}</span>
+      <h2 className={arabic ? "mains" : "mainsEng"}>  {t('description')}</h2>
+        </div>
+        </div>
       <div className="section-title">
-        <span>{t('firstTitle')}</span>
-        <h2>      {t('title')} </h2>
-        <p>
-          {t('description')}
-        </p>
+     
       </div>
       <Container>
-      <Stack spacing={3} direction={"row"} alignItems="center" justifyContent="space-between">
-          <h2 className="sectionTitle blogTitle">{t('firstTitle') }</h2>
-          <Link href='/ar/news'>
+        <div className="blogTitle">
+        <Stack spacing={3} direction={"row"} alignItems="center" justifyContent="space-between">
+          <h2 className="blogTitle">{t('lastBlogs') }</h2>
+          <Link href='/ar/blogs'>
             <h5 className="view-all"><span>{t('viewAll') }</span></h5>
           </Link>
 </Stack>
+  </div>
 
 
         <Row className="g-3">

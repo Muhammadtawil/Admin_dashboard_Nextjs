@@ -117,7 +117,7 @@ const footerData = createFooterData();
               {footerData?.contacts?.map((data, index) => (
                 <div key={index}>
                   {data?.icon}
-                  <p>{data?.message}</p>
+                  <p className="footer-info">{data?.message}</p>
                 </div>
               ))}
               {/* Contact end */}
@@ -143,7 +143,7 @@ const footerData = createFooterData();
               </motion.div>
             </Col>
           </Row>
-          <p className="mt-3 mb-0">{footerData?.copyRightMsg}</p>
+          <p className="footer-info mt-3 mb-0">{footerData?.copyRightMsg}</p>
         </Container>
       </div>
       </div>

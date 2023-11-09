@@ -7,6 +7,8 @@ import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import testimonialData from "./testimonialData";
 import style from "./Testimonial.module.scss";
+import { usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const Testimonial = () => {
   // State for control active slide style
@@ -46,11 +48,19 @@ const Testimonial = () => {
       setActive(s?.track?.details?.abs);
     },
   });
-
+  const path = usePathname();
+  const arabic = path.includes('ar')
+  const t=useTranslations('webTestimonials')
   return (
     <div className={`${style.testimonialStyle} sectionStyle`}>
+         <div className="container">
+      <div className={arabic ? "main" : "mainsEn"}>
+      <span className={arabic ? "main" : "mainsEn"}>{t('title')}</span>
+      <h2 className={arabic ? "mains" : "mainsEng"}>  {t('description')}</h2>
+        </div>
+        </div>
       <Container>
-        <h2 className="sectionTitle">{testimonialData?.section?.title}</h2>
+     
         {/* Testimonial slider start */}
         <motion.div
           initial={{ opacity: 1, x: 10 }}

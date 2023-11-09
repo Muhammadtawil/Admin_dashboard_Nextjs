@@ -2,6 +2,51 @@
   overflow: hidden;
   // background-color: lighten($color: #6154f2, $amount: 34);
   // Slide style
+  .blogTitle{
+    padding-bottom:10px;
+   
+  }
+  .mains{
+    font-size:40px;
+    font-weight:bold;
+    text-align:right;
+    // margin: auto;
+    // width: 50%;
+    // padding: 10px;
+    color:#6b6bd4
+  } 
+  .mainsEng{
+    font-size:40px;
+    font-weight:bold;
+    text-align:left;
+    color:#6b6bd4
+  }
+  .main{
+    font-size:80px;
+    font-weight:bold;
+    text-align:right;
+ 
+    // margin: auto;
+    // width: 50%;
+    // padding: 10px;
+
+  }
+  .mainsEn{
+    font-size:70px;
+    font-weight:bold;
+    text-align:left;
+  }
+
+  .mainD{
+    font-size:20px;
+    padding-top:10px;
+
+  }
+
+ .mainDEn{
+    font-size:20px;
+    padding-top:10px;
+  }
   .testimonialCard {
     margin-top: 2rem;
     padding: 2rem 1.5rem;
@@ -49,4 +94,56 @@
       color: white !important;
     }
   }
+  @media (max-width: 767px) {
+
+    .blogTitle{
+      padding-bottom:10px;
+      padding-top:10px;
+      font-size:15px;
+     
+    }
+    .mains{
+      font-size:30px;
+      font-weight:bold;
+      text-align:right;
+      // margin: auto;
+      // width: 50%;
+      // padding: 10px;
+  
+    } 
+    .mainsEng{
+      font-size:25px;
+      font-weight:bold;
+      text-align:left;
+      padding-bottom:10px;
+    }
+    .main{
+      font-size:60px;
+      font-weight:bold;
+      text-align:right;
+  
+      // margin: auto;
+      // width: 50%;
+      // padding: 10px;
+  
+    }
+    .mainsEn{
+      font-size:32px;
+      font-weight:bold;
+      text-align:left;
+    }
+  
+    .mainD{
+      font-size:18px;
+      padding-top:10px;
+      text-align:right;
+    }
+  
+   .mainDEn{
+      font-size:20px;
+      padding-top:10px;
+      text-align:left;
+    }
+  }
+
 }

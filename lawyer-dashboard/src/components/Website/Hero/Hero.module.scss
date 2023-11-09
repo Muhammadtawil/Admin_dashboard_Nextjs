@@ -16,16 +16,17 @@
     }
     h2 {
       font-weight: bold;
-      font-size: 3.8rem;
+      font-size: 3.9rem;
       line-height: 3.8rem;
       letter-spacing: 0;
+      padding:10px;
     }
     button {
       background-color: #f6a546;
       color: white;
       border-radius: 8px;
       border: 0;
-      font-size: 1rem;
+      font-size: 1.3rem;
       font-weight: 600;
       padding: 13px 18px;
       transition: all 0.1s;
@@ -103,21 +104,23 @@
       }
       h5 {
         font-weight: 500;
-        font-size: 1rem;
+        font-size: 1.3rem;
   
       }
       h2 {
         font-weight: bold;
-        font-size: 25px;
+        font-size: 30px;
         line-height: 3.8rem;
         letter-spacing: 0;
       }
       button {
+        text-align:right;
+       
         background-color: #f6a546;
         color: white;
         border-radius: 5px;
         border: 0;
-        font-size: 0.5rem;
+        font-size: 0.8rem;
         font-weight: 600;
         padding: 10px 15px;
         transition: all 0.1s;

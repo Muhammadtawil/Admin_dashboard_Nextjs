@@ -1,13 +1,45 @@
 .servicesStyle :global {
   .mains{
-    font-size:90px;
+    font-size:50px;
     font-weight:bold;
-    text-align:center;
+    text-align:right;
+    // margin: auto;
+    // width: 50%;
+    // padding: 10px;
+    color:#6b6bd4
+  } 
+  .mainsEng{
+    font-size:50px;
+    font-weight:bold;
+    text-align:left;
+    color:#6b6bd4
+  }
+  .main{
+    font-size:80px;
+    font-weight:bold;
+    text-align:right;
+ 
     // margin: auto;
     // width: 50%;
     // padding: 10px;
 
-  } 
+  }
+  .mainsEn{
+    font-size:90px;
+    font-weight:bold;
+    text-align:left;
+  }
+
+  .mainD{
+    font-size:20px;
+    padding-top:10px;
+
+  }
+
+ .mainDEn{
+    font-size:20px;
+    padding-top:10px;
+  }
     .offer-area {
         position: relative;
         z-index: 1;
@@ -53,15 +85,15 @@
         left: 700px;
         animation: animationFramesOne 10s infinite linear;
       }
-      .main{
-        font-size:90px;
-        font-weight:bold;
-        text-align:center;
-        // margin: auto;
-        // width: 50%;
-        // padding: 10px;
+      // .main{
+      //   font-size:90px;
+      //   font-weight:bold;
+      //   text-align:center;
+      //   // margin: auto;
+      //   // width: 50%;
+      //   // padding: 10px;
   
-      } 
+      // } 
       .single-offer {
         position: relative;
         padding-right: 30px;
@@ -228,4 +260,63 @@
             color:white;
         }
       }
+
+      @media (max-width: 768px) {
+        .mains{
+          font-size:30px;
+          font-weight:bold;
+          text-align:right;
+          // margin: auto;
+          // width: 50%;
+          // padding: 10px;
+      
+        } 
+        .mainsEng{
+          font-size:30px;
+          font-weight:bold;
+          text-align:left;
+        }
+        .main{
+          font-size:80px;
+          font-weight:bold;
+          text-align:right;
+      
+          // margin: auto;
+          // width: 50%;
+          // padding: 10px;
+      
+        }
+        .mainsEn{
+          font-size:90px;
+          font-weight:bold;
+          text-align:left;
+        }
+      
+        .mainD{
+          font-size:20px;
+          padding-top:10px;
+          text-align:right;
+        }
+      
+       .mainDEn{
+          font-size:20px;
+          padding-top:10px;
+          text-align:left;
+        }
+        .single-offer{
+          align-items:center;
+          text-align:right;
+          padding-top:10px;
+        }
+        .custom-card{
+          align-items:center;
+          text-align:right;
+        }
+        .services-item{
+          align-items:center;
+          text-align:right;
+        }
+
+      }
+
 }

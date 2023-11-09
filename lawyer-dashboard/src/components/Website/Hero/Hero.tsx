@@ -6,6 +6,7 @@ import { Button, Col, Row } from "react-bootstrap";
 import style from "./Hero.module.scss";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const Hero = () => {
 
@@ -24,7 +25,9 @@ const Hero = () => {
             <h5>{t('welcomeMessageTwo')}</h5>
 
             {/* <p>{heroData?.details}</p> */}
+            <Link href="#contact">
             <Button >{t('contact')}</Button>
+            </Link>
           </div>
           {/* Hero details end */}
         </Col>

@@ -14,7 +14,7 @@ const LatestNews = async () => {
     <>
      
          
-      <NewsList newsData={news} shouldSlice={true} sliceTarget={3}/>
+      <NewsList newsData={news} shouldSlice={true} sliceTarget={4}/>
     
     
     </>

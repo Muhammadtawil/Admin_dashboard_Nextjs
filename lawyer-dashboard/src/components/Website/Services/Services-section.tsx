@@ -1,10 +1,8 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+
 import { Stack } from '@mui/material';
 import Style from './services.module.scss';
-import { Translator } from 'google-translate-api-x';
 import { usePathname } from 'next/navigation';
-import { getServices } from '@/server/web/services/services/services';
 import { useTranslations } from 'next-intl';
 
 const ServicesSection = ({services,translatedServices}:{services:any,translatedServices:any}) => {
@@ -14,12 +12,17 @@ const ServicesSection = ({services,translatedServices}:{services:any,translatedS
   const servicesData = arabic ? translatedServices : services;
 
   return (
-    <section id="services" className={`${Style.servicesStyle}about-area pt-100 pb-70`}>
+    <section id="services" className={`${Style.servicesStyle}`}>
       <div className="container">
+        
+        <div className={arabic ? "main" : "mainsEn"}>
+        <span className={arabic ? "main" : "mainsEn"}>{t('firstTitle')}</span>
+        <h2 className={arabic ? "mains" : "mainsEng"}>{t('title')}</h2>
+</div>
         <div className="section-title">
-          <span className="mains">{t('firstTitle')}</span>
-          <h2 className="servicesHead mains">{t('title')}</h2>
-          <p className="servicesHead">
+      
+        
+          <p  className={arabic ? "mainD" : "mainDEn"}>
           {t('description')}
           </p>
         </div>
@@ -35,7 +38,7 @@ const ServicesSection = ({services,translatedServices}:{services:any,translatedS
               <div className="single-offer custom-card services-item">
                 <Stack direction="row" spacing={2}>
                   <div className="flaticon-tick"> </div>
-                  <h3>{arabic?service.serviceTitle.text:service.serviceTitle}</h3> {/* Use serviceTitle.text */}
+                  <h3>{arabic?service.serviceTitle.text.toString:service.serviceTitle}</h3> {/* Use serviceTitle.text */}
                 </Stack>
                 <p className="text-center">{arabic?service.serviceDescription.text:service.serviceDescription}</p>
               </div>

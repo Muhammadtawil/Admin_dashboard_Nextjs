@@ -287,7 +287,7 @@
 
       "WebBlog":{
         "title":"Blogs",
-        "description":"Discover the latest articles that will inspire and inform you. Dive into a world of knowledge and insight that awaits",
+        "description":"Discover the latest articles that will inspire and inform you",
         "recentBlogs":"Our Recent Blogs",
         "readMore":"Read More",
         "viewAll":"View All",
@@ -299,7 +299,8 @@
         "archive":"Archive",
         "loadMore":"Load More",
         "search":"search articles here",
-        "firstTitle":"Latest Blogs"
+        "firstTitle":"Latest Blogs",
+        "lastBlogs":"Latest Blogs"
       },
       "webSubscriber":{
         "title":"Subscribe to our Newsletter",
@@ -328,10 +329,12 @@
         "archive":"Archive",
         "loadMore":"Load More",
         "search":"search news here",
-        "firstTitle":"Latest News"
+        "firstTitle":"News",
+        "lastNews":"Latest News"
       },
       "webTeam":{
-        "title":"The Team Behind LawFirm",
+        "title":"LawFirm Team",
+        "firstTitle":"More than just a team",
         "description":"At our LawFirm, we are more than just legal professionals; we are guardians of justice, champions of your rights, and partners in your journey through the complexities of the legal world. With a deep-rooted commitment to upholding the law and a passion for ensuring a fair and just society, we stand by your side, providing expert counsel and unwavering support. Our mission is not only to win cases but to make a positive impact"
       },
      "webServices" :{
@@ -339,6 +342,10 @@
 "title":"Our Professional Services For You",
 "description":"We are dedicated to providing top-notch legal services to our clients. With our team of experienced lawyers, we offer a wide range of specialized services to meet your legal needs."
 
+      },
+      "webTestimonials":{
+        "title":"Testimonial from our Clients",
+        "description":"We are characterized by trust"
       }
 
 }

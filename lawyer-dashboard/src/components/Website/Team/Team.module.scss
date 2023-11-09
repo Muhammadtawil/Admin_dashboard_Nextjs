@@ -1,5 +1,50 @@
 /* // Assuming your component has a unique className like "teamCard"* */
 .teamStyle :global {
+  .blogTitle{
+    padding-bottom:10px;
+   
+  }
+  .mains{
+    font-size:40px;
+    font-weight:bold;
+    text-align:right;
+    // margin: auto;
+    // width: 50%;
+    // padding: 10px;
+    color:#6b6bd4
+  } 
+  .mainsEng{
+    font-size:40px;
+    font-weight:bold;
+    text-align:left;
+    color:#6b6bd4
+  }
+  .main{
+    font-size:80px;
+    font-weight:bold;
+    text-align:right;
+ 
+    // margin: auto;
+    // width: 50%;
+    // padding: 10px;
+
+  }
+  .mainsEn{
+    font-size:90px;
+    font-weight:bold;
+    text-align:left;
+  }
+
+  .mainD{
+    font-size:20px;
+    padding-top:10px;
+
+  }
+
+ .mainDEn{
+    font-size:20px;
+    padding-top:10px;
+  }
   .team-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -83,6 +128,7 @@
 
   .section-subtitle{
     padding:20px;
+    font-size:20px;
   }
   
   .team-icon li a:hover {
@@ -103,7 +149,55 @@
 
   @media (max-width: 767px) {
     .team-grid {
-      grid-template-columns: repeat(2, 1fr); /* Display two cards per row on mobile screens (< 768px) */
+      grid-template-columns: repeat(2, 2fr); /* Display two cards per row on mobile screens (< 768px) */
+    }
+    .blogTitle{
+      padding-bottom:10px;
+      padding-top:10px;
+      font-size:15px;
+     
+    }
+    .mains{
+      font-size:30px;
+      font-weight:bold;
+      text-align:right;
+      // margin: auto;
+      // width: 50%;
+      // padding: 10px;
+  
+    } 
+    .mainsEng{
+      font-size:25px;
+      font-weight:bold;
+      text-align:left;
+      padding-bottom:10px;
+    }
+    .main{
+      font-size:70px;
+      font-weight:bold;
+      text-align:right;
+  
+      // margin: auto;
+      // width: 50%;
+      // padding: 10px;
+  
+    }
+    .mainsEn{
+      font-size:80px;
+      font-weight:bold;
+      text-align:left;
+    }
+  
+    .mainD{
+      font-size:20px;
+      padding-top:10px;
+      text-align:right;
+    }
+  
+   .mainDEn{
+      font-size:20px;
+      padding-top:10px;
+      text-align:left;
     }
   }
 }

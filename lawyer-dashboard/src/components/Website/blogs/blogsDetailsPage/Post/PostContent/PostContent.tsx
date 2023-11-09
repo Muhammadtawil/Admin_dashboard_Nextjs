@@ -20,7 +20,7 @@ function getRandomQuote(blogContent: string) {
 
   const randomIndex = Math.floor(Math.random() * (sentences.length - 1));
   const quote = `${sentences[randomIndex]}. ${sentences[randomIndex + 1]}`;
-  return quote;
+  return quote.toString();
 }
 
 const PostContent = ({
@@ -41,7 +41,7 @@ const PostContent = ({
   // const blogTitle = params.blogTitle;
     const [isCopied, setIsCopied] = useState(false);
   // const blogsData = arabic ? translatedBlog : blog;
-  const blogContent = arabic ? translatedBlogContent.text: blog.blogContent;
+  const blogContent = arabic ? translatedBlogContent.text.toString(): blog.blogContent;
  
 
     if (!blog || !blog.blogContent) {
@@ -61,7 +61,18 @@ const PostContent = ({
         .slice(Math.floor(blogContentArray.length / 2))
         .join(". ");
 
-    const randomQuote = getRandomQuote(blogContent);
+  const randomQuote = getRandomQuote(secondPart);
+  function getSpecificQuote(blogContent: string, index: number): string {
+    const sentences = secondPart.split(". ");
+    if (sentences.length < 2 || index >= sentences.length - 1) {
+      return "Not enough content for the specified quote.";
+    }
+  
+    const quote = `${sentences[index]}. ${sentences[index + 1]}`;
+    return quote.toString();
+  }const specificQuoteIndex = 2; // Change this to the index you want
+  const specificQuote = getSpecificQuote(secondPart, specificQuoteIndex)
+  
   return (
 
    
@@ -73,7 +84,7 @@ const PostContent = ({
         <div className="comment">
           {blog.author.authorName && (
             <span>
-            <FaRegUserCircle fontSize={25} /> {arabic ? translatedBlogAuthor.text : blog.author.authorName}
+            <FaRegUserCircle fontSize={25} /> {arabic ? translatedBlogAuthor.text.toString() : blog.author.authorName}
           </span>
           )}
           {blog?.createdAt && blog?.createdAt && (
@@ -90,10 +101,10 @@ const PostContent = ({
           )}
         </div>
         <div className="content">
-          <h2>{arabic?translatedBlogTitle.text:blog.blogTitle}</h2>
+          <h2>{arabic?translatedBlogTitle.text.toString():blog.blogTitle}</h2>
           <p>{firstPart}</p>
           <blockquote className="flaticon-quote quote">
-                                        <p>{randomQuote}</p>
+          <p>{specificQuote ? specificQuote.toString() : null}</p>
                                     </blockquote>
 
                                     <p>{secondPart}</p>
@@ -102,28 +113,37 @@ const PostContent = ({
                   <div className="article-share" style={{ display: "flex", alignItems: "center" }}>
     <h4 style={{ marginRight: "10px" }}>{t('share')}:</h4>
     <ul style={{ display: "flex", alignItems: "center", listStyle: "none", margin: 0, padding: 0 }} className="team-icon">
-        {typeof window !== 'undefined' && (
+            {typeof window !== 'undefined' && (
+              <>
             <li style={{ marginRight: "10px" }} className="facebook">
                 <CopyToClipboard text={window.location.href} onCopy={() => setIsCopied(true)}>
                     <Link href="https://www.facebook.com" style={{ textDecoration: "none" }}>
                         <FaFacebook />
                     </Link>
                 </CopyToClipboard>
-            </li>
+                </li>
+              </>
+                
         )}
-        {typeof window !== 'undefined' && (
-            <li style={{ marginRight: "10px" }} className="twitter">
+            {typeof window !== 'undefined' && (
+              <>
+                <li style={{ marginRight: "10px" }} className="twitter">
                 <Link href={`https://twitter.com/share?url=http://localhost:3000/ar/blogs/${blogId}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
                     <FaXTwitter />
                 </Link>
             </li>
+              </>
+          
         )}
-        {typeof window !== 'undefined' && (
+            {typeof window !== 'undefined' && (
+              <>
             <li>
                 <Link href={`mailto:?body=${window.location.href}`} style={{ textDecoration: "none" }}>
                     <FaEnvelope />
                 </Link>
-            </li>
+                </li>
+              </>
+                
         )}
     </ul>
     {isCopied && <div style={{ marginLeft: "10px" }}>URL copied to clipboard!</div>}

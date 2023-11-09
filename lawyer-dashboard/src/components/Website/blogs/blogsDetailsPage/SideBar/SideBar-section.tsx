@@ -31,63 +31,63 @@ const authorBlogs = blogs.filter((blog: any) => (blog.author.authorId === author
  
       <div className="popularPost">
         <h4>{t('popularPosts') }</h4>
-        {filteredBlogs.map((data:any, index:any) => (
-             <Link href={`/ar/blogs/${data.blogId}`}>
-          <div className="postCard" key={index} >
-         
-            <div>
-              <Image
-                width={200}
-                height={200}
-                src={data?.blogImageUrl}
-                alt="blog image"
-              />
-              </div>
-            <div>
-              <h5 >{data.blogTitle.slice(0, 20)}...</h5>
-              <h6 className="date">    {new Date(data.createdAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
-                                     day: "numeric",
-                                     month: "long",
-                                     year: "2-digit",
-                             
-                                   })}</h6>
-            </div>
-          </div>
-         </Link>
-            
-        ))}
+  
+{filteredBlogs.map((data: any, index: any) => (
+  <Link key={index} href={`/ar/blogs/${data.blogId}`}>
+    <div className="postCard">
+      <div>
+        <Image
+          width={200}
+          height={200}
+          src={data?.blogImageUrl}
+          alt="blog image"
+        />
       </div>
-      <div className="popularPost">
-  {authorBlogs.length > 0 && (
-    <>
-            <h4>{t('readAuthor') }</h4>
-      {authorBlogs.map((data: any, index: any) => (
-        <Link href={`/ar/blogs/${data.blogId}`} key={index}>
-          <div className="postCard">
-            <div>
-              <Image
-                width={200}
-                height={200}
-                src={data?.blogImageUrl}
-                alt="blog image"
-              />
-            </div>
-            <div>
-              <h5>{data.blogTitle.slice(0, 20)}...</h5>
-              <h6 className="date">
-                {new Date(data.createdAt).toLocaleDateString("en-US", {
-                  day: "numeric",
-                  month: "long",
-                  year: "2-digit",
-                  hour: "numeric",
-                })}
-              </h6>
-            </div>
-          </div>
-        </Link>
-      ))}
-    </>
-  )}
+      <div>
+        <h5>{data.blogTitle.slice(0, 20)}...</h5>
+        <h6 className="date">
+          {new Date(data.createdAt).toLocaleDateString(arabic ? "ar-LB" : "en-US", {
+            day: "numeric",
+            month: "long",
+            year: "2-digit",
+          })}
+        </h6>
+      </div>
+    </div>
+  </Link>
+))}
+
+
+        {authorBlogs.map((data: any, index: any) => (
+  <>
+          <h4>{t('readAuthor') }</h4>
+  <Link key={index} href={`/ar/blogs/${data.blogId}`}>
+    <div key={index} className="postCard">
+      <div>
+        <Image
+          width={200}
+          height={200}
+          src={data?.blogImageUrl}
+          alt="blog image"
+        />
+      </div>
+      <div>
+        <h5>{data.blogTitle.slice(0, 20)}...</h5>
+        <h6 className="date">
+          {new Date(data.createdAt).toLocaleDateString("en-US", {
+            day: "numeric",
+            month: "long",
+            year: "2-digit",
+            hour: "numeric",
+          })}
+        </h6>
+      </div>
+    </div>
+            </Link>
+  </>
+            
+))}
+
 </div>
 <SubscribeSide Subscribe={Subscribe}/>
 

@@ -3,16 +3,24 @@ import style from "./Team.module.scss";
 import { FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 const TeamCards = ({ teamData }: { teamData: any[] }) => {
   let message = `There are many variations of passages of Lorem Ipsum available but the \n majority have suffered alteration in some injected humour.`;
-const t=useTranslations('webTeam')
+  const t = useTranslations('webTeam')
+  const path = usePathname();
+  const arabic=path.includes('ar')
   return (
     <section className={`${style.teamStyle} section-white`}>
+         <div className="container">
+            <div className={arabic ? "main" : "mainsEn"}>
+      <span className={arabic ? "main" : "mainsEn"}>{t('title')}</span>
+      <h2 className={arabic ? "mains" : "mainsEng"}>  {t('firstTitle')}</h2>
+        </div>
+        </div>
       <div className="container">
         <div className="row">
           <div className="col-md-12 text-center">
-            <h2 className="section-title">{t('title') }</h2>
             <p className="section-subtitle">{t('description')}</p>
           </div>
           <div className="team-grid " >

@@ -1,5 +1,14 @@
 .AboutUsStyle :global{
-
+  .arabic-list{
+    // display: flex;
+    align-items: right;
+    justify-content: space-between;
+    text-align: right;
+    // flex-direction:row-reverse;
+    // position: relative;
+    // color:green;
+    width:100%;
+  }
     .about-img {
         // text-align: center;
   padding:0;
@@ -29,6 +38,7 @@
       .main{
         font-size:50px;
         font-weight:bold;
+        color:#6b6bd4
       }
       .description{
         font-size:25px;

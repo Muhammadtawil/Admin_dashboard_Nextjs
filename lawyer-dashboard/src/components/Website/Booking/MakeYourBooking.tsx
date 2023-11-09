@@ -11,6 +11,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import style from "../Contact/ContactForm/ContactForm.module.scss";
 import createFooterData from "../Footer/footerData";
+import { Stack } from "immutable";
 
 
 
@@ -55,7 +56,7 @@ const path = usePathname()
     };
   
   return (
-    <div className={`${style.contactFormSection} sectionStyle`}>
+    <div id="contact" className={`${style.contactFormSection} sectionStyle`}>
     <Container>
         <Row className="row-cols-1 row-cols-md-2 gy-5 gy-md-0 gx-5">
           
@@ -84,42 +85,51 @@ const path = usePathname()
    
            {/* <Image src="/contact6.png" alt="Image" height={550} width={550} /> */}
   
-       <p >  {t('message')}</p>
+       <p className="description">  {t('message')}</p>
             <br />
             <br />
 
             
-            <Row>
+            <Row >
             <Col md={4} lg={5} className="information">
   {/* Contact start */}
-
-    {footerData?.contacts?.map((data, index) => (
-      <li key={index} className="d-flex align-items-center" style={{ width: "100%" ,padding:"10px" }}>
-        {data?.icon}
-        <span style={{ padding:"10px", fontSize:"12px"}}>{data?.message}</span>
-      </li>
-    ))}
-  
+  {footerData?.contacts?.map((data, index) => (
+  <li key={index} className="d-flex align-items-center" style={{ width: "100%", padding: "10px" }}>
+  {arabic ? (
+    <div className="arabic-list">
+      <span className="arabic-list" style={{ padding: "10px", fontSize: "12px" }}>{data?.message}</span>
+ {data?.icon}
+    </div>
+  ) : (
+    <>
+      {data?.icon}
+      <span style={{ padding: "10px", fontSize: "12px" }}>{data?.message}</span>
+    </>
+  )}
+</li>
+  ))}
   {/* Contact end */}
   {/* Social link start */}
-  <div className="d-flex gap-2 socialLink" style={{ padding:"10px"}}  >
+  <div className="d-flex gap-2 socialLink arabic-list" style={{ padding: "10px" ,fontSize:"34px"}}>
     {footerData?.socialLinks.map((data, index) => (
       <div key={index}>
-        <a   href={data?.link}>{data?.icon}</a>
+        <a href={data?.link}>{data?.icon}</a>
       </div>
     ))}
   </div>
   {/* Social link end */}
-              </Col>
+</Col>
+
+
         <Col>
               <div
           className="overflow-hidden rounded-3"
-          style={{ width: "100%", height: "80%" }}
+          style={{ width: "100%", height: arabic?"80%":"90%" }}
         >
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830913564!2d-74.11976373946231!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1648396699742!5m2!1sen!2sbd"
             width="100%"
-            height="250"
+            height="230"
             // allowFullScreen=""
             loading="lazy"
             style={{ border: 0 }}
@@ -168,7 +178,7 @@ const path = usePathname()
                   className={errors.email && "inputErrorStyle"}
                   {...register("email", { required: true })}
                   type="email"
-                  placeholder={t('Phone')}
+                  placeholder={t('email')}
                 />
               </motion.div>
             </div>

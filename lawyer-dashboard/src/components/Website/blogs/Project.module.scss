@@ -2,6 +2,51 @@
   overflow: hidden;
   // background-color: lighten($color: #6154f2, $amount: 34);
   // Card css start
+  .blogTitle{
+    padding-bottom:10px;
+   
+  }
+  .mains{
+    font-size:40px;
+    font-weight:bold;
+    text-align:right;
+    // margin: auto;
+    // width: 50%;
+    // padding: 10px;
+    color:#6b6bd4
+  } 
+  .mainsEng{
+    font-size:40px;
+    font-weight:bold;
+    text-align:left;
+    color:#6b6bd4
+  }
+  .main{
+    font-size:80px;
+    font-weight:bold;
+    text-align:right;
+ 
+    // margin: auto;
+    // width: 50%;
+    // padding: 10px;
+
+  }
+  .mainsEn{
+    font-size:90px;
+    font-weight:bold;
+    text-align:left;
+  }
+
+  .mainD{
+    font-size:20px;
+    padding-top:10px;
+
+  }
+
+ .mainDEn{
+    font-size:20px;
+    padding-top:10px;
+  }
   .projectCard {
     height: 100%;
     > div {
@@ -80,9 +125,7 @@
         }
       }
     }
-    .blogTitle{
-      padding:10px;
-    }
+  
   }
   // Card css end
   // Responsive css
@@ -92,5 +135,66 @@
         padding: 4rem 1.5rem;
       }
     }
+  }
+  @media (max-width: 768px) {
+    .blogTitle{
+      padding-bottom:10px;
+     
+    }
+    .mains{
+      font-size:30px;
+      font-weight:bold;
+      text-align:right;
+      // margin: auto;
+      // width: 50%;
+      // padding: 10px;
+  
+    } 
+    .mainsEng{
+      font-size:20px;
+      font-weight:bold;
+      text-align:left;
+    }
+    .main{
+      font-size:80px;
+      font-weight:bold;
+      text-align:right;
+  
+      // margin: auto;
+      // width: 50%;
+      // padding: 10px;
+  
+    }
+    .mainsEn{
+      font-size:70px;
+      font-weight:bold;
+      text-align:left;
+    }
+  
+    .mainD{
+      font-size:20px;
+      padding-top:10px;
+      text-align:right;
+    }
+  
+   .mainDEn{
+      font-size:20px;
+      padding-top:10px;
+      text-align:left;
+    }
+    .single-offer{
+      align-items:center;
+      text-align:right;
+      padding-top:10px;
+    }
+    .custom-card{
+      align-items:center;
+      text-align:right;
+    }
+    .services-item{
+      align-items:center;
+      text-align:right;
+    }
+
   }
 }

@@ -20,24 +20,25 @@ const t=useTranslations('webNews')
   let slicedBlogData = shouldSlice ? newsData.slice(0, sliceTarget) : newsData;
   return (
     <div id="news" className={`${style.blogStyle} sectionStyle `}>
-            <div className="section-title">
-            <span>   {t('title')}</span>
-            <h2>   {t('firstTitle')}</h2>
-            <p>
-   {t('description')}
-            </p>
-           </div>
-      <Container>
-
-      <Stack spacing={3} direction={"row"} alignItems="center" justifyContent="space-between">
-  <h2 className="sectionTitle">{t('firstTitle')}</h2>
+          <div className="container">
+      <div className={arabic ? "main" : "mainsEn"}>
+      <span className={arabic ? "main" : "mainsEn"}>{t('firstTitle')}</span>
+      <h2 className={arabic ? "mains" : "mainsEng"}>  {t('description')}</h2>
+        </div>
+        <div className="blogTitle">
+        <Stack spacing={3} direction={"row"} alignItems="center" justifyContent="space-between">
+          <h2 className="blogTitle">{t('lastNews') }</h2>
           <Link href='/ar/news'>
-          <h5 className="view-all"><span>   {t('viewAll')}</span></h5>
+            <h5 className="view-all"><span>{t('viewAll') }</span></h5>
           </Link>
 </Stack>
+  </div>
+      <Container>
+
+ 
 
         
-        <Row className="row-cols-1 row-cols-md-3 gy-4 gy-md-0 ">
+        <Row className="row-cols-1 row-cols-md-4 gy-4 gy-md-1 ">
           {slicedBlogData?.slice(0, sliceTarget)?.map((news:any, index:any) => (
             <motion.div
               
@@ -76,7 +77,7 @@ const t=useTranslations('webNews')
                 <h4 >{news.newsTitle}</h4>
                 <Link href={`/ar/news/${news.newsId}`} className="read-more">
                 <button>
-                  Read More <FaLongArrowAltRight />
+                {t('readMore')} <FaLongArrowAltRight />
                 </button>
                 </Link>
               </div>
@@ -84,7 +85,8 @@ const t=useTranslations('webNews')
             </motion.div>
           ))}
         </Row>
-      </Container>
+        </Container>
+        </div>
     </div>
   );
 };
