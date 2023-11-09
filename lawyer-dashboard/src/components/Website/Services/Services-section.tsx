@@ -38,7 +38,7 @@ const ServicesSection = ({services,translatedServices}:{services:any,translatedS
               <div className="single-offer custom-card services-item">
                 <Stack direction="row" spacing={2}>
                   <div className="flaticon-tick"> </div>
-                  <h3>{arabic?service.serviceTitle.text.toString:service.serviceTitle}</h3> {/* Use serviceTitle.text */}
+                  <h3>{arabic?service.serviceTitle.text:service.serviceTitle}</h3> {/* Use serviceTitle.text */}
                 </Stack>
                 <p className="text-center">{arabic?service.serviceDescription.text:service.serviceDescription}</p>
               </div>
