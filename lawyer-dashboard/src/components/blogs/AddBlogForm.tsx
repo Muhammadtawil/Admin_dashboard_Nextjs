@@ -14,7 +14,7 @@ import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import draftToHtml from "draftjs-to-html";
 import DOMPurify from "dompurify";
-
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
   const t = useTranslations('BlogPage')
   const [status, setstatus] = useState("");
@@ -51,6 +51,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
         }}
       >
         <Box
+          
           component="form"
           noValidate={false}
           action={async (formData) => {
@@ -114,23 +115,23 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
             </Grid>
 
 
-            <Grid item xs={6} md={6} lg={20} className="App">
+            <Grid item xs={12} md={12} lg={12} >
               <CustomTypography text={t('blogContent')} />
-  
+            
               <Editor
              
-  editorState={editorState}
-  onEditorStateChange={setEditorState}
-  wrapperClassName="wrapper-class"
-  editorClassName="editor-class"
-  toolbarClassName="toolbar-class"
-                toolbarStyle={{ display: "flex" }}
-                
-                />
-                  <div
+             editorState={editorState}
+             onEditorStateChange={setEditorState}
+             wrapperClassName="wrapper-class"
+             editorClassName="editor-class"
+             toolbarClassName="toolbar-class"
+                           
+                           />
+  
+                  {/* <div
     className="preview"
     dangerouslySetInnerHTML={createMarkup(convertedContent)}>
-  </div>
+  </div> */}
             </Grid>
     {/* <TextField
                 multiline
@@ -185,6 +186,8 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
           </Grid>
         </Box>
       </Card>
+               
+
     </>
   );
 }

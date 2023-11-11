@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import  { useState } from "react";
 import { Inter } from "next/font/google";
 import { usePathname } from "next/navigation";
 import "../../../styles/remixicon.css";
