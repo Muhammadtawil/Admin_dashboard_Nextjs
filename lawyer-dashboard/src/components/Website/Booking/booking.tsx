@@ -17,15 +17,21 @@ export default async function Booking() {
   const translator = new Translator({ from: 'en', to: 'ar', forceBatch: false});
 
   const translatedServices = await Promise.all(services.map(async (service: any) => {
-    return {
-      serviceTitle: await translator.translate(service.serviceTitle),
-
-
-    };
+    const translatedTitle = await translator.translate(service.serviceTitle);
+    const plainTranslatedService = {
+      ...service,
+      serviceTitle: translatedTitle ,
+    }
+    return plainTranslatedService;
+  }));
+  const servicesWithStrings = translatedServices.map((service: any) => ({
+    ...service,
+    serviceTitle: String(service.serviceTitle.text),
+  
   }));
   return (
       <>
-      <MakeYourBooking onCreate={onCreate} services={services} translatedServices={translatedServices}/>
+      <MakeYourBooking onCreate={onCreate} services={services} translatedServices={servicesWithStrings}/>
       </>
   )
 }

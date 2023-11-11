@@ -8,6 +8,7 @@ import { Stack } from "@mui/material";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
+import { convertRawToEditorState } from "../Shared/convert";
 
 
 
@@ -16,6 +17,10 @@ const BlogWebList = ({ blogsData }: { blogsData: any }) => {
   const t = useTranslations('WebBlog')
   const path = usePathname();
   const arabic=path.includes('ar')
+  const arabicBlogData = blogsData.filter((blog: any) => blog.blogLang === 'arabic')
+  const englishBlogDta = blogsData.filter((blog: any) => blog.blogLang === 'english')
+
+  const blogslistData = arabic ? arabicBlogData : englishBlogDta;
 
   return (
     <div className={`${style.projectStyle} sectionStyle`}>
@@ -41,7 +46,7 @@ const BlogWebList = ({ blogsData }: { blogsData: any }) => {
 
         <Row className="g-3">
           {/* Project Cards start */}
-          {blogsData?.slice(0, 6)?.map((data: any, index: any) => (
+          {blogslistData?.slice(0, 6)?.map((data: any, index: any) => (
             <Col
               key={index}
               md={index === 2 ? 5 : index === 3 ? 7 : index % 2 === 0 ? 7 : 5}
@@ -81,7 +86,15 @@ const BlogWebList = ({ blogsData }: { blogsData: any }) => {
                   </div>
 
 
-                  <Image fill src={data.blogImageUrl} alt="Project image" onClick={() => router.replace(`/ar/blogs/${data.blogId}`)} />
+                  <Image
+                    fill src={data.blogImageUrl?data.blogImageUrl:"/mainLogo.png"}
+                    alt="Project image"
+                    onClick={() => router.replace(`/ar/blogs/${data.blogId}`)}
+                    onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                      const target = e.target as HTMLImageElement;
+                      target.src = '/images/blogs/blog7.png'; 
+                    }}
+                  />
 
 
                 </div>

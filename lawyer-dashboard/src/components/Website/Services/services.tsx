@@ -10,16 +10,32 @@ export default async function Services() {
 
   const translator = new Translator({ from: 'en', to: 'ar', forceBatch: false});
 
-  const translatedServices = await Promise.all(services.map(async (service: any) => {
-    return {
-      serviceTitle: await translator.translate(service.serviceTitle),
-      serviceDescription: await translator.translate(service.serviceDescription),
+  const translatedServices = await Promise.all(
+    services.map(async (service: any) => {
+      const translatedTitle = await translator.translate(service.serviceTitle);
+      const translatedDescription = await translator.translate(service.serviceDescription);
 
-    };
+      // Ensure that the translated properties are plain strings
+      const plainTranslatedService = {
+        ...service,
+        serviceTitle: translatedTitle ,
+        serviceDescription: translatedDescription,
+      };
+
+      return plainTranslatedService;
+    })
+  );
+
+  // Convert serviceTitle and serviceDescription to strings
+  const servicesWithStrings = translatedServices.map((service: any) => ({
+    ...service,
+    serviceTitle: String(service.serviceTitle.text),
+    serviceDescription: String(service.serviceDescription.text),
   }));
+
   return (
       <>
-          <ServicesSection services={services} translatedServices={translatedServices}/>
+          <ServicesSection services={services} translatedServices={servicesWithStrings}/>
       </>
   )
 }

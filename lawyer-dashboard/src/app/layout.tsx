@@ -8,6 +8,7 @@ import '.././styles/LogIn.css'
 import "../styles/web/dark.css";
 
 
+
 export const metadata = { }
 
 export default function RootLayout({
@@ -18,20 +19,18 @@ export default function RootLayout({
   return (
     <>
     
-      <Head>
-
-      {/* <link
-    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap"
-    rel="stylesheet"
-        /> */}
-
-  next();
-      </Head >
+    <head>
+        <title>LawFirm</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="icon" href="/fav.png" />
+      </head>
 <html>
       
 
+    
         {children}
 
+ 
 
 
 

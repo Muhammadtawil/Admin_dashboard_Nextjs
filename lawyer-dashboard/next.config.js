@@ -14,6 +14,14 @@ const nextConfig = {
         pathname: '/**',
       
       },
+
+      // {
+      //   protocol: 'https',
+      //   hostname: 'example.com',
+      //   port: '',
+      //   pathname: '/**',
+
+      // }
     ],
   },
   productionBrowserSourceMaps: false,

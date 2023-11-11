@@ -7,7 +7,8 @@ import SubscribeSide from "@/components/Website/Shared/subscribe/Subscribe";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
-const SideBarSection =  ({ currentBlogId, blogs ,Subscribe}: { currentBlogId: string, blogs: any,Subscribe:any }) => {
+
+  const SideBarSection =  ({ currentBlogId, blogs ,Subscribe}: { currentBlogId: string, blogs: any,Subscribe:any }) => {
   const t=useTranslations('WebBlog')
   const path = usePathname()
   const arabic=path.includes('ar')
@@ -24,7 +25,7 @@ if (!currentBlog) {
 
 const authorId = currentBlog.author.authorId;
 
-const authorBlogs = blogs.filter((blog: any) => (blog.author.authorId === authorId && blog.blogId !== currentBlogId ));
+const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId === authorId && blog.blogId !== currentBlogId &&index==blog.blogId));
 
   return (
     <div className={style.sideBarStyle}>
@@ -34,8 +35,8 @@ const authorBlogs = blogs.filter((blog: any) => (blog.author.authorId === author
   
 {filteredBlogs.map((data: any, index: any) => (
   <Link key={index} href={`/ar/blogs/${data.blogId}`}>
-    <div className="postCard">
-      <div>
+    <div key={index} className="postCard">
+      <div key={index} >
         <Image
           width={200}
           height={200}
@@ -43,9 +44,9 @@ const authorBlogs = blogs.filter((blog: any) => (blog.author.authorId === author
           alt="blog image"
         />
       </div>
-      <div>
-        <h5>{data.blogTitle.slice(0, 20)}...</h5>
-        <h6 className="date">
+      <div key={index} >
+        <h5 key={index} >{data.blogTitle.slice(0, 20)}...</h5>
+        <h6  key={index}  className="date">
           {new Date(data.createdAt).toLocaleDateString(arabic ? "ar-LB" : "en-US", {
             day: "numeric",
             month: "long",
@@ -63,7 +64,7 @@ const authorBlogs = blogs.filter((blog: any) => (blog.author.authorId === author
           <h4>{t('readAuthor') }</h4>
   <Link key={index} href={`/ar/blogs/${data.blogId}`}>
     <div key={index} className="postCard">
-      <div>
+      <div key={index} >
         <Image
           width={200}
           height={200}
@@ -71,7 +72,7 @@ const authorBlogs = blogs.filter((blog: any) => (blog.author.authorId === author
           alt="blog image"
         />
       </div>
-      <div>
+      <div key={index} >
         <h5>{data.blogTitle.slice(0, 20)}...</h5>
         <h6 className="date">
           {new Date(data.createdAt).toLocaleDateString("en-US", {

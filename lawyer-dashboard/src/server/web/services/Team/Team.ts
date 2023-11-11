@@ -1,10 +1,9 @@
 export async function getTeam() {
   const teamUrl = process.env.TEAM_URL;
-  const token = process.env.TOKEN;
+ 
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     next: {

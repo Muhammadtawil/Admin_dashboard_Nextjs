@@ -23,6 +23,7 @@ import StyledDialogTitle from "../shared/StyledDialogTitle";
 import cellStyle from "../shared/cellStyle";
 import ActionsComponent from "../shared/PaginationList";
 import { useTranslations } from "next-intl";
+import DOMPurify from "dompurify";
 
 export default function BlogsTable({
   dataRows,
@@ -72,7 +73,11 @@ export default function BlogsTable({
     setSelectedClient(blog);
     handleClickOpen();
   };
-
+  function createMarkup(html:any) {
+    return {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
   const RenderTableRows = (
     dataRows: any[],
     page: number,
@@ -148,6 +153,7 @@ export default function BlogsTable({
               sx={{
                 ...cellStyle,
               }}
+        
             >
               {limitedContent}
             </TableCell>

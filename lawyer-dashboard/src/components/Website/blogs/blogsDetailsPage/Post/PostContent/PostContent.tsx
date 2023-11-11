@@ -1,19 +1,21 @@
 "use client"
 import Image from "next/image";
 import React, { useState } from "react";
-import { FaEnvelope, FaFacebook, FaRegUserCircle, FaTwitter,FaCalendarAlt } from "react-icons/fa";
+import { FaEnvelope, FaFacebook, FaRegUserCircle,FaCalendarAlt } from "react-icons/fa";
 import { FaXTwitter } from 'react-icons/fa6';
 import style from "./PostContent.module.scss";
 import Link from "next/link";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
+import { convertRawToEditorState } from "@/components/Website/Shared/convert";
+import DOMPurify from "dompurify";
 
 
 
 function getRandomQuote(blogContent: string) {
   const t=useTranslations('WebBlog')
-  const sentences = blogContent.split(". ");
+  const sentences =blogContent ? blogContent.split(". ") : [];
   if (sentences.length < 2) {
       return "Not enough content for a quote.";
   }
@@ -26,34 +28,39 @@ function getRandomQuote(blogContent: string) {
 const PostContent = ({
   params,
   blog,
- translatedValues,
+
 
 }: {
   params: { blogId: string};
       blog: any;
-      translatedValues:any
+   
   }) => {
   const t = useTranslations('WebBlog')
   const blogId = params.blogId;
   const path = usePathname()
   const arabic = path.includes('ar')
-  const { translatedBlogContent, translatedBlogTitle, translatedBlogAuthor } = translatedValues;
+
   // const blogTitle = params.blogTitle;
     const [isCopied, setIsCopied] = useState(false);
   // const blogsData = arabic ? translatedBlog : blog;
-  const blogContent = arabic ? translatedBlogContent.text.toString(): blog.blogContent;
- 
+function createMarkup(html:any) {
+  return {
+    __html: DOMPurify.sanitize(html)
+  }
+}
+
 
     if (!blog || !blog.blogContent) {
         return (
             <div>
                 <p>Blog content is not available.</p>
-                {/* You can add further error handling or redirects here */}
+             
             </div>
         );
     }
 
-    const blogContentArray = blogContent.split(". ");
+    const blogContentArray =blog.blogContent.split(". ") ;
+
     const firstPart = blogContentArray
         .slice(0, Math.floor(blogContentArray.length / 2))
         .join(". ");
@@ -84,7 +91,7 @@ const PostContent = ({
         <div className="comment">
           {blog.author.authorName && (
             <span>
-            <FaRegUserCircle fontSize={25} /> {arabic ? translatedBlogAuthor.text.toString() : blog.author.authorName}
+            <FaRegUserCircle fontSize={25} /> { blog.author.authorName}
           </span>
           )}
           {blog?.createdAt && blog?.createdAt && (
@@ -100,14 +107,18 @@ const PostContent = ({
             </span>
           )}
         </div>
-        <div className="content">
-          <h2>{arabic?translatedBlogTitle.text.toString():blog.blogTitle}</h2>
-          <p>{firstPart}</p>
+        <div className="content" >
+          <h2>{blog.blogTitle}</h2>
+          <div
+    className="preview"
+    dangerouslySetInnerHTML={createMarkup(blog.blogContent)}>
+  </div>
+          {/* <p>{firstPart}</p>
           <blockquote className="flaticon-quote quote">
           <p>{specificQuote ? specificQuote.toString() : null}</p>
                                     </blockquote>
 
-                                    <p>{secondPart}</p>
+                                    <p>{secondPart}</p> */}
           
                   </div>
                   <div className="article-share" style={{ display: "flex", alignItems: "center" }}>
@@ -146,7 +157,7 @@ const PostContent = ({
                 
         )}
     </ul>
-    {isCopied && <div style={{ marginLeft: "10px" }}>URL copied to clipboard!</div>}
+    {/* {isCopied && <div style={{ marginLeft: "10px" }}>URL copied to clipboard!</div>} */}
 </div>
 
                 </div>

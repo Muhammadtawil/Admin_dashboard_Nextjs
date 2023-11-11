@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 import Link from "next/link";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { CgMenuRight } from "react-icons/cg";
 import { IoMdClose } from "react-icons/io";
@@ -14,15 +14,11 @@ import LocaleSwitcher from "@/components/locale/LocaleSwitcher";
 import DarkAndLightMode from "@/components/ControlPanelModal/DarkAndLightMode";
 import { Stack } from "@mui/material";
 
-const NavBarTest = () => {
+const NavBar = () => {
   const navbarData = NavbarData();
-  const [currentPath, setCurrentPath] = useState("");
   const [longClick, setLongClick] = useState(false);
-  const [menu, setMenu] = React.useState(true);
-  const [isSmallNavbar, setIsSmallNavbar] = useState(false);
   const router = useRouter();
   const t = useTranslations('webMainPage');
-
   const [enabled, setEnabled] = useState(true);
   const callback = useCallback((event: any) => {
     router.replace("../api/auth/signin");
@@ -161,4 +157,4 @@ const NavBarTest = () => {
   );
 };
 
-export default NavBarTest;
+export default NavBar;

@@ -19,6 +19,7 @@ const MyEditor = () => {
 
   const handleSaveToDocx = () => {
     const htmlContent = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    console.log(htmlContent)
     // Create a Blob from the HTML content
     const blob = new Blob([htmlContent], {
       type: "application/msword",

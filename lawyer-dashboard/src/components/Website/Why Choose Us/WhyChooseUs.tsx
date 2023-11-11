@@ -39,7 +39,7 @@ const whyList=[t('expert'),t('group'),t('fast')]
           
            <div className="row image-with-border">
                   {whyList.map((item, index) => (
-                    <>
+                    <div key={index}>
                     {arabic?(    <Stack key={index} direction="row" spacing={3} className="about-list arabic-list">
                         <span className="arabic-list">{item }</span>
                         <i className="flaticon-checked"></i>
@@ -48,7 +48,7 @@ const whyList=[t('expert'),t('group'),t('fast')]
                       <i className="flaticon-checked"></i>
                       {item}
                     </Stack>}
-                    </>
+                    </div>
                   ))}
                 </div>
 

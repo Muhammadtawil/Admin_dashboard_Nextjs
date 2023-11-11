@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import BlogLists from "./BlogLists/BlogLists";
 import Hero from "./Hero/Hero";
-import NavBarTest from "../../Header/Navbar/Navbar";
+import NavBar from "../../Header/Navbar/Navbar";
 import Hero2 from "./Hero2/Hero2";
 import HeaderWrapper from "./HeaderWrapper/HeaderWrapper";
 import { useTranslations } from "next-intl";
@@ -60,7 +60,7 @@ const Blogs = ({ blogData ,children}: { blogData: any,children:any }) => {
       </Head>
       <main>
         <HeaderWrapper>
-          <NavBarTest />
+          <NavBar />
 
           <Hero2>
             <Hero searcHandler={searcHandler} />

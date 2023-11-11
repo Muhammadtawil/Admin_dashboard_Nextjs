@@ -2,7 +2,7 @@
 
 import { Container } from "react-bootstrap";
 
-import NavBarTest from "../../Header/Navbar/Navbar";
+import NavBar from "../../Header/Navbar/Navbar";
 
 
 
@@ -22,7 +22,7 @@ const DetailsComponent = ({ params, news ,children}: { params: any, news: any,ch
 
     
         <HeaderWrapper>
-          <NavBarTest />
+          <NavBar />
           <Hero2>
             <Hero  title={news.newsTitle}/>
           </Hero2>

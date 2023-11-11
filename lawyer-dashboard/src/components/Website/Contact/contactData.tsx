@@ -5,17 +5,18 @@ const contactData = {
   },
   getInTouch: {
     title: "Get in Touch",
+    offices: "Our Offices",
     firstAddress: {
-      title: "Contact Details",
+      title: "Main Office",
       address: "63 Cross Road Brooklyn, NY 11220",
-      phone: "(+1) 443-658-0595",
-      email: "contact@cedex.com",
+      phone: "(+1) 70-593-597",
+      email: "contact@clickers.com",
     },
     secondAddress: {
-      title: "Another Contacts",
-      address: "7 Linda Jackson Heights, NY 11372",
-      phone: "(+1) 160-936-1005",
-      email: "contact@cedex.com",
+      title: "Beirut Office",
+      address: "Hamra Heights, Beirut 11372",
+      phone: "(+1) 70-593-597",
+      email: "contact@clickers.com",
     },
   },
   contactForm: {

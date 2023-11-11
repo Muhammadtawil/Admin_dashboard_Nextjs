@@ -1,5 +1,5 @@
 "use client";
-import { Box } from "@mui/material";
+import { Box, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
@@ -9,9 +9,36 @@ import { successAlert, updateAlert } from "../alerts/alerts";
 import CustomTypography from "../shared/formsComponents";
 import { useTranslations } from 'next-intl'
 import PageTitle from "../shared/PageTitle/pageTitle";
+import { useEffect, useState } from "react";
+import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
+import draftToHtml from "draftjs-to-html";
+import DOMPurify from "dompurify";
+
 export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
   const t = useTranslations('BlogPage')
+  const [status, setstatus] = useState("");
+  const [editorState, setEditorState] = useState(
+    () => EditorState.createEmpty(),
+  );
+  const [convertedContent, setConvertedContent] = useState('');
 
+  useEffect(() => {
+    const htmlContent = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    setConvertedContent(htmlContent);
+  }, [editorState]);
+  console.log(convertedContent);
+
+
+
+  const handleChange = (event: any) => {
+    setstatus(event.target.value);
+  };
+  function createMarkup(html:any) {
+    return {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
   return (
     <>
             <PageTitle title={t('pageTitle')} />
@@ -27,10 +54,17 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
           component="form"
           noValidate={false}
           action={async (formData) => {
+  
+          
+           const editedContent= createMarkup(convertedContent)
+    
+            formData.append('blogContent', `${convertedContent}`);
+            console.log(` Text : ${editedContent}`)
             await onCreate(formData)
               .then(() => {
                 successAlert(t('success'));
                 document.querySelector('form')?.reset();
+                setEditorState(EditorState.createEmpty());
               })
               .catch((error: any) => {
 
@@ -79,9 +113,26 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
               />
             </Grid>
 
-            <Grid item xs={12} md={12} lg={12}>
+
+            <Grid item xs={6} md={6} lg={20} className="App">
               <CustomTypography text={t('blogContent')} />
-              <TextField
+  
+              <Editor
+             
+  editorState={editorState}
+  onEditorStateChange={setEditorState}
+  wrapperClassName="wrapper-class"
+  editorClassName="editor-class"
+  toolbarClassName="toolbar-class"
+                toolbarStyle={{ display: "flex" }}
+                
+                />
+                  <div
+    className="preview"
+    dangerouslySetInnerHTML={createMarkup(convertedContent)}>
+  </div>
+            </Grid>
+    {/* <TextField
                 multiline
                 minRows={10}
                 autoComplete="blogContent"
@@ -94,8 +145,8 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
                 InputProps={{
                   style: { borderRadius: 8 },
                 }}
-              />
-            </Grid>
+              /> */}
+   
 
             <Grid item xs={12} md={12} lg={6}>
               <CustomTypography text={t('author')} />
@@ -113,9 +164,31 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
                 }}
               />
             </Grid>
+            <Grid item xs={12} md={12} lg={6}>
+              <CustomTypography text={t('status')}/>
+
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">{t('lang')}</InputLabel>
+                <Select
+                  name="blogLang"
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={status}
+                  label={t('lang')}
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"arabic"}>{t('arabic')}</MenuItem>
+                  <MenuItem value={"english"}>{t('english')}</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
           </Grid>
         </Box>
       </Card>
     </>
   );
 }
+
+
+
+

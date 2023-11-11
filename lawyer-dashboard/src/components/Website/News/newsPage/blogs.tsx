@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import NewsLists from "./NewsLists/NewsLists";
 import Hero from "./Hero/Hero";
-import NavBarTest from "../../Header/Navbar/Navbar";
+import NavBar from "../../Header/Navbar/Navbar";
 import HeaderWrapper from "./HeaderWrapper/HeaderWrapper";
 import { useTranslations } from "next-intl";
 import Hero2 from "../../blogs/blogsPage/Hero2/Hero2";
@@ -59,7 +59,7 @@ const News = ({ newsData ,children}: { newsData: any,children:any }) => {
       </Head>
       <main>
         <HeaderWrapper>
-          <NavBarTest />
+          <NavBar />
 
           <Hero2>
             <Hero searcHandler={searcHandler} />

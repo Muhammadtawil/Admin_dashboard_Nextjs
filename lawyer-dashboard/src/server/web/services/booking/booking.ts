@@ -19,25 +19,27 @@ export default async function AddClient(data: FormData) {
   const clientName = data.get("clientName");
   const clientPhone = data.get("clientPhone");
   const clientEmail = data.get("clientEmail");
-  const clientServiceName = data.get("clientService");
+  const clientServiceId = data.get("clientService");
+  const clientMessage = data.get('clientMessage')
+  // const originalServiceName = data.get("originalServiceTitle");
 
   const clientData = {
     clientName,
     clientPhone,
-    clientEmail,
-    chosenServiceName: clientServiceName,
+    ...(clientEmail && { clientEmail }), // Include clientEmail only if it's not empty
+    ...(clientMessage && { clientMessage }), // Include clientMessage only if it's not empty
+    chosenServiceId:clientServiceId, 
   };
 
   const jsonData = JSON.stringify(clientData);
 
   // Define the URL for adding a client (replace with the correct endpoint)
-  const bookingUrl = process.env.BOOKING_URL; // Replace with the correct endpoint for adding a client
+  const bookingUrl = process.env.WEBCLIENTURL; // Replace with the correct endpoint for adding a client
 
-  const token = process.env.TOKEN;
   const requestOptions = {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${token}`,
+
       "Content-Type": "application/json",
     },
     body: jsonData,
@@ -51,18 +53,7 @@ export default async function AddClient(data: FormData) {
     }
 
     const responseData = await response.json();
-    console.log("Client added successfully:", responseData);
-    MySwal.fire({
-      title: "Done!",
-      text: "Your message was successfully sent and will call you soon",
-      icon: "success",
-      timer: 2000,
-      timerProgressBar: true,
-      showConfirmButton: false,
-    });
-    // Optionally, you can revalidate tags or perform a redirect here
-    // revalidateTag("posts");
-    // redirect("");
+
   } catch (error) {
     console.error("Error adding client:", error);
     // Handle the error here

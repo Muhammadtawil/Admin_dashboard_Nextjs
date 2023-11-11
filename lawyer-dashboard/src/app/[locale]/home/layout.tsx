@@ -17,9 +17,12 @@ import "/public/fonts/flaticon.css";
 // import NavBarTest from '@/components/Website/Header/Navbar/Navbar';
 // import  "../../../components/Website/Header/Navbar/Navbar.module.scss";
 // import "../../../components/Website/News/Project.module.scss"
-import FooterSection from '@/components/Website/Footer/Footer';
-import GoTop from '@/components/Website/Shared/GoTop';
+
+
 import FooterMain from '@/components/Website/Footer/Footer-main';
+import ScrollToTop from '@/components/shared/ScrollToTop';
+// import SubscriptionPopup from '@/components/shared/SubscriptionPopup';
+
 
 type Props = {
   children: ReactNode;
@@ -51,7 +54,7 @@ export default async function RootLayout({ children, params: { locale } }: Props
   return (
     <html lang={lang}>
       <head>
-        <title>Dashboard</title>
+        <title>LawFirm</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </head>
           <NextIntlClientProvider locale={locale ? locale : 'en'} messages={messages}>
@@ -61,10 +64,15 @@ export default async function RootLayout({ children, params: { locale } }: Props
           {/* <NavBarTest/> */}
 
           {children}
+          {/* <SubscriptionPopup /> */}
+          <ScrollToTop/>
+
           <FooterMain/>
-        {/* <GoTop/> */}
-        
+          {/* <GoTop/> */}
         </body>
+
+       
+
       </NextIntlClientProvider>
     </html>
   );

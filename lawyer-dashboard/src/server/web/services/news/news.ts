@@ -1,10 +1,8 @@
 export async function getNews() {
-  const token = process.env.TOKEN;
   const newsUrl = process.env.NEWSURL;
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     next: {

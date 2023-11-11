@@ -19,7 +19,7 @@ import "/public/fonts/flaticon.css";
 // import "../../../components/Website/News/Project.module.scss"
 import FooterSection from '@/components/Website/Footer/Footer';
 import GoTop from '@/components/Website/Shared/GoTop';
-import NavBarTest from '@/components/Website/Header/Navbar/Navbar';
+import NavBar from '@/components/Website/Header/Navbar/Navbar';
 import FooterMain from '@/components/Website/Footer/Footer-main';
 
 type Props = {
@@ -51,10 +51,6 @@ export default async function RootLayout({ children, params: { locale } }: Props
 
   return (
     <html lang={lang}>
-      <head>
-        <title>Dashboard</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </head>
           <NextIntlClientProvider locale={locale ? locale : 'en'} messages={messages}>
 
               <body>

@@ -39,6 +39,7 @@ export default async function AddBlog(data: FormData) {
   const blogContent = data.get("blogContent");
   const authorName = data.get("authorName");
   const isFlag = data.get("isFlag");
+  const blogLang=data.get('blogLang')
   const session = await getServerSession(authOptions);
 
   const blogsData = {
@@ -46,6 +47,7 @@ export default async function AddBlog(data: FormData) {
     blogContent: blogContent,
     authorName: authorName,
     isFlag: isFlag == "ready" ? true : false,
+    blogLang:blogLang=='arabic'?"arabic":"english",
     blogImageUrl: "",
   };
 

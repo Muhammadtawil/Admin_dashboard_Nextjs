@@ -46,7 +46,10 @@
     "Preview": "Preview",
     "editBlog": "Edit Blog",
     "yes": "Deployed",
-    "no": "Draft"
+    "no": "Draft",
+    "arabic":"arabic",
+    "english":"english",
+    "lang":"Language"
   },
   "SideBar": {
     "main": "Dashboard",
@@ -282,7 +285,10 @@
         "service":"Service",
         "success":"Your Info Successfuly sent",
         "book":"Booking",
-        "message":"Get in touch with our law firm for the legal services you need. Leave us a message, and we'll respond as soon as possible."
+        "message":"Keep a message for us",
+        "messageTitle":"Message",
+        "titlePage":"Get in Touch ",
+        "offices":"Our Offices"
       },
 
       "WebBlog":{
@@ -346,6 +352,11 @@
       "webTestimonials":{
         "title":"Testimonial from our Clients",
         "description":"We are characterized by trust"
+      },
+      "webNotFound":{
+        "title":"Oops! Page Not Found",
+        "description":"The page you were looking for could not be found",
+        "btn":"Return to Home Page"
       }
 
 }

@@ -4,8 +4,8 @@ import LatestNews from "@/components/Website/News/News";
 import Team from "@/components/Website/Team/Team";
 import WhyChooseUs from "@/components/Website/Why Choose Us/WhyChooseUs";
 import BlogsComponentHome from "@/components/Website/blogs/blogsComponent";
-import Hero from "@/components/Website/Hero/Hero";
-import NavBarTest from "@/components/Website/Header/Navbar/Navbar";
+import Hero from "@/components/Website/Header/Hero/Hero";
+import NavBar from "@/components/Website/Header/Navbar/Navbar";
 import style from "../../../components/Website/Header/Header.module.scss";
 import Testimonial from "@/components/Website/Testimonial/Testimonial";
 import Services from "@/components/Website/Services/services";
@@ -20,19 +20,19 @@ export default function HomePage() {
         <>
             <div className={style.headerStyle}>
 
-                <NavBarTest />
+                <NavBar />
                 <Hero />
             </div>
 
             <About />
             <WhyChooseUs />
             < Services/>
-            <Booking />
             <BlogsComponentHome />
             <LatestNews />
             <Team />
-
             <Testimonial />
+            <Booking />
+
             {/* <ContactInfo /> */}
         </>
 

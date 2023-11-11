@@ -48,10 +48,6 @@ export default async function blogsPageLayout({ children, params: { locale } }: 
 
   return (
     <html lang={lang}>
-      <head>
-        <title>Blogs</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </head>
       <NextIntlClientProvider locale={locale ? locale : 'en'} messages={messages}>
 
         <body>

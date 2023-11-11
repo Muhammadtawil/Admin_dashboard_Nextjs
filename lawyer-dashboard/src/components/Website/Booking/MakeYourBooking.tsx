@@ -1,17 +1,15 @@
 "use client"
 import { successAlert } from "@/components/alerts/alerts";
 import { useTranslations } from "next-intl";
-import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-
 import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import style from "../Contact/ContactForm/ContactForm.module.scss";
 import createFooterData from "../Footer/footerData";
-import { Stack } from "immutable";
+
 
 
 
@@ -133,7 +131,8 @@ const path = usePathname()
             // allowFullScreen=""
             loading="lazy"
             style={{ border: 0 }}
-            referrerPolicy="no-referrer-when-downgrade"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className={`hideOnMobile`}
           ></iframe>
         </div>
             </Col>
@@ -143,7 +142,20 @@ const path = usePathname()
       
         </Col>
         <Col>
-          <form onSubmit={handleSubmit(onSubmit)} className="contactForm">
+            <form
+              className="contactForm"
+              action={async (formData) => {
+              
+            await onCreate(formData)
+              .then(() => {
+                successAlert(t('success'));
+                document.querySelector('form')?.reset();
+              })
+              .catch((error: any) => {
+
+                console.error(error);
+              });
+          }}>
             <div className="d-lg-flex gap-3">
               <motion.div
                 initial={{ y: 1, opacity: 1 }}
@@ -160,7 +172,10 @@ const path = usePathname()
                   className={errors.fullName && "inputErrorStyle"}
                   {...register("fullName", { required: true })}
                   type="text"
-                  placeholder={t('name')}
+                    placeholder={t('name')}
+                    name="clientName"
+                    id="clientName"
+                    required
                 />
               </motion.div>
               <motion.div
@@ -178,7 +193,9 @@ const path = usePathname()
                   className={errors.email && "inputErrorStyle"}
                   {...register("email", { required: true })}
                   type="email"
-                  placeholder={t('email')}
+                    placeholder={t('email')}
+                    name="clientEmail"
+                    id="clientEmail"
                 />
               </motion.div>
             </div>
@@ -196,9 +213,12 @@ const path = usePathname()
                 <label>{t('Phone')}</label>
                 <input
                     className={errors.phone && "inputErrorStyle"}
-                    {...register(t('Phone'), { required: true, minLength: 10 })}
+                    {...register("phone", { required: true, minLength: 10 })}
                     type="number"
                     placeholder={t('Phone')}
+                    name="clientPhone"
+                    id="clientPhone"
+                    required
                 />
               </motion.div>
               <motion.div
@@ -211,7 +231,7 @@ const path = usePathname()
                 // viewport={{ once: true }}
                 className="inputStyle"
                 >
-                     <label>Service</label>
+                     <label>{t('service')}</label>
                           <select
                             className="form-select bg-light border-0 select-dropdown"
                             name="clientService"
@@ -228,14 +248,14 @@ const path = usePathname()
                                 (service: any, index: any) => (
                                   (chosenServiceName = service.serviceTitle),
                                   (chosenServiceId = service.serviceId),
-                                  console.log(chosenServiceId),
+         
                                   (
                                     <option
                                       key={service.serviceId}
-                                      value={service.serviceTitle}
+                                      value={service.serviceId}
                                       style={{ height: "55px", color: "black", width: "200px" }}
                                     >
-                                      {arabic?service.serviceTitle.text:service.serviceTitle}
+                                      {arabic?service.serviceTitle:service.serviceTitle}
                                     </option>
                                   )
                                 )
@@ -254,12 +274,14 @@ const path = usePathname()
               // viewport={{ once: true }}
               className="inputStyle"
             >
-              <label>Message</label>
+              <label>{t('messageTitle')}</label>
               <textarea
                 rows={3}
                 className={errors.message && "inputErrorStyle"}
-                {...register("message", { required: true })}
-                placeholder="Message"
+                {...register(t('messageTitle'), { required: true })}
+                  placeholder={t('message')}
+                  name="clientMessage"
+                  id="clientMessage"
               />
             </motion.div>
             <motion.button

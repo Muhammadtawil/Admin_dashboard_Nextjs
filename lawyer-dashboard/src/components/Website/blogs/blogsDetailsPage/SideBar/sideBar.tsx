@@ -13,8 +13,9 @@ export default async function SideBarNewsDetails({currentBlogId,}:{currentBlogId
 
     } catch (error) {}
   }
+
   
   return (
-    <SideBarSection blogs={blogsData} currentBlogId={currentBlogId}  Subscribe={subscribe}/> 
+    <SideBarSection blogs={blogsData} currentBlogId={currentBlogId}  Subscribe={subscribe} /> 
   )
 }

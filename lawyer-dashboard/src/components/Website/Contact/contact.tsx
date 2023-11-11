@@ -5,12 +5,14 @@ import HeaderWrapper from "../blogs/blogsPage/HeaderWrapper/HeaderWrapper";
 import Hero2 from "../blogs/blogsPage/Hero2/Hero2";
 import ContactForm from "./ContactForm/ContactForm";
 import GetInTouch from "./GetInTouch/GetInTouch";
-import NavBarTest from "../Header/Navbar/Navbar";
+import NavBar from "../Header/Navbar/Navbar";
 import Map from "./Map/Map"
 import Hero from "./Hero/Hero";
+import BlogsComponentHome from "../blogs/blogsComponent";
+import Booking from "../Booking/booking";
 
 
-const ContactPage = () => {
+const ContactPage = ({children}:{children:any}) => {
   return (
     <div>
       <Head>
@@ -24,14 +26,15 @@ const ContactPage = () => {
       <main>
 
         <HeaderWrapper>
-          <NavBarTest />
+          <NavBar />
           <Hero2>
             <Hero />
           </Hero2>
         </HeaderWrapper>
+       
+        {children}
         <GetInTouch />
-        <ContactForm />
-        <Map />
+        {/* <Map /> */}
 
       </main>
     </div>
