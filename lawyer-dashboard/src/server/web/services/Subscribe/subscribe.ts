@@ -10,12 +10,12 @@ async function Subscribe(data: FormData) {
 
   const apiUrl = ` ${subscriberUrl}`;
 
-  const token = process.env.TOKEN;
+
 
   const requestOptions = {
     method: "POST",
     headers: {
-      Authorization: `Bearer ${token}`,
+
       "Content-Type": "application/json",
     },
     body: jsonData,

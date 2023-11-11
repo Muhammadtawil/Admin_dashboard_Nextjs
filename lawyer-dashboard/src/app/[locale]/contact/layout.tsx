@@ -18,7 +18,7 @@ import "/public/fonts/flaticon.css";
 // import  "../../../components/Website/Header/Navbar/Navbar.module.scss";
 // import "../../../components/Website/News/Project.module.scss"
 import FooterSection from '@/components/Website/Footer/Footer';
-import GoTop from '@/components/Website/Shared/GoTop';
+
 import NavBar from '@/components/Website/Header/Navbar/Navbar';
 import FooterMain from '@/components/Website/Footer/Footer-main';
 

@@ -2,7 +2,9 @@
 
 
 
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+
+
+import { authOptions } from "@/app/utils/authoptions";
 import { getServerSession } from "next-auth/next";
 const blogs_url = process.env.BLOGS_URL;
 const blog_Id_Url=process.env.BLOGIDURL
