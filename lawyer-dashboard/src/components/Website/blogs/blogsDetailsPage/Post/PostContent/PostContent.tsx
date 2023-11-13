@@ -39,7 +39,7 @@ const PostContent = ({
   const blogId = params.blogId;
   const path = usePathname()
   const arabic = path.includes('ar')
-
+  const currentUrl = `${window.location.origin}${path}`;
   // const blogTitle = params.blogTitle;
     const [isCopied, setIsCopied] = useState(false);
   // const blogsData = arabic ? translatedBlog : blog;
@@ -79,7 +79,12 @@ function createMarkup(html:any) {
     return quote.toString();
   }const specificQuoteIndex = 2; // Change this to the index you want
   const specificQuote = getSpecificQuote(secondPart, specificQuoteIndex)
-  
+  function setTextColorToWhite(html: string): string {
+    // Implement logic to set the text color to white in the HTML content
+    // Example: Replace color: black; with color: white;
+    return html.replaceAll(/color:\s*black;/gi, 'color: white;');
+  }
+ const blackColorContent = setTextColorToWhite(blog.blogContent)
   return (
 
    
@@ -110,8 +115,8 @@ function createMarkup(html:any) {
         <div className="content" >
           <h2>{blog.blogTitle}</h2>
           <div
-    className="preview"
-    dangerouslySetInnerHTML={createMarkup(blog.blogContent)}>
+    className="content"
+    dangerouslySetInnerHTML={createMarkup(blackColorContent)}>
   </div>
           {/* <p>{firstPart}</p>
           <blockquote className="flaticon-quote quote">
@@ -128,7 +133,7 @@ function createMarkup(html:any) {
               <>
             <li style={{ marginRight: "10px" }} className="facebook">
                 <CopyToClipboard text={window.location.href} onCopy={() => setIsCopied(true)}>
-                    <Link href="https://www.facebook.com" style={{ textDecoration: "none" }}>
+                    <Link href={`https://facebook.com/share?url=https://admin-dashboard-nextjs-blue.vercel.app${path}`} style={{ textDecoration: "none" }}>
                         <FaFacebook />
                     </Link>
                 </CopyToClipboard>
@@ -139,7 +144,7 @@ function createMarkup(html:any) {
             {typeof window !== 'undefined' && (
               <>
                 <li style={{ marginRight: "10px" }} className="twitter">
-                <Link href={`https://twitter.com/share?url=http://localhost:3000/ar/blogs/${blogId}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                <Link href={`https://twitter.com/share?url=https://admin-dashboard-nextjs-blue.vercel.app${path}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
                     <FaXTwitter />
                 </Link>
             </li>

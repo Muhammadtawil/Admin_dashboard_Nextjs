@@ -13,6 +13,7 @@
       }
     }
     .content {
+      // color: #fff;
       h2 {
         font-size: 2rem;
         margin-bottom: 1rem;
@@ -24,6 +25,9 @@
         margin-bottom: 1rem;
       }
     }
+    // .dark-mode .content {
+    //   color: #fff; /* Set text color to a light color in dark mode */
+    // }
     .quote {
       // background: #f9f9f9; /* Set the background color for the quote */
       padding: 20px; /* Add padding to the quote */
@@ -78,4 +82,10 @@
     }
     
   }
+  // @media (prefers-color-scheme: dark) {
+  //   .content {
+  //     color: #fff; /* Set text color to a light color in dark mode */
+  //   }
+  // }
+  
 }

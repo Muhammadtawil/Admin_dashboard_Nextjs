@@ -1,4 +1,3 @@
-
 "use client"
 import Image from "next/image";
 import style from "./SideBar.module.scss";
@@ -11,7 +10,8 @@ import { usePathname } from "next/navigation";
   const SideBarSection =  ({ currentBlogId, blogs ,Subscribe}: { currentBlogId: string, blogs: any,Subscribe:any }) => {
   const t=useTranslations('WebBlog')
   const path = usePathname()
-  const arabic=path.includes('ar')
+    const arabic = path.includes('ar')
+    const locale=arabic?'ar':'en'
   const filteredBlogs = blogs.filter(
     (blog: any) => blog.blogId !== currentBlogId
   );
@@ -25,7 +25,7 @@ if (!currentBlog) {
 
 const authorId = currentBlog.author.authorId;
 
-const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId === authorId && blog.blogId !== currentBlogId &&index==blog.blogId));
+const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId === authorId && blog.blogId !== currentBlogId));
 
   return (
     <div className={style.sideBarStyle}>
@@ -34,7 +34,7 @@ const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId 
         <h4>{t('popularPosts') }</h4>
   
 {filteredBlogs.map((data: any, index: any) => (
-  <Link key={index} href={`/ar/blogs/${data.blogId}`}>
+  <Link key={index} href={`/${locale}/blogs/${data.blogId}`}>
     <div key={index} className="postCard">
       <div key={index} >
         <Image
@@ -58,11 +58,11 @@ const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId 
   </Link>
 ))}
 
+<h4>{t('readAuthor') }</h4>
 
         {authorBlogs.map((data: any, index: any) => (
   <>
-          <h4>{t('readAuthor') }</h4>
-  <Link key={index} href={`/ar/blogs/${data.blogId}`}>
+  <Link key={index} href={`/${locale}/blogs/${data.blogId}`}>
     <div key={index} className="postCard">
       <div key={index} >
         <Image

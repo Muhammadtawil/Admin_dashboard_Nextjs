@@ -16,7 +16,8 @@ const BlogWebList = ({ blogsData }: { blogsData: any }) => {
   const router = useRouter()
   const t = useTranslations('WebBlog')
   const path = usePathname();
-  const arabic=path.includes('ar')
+  const arabic = path.includes('ar')
+  const locale=arabic?"ar":"en"
   const arabicBlogData = blogsData.filter((blog: any) => blog.blogLang === 'arabic')
   const englishBlogDta = blogsData.filter((blog: any) => blog.blogLang === 'english')
 
@@ -78,7 +79,7 @@ const BlogWebList = ({ blogsData }: { blogsData: any }) => {
 
 
                     <Button
-                      onClick={() => router.push(`/ar/blogs/${data.blogId}`)}
+                      onClick={() => router.push(`/${locale}/blogs/${data.blogId}`)}
                       variant="none"
                     >
                       {t('readMore')} <MdOutlineArrowForwardIos />
@@ -89,7 +90,7 @@ const BlogWebList = ({ blogsData }: { blogsData: any }) => {
                   <Image
                     fill src={data.blogImageUrl?data.blogImageUrl:"/mainLogo.png"}
                     alt="Project image"
-                    onClick={() => router.replace(`/ar/blogs/${data.blogId}`)}
+                    onClick={() => router.replace(`/${locale}/blogs/${data.blogId}`)}
                     onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
                       const target = e.target as HTMLImageElement;
                       target.src = '/images/blogs/blog7.png'; 

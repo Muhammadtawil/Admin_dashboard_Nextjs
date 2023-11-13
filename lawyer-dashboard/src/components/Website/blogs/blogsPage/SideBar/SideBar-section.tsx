@@ -16,7 +16,8 @@ const SideBarSection = ({ blogsData ,Subscribe}: { blogsData: any ,Subscribe:any
   const router = useRouter();
   const filteredBlogs = blogsData.slice(1, 4);
   const path = usePathname()
-  const arabic=path.includes('ar')
+  const arabic = path.includes('ar')
+  const locale = arabic ? "ar" : "en";
   // const numberFormatter = new IntlMessageFormat('0', path.includes('ar') ? 'ar-SA' : 'en-US');
 
  // Get the current locale
@@ -91,7 +92,7 @@ const archiveData = Object.keys(groupedBlogs).map((dateKey) => ({
   }).slice(0,5)
   .map((data:any, index:any) => (
             //  <Link href={`/ar/blogs/${data.blogId}`}>
-          <div className="postCard" key={index} onClick={()=>router.push(`ar/blogs/${data.blogId}`)}>
+          <div className="postCard" key={index} onClick={()=>router.push(`/${locale}/blogs/${data.blogId}`)}>
          
             <div>
               <Image

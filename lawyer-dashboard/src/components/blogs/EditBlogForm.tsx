@@ -12,7 +12,9 @@ import Image from 'next/image'
 import CustomTypography, { FormFooter } from "../shared/formsComponents";
 import { updateAlert } from "../alerts/alerts";
 import { useTranslations } from "next-intl";
-
+import { Editor } from "react-draft-wysiwyg";
+import { ContentState, EditorState  } from "draft-js";
+import DOMPurify from "dompurify";
 export default function EditBlogAddComponent({
   onUpdate,
   UpdateImage,
@@ -26,7 +28,12 @@ export default function EditBlogAddComponent({
   }) {
   const t=useTranslations('BlogPage')
   const [selectedImage, setSelectedImage] = useState<File>();
-
+  const [editorState, setEditorState] = useState(() => {
+    // Create ContentState from formData.blogContent
+    const contentState = ContentState.createFromText(selectedBlog?.blogContent || '');
+    // Set the initial editor state with the created ContentState
+    return EditorState.createWithContent(contentState);
+  });
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       setSelectedImage(e.target.files[0]);
@@ -78,6 +85,13 @@ export default function EditBlogAddComponent({
       [name]: value,
     }));
   };
+
+  function createMarkup(html:any) {
+    return {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
+  
 
   return (
     <div style={{ maxHeight: "100%", overflowY: "auto" }}>
@@ -152,7 +166,7 @@ export default function EditBlogAddComponent({
               </div>
             )}
 
-            <Grid item xs={12} md={12} lg={12}>
+            {/* <Grid item xs={12} md={12} lg={12}>
               <CustomTypography text={t('blogContent')} />
 
               <TextField
@@ -171,6 +185,26 @@ export default function EditBlogAddComponent({
                 }}
                 onChange={handleInputChange}
               />
+            </Grid> */}
+
+
+<Grid item xs={12} md={12} lg={12} >
+              <CustomTypography text={t('blogContent')} />
+            
+              <Editor
+             
+             editorState={editorState}
+             onEditorStateChange={setEditorState}
+             wrapperClassName="wrapper-class"
+             editorClassName="editor-class"
+             toolbarClassName="toolbar-class"
+                           
+                           />
+  
+                  {/* <div
+    className="preview"
+    dangerouslySetInnerHTML={createMarkup(convertedContent)}>
+  </div> */}
             </Grid>
 
             <Grid item xs={12} md={12} lg={6}>
