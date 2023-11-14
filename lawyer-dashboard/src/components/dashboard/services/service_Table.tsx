@@ -111,7 +111,7 @@ export default function ServicesTable({
               ...cellStyle,
               fontWeight: "500",
               color: "#260944",
-              display: "flex",
+              // display: "flex",
               alignItems: "center",
               flexDirection: "row",
             }}

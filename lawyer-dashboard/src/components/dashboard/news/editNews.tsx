@@ -13,9 +13,9 @@ import CustomTypography, { FormFooter } from "../shared/formsComponents";
 import Image from 'next/image'
 import { useTranslations } from "next-intl";
 import { Editor } from "react-draft-wysiwyg";
-import { ContentState, EditorState, convertFromHTML  } from "draft-js";
+import { ContentState, EditorState, convertFromHTML , convertToRaw } from "draft-js";
 import DOMPurify from "dompurify";
-
+import draftToHtml from "draftjs-to-html";
 
 export default function EditNewsComponent({
   onUpdate,
@@ -30,6 +30,7 @@ export default function EditNewsComponent({
   }) {
   const t=useTranslations('newsPage')
   const [selectedImage, setSelectedImage] = useState<File>();
+  const [convertedContent, setConvertedContent] = useState('');
   const [editorState, setEditorState] = useState(() => {
     const contentState = convertFromHTML(DOMPurify.sanitize(selectedNews?.newsContent || ''));
     return EditorState.createWithContent(ContentState.createFromBlockArray(contentState.contentBlocks));
@@ -41,7 +42,12 @@ export default function EditNewsComponent({
       console.log(selectedNews.newsId);
     }
   };
-
+  useEffect(() => {
+    const htmlContent = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    setConvertedContent(htmlContent);
+  }, [editorState]);
+  
+  
   const handleUpdate = async () => {
     const formData = new FormData();
     // Append the selected image to the formData
@@ -53,7 +59,7 @@ export default function EditNewsComponent({
   };
 
   // Select Priority
-  const [status, setstatus] = React.useState("");
+  const [status, setstatus] = useState("");
   const handleChange = (event: any) => {
     setstatus(event.target.value);
   };
@@ -62,6 +68,7 @@ export default function EditNewsComponent({
     // Initialize the form data with the selected task's values
     newsTitle: selectedNews?.newsTitle,
     newsContent: selectedNews?.newsContent || "",
+newsLang:selectedNews?.newsLang || "arabic",
     isFlag: selectedNews?.isFlag || "",
   });
 
@@ -71,6 +78,7 @@ export default function EditNewsComponent({
       newsTitle: selectedNews?.newsTitle,
       newsContent: selectedNews?.newsContent || "",
       isFlag: selectedNews?.isFlag == true ? "ready" : "not ready" || "",
+      newsLang:selectedNews?.newsLang || "arabic",
     });
   }, [selectedNews]);
 
@@ -84,6 +92,11 @@ export default function EditNewsComponent({
       [name]: value,
     }));
   };
+  function createMarkup(html:any) {
+    return {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
 
   return (
     <div style={{ maxHeight: "100%", overflowY: "auto" }}>
@@ -98,7 +111,11 @@ export default function EditNewsComponent({
         <Box
           component="form"
           noValidate={false}
-          action={ (formData) => {
+          action={(formData) => {
+            const editedContent= createMarkup(convertedContent)
+    
+            formData.append('newsContent', `${convertedContent}`);
+            handleClose();
             handleUpdate();
          
 
@@ -177,7 +194,7 @@ export default function EditNewsComponent({
               />
             </Grid> */}
      <Grid item xs={12} md={12} lg={12} >
-              <CustomTypography text={t('blogContent')} />
+              <CustomTypography text={t('newsContent')} />
             
               <Editor
              
@@ -212,7 +229,24 @@ export default function EditNewsComponent({
                 </Select>
               </FormControl>
             </Grid>
-       
+            <Grid item xs={12} md={12} lg={6}>
+              <CustomTypography text={t('lang')}/>
+
+              <FormControl fullWidth>
+                <InputLabel id="demo-simple-select-label">{t('lang')}</InputLabel>
+                <Select
+                  name="newsLang"
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={formData.newsLang}
+                  label={t('lang')}
+                  onChange={handleChange}
+                >
+                  <MenuItem value={"arabic"}>{t('arabic')}</MenuItem>
+                  <MenuItem value={"english"}>{t('english')}</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
             {/* <Grid item xs={12} md={12} lg={6}>
               <CustomTypography text={"Author"} />
 

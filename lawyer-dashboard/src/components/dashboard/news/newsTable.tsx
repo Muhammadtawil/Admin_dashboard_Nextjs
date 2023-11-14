@@ -152,6 +152,9 @@ export default function NewsTable({
                 hour: "numeric",
               })}
             </TableCell>
+            <TableCell sx={{ ...cellStyle, fontSize: "13px" }}>
+              {news.newsLang=="arabic"?t('arabic'):t('english')}
+            </TableCell>
 
             <TableCell align="center" sx={{ ...cellStyle, fontSize: "10px" }}>
               <Paper
@@ -226,6 +229,8 @@ export default function NewsTable({
               <TableCell sx={cellStyle}>{t('newsTitle')}</TableCell>
               <TableCell sx={cellStyle}>{t('newsContent')}</TableCell>
               <TableCell sx={cellStyle}>{t('newsDate')}</TableCell>
+              <TableCell sx={cellStyle}>{t('lang')}</TableCell>
+
               <TableCell align="center" sx={cellStyle}>
               {t('status')}
                 <select

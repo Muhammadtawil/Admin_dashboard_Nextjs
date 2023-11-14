@@ -111,12 +111,14 @@ export async function UpdateNews(data: FormData, newsId: string) {
   const newsTitle = data.get("newsTitle");
   const newsContent = data.get("newsContent");
   const isFlag = data.get("isFlag");
+  const newsLang = data.get('newsLang');
   const session = await getServerSession(authOptions);
 
   const newssData = {
     newsTitle: newsTitle,
     newsContent: newsContent,
     isFlag: isFlag == "ready" ? true : false,
+    newsLang:newsLang=='arabic'?"arabic":"english",
   };
 
   const jsonData = JSON.stringify(newssData);

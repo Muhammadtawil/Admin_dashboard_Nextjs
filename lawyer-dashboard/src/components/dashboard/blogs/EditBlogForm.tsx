@@ -13,8 +13,9 @@ import CustomTypography, { FormFooter } from "../shared/formsComponents";
 import { updateAlert } from "../alerts/alerts";
 import { useTranslations } from "next-intl";
 import { Editor } from "react-draft-wysiwyg";
-import { ContentState, EditorState, convertFromHTML  } from "draft-js";
+import { ContentState, EditorState, convertFromHTML, convertToRaw  } from "draft-js";
 import DOMPurify from "dompurify";
+import draftToHtml from "draftjs-to-html";
 export default function EditBlogAddComponent({
   onUpdate,
   UpdateImage,
@@ -28,8 +29,9 @@ export default function EditBlogAddComponent({
   }) {
   const t=useTranslations('BlogPage')
   const [selectedImage, setSelectedImage] = useState<File>();
- 
-  
+  const [convertedContent, setConvertedContent] = useState('');
+
+
   const [editorState, setEditorState] = useState(() => {
     const contentState = convertFromHTML(DOMPurify.sanitize(selectedBlog?.blogContent || ''));
     return EditorState.createWithContent(ContentState.createFromBlockArray(contentState.contentBlocks));
@@ -40,7 +42,12 @@ export default function EditBlogAddComponent({
       console.log(e.target.files[0]);
     }
   };
-
+  useEffect(() => {
+    const htmlContent = draftToHtml(convertToRaw(editorState.getCurrentContent()));
+    setConvertedContent(htmlContent);
+  }, [editorState]);
+  
+  
   const handleUpdate = async () => {
     const formData = new FormData();
     // Append the selected image to the formData
@@ -86,7 +93,11 @@ export default function EditBlogAddComponent({
     }));
   };
 
-
+  function createMarkup(html:any) {
+    return {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
 
   return (
     <div style={{ maxHeight: "100%", overflowY: "auto" }}>
@@ -102,6 +113,9 @@ export default function EditBlogAddComponent({
           component="form"
           noValidate={false}
           action={async (formData) => {
+            const editedContent= createMarkup(convertedContent)
+    
+            formData.append('blogContent', `${convertedContent}`);
             handleClose();
             handleUpdate();
 
