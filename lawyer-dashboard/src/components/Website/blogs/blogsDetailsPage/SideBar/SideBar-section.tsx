@@ -57,6 +57,8 @@ const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId 
     </div>
   </Link>
 ))}
+<SubscribeSide Subscribe={Subscribe}/>
+        
 
 <h4>{t('readAuthor') }</h4>
 
@@ -90,7 +92,6 @@ const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId 
 ))}
 
 </div>
-<SubscribeSide Subscribe={Subscribe}/>
 
 
     </div>

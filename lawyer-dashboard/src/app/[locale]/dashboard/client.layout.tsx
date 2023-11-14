@@ -5,9 +5,9 @@ import { usePathname } from "next/navigation";
 import "../../../styles/remixicon.css";
 import "../../../styles/globals.css";
 import "react-tabs/style/react-tabs.css";
-import TopNavbar from "../../../components/TopNavbar/TopNavBar";
-import ScrollToTop from "../../../components/shared/ScrollToTop";
-import Sidebar from "../../../components/LeftSidebar/LeftSideBar";
+import TopNavbar from "../../../components/dashboard/TopNavbar/TopNavBar";
+import ScrollToTop from "../../../components/dashboard/shared/ScrollToTop";
+import Sidebar from "../../../components/dashboard/LeftSidebar/LeftSideBar";
 
 
 const inter = Inter({ subsets: ["latin"] });

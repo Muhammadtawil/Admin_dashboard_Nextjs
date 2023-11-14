@@ -9,7 +9,7 @@ import withReactContent from "sweetalert2-react-content";
 import Ellipse from "../../../../public/images/common/judge.svg";
 
 import style from "./Footer.module.scss";
-import { successAlert } from "@/components/alerts/alerts";
+import { successAlert } from "@/components/dashboard/alerts/alerts";
 import { useTranslations } from "next-intl";
 import createFooterData from "./footerData";
 

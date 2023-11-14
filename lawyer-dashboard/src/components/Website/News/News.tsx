@@ -6,7 +6,7 @@ import { getNews } from "@/server/web/services/news/news";
 import NewsList from "./newsList";
 import style from "./Project.module.scss";
 
-import NewsComponent from "@/components/news/news";
+import NewsComponent from "@/components/dashboard/news/news";
 
 const LatestNews = async () => {
   const news = await getNews();

@@ -39,6 +39,7 @@ export default async function AddNews(data: FormData) {
   // Extract client data from the FormData object
   const newsTitle = data.get("NewsTitle");
   const newsContent = data.get("NewsContent");
+  const newsLang = data.get('newsLang');
   const isFlag = data.get("isFlag");
   const session = await getServerSession(authOptions);
 
@@ -47,6 +48,7 @@ export default async function AddNews(data: FormData) {
     newsContent: newsContent,
     isFlag: isFlag == "ready" ? true : false,
     newsImageUrl: "image",
+    newsLang:newsLang=='arabic'?"arabic":"english",
   };
 
   const jsonData = JSON.stringify(newssData);

@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import footerData from "./footerData";
 import style from "./Footer.module.scss";
-import { successAlert } from "@/components/alerts/alerts";
+import { successAlert } from "@/components/dashboard/alerts/alerts";
 import { useTranslations } from "next-intl";
 
 const SubscribeSide = ({Subscribe}:{Subscribe:any}) => {

@@ -13,7 +13,7 @@
 
 // import "../styles/style.css";
 import { CssBaseline } from "@mui/material";
-import LoginForm from "@/components/login/loginForm";
+import LoginForm from "@/components/dashboard/login/loginForm";
 import { redirect } from "next/navigation";
 
 

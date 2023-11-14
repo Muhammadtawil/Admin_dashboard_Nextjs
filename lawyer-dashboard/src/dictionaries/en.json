@@ -98,7 +98,14 @@
     "edit": "Edit",
     "rowPerPage": "rows per page",
     "addTask": "Add Task",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "HIGH": "High",
+    "MEDIUM": "Medium",
+    "LOW":"Low",
+    "COMPLETED": "Completed",
+    "NOT_COMPLETED": "Not Completed",
+    "IN_PROGRESS": "In Progress"
+ 
   },
 
   "clientPage": {
@@ -146,7 +153,10 @@
     "notReady": "Draft",
     "addNews": "Add News",
     "delete": "Delete",
-    "edit": "Edit"
+    "edit": "Edit",
+    "lang":"Language",
+    "arabic":"Arabic",
+    "english":"English"
   },
 
   "subscribersPage": {
@@ -215,7 +225,9 @@
     "Preview": "Preview",
     "facebookUrl":"Facebook Url",
     "linkedInUrl":"LinkedIn Url",
-    "twitterUrl":"Twitter Url"
+    "twitterUrl":"Twitter Url",
+    "instagramUrl":"Instagram Url",
+    "Bio":"Bio"
    },
    "editorPage":{
     "pageTitle":"Editor",

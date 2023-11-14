@@ -5,7 +5,7 @@ const user_url = process.env.USER_URL;
 const update_user = process.env.UPDATE_TEAM_URL;
 const createUserUrl = process.env.SIGN_UP_URL;
 const updateRoleUrl = process.env.UPDATE_ROLE_URL;
-
+const deleteUser_url = process.env.DELETE_USER_URL;
 
 
 import { authOptions } from "@/app/utils/authoptions";
@@ -133,6 +133,8 @@ export async function UpdateUser(data: FormData, userId: string) {
   const userLinkedInUrl = data.get("LinkedIn");
   const userTwitterUrl = data.get("Twitter");
   const isTeam = data.get("isTeam");
+  const userBio = data.get("userBio");
+
   // const password = data.get("passsword");
   // const userImgUrl = data.get("userImgUrl");
 
@@ -146,6 +148,7 @@ export async function UpdateUser(data: FormData, userId: string) {
     userFacebookUrl: userFacebookUrl,
     userLinkedInUrl: userLinkedInUrl,
     userTwitterUrl: userTwitterUrl,
+    userBio:userBio,
     isTeam: isTeam == "Yes" ? true : false,
     // password: password,
     // userImgUrl: userImgUrl,
@@ -249,5 +252,32 @@ export async function UpdateUserImage(data: FormData, userId: string) {
     console.log("user Role Updated successfully:", responseData);
   } catch (error) {
     console.error("Error update updating user Role:", error);
+  }
+}
+
+
+export async function DeleteUser(userId: string) {
+  // Define the URL for deleting a task (replace with the correct endpoint)
+  const deleteUrl = `${deleteUser_url}/${userId}`;
+  const session = await getServerSession(authOptions);
+
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${session?.accessToken}`,
+    },
+  };
+
+  try {
+    const response = await fetch(deleteUrl, requestOptions);
+    console.log(deleteUrl);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    console.log("team member deleted successfully");
+  } catch (error) {
+    console.error("Error Deleting team Member:", error);
   }
 }

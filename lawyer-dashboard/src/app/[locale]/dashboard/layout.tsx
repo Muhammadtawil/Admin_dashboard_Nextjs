@@ -43,7 +43,7 @@ export default async function RootLayout({
 
 
         
-    <html lang={lang}>
+    <html>
           <Head>
         <title>Dashboard</title>
         {/* <link rel="preload" href="style.css" as="style" /> */}

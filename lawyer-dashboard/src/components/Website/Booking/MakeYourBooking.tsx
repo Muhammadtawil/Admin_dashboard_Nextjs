@@ -1,5 +1,5 @@
 "use client"
-import { successAlert } from "@/components/alerts/alerts";
+import { successAlert } from "@/components/dashboard/alerts/alerts";
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";

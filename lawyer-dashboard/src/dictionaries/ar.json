@@ -64,7 +64,7 @@
     "services": "الخدمات",
     "news": "اﻷخبار",
     "about": "معلومات المكتب",
-    "testimonials": "التقييم",
+    "testimonials": "الشهادات",
     "subscribers": "المشتركون",
     "calendar": "الرزنامة",
     "files": "الملفات",
@@ -101,7 +101,13 @@
     "edit": "تعديل",
     "rowPerPage": "عدد المهام لكل صفحة",
     "addTask": "إضافة مهام",
-    "cancel": "إلغاء"
+    "cancel": "إلغاء",
+    "HIGH": "عالية",
+    "MEDIUM": "متوسطة",
+    "LOW":"منخفضة",
+    "COMPLETED": "مكتملة",
+    "NOT_COMPLETED": "غير مكتملة",
+    "IN_PROGRESS": "قيد التنفيذ"
   },
 
   "clientPage": {
@@ -149,7 +155,10 @@
     "notReady": "مسودة",
     "addNews":"إضافة خبر",
     "delete": "مسح",
-    "edit": "تعديل"
+    "edit": "تعديل",
+    "arabic":"العربية",
+    "english":"اﻹنكليزية",
+    "lang":"اللغة"
   },
 
   "subscribersPage":{
@@ -226,7 +235,9 @@
     "Preview": "عرض الصورة",
     "facebookUrl":" رابط الفايسبوك",
     "linkedInUrl":"رابط اللينكدان ",
-    "twitterUrl":" رابط توتير"
+    "twitterUrl":" رابط توتير",
+    "instagramUrl":"رابط انستغرام",
+    "Bio":"نبذة"
 },
 
 "servicesPage":{

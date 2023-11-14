@@ -1,8 +1,8 @@
 
-import LoadingSpinner from "@/components/loading spinner/loadinSpinner";
+import LoadingSpinner from "@/components/dashboard/loading spinner/loadinSpinner";
 import dynamic from "next/dynamic";
 
-const TeamsComponent = dynamic(() => import("../../../../components/team/Teams"), {
+const TeamsComponent = dynamic(() => import("../../../../components/dashboard/team/Teams"), {
   loading: () => <LoadingSpinner />, 
   ssr: false, // Disable server-side rendering for this component
 });

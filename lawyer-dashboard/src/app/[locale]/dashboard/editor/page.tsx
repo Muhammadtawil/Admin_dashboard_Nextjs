@@ -7,8 +7,8 @@
 
 
 import dynamic from "next/dynamic";
-import LoadingSpinner from "@/components/loading spinner/loadinSpinner";
-const EditorComponent = dynamic(() => import("../../../../components/editor/editorHtml"), {
+import LoadingSpinner from "@/components/dashboard/loading spinner/loadinSpinner";
+const EditorComponent = dynamic(() => import("../../../../components/dashboard/editor/editorHtml"), {
   loading: () => <LoadingSpinner />,  // Optional loading component
   ssr: false, // Disable server-side rendering for this component
 });

@@ -10,8 +10,8 @@ import { usePathname, useRouter } from "next/navigation";
 import NavbarData from "./navbarData";
 import { useTranslations } from "next-intl";
 import { useLongPress } from "use-long-press";
-import LocaleSwitcher from "@/components/locale/LocaleSwitcher";
-import DarkAndLightMode from "@/components/ControlPanelModal/DarkAndLightMode";
+import LocaleSwitcher from "@/components/dashboard/locale/LocaleSwitcher";
+import DarkAndLightMode from "@/components/dashboard/ControlPanelModal/DarkAndLightMode";
 import { Stack } from "@mui/material";
 
 const NavBar = () => {

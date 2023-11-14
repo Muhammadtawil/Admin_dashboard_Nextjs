@@ -20,7 +20,7 @@ import "/public/fonts/flaticon.css";
 
 
 import FooterMain from '@/components/Website/Footer/Footer-main';
-import ScrollToTop from '@/components/shared/ScrollToTop';
+import ScrollToTop from '@/components/dashboard/shared/ScrollToTop';
 // import SubscriptionPopup from '@/components/shared/SubscriptionPopup';
 
 
