@@ -50,14 +50,7 @@ const Blogs = ({ blogData ,children}: { blogData: any,children:any }) => {
 
   return (
     <div>
-      <Head>
-        <title>lawFirm - Blogs</title>
-        <meta
-          name="description"
-          content="LawFirm | your way to Justice"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+
       <main>
         <HeaderWrapper>
           <NavBar />

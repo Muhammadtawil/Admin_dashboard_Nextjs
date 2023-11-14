@@ -9,7 +9,7 @@ const ServicesSection = ({services,translatedServices}:{services:any,translatedS
   const path = usePathname();
   const arabic = path.includes('ar');
   const t = useTranslations('webServices')
-  const servicesData = arabic ? translatedServices : services;
+  const servicesData = arabic ? services : translatedServices;
 
   return (
     <section id="services" className={`${Style.servicesStyle}`}>
@@ -38,7 +38,7 @@ const ServicesSection = ({services,translatedServices}:{services:any,translatedS
       <div className="single-offer custom-card services-item">
         <Stack direction="row" spacing={2}>
           <div className="flaticon-tick"> </div>
-          <h3>{arabic ? String(service.serviceTitle) : String(service.serviceTitle)}</h3>
+          <h3>{String(service.serviceTitle)}</h3>
         </Stack>
         <p className="text-center">{arabic ? String(service.serviceDescription) : String(service.serviceDescription)}</p>
       </div>

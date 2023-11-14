@@ -15,7 +15,8 @@ import { useTranslations } from "next-intl";
 const NewsList = ({ newsData,sliceTarget,shouldSlice}:{newsData:any,sliceTarget:number,shouldSlice:boolean}) => {
   const router = useRouter();
   const path = usePathname();
-  const arabic=path.includes('ar')
+  const arabic = path.includes('ar')
+  const locale = arabic ? "ar" : "en";
 const t=useTranslations('webNews')
   let slicedBlogData = shouldSlice ? newsData.slice(0, sliceTarget) : newsData;
   return (
@@ -75,7 +76,7 @@ const t=useTranslations('webNews')
                   )}
                 </div>
                 <h4 >{news.newsTitle}</h4>
-                <Link href={`/ar/news/${news.newsId}`} className="read-more">
+                <Link href={`/${locale}/news/${news.newsId}`} className="read-more">
                 <button>
                 {t('readMore')} <FaLongArrowAltRight />
                 </button>

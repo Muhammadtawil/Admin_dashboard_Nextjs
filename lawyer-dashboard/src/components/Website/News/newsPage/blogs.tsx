@@ -49,14 +49,7 @@ const News = ({ newsData ,children}: { newsData: any,children:any }) => {
 
   return (
     <div>
-      <Head>
-        <title>lawFirm - News</title>
-        <meta
-          name="description"
-          content="LawFirm | your way to Justice"
-        />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+
       <main>
         <HeaderWrapper>
           <NavBar />
