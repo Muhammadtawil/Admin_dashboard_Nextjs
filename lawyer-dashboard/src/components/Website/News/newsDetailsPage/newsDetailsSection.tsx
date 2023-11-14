@@ -19,9 +19,9 @@ export default async function NewsDetailsMain({
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      next: {
-        revalidate: 120,
-      },
+      // next: {
+      //   revalidate: 120,
+      // },
     };
     const newsUrl = process.env.NEWSIDURL;
   const response = await fetch(`${newsUrl}/${params.newsId}`, requestOptions);

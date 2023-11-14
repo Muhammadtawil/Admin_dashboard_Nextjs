@@ -47,7 +47,7 @@ export default async function blogsPageLayout({ children, params: { locale } }: 
   const lang = locale === 'ar' ? 'ar' : 'en'
 
   return (
-    <html lang={lang}>
+    <html>
       <NextIntlClientProvider locale={locale ? locale : 'en'} messages={messages}>
 
         <body>

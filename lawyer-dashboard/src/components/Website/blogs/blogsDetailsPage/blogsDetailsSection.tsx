@@ -1,6 +1,6 @@
-import { Translator ,translate} from "google-translate-api-x";
+
 import DetailsComponent from "./blogsDetailsMain";
-import { ValuesSelect } from '../../../dashboard/shared/formsComponents';
+
 
 export default async function BlogsDetailsMain({
   params,
