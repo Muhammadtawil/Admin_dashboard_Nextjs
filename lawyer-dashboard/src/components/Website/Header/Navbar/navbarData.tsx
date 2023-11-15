@@ -6,6 +6,7 @@ const NavbarData = () => {
   const t = useTranslations('webMainPage');
   const path = usePathname();
   const en=path.includes('/en')
+
   return {
     logo: LogoImg,
     menus: [

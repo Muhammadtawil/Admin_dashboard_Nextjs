@@ -34,7 +34,7 @@ const DetailsComponent = ({ params, news ,children}: { params: any, news: any,ch
               <DynamicPostContent params={params} news={news} />
             </div>
             <div className="col-lg-4">
-                      <h4>{children }</h4>
+                      {children }
 
            
           </div>

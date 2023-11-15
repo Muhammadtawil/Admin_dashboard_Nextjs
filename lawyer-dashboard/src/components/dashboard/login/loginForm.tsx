@@ -26,7 +26,7 @@ export default function LoginForm() {
     e.preventDefault();
     try {
       setLoading(true);
-      setFormValues({ userName: "", password: "" });
+      // setFormValues({ userName: "", password: "" });
 
       const res = await signIn("credentials", {
         redirect: false,

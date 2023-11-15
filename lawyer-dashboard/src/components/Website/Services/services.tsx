@@ -40,3 +40,8 @@ export default async function Services() {
       </>
   )
 }
+
+// 
+// 
+     
+// const translatedAuthor=  await translatorToArabic.translate(auth)

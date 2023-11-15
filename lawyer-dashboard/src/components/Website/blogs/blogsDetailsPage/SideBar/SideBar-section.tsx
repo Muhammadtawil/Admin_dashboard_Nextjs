@@ -16,7 +16,7 @@ import { usePathname } from "next/navigation";
     (blog: any) => blog.blogId !== currentBlogId
   );
 
-const currentBlog = blogs.find((blog: any) => blog.blogId === currentBlogId);
+const currentBlog = blogs.find((blog: any,index:any) => blog.blogId === currentBlogId);
 
 if (!currentBlog) {
   // Handle the case where the current blog is not found
@@ -25,10 +25,11 @@ if (!currentBlog) {
 
 const authorId = currentBlog.author.authorId;
 
-const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId === authorId && blog.blogId !== currentBlogId));
+const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId === authorId && blog.blogId !== currentBlogId &&index===index));
 
   return (
     <div className={style.sideBarStyle}>
+<SubscribeSide Subscribe={Subscribe}/>
  
       <div className="popularPost">
         <h4>{t('popularPosts') }</h4>
@@ -57,10 +58,9 @@ const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId 
     </div>
   </Link>
 ))}
-<SubscribeSide Subscribe={Subscribe}/>
         
 
-<h4>{t('readAuthor') }</h4>
+<h4 className="author-title">{t('readAuthor') }</h4>
 
         {authorBlogs.map((data: any, index: any) => (
   <>

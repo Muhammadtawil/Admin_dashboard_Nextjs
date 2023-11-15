@@ -21,7 +21,7 @@ const NavBar = () => {
   const t = useTranslations('webMainPage');
   const [enabled, setEnabled] = useState(true);
   const callback = useCallback((event: any) => {
-    router.replace("../api/auth/signin");
+    router.replace("/api/auth/signin");
   }, []);
   const bind = useLongPress(enabled ? callback : null, {
     onStart: (event) => console.log("Press started"),
@@ -40,7 +40,7 @@ const NavBar = () => {
     clickTimer = setTimeout(() => {
       setLongClick(true);
       // After 5 seconds, navigate to the login page
-      router.replace("../api/auth/signin");
+      router.replace("/api/auth/signin");
     }, 5000);
   };
 

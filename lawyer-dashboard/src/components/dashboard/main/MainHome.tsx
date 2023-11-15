@@ -4,8 +4,6 @@ import { getClients } from "@/server/clients/clients";
 import MainComponent from "./main";
 import MonthlyClientChart from "./charttwo";
 import { Box, Stack } from "@mui/material";
-import RandomQuote from "./quotes/quotes";
-import PageTitle from "@/components/dashboard/shared/PageTitle/pageTitle";
 import QuoteGenerator from "./quotes/Quote_generator";
 
 export default async function MainHome() {

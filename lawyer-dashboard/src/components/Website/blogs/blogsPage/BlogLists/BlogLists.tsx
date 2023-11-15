@@ -5,7 +5,6 @@ import Image from "next/image";
 import React from "react";
 import { Row } from "react-bootstrap";
 import {
-  FaComments,
   FaLongArrowAltRight,
   FaRegUserCircle
 } from "react-icons/fa";
@@ -17,7 +16,8 @@ import { useTranslations } from "next-intl";
 const BlogLists = ({ blogsData }:any) => {
   const router = useRouter();
   const path = usePathname();
-  const arabic=path.includes('ar')
+  const arabic = path.includes('ar')
+  const locale=arabic?"ar":"en"
 const t=useTranslations('WebBlog')
   return (
     <div className={style.blogListStyle}>
@@ -43,7 +43,7 @@ const t=useTranslations('WebBlog')
               <div className="image">
                 <Image fill src={blog?.blogImageUrl} alt="blog image" />
               </div>
-              <div className="blogContent" onClick={()=>router.push(`/ar/blogs/${blog.blogId}`)}>
+              <div className="blogContent" onClick={()=>router.push(`/${locale}/blogs/${blog.blogId}`)}>
                 <div>
                   {blog?.author.authorName && (
                     <span>
@@ -62,7 +62,7 @@ const t=useTranslations('WebBlog')
                   )}
                 </div>
                 <h4 >{blog.blogTitle}</h4>
-                <Link href={`/ar/blogs/${blog.blogId}`} className="read-more">
+                <Link href={`/${locale}/blogs/${blog.blogId}`} className="read-more">
                 <button>
                 {t('readMore') } <FaLongArrowAltRight />
                 </button>

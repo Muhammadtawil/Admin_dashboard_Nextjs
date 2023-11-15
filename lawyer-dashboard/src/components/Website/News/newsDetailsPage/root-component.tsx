@@ -1,6 +1,6 @@
 
 
-import SideBarBlogDetails from "./SideBar/sideBar";
+import SideBarNewsDetails from "./SideBar/sideBar";
 import NewsDetailsMain from "./newsDetailsSection";
 
 
@@ -14,7 +14,7 @@ export default async function NewsDetails({
   return (
    <>
 
-          <NewsDetailsMain params={params} children={<SideBarBlogDetails currentNewsId={params.newsId} />}/>
+          <NewsDetailsMain params={params} children={<SideBarNewsDetails currentNewsId={params.newsId} />}/>
     
    
    

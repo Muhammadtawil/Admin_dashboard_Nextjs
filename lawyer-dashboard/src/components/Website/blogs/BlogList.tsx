@@ -38,7 +38,7 @@ const BlogWebList = ({ blogsData }: { blogsData: any }) => {
         <div className="blogTitle">
         <Stack spacing={3} direction={"row"} alignItems="center" justifyContent="space-between">
           <h2 className="blogTitle">{t('lastBlogs') }</h2>
-          <Link href='/ar/blogs'>
+          <Link href={`/${locale}/blogs`}>
             <h5 className="view-all"><span>{t('viewAll') }</span></h5>
           </Link>
 </Stack>

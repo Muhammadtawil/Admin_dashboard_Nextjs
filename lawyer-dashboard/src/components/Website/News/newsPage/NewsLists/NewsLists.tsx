@@ -15,7 +15,8 @@ const NewsLists = ({  newsData }:any) => {
   const router = useRouter();
   const t = useTranslations('WebBlog')
   const path = usePathname();
-  const arabic=path.includes('ar')
+  const arabic = path.includes('ar')
+  const locale=arabic?"ar":"en"
   return (
     <div className={style.blogListStyle}>
       <Row className="row-cols-1 row-cols-md-1 row-cols-lg-2">
@@ -39,7 +40,7 @@ const NewsLists = ({  newsData }:any) => {
               <div className="image">
                 <Image fill src={news?.newsImageUrl} alt="news image" />
               </div>
-              <div className="blogContent" onClick={()=>router.push(`/ar/news/${news.newsId}`)}>
+              <div className="blogContent" onClick={()=>router.push(`/${locale}/news/${news.newsId}`)}>
                 <div>
            
                   {news?.createdAt && (
@@ -54,7 +55,7 @@ const NewsLists = ({  newsData }:any) => {
                   )}
                 </div>
                 <h4 >{news.newsTitle}</h4>
-                <Link href={`/ar/news/${news.newsId}`} className="read-more">
+                <Link href={`/${locale}/news/${news.newsId}`} className="read-more">
                 <button>
                 {t('readMore') } <FaLongArrowAltRight />
                 </button>

@@ -29,7 +29,7 @@ const t=useTranslations('webNews')
         <div className="blogTitle">
         <Stack spacing={3} direction={"row"} alignItems="center" justifyContent="space-between">
           <h2 className="blogTitle">{t('lastNews') }</h2>
-          <Link href='/ar/news'>
+          <Link href={`/${locale}/news`}>
             <h5 className="view-all"><span>{t('viewAll') }</span></h5>
           </Link>
 </Stack>
@@ -55,12 +55,12 @@ const t=useTranslations('webNews')
               className="blogCard col"
             >
               
-              <div className="image " onClick={()=>router.push(`/ar/news/${news.newsId}`)}>
+              <div className="image " onClick={()=>router.push(`/${locale}/news/${news.newsId}`)}>
                 <img src={news?.newsImageUrl} alt="blog image" />
                 </div>
        
      
-              <div className="blogContent" onClick={()=>router.push(`/ar/news/${news.newsId}`)}>
+              <div className="blogContent" onClick={()=>router.push(`/${locale}/news/${news.newsId}`)}>
                 <div>
                
                   {news?.posted && news?.createdAt}
