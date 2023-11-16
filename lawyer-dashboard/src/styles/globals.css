@@ -1,10 +1,10 @@
 :root {
   --bodyFontFamily: "Roboto", sans-serif !important;
-  --bodyTextColor: #5B5B98;
-  --primaryColor: #757FEF;
+  --bodyTextColor: #6154f2;
+  --primaryColor: #6154f2;
   --secondaryColor: #818093;
   --successColor: #00B69B;
-  --infoColor: #2DB6F5;
+  --infoColor: #6154f2;
   --warningColor: #FFBC2B;
   --dangerColor: #EE368C;
   --darkColor: #260944;
@@ -209,6 +209,9 @@ img {
 
 .ml-5px {
   margin-left: 5px !important;
+  color:#6154f2;
+  background-color:#6154f2;
+
 }
 
 .ml-6px {
@@ -1196,3 +1199,38 @@ img {
   border: 1px solid #ccc;
 }
 
+/* Add these styles in your global styles or specific styles file */
+.arabic-cell {
+  direction: rtl;
+  text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+  .formHead{
+    display: "flex";
+    justifyContent: "space-between";
+    alignItems: "center";
+    borderBottom: "1px solid #EEF0F7";
+    padding: "10px";
+    mb: "20px";
+  }
+  .headButton{
+    padding-left:30px;
+  }
+  .searchForm{
+    width:50%;
+  }
+}
+
+.client-input{
+  color:black;
+font-weight:300;
+}
+.dark .client-input{
+  color:white;
+  /* background-color:white; */
+}
+
+.dark .client-box{
+  background-color:#191A19;
+}

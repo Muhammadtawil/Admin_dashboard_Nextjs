@@ -1,0 +1,23 @@
+.mainStyle :global{
+    .arWelcome{
+     font-size:3rem;
+     text-align:right;
+     padding-right:10px;
+     color:#6154f2;
+    }
+    .enWelcome{
+        font-size:2rem;
+        text-align:left;
+        padding-right:10px;
+       }
+       @media (max-width: 768px) {
+        .arWelcome{
+            font-size:1.5rem;
+            text-align:right;
+            padding-right:10px;
+            color:#6154f2;
+           }
+
+       }
+
+}

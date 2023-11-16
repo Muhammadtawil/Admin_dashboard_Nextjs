@@ -30,7 +30,7 @@ export default function EditClientForm({
     clientPhone: selectedClient?.clientPhone || "",
     clientEmail: selectedClient?.clientEmail || "",
     clientStatus: selectedClient?.clientStatus || "",
-    clientService: selectedClient?.choosenServiceName || "",
+    clientService: selectedClient?.chosenServiceName || "",
   });
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function EditClientForm({
       clientPhone: selectedClient?.clientPhone || "",
       clientEmail: selectedClient?.clientEmail || "",
       clientStatus: selectedClient?.clientStatus || "",
-      clientService: selectedClient?.choosenServiceName || "",
+      clientService: selectedClient?.chosenServiceName || "",
     });
   }, [selectedClient]);
 
@@ -71,18 +71,19 @@ export default function EditClientForm({
         >
           <Box
             sx={{
-              background: "#fff",
+              // background: "#fff",
               padding: "20px 20px",
               borderRadius: "8px",
             }}
-            className="dark-BG-101010"
+            className="client-box"
           >
             <Grid container alignItems="center" spacing={2}>
        
                 <Grid item xs={12} md={12} lg={12}>
               <CustomTypography text={t("clientName")} />
 
-              <TextField
+                <TextField
+                className="client-input"
                 autoComplete="clientName"
                 name="clientName"
                 required
@@ -92,15 +93,17 @@ export default function EditClientForm({
                 label={t("clientName")} 
                 autoFocus
                 InputProps={{
-                  style: { borderRadius: 8 },
+                  style: { borderRadius: 8, fontWeight: 300 },
+                  className:"client-input"
                 }}
                 onChange={handleInputChange}
               />
-            </Grid>
-                     <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={t("clientPhone")}  />
+            </Grid  >
+                     <Grid item xs={12} md={12} lg={12} className="client-input">
+              <CustomTypography   text={t("clientPhone")}  />
 
-              <TextField
+                <TextField
+                
                 autoComplete="clientPhone"
                 name="clientPhone"
                 required
@@ -110,7 +113,8 @@ export default function EditClientForm({
                 label={t("clientPhone")} 
                 autoFocus
                 InputProps={{
-                  style: { borderRadius: 8 },
+                  style: { borderRadius: 8, fontWeight: 300 },
+                  className:"client-input"
                 }}
                 onChange={handleInputChange}
               />
@@ -129,26 +133,20 @@ export default function EditClientForm({
                 label={t("clientEmail")}
                 autoFocus
                 InputProps={{
-                  style: { borderRadius: 8 },
+                  style: { borderRadius: 8, fontWeight: 300 },
+                  className:"client-input"
                 }}
                 onChange={handleInputChange}
               />
             </Grid>
            
-              {/* <CustomSelect
-                name="clientStatus"
-                label={t("status")}
-                values= {clientStatusValues}
-                selectedValue={formData.clientStatus}
-                onChange={handleInputChange}
-                required={true}
-              /> */}
                      <Grid item xs={12} md={12} lg={6}>
               <CustomTypography text={t('status')}/>
 
               <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">{t("status")}</InputLabel>
-                <Select
+                  <Select
+                        className="client-input"
                   name="clientStatus"
                   labelId="demo-simple-select-label"
                   id="clientStatus"
@@ -156,42 +154,41 @@ export default function EditClientForm({
                   label={t('status')}
                   onChange={handleInputChange}
                 >
-                  <MenuItem value={"COMPLETED"}>{t('completed')}</MenuItem>
-                    <MenuItem value={"PENDING"}>{t('pending')}</MenuItem>
-                  <MenuItem value={"IN_PROGRESS"}>{t('inProgress')}</MenuItem>
+                  <MenuItem value={"COMPLETED"}  className="client-input client-box" >{t('completed')}</MenuItem>
+                    <MenuItem value={"PENDING"} className="client-input client-box" >{t('pending')}</MenuItem>
+                  <MenuItem value={"IN_PROGRESS"}  className="client-input client-box">{t('inProgress')}</MenuItem>
                     
                 </Select>
               </FormControl>
             </Grid>
+            <Grid item xs={12} md={12} lg={6}>
+            <CustomTypography text={t("service")}/>
 
-              <Grid item xs={12} md={12} lg={6}>
-                <CustomTypography text={t("service")}/>
-                {/* <ValuesSelect name={"clientService"} values={servicesList} /> */}
-                <select
-      className="form-select bg-light border-0"
-      name='clientService'
-      style={{
-        height: "55px",
-        color: "black",
-        width: "100%",
-        borderRadius: "3%",
-      }}
-      required={true}
-    >
-      <option value="">Select A Status</option>
-      {servicesList.length === 0 ? (
-        <option value="" disabled>
-          Loading...
-        </option>
+              <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">{t("service")}</InputLabel>
+                  <Select
+                        className="client-input"
+                    
+                  name="clientService"
+                  labelId="demo-simple-select-label"
+                  id="clientService"
+                  value={formData.clientService}
+                  label={t('service')}
+                  onChange={handleInputChange}
+                  >
+                      {servicesList.length === 0 ? (
+     <MenuItem value="">...Loading</MenuItem>
       ) : (
         servicesList.map((service: any, index: any) => (
-          <option key={index} value={servicesList[index].serviceTitle}>
-            {servicesList[index].serviceTitle}
-          </option>
+          <MenuItem  key={index} value={servicesList[index].serviceTitle}> {servicesList[index].serviceTitle}</MenuItem>
         ))
       )}
-    </select>
-              </Grid>
+    
+                    
+                </Select>
+              </FormControl>
+            </Grid>
+     
               <FormFooter handleClose={handleClose} title={t("editClient")}/>
             </Grid>
           </Box>

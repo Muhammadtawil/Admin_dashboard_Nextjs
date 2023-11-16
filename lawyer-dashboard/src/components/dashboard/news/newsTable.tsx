@@ -21,7 +21,7 @@ import EditNewsComponent from "./editNews";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import cellStyle from "../shared/cellStyle";
 import ActionsComponent from "../shared/PaginationList";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { usePathname } from "next/navigation";
 
@@ -39,7 +39,8 @@ export default function NewsTable({
   const t=useTranslations('newsPage')
   const [selectedStatus, setSelectedStatus] = useState("");
   const path = usePathname();
-  const arabic=path.includes('ar')
+  const arabic = path.includes('ar')
+  const locale=useLocale()
   const handleStatusFilterChange = (event: any) => {
     setSelectedStatus(event.target.value);
   };
@@ -55,7 +56,7 @@ export default function NewsTable({
   };
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(8);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -145,7 +146,7 @@ export default function NewsTable({
          </IconButton>
        </TableCell>
             <TableCell sx={{ ...cellStyle, fontSize: "13px" }}>
-              {new Date(news.createdAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
+              {new Date(news.createdAt).toLocaleDateString(locale=='ar'?"ar-LB":"en-US", {
                 day: "numeric",
                 month: "2-digit",
                 year: "2-digit",
@@ -162,6 +163,8 @@ export default function NewsTable({
                 sx={{
                   padding: "4px 8px",
                   width: "100px",
+                  color: "White",
+                  fontSize:"12px",
                   backgroundColor:
                     news.isFlag === true
                       ? "green"

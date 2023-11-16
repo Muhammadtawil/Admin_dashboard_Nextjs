@@ -6,6 +6,7 @@ import '.././styles/LogIn.css'
 
 
 import "../styles/web/dark.css";
+import ScrollToTop from "@/components/dashboard/shared/ScrollToTop";
 
 
 
@@ -27,9 +28,11 @@ export default function RootLayout({
 <html>
       
 
-    
-        {children}
+          {children}
+        
 
+    
+      
  
 
 

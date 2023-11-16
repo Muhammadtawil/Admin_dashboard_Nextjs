@@ -58,6 +58,7 @@ export default function EditTaskForm({
     <>
       <Box>
         <Box
+          
           component="form"
           noValidate
           action={async (formData) => {
@@ -66,35 +67,37 @@ export default function EditTaskForm({
               isAssigned ? selectedTask.assignedTaskId : selectedTask.taskId
             ).then(() => {
             handleClose();
-            updateAlert('Task Updated');
+            updateAlert(t('editAlert'));
               
             });
           }}
         >
           <Box
             sx={{
-              background: "#fff",
+              // background: "#fff",
               padding: "20px 20px",
               borderRadius: "8px",
             }}
-            className="dark-BG-101010"
+            className="client-box"
           >
-            <Grid container alignItems="center" spacing={2}>
+            <Grid container alignItems="center" spacing={2} className="client-box" >
        
                        <Grid item xs={12} md={12} lg={12}>
-              <CustomTypography text={"Client Name"} />
+              <CustomTypography text={t('taskTitle')} />
 
-              <TextField
+                <TextField
+                  className="client-box"
                 autoComplete="taskTitle"
                 name="taskTitle"
                 required
                 fullWidth
                 value={formData.taskTitle}
                 id="taskTitle"
-                label="task Title "
+                label={t('taskTitle')}
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
                 }}
                 onChange={handleInputChange}
               />
@@ -102,9 +105,10 @@ export default function EditTaskForm({
               <Grid item xs={12} md={12} lg={6}>
               <CustomTypography text={t('priority')}/>
 
-              <FormControl fullWidth>
+              <FormControl fullWidth >
                   <InputLabel id="demo-simple-select-label">{t('priority')}</InputLabel>
-                <Select
+                  <Select
+                    className="client-input"
                   name="taskPriority"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -112,9 +116,9 @@ export default function EditTaskForm({
                   label={t('status')}
                   onChange={handleInputChange}
                 >
-                  <MenuItem value={"HIGH"}>{t('high')}</MenuItem>
-                    <MenuItem value={"MEDIUM"}>{t('medium')}</MenuItem>
-                  <MenuItem value={"LOW"}>{t('low')}</MenuItem>
+                  <MenuItem value={"HIGH"} className="client-box client-input">{t('high')} </MenuItem>
+                    <MenuItem value={"MEDIUM"} className="client-box client-input">{t('medium')}</MenuItem>
+                  <MenuItem value={"LOW"} className="client-box client-input">{t('low')}</MenuItem>
                     
                 </Select>
               </FormControl>
@@ -124,7 +128,8 @@ export default function EditTaskForm({
 
               <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">{t('status')}</InputLabel>
-                <Select
+                  <Select
+                    className="client-input"
                   name="taskStatus"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -132,14 +137,14 @@ export default function EditTaskForm({
                   label={t('status')}
                   onChange={handleInputChange}
                 >
-                  <MenuItem value={"COMPLETED"}>{t('completed')}</MenuItem>
-                    <MenuItem value={"NOT_COMPLETED"}>{t('notCompleted')}</MenuItem>
-                  <MenuItem value={"IN_PROGRESS"}>{t('inProgress')}</MenuItem>
+                  <MenuItem value={"COMPLETED"} className="client-box client-input">{t('completed')} </MenuItem>
+                    <MenuItem value={"NOT_COMPLETED"} className="client-box client-input">{t('notCompleted')}</MenuItem>
+                  <MenuItem value={"IN_PROGRESS"} className="client-box client-input">{t('inProgress')}</MenuItem>
                     
                 </Select>
               </FormControl>
             </Grid>
-              <FormFooter handleClose={handleClose} title={"Edit Task"} />
+              <FormFooter handleClose={handleClose} title={t('edit')} />
             </Grid>
           </Box>
         </Box>

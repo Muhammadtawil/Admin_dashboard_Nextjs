@@ -63,11 +63,13 @@ export default async function RootLayout({ children, params: { locale } }: Props
           {/* <Navbar /> */}
           {/* <NavBarTest/> */}
 
+          <>
           {children}
           {/* <SubscriptionPopup /> */}
           <ScrollToTop/>
 
           <FooterMain/>
+          </>
           {/* <GoTop/> */}
         </body>
 

@@ -32,6 +32,7 @@ async function Delete(taskId: string) {
   "use server";
   try {
     await DeleteTask(taskId);
+    revalidatePath('tasks','page')
   } catch (error) {}
 }
 
@@ -39,6 +40,7 @@ async function DeleteAssignedTasks(assigntaskId: string) {
   "use server";
   try {
     await DeleteAssignedTask(assigntaskId);
+    revalidatePath('tasks','page')
   } catch (error) {
     console.log(error);
   }

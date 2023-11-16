@@ -2,10 +2,12 @@
 import { useState, useEffect } from "react";
 import styles from "./CurrentDate.module.css";
 import { usePathname } from "next/navigation";
+import { useLocale } from "next-intl";
 
 function CurrentDate() {
   const path = usePathname();
-  const arabic=path.includes('ar')
+  const arabic = path.includes('ar')
+  const locale=useLocale()
   // Initialize a state variable to store the current date
   const [currentDate, setCurrentDate] = useState("");
 
@@ -19,7 +21,7 @@ function CurrentDate() {
     };
 
     // Create a new Intl.DateTimeFormat instance with the specified options
-    const formatter = new Intl.DateTimeFormat(arabic?"ar-LB":"en-US", options);
+    const formatter = new Intl.DateTimeFormat(locale=="ar"?"ar-LB":"en-US", options);
 
     // Create a new Date instance to get the current date and time
     const date = new Date();

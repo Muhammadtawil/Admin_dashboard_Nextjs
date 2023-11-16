@@ -20,7 +20,7 @@
     "August": "آب",
     "September": "أبلول",
     "October": "تشرين اﻷول",
-    "November": "نوتشرين الثاني",
+    "November": "تشرين الثاني",
     "December": "كانون اﻷول"
   },
 
@@ -107,7 +107,10 @@
     "LOW":"منخفضة",
     "COMPLETED": "مكتملة",
     "NOT_COMPLETED": "غير مكتملة",
-    "IN_PROGRESS": "قيد التنفيذ"
+    "IN_PROGRESS": "قيد التنفيذ",
+    "success":"تمت إضافة المهمة بنجاح",
+    "editAlert":"تمت تعديل المهمة بنجاح"
+  
   },
 
   "clientPage": {
@@ -237,7 +240,11 @@
     "linkedInUrl":"رابط اللينكدان ",
     "twitterUrl":" رابط توتير",
     "instagramUrl":"رابط انستغرام",
-    "Bio":"نبذة"
+    "Bio":"نبذة",
+    "ADMIN": "مدير",
+    "USER": "مستخدم",
+    "Yes": "نعم",
+    "No": "كلا"
 },
 
 "servicesPage":{
@@ -259,7 +266,11 @@
 "addService":"إضافة خدمة",
 "editService":"تعديل الخدمة",
 "yes":"نعم",
-"no":"كلا"
+"no":"كلا",
+"AVAILABLE":"متاحة",
+"NOT_AVAILABLE":"غير متاحة",
+"Yes":"نعم",
+"No":"كلا"
 },
 
 "webMainPage":{

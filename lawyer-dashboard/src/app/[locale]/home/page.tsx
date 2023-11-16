@@ -9,6 +9,7 @@ import NavBar from "@/components/Website/Header/Navbar/Navbar";
 import style from "../../../components/Website/Header/Header.module.scss";
 import Testimonial from "@/components/Website/Testimonial/Testimonial";
 import Services from "@/components/Website/Services/services";
+import ScrollToTop from "@/components/dashboard/shared/ScrollToTop";
 
 
 
@@ -32,6 +33,7 @@ export default function HomePage() {
             <Team />
             <Testimonial />
             <Booking />
+
 
             {/* <ContactInfo /> */}
         </>

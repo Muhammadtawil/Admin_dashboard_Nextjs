@@ -33,14 +33,15 @@ const MyEditor = () => {
          <PageTitle title={t('pageTitle')}/>
       <Box
         sx={{
-          display: "flex",
+          // display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
           borderBottom: "1px solid #EEF0F7",
           paddingBottom: "10px",
           mb: "20px",
+         
         }}
-        className="for-dark-bottom-border"
+        className="client-box"
       >
         <Button
           onClick={handleSaveToDocx}
@@ -52,7 +53,7 @@ const MyEditor = () => {
             padding: "12px 20px",
             color: "#fff",
             backgroundColor: "#1976D2",
-        
+        alignItems:"self-end",
             border: "none",
           }}
         >
@@ -63,12 +64,13 @@ const MyEditor = () => {
         {t('saveFile')}
         </Button>
       </Box>
-      <div className="App">
+      <div>
         <Editor
+          
           editorState={editorState}
           onEditorStateChange={setEditorState}
           wrapperClassName="wrapper-class"
-          editorClassName="editor-class"
+          editorClassName="editor-class client-input client-box"
           toolbarClassName="toolbar-class"
         />
       </div>

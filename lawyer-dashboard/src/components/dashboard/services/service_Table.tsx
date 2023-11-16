@@ -38,7 +38,7 @@ export default function ServicesTable({
   const [selectedStatus, setSelectedStatus] = useState("");
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(8);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -133,6 +133,8 @@ export default function ServicesTable({
               sx={{
                 padding: "4px 8px",
                 width: "100px",
+                color: "White",
+                fontSize:"12px",
                 backgroundColor:
                   service.serviceStatus === "AVAILABLE"
                     ? "green"
@@ -151,6 +153,8 @@ export default function ServicesTable({
               sx={{
                 padding: "4px 8px",
                 width: "100px",
+                color: "White",
+                fontSize:"12px",
                 backgroundColor:
                   service.isFlag === true
                     ? "green"
@@ -168,7 +172,7 @@ export default function ServicesTable({
               ...cellStyle,
               fontWeight: "500",
               color: "#260944",
-              display: "flex",
+              // display: "flex",
               alignItems: "center",
               flexDirection: "row",
             }}

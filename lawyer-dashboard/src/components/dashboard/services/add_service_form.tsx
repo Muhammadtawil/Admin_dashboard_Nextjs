@@ -63,7 +63,7 @@ const t=useTranslations('servicesPage')
                 padding: "20px 20px",
                 borderRadius: "8px",
               }}
-              className="dark-BG-101010"
+              className="client-box"
             >
               <Grid container alignItems="center" spacing={2}>
                 <CustomTextField name="serviceName" label={t('serviceTitle')} />
@@ -71,17 +71,17 @@ const t=useTranslations('servicesPage')
                 <CustomTextField
                   name="serviceDescription"
                   label={t('serviceDescription')}
-                  multiline
+                  multiline={true}
                   minRows={6}
                 />
 
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={t('status')} />
-                  <ValuesSelect name={"serviceStatus"} values={serviceStatus} isrequired={true} />
+                  <ValuesSelect name={"serviceStatus"} values={serviceStatus} isrequired={true} dicName='servicesPage' optionValue='status' />
                 </Grid>
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={t('onWeb')}/>
-                  <ValuesSelect name={"isFlag"} values={flagStatus} isrequired={true} />
+                  <ValuesSelect name={"isFlag"} values={flagStatus} isrequired={true} dicName='servicesPage' optionValue='onWeb' />
                 </Grid>
 
                 <FormFooter handleClose={handleClose} title={t('addService')} />

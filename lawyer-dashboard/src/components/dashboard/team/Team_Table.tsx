@@ -56,7 +56,7 @@ export default function TeamTable({
   };
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(8);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -168,6 +168,8 @@ export default function TeamTable({
               sx={{
                 padding: "4px 8px",
                 width: "100px",
+                fontSize: "12px",
+                color:"white",
                 backgroundColor:
                   user.isTeam === true
                     ? "green"

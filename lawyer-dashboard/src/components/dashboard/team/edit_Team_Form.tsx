@@ -112,7 +112,7 @@ export default function EditTeamForm({
               padding: "20px 20px",
               borderRadius: "8px",
             }}
-            className="dark-BG-101010"
+            className="client-input client-box"
           >
             <Grid container alignItems="center" spacing={2}>
               <Grid item xs={12} md={12} lg={6}>
@@ -136,6 +136,7 @@ export default function EditTeamForm({
                   value={formData.userName}
                   InputProps={{
                     style: { borderRadius: 8 },
+                    className:"client-input client-box"
                   }}
                   className="for-dark-input"
                   onChange={handleInputChange}
@@ -162,6 +163,7 @@ export default function EditTeamForm({
                   value={formData.userPhone}
                   InputProps={{
                     style: { borderRadius: 8 },
+                    className:"client-input client-box"
                   }}
                   className="for-dark-input"
                   onChange={handleInputChange}
@@ -181,6 +183,7 @@ export default function EditTeamForm({
                   value={formData.userEmail}
                   InputProps={{
                     style: { borderRadius: 8 },
+                    className:"client-input client-box"
                   }}
                   className="for-dark-input"
                   onChange={handleInputChange}
@@ -201,6 +204,7 @@ export default function EditTeamForm({
                   value={formData.userBio}
                   InputProps={{
                     style: { borderRadius: 8 },
+                    className:"client-input client-box"
                   }}
                   className="for-dark-input"
                   onChange={handleInputChange}
@@ -220,6 +224,7 @@ export default function EditTeamForm({
                   value={formData.userPosition}
                   InputProps={{
                     style: { borderRadius: 8 },
+                    className:"client-input client-box"
                   }}
                   className="for-dark-input"
                   onChange={handleInputChange}
@@ -240,6 +245,7 @@ export default function EditTeamForm({
                   value={formData.userFacebookUrl}
                   InputProps={{
                     style: { borderRadius: 8 },
+                    className:"client-input client-box"
                   }}
                   className="for-dark-input"
                   onChange={handleInputChange}
@@ -258,6 +264,7 @@ export default function EditTeamForm({
                   value={formData.userTwitterUrl}
                   InputProps={{
                     style: { borderRadius: 8 },
+                    className:"client-input client-box"
                   }}
                   className="for-dark-input"
                   onChange={handleInputChange}
@@ -276,6 +283,7 @@ export default function EditTeamForm({
                   value={formData.userLinkedInUrl}
                   InputProps={{
                     style: { borderRadius: 8 },
+                    className:"client-input client-box"
                   }}
                   className="for-dark-input"
                   onChange={handleInputChange}
@@ -284,15 +292,16 @@ export default function EditTeamForm({
 
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={t('role')} />
-                <ValuesSelect name={"userRole"} values={serviceStatusValues} isrequired={true} />
+                <ValuesSelect name={"userRole"} values={serviceStatusValues} isrequired={true} optionValue="role" dicName="teamPage"/>
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={t('active')} />
-                <ValuesSelect name={"isTeam"} values={flagStatusValues} isrequired={true} />
+                <ValuesSelect name={"isTeam"} values={flagStatusValues} isrequired={true} optionValue="active" dicName="teamPage"/>
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={t('image')} />
                 <input
+                   className="client-input client-box"
                   autoComplete="image"
                   name="image"
                   required

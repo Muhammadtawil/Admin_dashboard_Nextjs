@@ -17,28 +17,32 @@ import DOMPurify from "dompurify";
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
   const t = useTranslations('BlogPage')
-  const [status, setstatus] = useState("");
-  const [editorState, setEditorState] = useState(
-    () => EditorState.createEmpty(),
-  );
+  const [editorState, setEditorState] = useState(() => EditorState.createEmpty());
   const [convertedContent, setConvertedContent] = useState('');
+  const [isEditorEmpty, setIsEditorEmpty] = useState(true);
+  const [status, setstatus] = useState("");
 
   useEffect(() => {
+    const hasText = editorState.getCurrentContent().hasText();
+    setIsEditorEmpty(!hasText);
     const htmlContent = draftToHtml(convertToRaw(editorState.getCurrentContent()));
     setConvertedContent(htmlContent);
   }, [editorState]);
   console.log(convertedContent);
+
+  function createMarkup(html: any) {
+    return {
+      __html: DOMPurify.sanitize(html)
+    };
+  }
+
 
 
 
   const handleChange = (event: any) => {
     setstatus(event.target.value);
   };
-  function createMarkup(html:any) {
-    return {
-      __html: DOMPurify.sanitize(html)
-    }
-  }
+
   return (
     <>
             <PageTitle title={t('pageTitle')} />
@@ -73,6 +77,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
               });
           }}
         >
+          {!isEditorEmpty && (
           <Grid item xs={12} textAlign="end">
             <Button
               type="submit"
@@ -97,6 +102,8 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
             {t('CreateBlog')} 
             </Button>
           </Grid>
+            
+            )}   
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={12} md={12} lg={12}>
               <CustomTypography text={t('blogTitle')}/>
@@ -110,6 +117,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
                 }}
               />
             </Grid>
@@ -122,8 +130,8 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
              
              editorState={editorState}
              onEditorStateChange={setEditorState}
-             wrapperClassName="wrapper-class"
-             editorClassName="editor-class"
+             wrapperClassName="wrapper-class "
+             editorClassName="editor-class client-box client-input"
              toolbarClassName="toolbar-class"
                            
                            />
@@ -162,6 +170,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
                 }}
               />
             </Grid>
@@ -171,6 +180,7 @@ export default function BlogAddComponent({ onCreate }: { onCreate: any }) {
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">{t('lang')}</InputLabel>
                 <Select
+                   className="client-input"
                   name="blogLang"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"

@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 import { useTranslations } from 'next-intl';
+import { axisClasses } from '@mui/x-charts';
 
 type GroupedData = { [key: string]: number };
 
@@ -22,6 +23,27 @@ export default function MonthlyClientChart({ clientData }: { clientData: any[] }
     width: 500,
     height: 400,
     padding: { top: 20, right: 20, bottom: 20, left: 100 },
+    fill: "white",
+    sx: {
+      [`.${axisClasses.right} .${axisClasses.label}`]: {
+        transform: 'translate(-20px, 0)',
+        color: 'green',
+        fill: 'yellow',
+        padding: '10px',
+      },
+      [`.${axisClasses.tickLabel}`]: {
+        fill: '#6154f2',
+        fontsize: '30px',
+      },
+      [` ${axisClasses.left}`]: {
+        color: 'white', // Set the color for Y-axis label here
+        fill: '#3E6C3E',
+      },
+      [`.${axisClasses.bottom} ${axisClasses.label}`]: {
+        color: 'white', // Set the color for Y-axis label here
+        fill: '#6154f2',
+      },
+    },
   };
   // Ensure all months are in the dataset
   const allMonths = [
@@ -68,7 +90,7 @@ export default function MonthlyClientChart({ clientData }: { clientData: any[] }
     <BarChart
       dataset={dataset}
       yAxis={[{ scaleType: 'band', dataKey: 'month' }]}
-      series={[{ dataKey: 'count', label: t('clientsPerMonth'), valueFormatter }]}
+      series={[{ dataKey: 'count', label: t('clientsPerMonth'), valueFormatter ,color: '#6154f2',}]}
       layout="horizontal"
       {...chartSetting}
       

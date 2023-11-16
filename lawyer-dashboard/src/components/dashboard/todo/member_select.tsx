@@ -4,7 +4,7 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
-import { Button, Grid, Typography } from "@mui/material";
+import { Button, Grid, InputLabel, Typography } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
 import { AssignTaskAlert } from "../alerts/alerts";
@@ -78,7 +78,7 @@ export default function MemberSelect({
         >
           <Grid item xs={12} md={12} lg={6}>
             <CustomTypography text={"Select Member"} />
-
+            <InputLabel htmlFor="select-multiple-chip">Select Member</InputLabel>
             <Select
               fullWidth
               labelId="demo-multiple-chip-label"

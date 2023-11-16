@@ -51,7 +51,7 @@ export default function TestimonialsTable({
   };
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(8);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -118,6 +118,8 @@ export default function TestimonialsTable({
                 sx={{
                   padding: "4px 8px",
                   width: "100px",
+                  color: "white",
+                  fontSize:"12PX",
                   backgroundColor:
                     testimonial.isFlag === true
                       ? "green"

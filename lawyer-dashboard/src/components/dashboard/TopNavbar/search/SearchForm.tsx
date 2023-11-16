@@ -1,4 +1,4 @@
-import * as React from "react";
+
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
@@ -53,9 +53,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function SearchForm() {
   return (
-    <>
+    <div className="searchForm">
       <Search className="search-form">
-        <SearchIconWrapper sx={{ display: { xs: "none", sm: "inline-flex" } }}>
+        <SearchIconWrapper sx={{ display: { xs: "-ms-flexbox", sm: "inline-flex" } }}>
           <SearchIcon />
         </SearchIconWrapper>
 
@@ -64,6 +64,6 @@ export default function SearchForm() {
           inputProps={{ "aria-label": "search" }}
         />
       </Search>
-    </>
+    </div>
   );
 }

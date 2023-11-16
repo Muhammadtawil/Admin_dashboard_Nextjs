@@ -7,11 +7,11 @@ const LoadingSpinner = () => {
     <div className="loading-spinner">
       <div className="icon">
               <RotatingIcon />
-               <BalanceTwoToneIcon className="custom-large-icon" style={{ color: 'blue' }} />
+               <BalanceTwoToneIcon className="custom-large-icon" style={{ color: '#6154f2' }} />
         <div className="loading-text">Loading</div>
       </div>
       <div className="spinner">
-        <BeatLoader color="#1976D2" loading={true} size={15} />
+        <BeatLoader color="#6154f2" loading={true} size={15} />
       </div>
     </div>
   );

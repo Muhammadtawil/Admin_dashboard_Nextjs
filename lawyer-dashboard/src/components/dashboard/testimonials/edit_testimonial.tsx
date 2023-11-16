@@ -69,6 +69,7 @@ export default function EditTestimonials({
         }}
       >
         <Box
+          className="client-box"
           component="form"
           noValidate={false}
           action={ (formData) => {
@@ -95,6 +96,8 @@ export default function EditTestimonials({
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
+
                 }}
                 onChange={handleInputChange}
               />
@@ -116,6 +119,7 @@ export default function EditTestimonials({
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
                 }}
                 onChange={handleInputChange}
               />
@@ -127,6 +131,7 @@ export default function EditTestimonials({
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">status</InputLabel>
                 <Select
+                  className="client-input"
                   name="isFlag"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
@@ -135,8 +140,8 @@ export default function EditTestimonials({
                   onChange={handleChange}
                   required={true}
                 >
-                  <MenuItem value={"true"}>{t('ready')}</MenuItem>
-                  <MenuItem value={"false"}>{t('notReady')}</MenuItem>
+                  <MenuItem className="client-box client-input" value={"true"}>{t('ready')}</MenuItem>
+                  <MenuItem className="client-box client-input" value={"false"}>{t('notReady')}</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

@@ -23,7 +23,7 @@ const Notifications = () => {
   };
   return (
     <>
-      <Tooltip title="Notification">
+      <Tooltip title="Notification" className='client-box'>
         <IconButton
           onClick={handleClick}
           size="small"
@@ -39,7 +39,7 @@ const Notifications = () => {
           className="ml-2 for-dark-notification"
         >
           <Badge color="error" variant="dot">
-            <NotificationsActiveIcon color="action" />
+            <NotificationsActiveIcon  className="notification-icon"/>
           </Badge>
         </IconButton>
       </Tooltip>

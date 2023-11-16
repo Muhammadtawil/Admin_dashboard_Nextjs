@@ -82,16 +82,14 @@ newsLang:selectedNews?.newsLang || "arabic",
     });
   }, [selectedNews]);
 
-  // Handle form input changes
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleInputChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
     }));
   };
+
   function createMarkup(html:any) {
     return {
       __html: DOMPurify.sanitize(html)
@@ -109,6 +107,7 @@ newsLang:selectedNews?.newsLang || "arabic",
         }}
       >
         <Box
+            className="client-box"
           component="form"
           noValidate={false}
           action={(formData) => {
@@ -126,11 +125,12 @@ newsLang:selectedNews?.newsLang || "arabic",
              });
           }}
         >
-          <Grid container alignItems="center" spacing={2}>
+          <Grid container alignItems="center" spacing={2}   className="client-box">
             <Grid item xs={12} md={12} lg={12}>
               <CustomTypography text={t('newsTitle')} />
 
               <TextField
+                 className="client-input"
                 autoComplete="NewsTitle"
                 name="newsTitle"
                 required
@@ -141,6 +141,8 @@ newsLang:selectedNews?.newsLang || "arabic",
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
+
                 }}
                 onChange={handleInputChange}
               />
@@ -201,7 +203,7 @@ newsLang:selectedNews?.newsLang || "arabic",
              editorState={editorState}
              onEditorStateChange={setEditorState}
              wrapperClassName="wrapper-class"
-             editorClassName="editor-class"
+             editorClassName="editor-class client-input client-box"
              toolbarClassName="toolbar-class"
                            
                            />
@@ -217,12 +219,13 @@ newsLang:selectedNews?.newsLang || "arabic",
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">{t('status')}</InputLabel>
                 <Select
+                   className="client-input"
                   name="isFlag"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={status}
+                  value={formData.isFlag}
                   label={t('status')}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                 >
                   <MenuItem value={"ready"}>{t('ready')}</MenuItem>
                   <MenuItem value={"not ready"}>{t('notReady')}</MenuItem>
@@ -235,14 +238,15 @@ newsLang:selectedNews?.newsLang || "arabic",
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">{t('lang')}</InputLabel>
                 <Select
+                   className="client-input"
                   name="newsLang"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
                   value={formData.newsLang}
                   label={t('lang')}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                 >
-                  <MenuItem value={"arabic"}>{t('arabic')}</MenuItem>
+                  <MenuItem value={"arabic"} className="client-input">{t('arabic')}</MenuItem>
                   <MenuItem value={"english"}>{t('english')}</MenuItem>
                 </Select>
               </FormControl>

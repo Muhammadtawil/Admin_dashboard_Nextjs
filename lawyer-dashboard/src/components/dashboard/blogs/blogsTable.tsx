@@ -41,9 +41,6 @@ export default function BlogsTable({
   }) {
   const t=useTranslations('BlogPage')
   const [selectedStatus, setSelectedStatus] = useState("");
-  const [openEyes, setOpenEyes] = useState([]);
-  const [visibleContent, setVisibleContent] = useState(true);
-  const [showContent, setShowContent] = useState(false);
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [open, setOpen] = useState(false);
 
@@ -178,6 +175,8 @@ export default function BlogsTable({
                 sx={{
                   padding: "4px 8px",
                   width: "100px",
+                  color: "White",
+                  fontSize:"12px",
                   backgroundColor:
                     blog.isFlag === true
                       ? "green"

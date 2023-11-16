@@ -62,3 +62,7 @@
 [class="dark"] .notificationList {
   border-bottom: 1px solid var(--borderColor);
 }
+.notification-icon{
+color:white;  
+background-color:green;
+}

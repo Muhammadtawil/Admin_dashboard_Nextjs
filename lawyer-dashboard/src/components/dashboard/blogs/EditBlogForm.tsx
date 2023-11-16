@@ -129,7 +129,7 @@ export default function EditBlogAddComponent({
             });
           }}
         >
-          <Grid container alignItems="center" spacing={2}>
+          <Grid container alignItems="center" spacing={2} className="client-box">
             <Grid item xs={12} md={12} lg={12}>
               <CustomTypography text={t('blogTitle')}/>
 
@@ -144,6 +144,7 @@ export default function EditBlogAddComponent({
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                className:"client-input"
                 }}
                 onChange={handleInputChange}
               />
@@ -205,7 +206,7 @@ export default function EditBlogAddComponent({
              editorState={editorState}
              onEditorStateChange={setEditorState}
              wrapperClassName="wrapper-class"
-             editorClassName="editor-class"
+             editorClassName="editor-class client-box client-input"
              toolbarClassName="toolbar-class"
                            
                            />
@@ -222,10 +223,11 @@ export default function EditBlogAddComponent({
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">status</InputLabel>
                 <Select
+                      className="client-input"
                   name="isFlag"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={status}
+                  value={formData.isFlag}
                   label={t('status')}
                   onChange={handleChange}
                 >
@@ -248,6 +250,7 @@ export default function EditBlogAddComponent({
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
                 }}
                 onChange={handleInputChange}
               />

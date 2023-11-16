@@ -10,6 +10,7 @@ import { revalidatePath } from "next/cache";
 const assignTasksUrl = process.env.ASSIGN_TASK_URL;
 const tasks_url = process.env.TASKS_URL;
 const update_assigned = process.env.UPDATE_ASSIGN_URL;
+
 // const userId = process.env.USERID;
 const getTasksUrl = process.env.Get_TASKS_URL;
 // const localuserId = localStorage.getItem("user_id");
@@ -309,7 +310,7 @@ export async function AssignTask(data: FormData, taskId: any) {
 
 export async function DeleteAssignedTask(taskId: string) {
   // Define the URL for deleting a task (replace with the correct endpoint)
-  const deleteAssignUrl = `https://lawfirm.cyclic.cloud/tasks/assign/${taskId}`;
+  const deleteAssignUrl = `https://lawfirm.cyclic.app/tasks/assign/${taskId}`;
   const session = await getServerSession(authOptions);
 
   const requestOptions = {

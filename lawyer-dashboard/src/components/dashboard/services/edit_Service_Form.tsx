@@ -67,7 +67,7 @@ const t=useTranslations('servicesPage')
               padding: "20px 20px",
               borderRadius: "8px",
             }}
-            className="dark-BG-101010"
+            className="client-box"
           >
             <Grid container alignItems="center" spacing={2}>
               <Grid item xs={12} md={12} lg={6}>
@@ -91,8 +91,10 @@ const t=useTranslations('servicesPage')
                   value={formData.serviceName}
                   InputProps={{
                     style: { borderRadius: 8 },
+                  className:"client-input"
+
                   }}
-                  className="for-dark-input"
+                  className="client-box"
                   onChange={handleInputChange}
                 />
               </Grid>
@@ -119,6 +121,8 @@ const t=useTranslations('servicesPage')
                   value={formData.serviceDescription}
                   InputProps={{
                     style: { borderRadius: 8 },
+                  className:"client-input"
+                    
                   }}
                   className="for-dark-input"
                   onChange={handleInputChange}
@@ -129,11 +133,11 @@ const t=useTranslations('servicesPage')
                 <CustomTypography text={t('status')} />
                 <ValuesSelect
                   name={"serviceStatus"}
-                  values={serviceStatusValues} isrequired={true}                />
+                  values={serviceStatusValues} isrequired={true} dicName="servicesPage" optionValue={"status"}                />
               </Grid>
               <Grid item xs={12} md={12} lg={6}>
                 <CustomTypography text={t('onWeb')} />
-                <ValuesSelect name={"isFlag"} values={flagStatusValues} isrequired={true} />
+                <ValuesSelect name={"isFlag"} values={flagStatusValues} isrequired={true} dicName="servicesPage" optionValue='onWeb' />
               </Grid>
               <FormFooter handleClose={handleClose} title={t('editService')} />
             </Grid>

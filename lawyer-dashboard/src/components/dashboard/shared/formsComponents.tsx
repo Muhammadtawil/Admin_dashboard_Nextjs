@@ -44,10 +44,12 @@ export const CustomTextField = ({ name, label, type = "text" }: any) => (
       type={type}
       label={label}
       autoFocus
+multiline
       InputProps={{
-        style: { borderRadius: 8 },
+        style: { borderRadius: 8, },
+        className:"client-input"
       }}
-      className="for-dark-input"
+    // className="for-dark-input"
     />
   </Grid>
 );
@@ -61,30 +63,31 @@ export const CustomSelect = ({
 
 }: any) => {
   const t = useTranslations('taskPage')
-    return(
-  <Grid item xs={12} md={12} lg={6}>
-    <CustomTypography text={label} />
-    <Select
-      fullWidth
-      value={t(getStatusTranslationKey(selectedValue))}
-      name={name}
-      onChange={onChange}
-      displayEmpty
-      inputProps={{
-        style: { borderRadius: 8 },
-      }}
-    >
-      <MenuItem value="" disabled>
-        {`Select ${label}`}
-      </MenuItem>
-      {values.map((key: any, index: any) => (
-        <MenuItem key={index} value={key}>
-          {t(key)} {/* Translate the value using the t function */}
+  return (
+    <Grid item xs={12} md={12} lg={6}>
+      <CustomTypography text={label} />
+      <Select
+        fullWidth
+        value={t(getStatusTranslationKey(selectedValue))}
+        name={name}
+        onChange={onChange}
+        displayEmpty
+        inputProps={{
+          style: { borderRadius: 8 },
+        }}
+      >
+        <MenuItem value="" disabled>
+          {`Select ${label}`}
         </MenuItem>
-      ))}
-    </Select>
-  </Grid>
-)};
+        {values.map((key: any, index: any) => (
+          <MenuItem key={index} value={key}>
+            {t(key)} {/* Translate the value using the t function */}
+          </MenuItem>
+        ))}
+      </Select>
+    </Grid>
+  )
+};
 
 export const FormHead = ({
   handleClickOpen,
@@ -92,7 +95,7 @@ export const FormHead = ({
 }: {
   handleClickOpen: any;
   title: any;
-  }) => {
+}) => {
 
   return (
     <Box
@@ -103,20 +106,23 @@ export const FormHead = ({
         borderBottom: "1px solid #EEF0F7",
         paddingBottom: "10px",
         mb: "20px",
+    
       }}
-      className="for-dark-bottom-border"
+      className="formHead client-box"
     >
-                  <SearchForm />
+      <SearchForm />
       <Button
         onClick={handleClickOpen}
         variant="contained"
+        className="headButton"
         sx={{
           textTransform: "capitalize",
           borderRadius: "8px",
           fontWeight: "500",
           fontSize: "13px",
-          padding: "12px 20px",
+          padding: "12px 20px 10px 10px",
           color: "#fff !important",
+          background: "#6154f2",
         }}
       >
         <AddIcon
@@ -135,9 +141,9 @@ export const FormFooter = ({
 }: {
   handleClose: any;
   title: any;
-  }) => {
-  
-  const t=useTranslations('taskPage')
+}) => {
+
+  const t = useTranslations('taskPage')
   return (
     <Grid item xs={12} textAlign="end">
       <Button
@@ -162,7 +168,7 @@ export const FormFooter = ({
           }}
           className="mr-5px"
         />
-       {t('cancel')}
+        {t('cancel')}
       </Button>
 
       <Button
@@ -176,6 +182,8 @@ export const FormFooter = ({
           fontSize: "13px",
           padding: "12px 20px",
           color: "#fff !important",
+          background: "#6154f2",
+
         }}
       >
         <AddIcon
@@ -234,31 +242,29 @@ export const HeadBox = ({
   );
 };
 
-export const ValuesSelect = ({ name, values ,isrequired }: { name: any; values?: any ,isrequired:boolean}) => {
+export const ValuesSelect = ({ name, values, isrequired, dicName, optionValue }: { name: any; values?: any; isrequired: boolean, dicName: string, optionValue: string }) => {
+  const t = useTranslations(dicName)
+  const options = Array.isArray(values)
+    ? values.map((value: any, index: any) => (
+      <option key={index} value={values[index]}>
+        {t(values[index])}
+      </option>
+    ))
+    : null;
+
   return (
     <select
-      className="form-select bg-light border-0"
+    className="client-box client-input"
       name={name}
       style={{
         height: "55px",
-        color: "black",
         width: "100%",
         borderRadius: "3%",
       }}
       required={isrequired}
     >
-      <option value="">Select A Status</option>
-      {values.length === 0 ? (
-        <option value="" disabled>
-          Loading...
-        </option>
-      ) : (
-        values.map((service: any, index: any) => (
-          <option key={index} value={values[index]}>
-            {values[index]}
-          </option>
-        ))
-      )}
+      <option value="" className="client-box client-input">{t(optionValue)}</option>
+      {options || <option value="" disabled>Loading...</option>}
     </select>
   );
 };

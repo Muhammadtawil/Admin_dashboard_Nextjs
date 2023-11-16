@@ -5,7 +5,7 @@
 import { authOptions } from "@/app/utils/authoptions";
 import { getServerSession } from "next-auth/next";
 import { revalidatePath, } from "next/cache";
-import useSWR, { mutate } from 'swr';
+
 const clientUrl = process.env.CLIENTS_URL;
 
 // const userId = process.env.USERID;

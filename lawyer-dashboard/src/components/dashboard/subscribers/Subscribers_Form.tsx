@@ -36,7 +36,7 @@ export default function SubscribersAddComponent({ onCreate }: { onCreate: any })
            
           }}
         >
-          <Grid item xs={12} textAlign="end">
+          <Grid item xs={12} textAlign="end" className="client-box">
             <Button
               type="submit"
               variant="contained"
@@ -73,6 +73,7 @@ export default function SubscribersAddComponent({ onCreate }: { onCreate: any })
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
                 }}
               />
             </Grid>

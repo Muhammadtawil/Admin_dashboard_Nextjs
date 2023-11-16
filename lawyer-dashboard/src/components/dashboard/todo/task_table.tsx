@@ -23,10 +23,10 @@ import MemberSelect from "./member_select";
 import cellStyle from "../shared/cellStyle";
 import StyledDialogTitle from "../shared/StyledDialogTitle";
 import ActionsComponent from "../shared/PaginationList";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { getStatusTranslationKey } from "../shared/tables";
 import { Typography } from "@mui/material";
-import { AssignTask, getTasks } from "@/server/tasks/tasks";
+import { IoPersonAddSharp } from "react-icons/io5";
 import { usePathname } from "next/navigation";
 
 const label = { input: { "aria-label": "Checkbox demo" } };
@@ -63,6 +63,7 @@ export default function TaskTable({
     const t = useTranslations('taskPage');
   const path = usePathname();
   const arabic=path.includes('ar')
+  const locale=useLocale()
     const handlePriorityFilterChange = (event: any) => {
       setSelectedPriority(event.target.value);
     };
@@ -163,7 +164,7 @@ export default function TaskTable({
                 aria-label="User Icon"
                 onClick={() => handleSelectClick(task)}
               >
-                <PersonIcon sx={{ fontSize: 35, color: "green" }} />
+                <IoPersonAddSharp/>
               </IconButton>
             </TableCell>
           ) : isToMe ? (
@@ -183,7 +184,7 @@ export default function TaskTable({
           ) : null}
 
           <TableCell sx={{ ...cellStyle, fontSize: "13px" }}>
-            {new Date(task.createdAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
+            {new Date(task.createdAt).toLocaleDateString(locale=="ar"?"ar-LB":"en-US", {
               day: "numeric",
               month: "2-digit",
               year: "2-digit",
@@ -192,7 +193,7 @@ export default function TaskTable({
             })}
           </TableCell>
           <TableCell sx={{ ...cellStyle, fontSize: "13px" }}>
-            {new Date(task.taskDeadline).toLocaleDateString(arabic?"ar-LB":"en-US", {
+            {new Date(task.taskDeadline).toLocaleDateString(locale=="ar"?"ar-LB":"en-US", {
               day: "numeric",
               month: "2-digit",
               year: "2-digit",
@@ -200,7 +201,7 @@ export default function TaskTable({
           </TableCell>
           {isAssigned ? (
             <TableCell sx={{ ...cellStyle, fontSize: "13px" }}>
-              {new Date(task.assignedAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
+              {new Date(task.assignedAt).toLocaleDateString(locale=="ar"?"ar-LB":"en-US", {
                 day: "numeric",
                 month: "2-digit",
                 year: "2-digit",
@@ -215,13 +216,15 @@ export default function TaskTable({
               sx={{
                 padding: "4px 8px",
                 width: "100px",
+                color: "white",
+                fontSize:"12px",
                 backgroundColor:
                   task.taskStatus === "COMPLETED"
                     ? "green"
                     : task.taskStatus === "NOT_COMPLETED"
                     ? "red"
                     : task.taskStatus === "IN_PROGRESS"
-                    ? "yellow"
+                    ? "#317B67"
                     : "inherit", // Fallback color
               }}
             >
@@ -235,6 +238,8 @@ export default function TaskTable({
               sx={{
                 padding: "4px 8px",
                 width: "80px",
+                color: "white",
+                fontSize:"12px",
                 backgroundColor:
                   task.taskPriority === "HIGH"
                     ? "red"
@@ -293,10 +298,12 @@ export default function TaskTable({
     >
         <Typography
         component="h2"
+       
         sx={{
           fontSize: 20,
           fontWeight: 500,
           padding: 2,
+          textAlign:arabic?"right":"left"
         }}
       >
      {t(tableTitle)}
@@ -346,7 +353,7 @@ export default function TaskTable({
                 <select
                   value={selectedPriority}
                   onChange={handlePriorityFilterChange}
-                  style={{ marginLeft: "8px" }}
+                  style={{ marginLeft: "8px" ,}}
                 >
                   <option value="">{t('All')}</option>
                   <option value="HIGH">{t('high')}</option>

@@ -88,6 +88,7 @@ const plainTextContent = convert(content, {
                   autoFocus
                   InputProps={{
                     style: { borderRadius: 8 },
+                    className:"client-input"
                   }}
                 />
               </Grid>
@@ -103,6 +104,7 @@ const plainTextContent = convert(content, {
                   autoFocus
                   InputProps={{
                     style: { borderRadius: 8 },
+                    className:"client-input"
                   }}
                 />
               </Grid>
@@ -110,6 +112,7 @@ const plainTextContent = convert(content, {
               <Grid item xs={12}>
 
                 <RichTextEditor
+                  className="client-box"
 translate="yes"
                   value={content}
                   onChange={handleContentChange}

@@ -33,7 +33,7 @@ export default function SubscribersTable ({
   const t = useTranslations('subscribersPage')
 
   const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(8)
+  const [rowsPerPage, setRowsPerPage] = useState(5)
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage)

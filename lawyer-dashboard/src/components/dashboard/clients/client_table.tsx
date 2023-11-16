@@ -46,7 +46,7 @@ export default function ClientTable({
   };
 
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(8);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
 
   const handleChangePage = (event: any, newPage: any) => {
     setPage(newPage);
@@ -131,13 +131,15 @@ export default function ClientTable({
               sx={{
                 padding: "4px 8px",
                 width: "100px",
+                color: "white",
+                fontSize:"12px",
                 backgroundColor:
                   client.clientStatus === "COMPLETED"
                     ? "green"
                     : client.clientStatus === "PENDING"
                     ? "red"
                     : client.clientStatus === "IN_PROGRESS"
-                    ? "yellow"
+                    ? "#317B67"
                     : "inherit", // Fallback color
               }}
             >

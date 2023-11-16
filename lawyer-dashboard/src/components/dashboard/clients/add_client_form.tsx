@@ -22,10 +22,26 @@ export default function AddTaskForm({
 }: {
   onCreate: any;
   servicesList: any[];
-  }) {
-    const t=useTranslations('clientPage')
-  
+}) {
+  const t = useTranslations('clientPage')
+
   const [open, setOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    // Initialize your form data state
+    clientName: '',
+    clientEmail: '',
+    clientPhone: '',
+    clientStatus: '',
+    clientService: '',
+  });
+
+  const handleServiceChange = (e: React.ChangeEvent<{ value: unknown }>) => {
+    // Update the clientService in the form data state when the user selects a service
+    setFormData((prevData) => ({
+      ...prevData,
+      clientService: e.target.value as string,
+    }));
+  };
 
   const handleClose = () => {
     setOpen(false);
@@ -37,7 +53,7 @@ export default function AddTaskForm({
 
   return (
     <>
-           <PageTitle title={t('pageTitle')} />
+      <PageTitle title={t('pageTitle')} />
       <FormHead handleClickOpen={handleClickOpen} title={t('addClient')} />
       <StyledDialogTitle
         onClose={handleClose}
@@ -48,17 +64,18 @@ export default function AddTaskForm({
           <HeadBox handleClose={handleClose} title={t('addClient')} />
 
           <Box
+            className="client-box"
             component="form"
             noValidate={false}
-            action={ (formData) => {
-               onCreate(formData)
+            action={(formData) => {
+              onCreate(formData)
                 .then(() => {
 
-            handleClose();
+                  handleClose();
 
 
-                  successAlert('Client Added Successfully');
-                  revalidatePath('clients','page')
+                  successAlert(t('success'));
+                  revalidatePath('clients', 'page')
                 })
                 .catch((error: any) => {
 
@@ -68,69 +85,67 @@ export default function AddTaskForm({
           >
             <Box
               sx={{
-                background: "#fff",
+                // background: "#fff",
                 padding: "20px 20px",
                 borderRadius: "8px",
               }}
-              className="dark-BG-101010"
+              className="client-box"
             >
               <Grid container alignItems="center" spacing={2}>
                 <CustomTextField name="clientName" label={t('clientName')} />
                 <CustomTextField name="clientEmail" label={t('clientEmail')} />
                 <CustomTextField name="clientPhone" label={t('clientPhone')} />
-{/* 
+                {/* 
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={t('status')} />
 
                   <ValuesSelect name={"clientStatus"} values={clientValues} isrequired={true} />
                 </Grid> */}
-                           <Grid item xs={12} md={12} lg={6}>
-                <FormControl fullWidth>
-                  <InputLabel id="demo-simple-select-label">{t("status")}</InputLabel>
-                <Select
-                  name="clientStatus"
-                  labelId="demo-simple-select-label"
-                  id="clientStatus"
-               
-                  label={t('status')}
-            
-                >
-                  <MenuItem value={"COMPLETED"}>{t('completed')}</MenuItem>
-                    <MenuItem value={"PENDING"}>{t('pending')}</MenuItem>
-                  <MenuItem value={"IN_PROGRESS"}>{t('inProgress')}</MenuItem>
-                    
-                </Select>
+                <Grid item xs={12} md={12} lg={6}>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label" className="client-input client-box">{t("status")}</InputLabel>
+                    <Select
+                      name="clientStatus"
+                      labelId="demo-simple-select-label"
+                      id="clientStatus"
+                      className="client-input"
+                      label={t('status')}
+
+                    >
+                      <MenuItem value={"COMPLETED"} className="client-input client-box">{t('completed')}</MenuItem>
+                      <MenuItem value={"PENDING"} className="client-input client-box">{t('pending')}</MenuItem>
+                      <MenuItem value={"IN_PROGRESS"}className="client-input client-box">{t('inProgress')}</MenuItem>
+
+                    </Select>
                   </FormControl>
-                  </Grid>
+                </Grid>
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={t('service')} />
-
-                  <select
-                    className="form-select bg-light border-0"
-                    name="clientService"
-                    style={{
-                      height: "55px",
-                      color: "black",
-                      width: "100%",
-                      borderRadius: "3%",
-                    }}
-                  >
-                    <option value="">{t('service')}</option>
-                    {servicesList.length === 0 ? (
-                      <option value="" disabled>
-                        Loading...
-                      </option>
-                    ) : (
-                      servicesList.map((service: any, index: any) => (
-                        <option
-                          key={index}
-                          value={servicesList[index].serviceTitle}
-                        >
-                          {servicesList[index].serviceTitle}
-                        </option>
-                      ))
-                    )}
-                  </select>
+                  <FormControl fullWidth>
+                    <InputLabel id="demo-simple-select-label" className="client-input client-box">{t('service')} </InputLabel>
+                    <Select
+                      name="clientService"
+                      labelId="demo-simple-select-label"
+                      id="clientService"
+                      label={t('service')}
+                      className="client-input"
+                      value={formData.clientService || ''}
+                      onChange={(e: any) => handleServiceChange(e)}
+                    >
+                      <MenuItem value="">{t('service')}</MenuItem>
+                      {servicesList.length === 0 ? (
+                        <MenuItem value="" disabled>
+                          Loading...
+                        </MenuItem>
+                      ) : (
+                        servicesList.map((service, index) => (
+                          <MenuItem key={index} value={service.serviceTitle} className="client-input client-box">
+                            {service.serviceTitle}
+                          </MenuItem>
+                        ))
+                      )}
+                    </Select>
+                  </FormControl>
                 </Grid>
                 <FormFooter handleClose={handleClose} title={"Add Client"} />
               </Grid>

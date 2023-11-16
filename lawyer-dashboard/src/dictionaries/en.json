@@ -104,7 +104,9 @@
     "LOW":"Low",
     "COMPLETED": "Completed",
     "NOT_COMPLETED": "Not Completed",
-    "IN_PROGRESS": "In Progress"
+    "IN_PROGRESS": "In Progress",
+    "success":"Task Added Successfully",
+    "editAlert":"Task Edit Successfully"
  
   },
 
@@ -227,7 +229,11 @@
     "linkedInUrl":"LinkedIn Url",
     "twitterUrl":"Twitter Url",
     "instagramUrl":"Instagram Url",
-    "Bio":"Bio"
+    "Bio":"Bio",
+    "ADMIN": "Admin",
+    "USER": "User",
+    "Yes": "Yes",
+    "No": "No"
    },
    "editorPage":{
     "pageTitle":"Editor",
@@ -244,6 +250,7 @@
       "edit": "Edit",
       "delete":"delete",
       "cancel": "Cancel",
+      "addService":"Add Service",
       "All": "All",
       "actions": "Actions",
       "success": "Service Added Sussessfully",

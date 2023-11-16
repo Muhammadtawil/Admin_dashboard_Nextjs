@@ -115,6 +115,7 @@ export default function NewsAddComponent({ onCreate }: { onCreate: any }) {
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
                 }}
               />
             </Grid>
@@ -144,7 +145,7 @@ export default function NewsAddComponent({ onCreate }: { onCreate: any }) {
              editorState={editorState}
              onEditorStateChange={setEditorState}
              wrapperClassName="wrapper-class"
-             editorClassName="editor-class"
+             editorClassName="editor-class client-input client-box"
              toolbarClassName="toolbar-class"
                            
                            />
@@ -160,6 +161,7 @@ export default function NewsAddComponent({ onCreate }: { onCreate: any }) {
               <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">{t('lang')}</InputLabel>
                 <Select
+                        className="client-input"
                   name="newsLang"
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"

@@ -75,6 +75,8 @@ export default function TestimonialAddComponent({
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
+
                 }}
               />
             </Grid>
@@ -93,6 +95,7 @@ export default function TestimonialAddComponent({
                 autoFocus
                 InputProps={{
                   style: { borderRadius: 8 },
+                  className:"client-input"
                 }}
               />
             </Grid>
