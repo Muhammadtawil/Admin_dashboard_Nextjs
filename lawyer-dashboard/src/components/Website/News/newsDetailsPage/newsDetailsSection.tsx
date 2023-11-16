@@ -12,16 +12,15 @@ export default async function NewsDetailsMain({
     children: any;
     }) {
 
-        const token = process.env.TOKEN;
+
     const requestOptions = {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
       },
-      // next: {
-      //   revalidate: 120,
-      // },
+      next: {
+        revalidate: 120,
+      },
     };
     const newsUrl = process.env.NEWSIDURL;
   const response = await fetch(`${newsUrl}/${params.newsId}`, requestOptions);

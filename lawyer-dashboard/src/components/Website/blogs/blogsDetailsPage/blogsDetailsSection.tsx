@@ -10,11 +10,10 @@ export default async function BlogsDetailsMain({
   children: any;
 }) {
 
-  const token = process.env.TOKEN;
+
   const requestOptions = {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
     },
   };
