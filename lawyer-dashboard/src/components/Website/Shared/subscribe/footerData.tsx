@@ -1,6 +1,6 @@
 import { BsBehance, BsDribbble, BsFacebook, BsGithub } from "react-icons/bs";
 import { RiMailFill, RiMapPinUserFill, RiPhoneFill } from "react-icons/ri";
-import LogoImg from "../../../../../public/mainLogo.png";
+import LogoImg from "../../../../../public/Mainlogo.png";
 
 const footerData = {
   logo: LogoImg,

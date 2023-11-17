@@ -1,7 +1,7 @@
 "use client"
 import { BsLinkedin, BsDribbble, BsFacebook, BsInstagram } from "react-icons/bs";
 import { RiMailFill, RiMapPinUserFill, RiPhoneFill } from "react-icons/ri";
-import LogoImg from "../../../../public/mainLogo.png";
+import LogoImg from "../../../../public/Mainlogo.png";
 import { useTranslations } from "next-intl";
 
 const createFooterData = () => {
