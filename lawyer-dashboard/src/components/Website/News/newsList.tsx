@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Container, Row } from "react-bootstrap";
 import {
   FaLongArrowAltRight,
-  FaRegUserCircle
 } from "react-icons/fa";
 
 import style from "./Blog.module.scss";

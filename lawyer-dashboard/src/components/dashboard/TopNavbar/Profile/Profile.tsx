@@ -105,10 +105,10 @@ const Profile = () => {
 
           <Divider />
 
-          <MenuItem>
+          <MenuItem   onClick={() => signOut({ redirect: true, callbackUrl: "/en/dashboard/login" })}>
             <ListItemIcon
               sx={{ mr: "-8px", mt: "-3px" }}
-              onClick={() => signOut({ redirect: true, callbackUrl: "/api/auth/signin" , })}
+            
             >
               <Logout fontSize="small" />
             </ListItemIcon>

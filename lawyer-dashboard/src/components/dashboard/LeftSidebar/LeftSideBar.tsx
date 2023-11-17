@@ -8,7 +8,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
 import { signOut } from "next-auth/react";
 import Logout from "@mui/icons-material/Logout";
-import clicker from '../../../../public/mainLogo.png'
+import clicker from '../../../../public/Mainlogo.png'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl';
 
@@ -84,10 +84,10 @@ const t = useTranslations('SideBar');
             })}
 
             <div ></div>
-            <MenuItem>
+            <MenuItem  onClick={() => signOut({ redirect: true, callbackUrl: "/en/dashboard/login" })}>
               <ListItemIcon
                 sx={{ mr: "-8px", mt: "-3px" }}
-                onClick={() => signOut({ redirect: true, callbackUrl: "/api/auth/signin" })}
+             
               >
                 <Logout fontSize="small" />
               </ListItemIcon>

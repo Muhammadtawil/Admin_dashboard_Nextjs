@@ -6,7 +6,7 @@ import { FaXTwitter } from 'react-icons/fa6';
 import style from "./PostContent.module.scss";
 import Link from "next/link";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import DOMPurify from "dompurify";
 
@@ -38,7 +38,7 @@ news,
         );
     }
     const path = usePathname()
-    const arabic = path.includes('ar')
+  const arabic = path.includes('ar')
     function createMarkup(html:any) {
       return {
         __html: DOMPurify.sanitize(html)
@@ -68,7 +68,7 @@ news,
           )}
           {news?.createdAt && (
             <span>
-              <FaCalendarAlt fontSize={25} />      {new Date(news.createdAt).toLocaleDateString(arabic?"en-LB":"en-US", {
+              <FaCalendarAlt fontSize={25} />      {new Date(news.createdAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
                                                     day: "numeric",
                                                     month: "long",
                 year: "numeric",

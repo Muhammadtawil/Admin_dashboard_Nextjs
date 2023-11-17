@@ -31,7 +31,7 @@ const SideBarSection =  ({ currentNewsId, news ,Subscribe}: { currentNewsId: str
       <div className="popularPost">
         <h4>{t('popularPosts') }</h4>
         {filteredNews.slice(0,8).map((data:any, index:any) => (
-             <Link href={`/${locale}/news/${data.newsId}`}>
+             <Link href={`/${locale}/news/${data.newsId}`}  key={index}>
           <div className="postCard" key={index} >
          
             <div>

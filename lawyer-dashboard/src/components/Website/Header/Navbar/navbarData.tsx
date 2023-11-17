@@ -1,5 +1,5 @@
 import { usePathname } from "next/navigation";
-import LogoImg from "../../../../../public/Mainlogo.png";
+import MainLogo from "../../../../../public/Mainlogo.png";
 import { useTranslations } from "next-intl";
 
 const NavbarData = () => {
@@ -8,7 +8,7 @@ const NavbarData = () => {
   const en=path.includes('/en')
 
   return {
-    logo: LogoImg,
+    logo: MainLogo,
     menus: [
       {
         name: t('home'),

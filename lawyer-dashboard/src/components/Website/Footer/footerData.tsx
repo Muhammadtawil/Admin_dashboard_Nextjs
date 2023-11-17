@@ -1,13 +1,13 @@
 "use client"
 import { BsLinkedin, BsDribbble, BsFacebook, BsInstagram } from "react-icons/bs";
 import { RiMailFill, RiMapPinUserFill, RiPhoneFill } from "react-icons/ri";
-import LogoImg from "../../../../public/Mainlogo.png";
+import Logo from "../../../../public/Mainlogo.png";
 import { useTranslations } from "next-intl";
 
 const createFooterData = () => {
   const t=useTranslations('webFooter')
   return {
-    logo: LogoImg,
+    logo: Logo,
     formTitle: "Join a Newsletter",
     copyRightMsg: t('copyRightMsg'),
     serivecs: {
