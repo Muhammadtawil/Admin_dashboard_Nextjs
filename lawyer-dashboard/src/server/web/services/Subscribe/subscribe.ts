@@ -1,4 +1,4 @@
-async function Subscribe(data: FormData) {
+export async function AddSubscribers(data: FormData) {
   "use server";
   const subscriberUrl = process.env.SUBSCRIBERS_URL;
   const subscriberEmail = data.get("subscriberEmail");
@@ -22,7 +22,7 @@ async function Subscribe(data: FormData) {
   };
 
   try {
-    const response = await fetch(apiUrl, requestOptions);
+    const response = await fetch(`${apiUrl}/Web`, requestOptions);
 
     if (!response.ok) {
       throw new Error("Request failed with status: " + response.status);

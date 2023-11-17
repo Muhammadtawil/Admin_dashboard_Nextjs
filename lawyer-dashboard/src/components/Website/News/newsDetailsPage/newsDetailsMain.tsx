@@ -8,9 +8,10 @@ import NavBar from "../../Header/Navbar/Navbar";
 
 import PostContent from "./Post/PostContent/PostContent";
 import HeaderWrapper from "../../blogs/blogsPage/HeaderWrapper/HeaderWrapper";
-import Hero2 from "../../blogs/blogsPage/Hero2/Hero2";
+
 import Hero from "../../blogs/blogsDetailsPage/Post/Hero/Hero";
 import dynamic from "next/dynamic";
+import Hero2 from "./Hero2/Hero2";
 const DynamicPostContent = dynamic(() => import('./Post/PostContent/PostContent'), { ssr: false });
 
 

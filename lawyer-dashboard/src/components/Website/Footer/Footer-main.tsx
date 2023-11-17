@@ -1,4 +1,5 @@
-import AddSubscribers from "@/server/subscribers/subscribers";
+
+import { AddSubscribers } from "@/server/web/services/Subscribe/subscribe";
 import FooterSection from "./Footer";
 
 export default async function FooterMain() {
