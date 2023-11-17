@@ -268,7 +268,7 @@
         "blogs":"Blogs",
         "news":"News",
         "contact":"Contact",
-        "welcomeMessage":"Welcome To our LawFirm",
+        "welcomeMessage":"Welcome To AlGhazal LawFirm",
         "welcomeMessageTwo":"Your Trusted Legal Companion on the Path to justice",
         "booking":"Contuct Us"
       },
@@ -340,7 +340,7 @@
         "email":"input your Email here",
         "alert":"Thank you for subscription",
         "address":"Lebanon,Chtoura,LawFirm Building ",
-        "copyRightMsg": "© LawFirm 2022 all rights reserved."
+        "copyRightMsg": "© Ghazal LawFirm 2023 all rights reserved."
       },
 
       "webNews":{

@@ -143,32 +143,7 @@ a {
   }
 }
 
-.welcomeText {
-  border-left: 6px solid green;
-  font-family: "monospace";
-  padding-left: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: slideIn 1s ease-out; 
-}
 
-@keyframes slideInFromRight {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-.welcomeTextAr {
-  border-right: 6px solid red;
-  font-family: "monospace";
-
-  white-space: nowrap;
-  overflow: hidden;
-  animation: slideInFromRight 1s ease-out; 
-}
 
 @font-face {
   font-family: 'CustomFontEnglish';

@@ -1,5 +1,31 @@
 .heroSection :global {
   // Hero details css start
+  .welcomeText {
+    border-left: 6px solid #f6a546;
+    font-family: "monospace";
+    padding-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: slideIn 1s ease-out; 
+  }
+  
+  @keyframes slideInFromRight {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  .welcomeTextAr {
+    border-right: 6px solid #f6a546;
+    font-family: "monospace";
+  
+    white-space: nowrap;
+    overflow: hidden;
+    animation: slideInFromRight 1s ease-out; 
+  }
   .heroDetails {
     h5,
     h2,
@@ -16,7 +42,7 @@
     }
     h2 {
       font-weight: bold;
-      font-size: 3.9rem;
+      font-size: 2.5rem;
       line-height: 3.8rem;
       letter-spacing: 0;
       padding:10px;
@@ -85,6 +111,9 @@
   }
 
   @media screen and (max-width: 575px) {
+    .welcomeTextAr {
+      border-right: 4px solid #f6a546;
+    }
     .heroContainer {
       > div:first-child {
         margin-bottom: 30px;
@@ -97,19 +126,19 @@
       h5,
       h2,
       p {
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1.4rem 0;
         letter-spacing: 0.5px;
         color: white;
       
       }
       h5 {
         font-weight: 500;
-        font-size: 1.3rem;
+        font-size: 1.2rem;
   
       }
       h2 {
         font-weight: bold;
-        font-size: 30px;
+        font-size: 22.5px;
         line-height: 3.8rem;
         letter-spacing: 0;
       }

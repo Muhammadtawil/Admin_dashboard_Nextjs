@@ -30,7 +30,7 @@ const createFooterData = () => {
       },
       {
         icon: <RiMailFill fontSize={25} />,
-        message: "Clickers-software@outlook.com",
+        message: "Ghazallawfirm@gmail.com",
       },
     ],
     socialLinks: [
