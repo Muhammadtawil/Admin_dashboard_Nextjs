@@ -21,11 +21,11 @@ const NavBar = () => {
   const t = useTranslations('webMainPage');
   const [enabled, setEnabled] = useState(true);
   const callback = useCallback((event: any) => {
-    router.replace("/api/auth/signin");
+    router.push("/en/dashboard/login");
   }, []);
   const bind = useLongPress(enabled ? callback : null, {
     onStart: (event) => console.log("Press started"),
-    onFinish: (event) => router.replace("../api/auth/signin"),
+    onFinish: (event) => router.push("/en/dashboard/login"),
     onCancel: (event) => console.log("Press cancelled"),
     onMove: (event) => console.log("Detected mouse or touch movement"),
     filterEvents: (event) => true,
@@ -40,7 +40,7 @@ const NavBar = () => {
     clickTimer = setTimeout(() => {
       setLongClick(true);
       // After 5 seconds, navigate to the login page
-      router.replace("/api/auth/signin");
+      router.push("/en/dashboard/login");
     }, 5000);
   };
 
