@@ -72,7 +72,7 @@ export default function SubscribersTable ({
                     size="small"
                     color="error"
                     className="error"
-                    onClick={() => { deleteAlert(() => deleteSubscriber(subscriber.subscriberId)); }}
+                    onClick={() => { deleteAlert(deleteSubscriber(subscriber.subscriberId)); }}
                   >
                     <DeleteIcon fontSize="inherit" />
                   </IconButton>
