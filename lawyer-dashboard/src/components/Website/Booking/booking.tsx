@@ -14,7 +14,7 @@ async function onCreate(formData: FormData) {
   }
 export default async function Booking() {
   const services = await getServices();
-  const translator = new Translator({ from: 'en', to: 'ar', forceBatch: false});
+  const translator = new Translator({ from: 'ar', to: 'en', forceBatch: false});
 
   const translatedServices = await Promise.all(services.map(async (service: any) => {
     const translatedTitle = await translator.translate(service.serviceTitle);

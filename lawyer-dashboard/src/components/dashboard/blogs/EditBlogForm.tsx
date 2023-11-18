@@ -84,7 +84,7 @@ export default function EditBlogAddComponent({
 
   // Handle form input changes
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: any
   ) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
@@ -116,16 +116,17 @@ export default function EditBlogAddComponent({
             const editedContent= createMarkup(convertedContent)
     
             formData.append('blogContent', `${convertedContent}`);
-            handleClose();
-            handleUpdate();
+           
+
 
             await onUpdate(
               formData,
               selectedBlog.blogId,
-              selectedImage,
               selectedBlog.author.authorId
             ).then(() => {
-              updateAlert(     t('update'))
+              handleClose();
+              updateAlert(t('update'))
+              handleUpdate();
             });
           }}
         >
@@ -229,7 +230,7 @@ export default function EditBlogAddComponent({
                   id="demo-simple-select"
                   value={formData.isFlag}
                   label={t('status')}
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                 >
                   <MenuItem value={"ready"}>{t('ready')}</MenuItem>
                   <MenuItem value={"not ready"}>{t('notReady')}</MenuItem>

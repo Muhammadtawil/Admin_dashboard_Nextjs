@@ -41,8 +41,6 @@ export default function EditTeamForm({
 
     await UpdateImage(formData, selectedUser.userId);
 
-    // setSelectedImage(null);
-    handleClose();
   };
 
   const [formData, setFormData] = useState({
@@ -94,14 +92,14 @@ export default function EditTeamForm({
           component="form"
           noValidate
           action={async (formData) => {
-            console.log(`selected Image: ${selectedImage}`);
-            console.log(`selected user: ${selectedUser.userId}`);
-
-            handleUpdate();
-            await onUpdate(formData, selectedUser.userId, selectedImage).then(() => {
+         
+           
+      
+            await onUpdate(formData, selectedUser.userId,).then(() => {
             handleClose();
-
             updateAlert(t('update'));
+            UpdateImage(formData, selectedUser.userId);
+
               
             });
           }}
@@ -313,17 +311,18 @@ export default function EditTeamForm({
                 />
               </Grid>
 
-              {selectedImage && (
-                <div>
-                  <h3>{t('Preview')}:</h3>
-                  <Image
-                    src={URL.createObjectURL(selectedImage)}
-                    alt="Selected"
-                    width="200"
-                    height={180}
-                  />
-                </div>
-              )}
+              {selectedImage && process.browser && (
+  <div>
+    <h3>{t('Preview')}:</h3>
+    <Image
+      src={URL.createObjectURL(selectedImage)}
+      alt="Selected"
+      width="200"
+      height={180}
+    />
+  </div>
+)}
+
 
               <FormFooter handleClose={handleClose} title={"Edit Team"} />
             </Grid>

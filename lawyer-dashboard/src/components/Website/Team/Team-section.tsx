@@ -5,11 +5,12 @@ import { FaXTwitter } from 'react-icons/fa6';
 import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 
-const TeamCards = ({ teamData }: { teamData: any[] }) => {
+const TeamCards = ({ teamData ,translatedTeam}: { teamData: any[],translatedTeam:any[] }) => {
   let message = `There are many variations of passages of Lorem Ipsum available but the \n majority have suffered alteration in some injected humour.`;
   const t = useTranslations('webTeam')
   const path = usePathname();
-  const arabic=path.includes('ar')
+  const arabic = path.includes('ar')
+  const teamsData = arabic ? teamData : translatedTeam;
   return (
     <section className={`${style.teamStyle} section-white`}>
          <div className="container">
@@ -24,15 +25,15 @@ const TeamCards = ({ teamData }: { teamData: any[] }) => {
             <p className="section-subtitle">{t('description')}</p>
           </div>
           <div className="team-grid " >
-            {teamData.map((member: any, index: any) => (
+            {teamsData.map((member: any, index: any) => (
               <div key={index} className="team-item ">
                 <img src={member.userImgUrl} className="team-img" alt="pic" />
-                <h3>{member.userName}</h3>
+                <h3 style={{padding:"10px"}}>{member.userName}</h3>
                 <div className="team-info">
                   <p>{member.userPosition}</p>
                 </div>
                 <p>
-                  Johnathan is our co-founder and has developed search strategies for a variety of clients from international brands to medium-sized businesses for over five years.
+                  {member.userBio?member.userBio:""}
                 </p>
                 <ul className="team-icon">
                   <li>

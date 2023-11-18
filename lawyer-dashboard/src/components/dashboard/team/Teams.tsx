@@ -16,6 +16,7 @@ import {
   UpdateUserImage,
 } from "../../../server/users/users";
 import TeamTable from "./Team_Table";
+import { redirect } from "next/dist/server/api-utils";
 
 async function Delete(userId: string) {
   "use server";
@@ -51,6 +52,7 @@ async function onUpdate(
 async function updateImage(formData: FormData, userId: string) {
   "use server";
   await UpdateUserImage(formData, userId);
+  revalidatePath("/team", "page");
 }
 
 

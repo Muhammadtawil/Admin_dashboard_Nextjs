@@ -13,16 +13,19 @@ const getContactData = () => {
       title: "Get in Touch",
       offices: "Our Offices",
       firstAddress: {
-        title: "Main Office",
+        title: t('Main'),
         address: t('address'),
         phone: "(+961)03-339-199",
         email: "Ghazallawfirm@gmail.com",
+        workHours:""
       },
       secondAddress: {
-        title: "Beirut Office",
+        title: t('branch'),
         address: t('address2'),
         phone: "(+961)03-339-199",
         email: "Ghazallawfirm@gmail.com",
+        workHours:""
+
       },
     },
     contactForm: {

@@ -8,7 +8,7 @@ import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
 import { signOut } from "next-auth/react";
 import Logout from "@mui/icons-material/Logout";
-import clicker from '../../../../public/Mainlogo.png'
+import DashboardLogo from '../../../../public/dashboardLogo.png'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl';
 import { useEffect, useState } from "react";
@@ -37,19 +37,13 @@ const SidebarWrap = styled("div")(({ theme }) => ({
 
 const Sidebar = ({ toogleActive, closeSidebar }: any) => {
    // Use state to dynamically change the logo source
-   const [isdark, setDark] = useState(false);
+
 const sidebarData = getSidebarData(); 
 const t = useTranslations('SideBar');
   const handleSidebarClose = () => {
     closeSidebar();
   };
-  const storedPreference = typeof window !== 'undefined' ? localStorage.getItem("theme") : null;
-const theme=useTheme()
 
-  useEffect(() => {
-    if (storedPreference=='dark')
-  setDark(true)
-  }, [isdark]);
   return (
     <>
       <div className="leftSidebarDark">
@@ -68,7 +62,7 @@ const theme=useTheme()
            
                   <Image
                   
-                  src={isdark?clicker:clickerDark}
+                  src={DashboardLogo}
                   alt="Clickers"
                   placeholder="blur"
                   quality="100"

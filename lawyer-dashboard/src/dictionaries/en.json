@@ -132,7 +132,10 @@
     "Preview": "Preview",
     "editClient": "Edit Client",
     "yes": "Deployed",
-    "no": "Draft"
+    "no": "Draft",
+    "clientMsg":"Message",
+    "noEmail":"No email",
+    "noMsg":"No Message"
   },
 
   "newsPage": {
@@ -341,7 +344,10 @@
         "alert":"Thank you for subscription",
         "address":"Chtaura,near Al-Mawarid Bank-Fattouh Building -1st floor",
         "address2":"Beirut - Bechara El Khoury - Temara Building - 7th floor",
-        "copyRightMsg": "© Ghazal LawFirm 2023 all rights reserved."
+        "copyRightMsg": "© Ghazal LawFirm 2023 all rights reserved.",
+        "Main":"Main Office",
+        "branch":"Second office-beirut"
+
       },
 
       "webNews":{
@@ -371,7 +377,13 @@
       },
       "webTestimonials":{
         "title":"Testimonial from our Clients",
-        "description":"We are characterized by trust"
+        "description":"We are characterized by trust",
+        "content1": "I am extremely proud of the legal services provided by Ghazal Law Firm. They delivered exceptional legal advice and effective solutions for my case, making my legal experience seamless and successful.",
+        "content2": "I have collaborated with Ghazal Law Firm on several legal cases, and they have always been professional and committed to achieving the best outcomes. I highly recommend them to anyone seeking experienced and competent lawyers.",
+        "content3": "Thanks to Ghazal Law Firm for the excellent and efficient legal support. They have always been available to answer my questions and guide me through each stage of the case.",
+        "content4": "A wonderful experience with Ghazal Law Firm. They were kind and cooperative, successfully understanding my legal needs and providing appropriate solutions with high efficiency.",
+        "content5": "I am extremely grateful to the team at Ghazal Law Firm for their dedication in providing legal services. They worked diligently to ensure my rights and achieve justice in my case."
+      
       },
       "webNotFound":{
         "title":"Oops! Page Not Found",

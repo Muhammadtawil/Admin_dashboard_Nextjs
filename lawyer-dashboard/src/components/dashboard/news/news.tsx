@@ -43,6 +43,8 @@ async function updateImage(formData: FormData, newsId: string) {
   "use server";
 //   const selectedNewsId = formData.get("newsId");
   await UpdateNewsImage(formData, newsId);
+  revalidatePath("/news", "page");
+
 }
 export default async function NewsComponent() {
   const news = await GetNews();

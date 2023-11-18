@@ -158,7 +158,19 @@ export default function ClientTable({
               flexDirection: "row",
             }}
           >
-            {client.clientEmail ? client.clientEmail : "No Email"}
+            {client.clientEmail ? client.clientEmail : t('noEmail')}
+          </TableCell>
+          <TableCell
+            sx={{
+              ...cellStyle,
+              fontWeight: "500",
+              color: "#260944",
+              // display: "flex",
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            {client.clientMessage ? client.clientMessage : t('noMsg')}
           </TableCell>
 
           <TableCell align="right" sx={cellStyle}>
@@ -245,7 +257,8 @@ export default function ClientTable({
                   <option value="COMPLETED">{t('completed') }</option>
                 </select>
               </TableCell>
-              <TableCell sx={cellStyle}>{t('clientEmail') }</TableCell>
+              <TableCell sx={cellStyle}>{t('clientEmail')}</TableCell>
+              <TableCell sx={cellStyle}>{t('clientMsg') }</TableCell>
               <TableCell align="right" sx={cellStyle}>
               {t('actions') }
               </TableCell>

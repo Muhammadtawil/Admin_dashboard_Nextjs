@@ -5,15 +5,15 @@ import { useKeenSlider } from "keen-slider/react";
 import Image from "next/image";
 import React, { useState } from "react";
 import { Container } from "react-bootstrap";
-import testimonialData from "./testimonialData";
 import style from "./Testimonial.module.scss";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import getTestimonialsData from "./testimonialData";
 
 const Testimonial = () => {
   // State for control active slide style
   const [active, setActive] = useState(1);
-
+  const testimonialData = getTestimonialsData();
   const [sliderRef] = useKeenSlider({
     mode: "free-snap",
     breakpoints: {

@@ -115,12 +115,13 @@ newsLang:selectedNews?.newsLang || "arabic",
     
             formData.append('newsContent', `${convertedContent}`);
             handleClose();
-            handleUpdate();
+        
          
 
-            onUpdate(formData, selectedNews.newsId, selectedImage).then(() => {
+            onUpdate(formData, selectedNews.newsId).then(() => {
               handleClose();
-            updateAlert(t('update'));
+              updateAlert(t('update'));
+              handleUpdate();
 
              });
           }}
