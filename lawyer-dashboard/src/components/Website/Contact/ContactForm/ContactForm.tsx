@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import contactData from "../contactData";
 import style from "./ContactForm.module.scss";
+import getContactData from "../contactData";
 
 const ContactForm = () => {
   // Sweetalert package configure in react
@@ -30,7 +31,7 @@ const ContactForm = () => {
     });
     reset();
   };
-
+  const contactData = getContactData();
   return (
     <div className={`${style.contactFormSection} sectionStyle`}>
       <Container>
