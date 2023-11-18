@@ -1,5 +1,5 @@
 "use client";
-import { Box, ListItemIcon, MenuItem } from "@mui/material";
+import { Box, ListItemIcon, MenuItem, useTheme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import getSidebarData from "./SidebarData";
 import SubMenu from "./SubMenu";
@@ -11,7 +11,8 @@ import Logout from "@mui/icons-material/Logout";
 import clicker from '../../../../public/Mainlogo.png'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl';
-
+import { useEffect, useState } from "react";
+import clickerDark from '../../../../public/Mainlogo-dark.png'
 
 
 
@@ -35,13 +36,20 @@ const SidebarWrap = styled("div")(({ theme }) => ({
 }));
 
 const Sidebar = ({ toogleActive, closeSidebar }: any) => {
+   // Use state to dynamically change the logo source
+   const [isdark, setDark] = useState(false);
 const sidebarData = getSidebarData(); 
 const t = useTranslations('SideBar');
   const handleSidebarClose = () => {
     closeSidebar();
   };
+  const storedPreference = localStorage.getItem("theme");
+const theme=useTheme()
 
-  const data = JSON.stringify(sidebarData);
+  useEffect(() => {
+    if (storedPreference=='dark')
+  setDark(true)
+  }, [isdark]);
   return (
     <>
       <div className="leftSidebarDark">
@@ -57,14 +65,18 @@ const t = useTranslations('SideBar');
               }}
             >
               <Link href="/main">
-                <Image
-                  src={clicker}
+           
+                  <Image
+                  
+                  src={isdark?clicker:clickerDark}
                   alt="Clickers"
                   placeholder="blur"
                   quality="100"
                   height="100"
                   
                 />
+    
+          
               </Link>
 
               <IconButton

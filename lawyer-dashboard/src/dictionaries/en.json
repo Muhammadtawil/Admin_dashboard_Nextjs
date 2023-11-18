@@ -275,7 +275,7 @@
       "webAboutUs":{
         "title":"About us",
         "mainTitle":"Welcome to our law Firm!",
-        "description":"We are dedicated to providing top-notch legal services to our clients. With our team of experienced lawyers, we offer a wide range of specialized services to meet your legal needs",
+        "description":"Al-Ghazal Law Office was established in 1993, and launched in the world of law not only in Lebanese territories, but its activity extended to all Arab and foreign countries. The work of the legal office included all civil and criminal cases, and it became a pioneer in the field of commercial cases and the establishment of companies and commercial institutions of all types and levels in order to Developing the commercial sector in Lebanon and establishing a link between commercial companies in Lebanon and the countries of the Arab world.Our office provides legal advice and assistance and is distinguished in civil cases related to all real estate and financial cases, up to commercial cases at all levels.We also work in providing legal services regarding penal and criminal cases.The legal activity extended from the main office in Beirut to all Lebanese districts until the legal work expanded and reached all Arab countries out of our belief in the message of the legal mission and its nobility and elevation.Al-Ghazal Law Firm is an office that includes a specialized team of lawyers in all legal fields, supervised by lawyer - Khaled Al-Ghazal",
         "contact":"Contact Us",
         "fair":"Fair Prices",
         "expert":"Experts In Law",
@@ -283,11 +283,11 @@
         "speed":"speed in completing transactions"
       },
       "webChooseUs":{
-        "description":"Choose our law firm for a dedicated team of experienced attorneys who consistently achieve outstanding results. We prioritize your unique legal needs, providing personalized solutions to ensure your peace of mind and satisfaction, making us the ideal choice for all your legal matters.",
+        "description":"Al Ghazal Law Office keeps pace with legal developments and modern legislation and seeks to provide legal services in all cases and provide legal advice to clients. We work to alleviate the problems facing customers and are interested in following up on the cases of businessmen and investors, especially from Arab countries, and everything related to the field of commercial companies and issues of the Ministry of Labor and the Ministry of Finance.Al-Ghazal Law Office consists of a group of lawyers who ensure the continuity of legal work throughout the week, follow up on cases and lawsuits of all types and degrees, constantly keep up with the latest laws, and work to keep up with the latest laws and modern jurisprudence",
         "title":"Why Choose Us ",
         "expert":"Experts In Law",
-        "group":"Group of unique Lawyers",
-        "fast":"Fast",
+        "group":"Working on all legal levels",
+        "fast":"Rapid processing of cases and lawsuits pending before courts of all types",
         "clients":"Clients",
         "consulting":"Consulting",
         "visits":"Visits",
@@ -339,7 +339,8 @@
         "subscribe":"Subscribe",
         "email":"input your Email here",
         "alert":"Thank you for subscription",
-        "address":"Lebanon,Chtoura,LawFirm Building ",
+        "address":"Chtaura,near Al-Mawarid Bank-Fattouh Building -1st floor",
+        "address2":"Beirut - Bechara El Khoury - Temara Building - 7th floor",
         "copyRightMsg": "© Ghazal LawFirm 2023 all rights reserved."
       },
 

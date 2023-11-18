@@ -19,7 +19,7 @@ const path = usePathname();
           <div className="row align-items-center">
           <span className="titlemain">{t('title') as string}</span>
                 <h2 className="title main">{t('mainTitle')}</h2>
-            <div className="col-lg-6">
+            <div className="col-lg-5">
               <div
                 className="about-img "
                 data-aos="fade-in"
@@ -28,10 +28,10 @@ const path = usePathname();
               >
                 <Image
                   src="/statue.png"
-                  width={300}
-                  height={300}
+                  width={400}
+                  height={400}
                   alt="About Us"
-                  className="image-with-border"
+                  className="image-with-border about-img"
                 />
               </div>
             </div>
@@ -44,7 +44,7 @@ const path = usePathname();
               >
               
                 <p className="title description">{t('description')}</p>
-                <div className="row ">
+                <div className="row">
                   {aboutList.map((item, index) => (
                     <div key={index} className="center">
                       {/* {arabic ? (

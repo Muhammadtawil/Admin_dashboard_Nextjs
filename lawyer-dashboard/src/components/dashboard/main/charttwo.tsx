@@ -35,9 +35,9 @@ export default function MonthlyClientChart({ clientData }: { clientData: any[] }
         fill: '#6154f2',
         fontsize: '30px',
       },
-      [` ${axisClasses.left}`]: {
+      [`.${axisClasses.tickLabel} ${axisClasses.label}`]: {
         color: 'white', // Set the color for Y-axis label here
-        fill: '#3E6C3E',
+        fill: '#6154f2',
       },
       [`.${axisClasses.bottom} ${axisClasses.label}`]: {
         color: 'white', // Set the color for Y-axis label here

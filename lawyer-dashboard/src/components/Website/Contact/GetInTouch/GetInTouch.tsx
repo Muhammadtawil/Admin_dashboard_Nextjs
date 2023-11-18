@@ -8,11 +8,13 @@ import contactData from "../contactData";
 import style from "./GetInTouch.module.scss";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
+import getContactData from "../contactData";
 
 const GetInTouch = () => {
   const path = usePathname()
   const arabic = path.includes('ar')
-  const t=useTranslations('webBooking')
+  const t = useTranslations('webBooking')
+  const contactData = getContactData();
   return (
     <div className={`${style.getInTouchSection} sectionStyle`}>
          <div className="container">
@@ -54,7 +56,7 @@ const GetInTouch = () => {
           style={{ width: "100%", height: arabic?"80%":"90%" }}
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830913564!2d-74.11976373946231!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1648396699742!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3315.152246381675!2d35.85813907570601!3d33.80838397324984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ4JzMwLjIiTiAzNcKwNTEnMzguNiJF!5e0!3m2!1sen!2slb!4v1700272717415!5m2!1sen!2slb"
             width="100%"
             height="230"
             // allowFullScreen=""
@@ -98,8 +100,7 @@ const GetInTouch = () => {
           style={{ width: "100%", height: arabic?"80%":"90%" }}
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830913564!2d-74.11976373946231!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1648396699742!5m2!1sen!2sbd"
-            width="100%"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3315.152246381675!2d35.85813907570601!3d33.80838397324984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ4JzMwLjIiTiAzNcKwNTEnMzguNiJF!5e0!3m2!1sen!2slb!4v1700272717415!5m2!1sen!2slb"
             height="230"
             // allowFullScreen=""
             loading="lazy"
@@ -159,7 +160,7 @@ const GetInTouch = () => {
           style={{ width: "100%", height: arabic?"80%":"90%" }}
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830913564!2d-74.11976373946231!3d40.69766374859258!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1648396699742!5m2!1sen!2sbd"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3312.1644629423836!2d35.5041660757094!3d33.88541797322031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDUzJzA3LjUiTiAzNcKwMzAnMjQuMyJF!5e0!3m2!1sen!2slb!4v1700280573681!5m2!1sen!2slb"
             width="100%"
             height="230"
             // allowFullScreen=""

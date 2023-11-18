@@ -62,7 +62,7 @@
       color:#6b6bd4
     }
     .description{
-      font-size:25px;
+      font-size:20px;
       padding:10px;
   }
   .center {
@@ -117,9 +117,9 @@
       .single-counter h2 {
         margin-bottom: 0;
       }
-      .single-counter h2 {
+      .single-counter h2  span{
         font-size: 50px;
-        color: #6b6bd4;
+        color: #EE368C;
         font-family: "Dosis", sans-serif;
         font-weight: 700;
         line-height: 1;
@@ -147,7 +147,7 @@
       .counter-nth:nth-child(2) .single-counter h2 span {
         color: #6b6bd4;
       }
-      .counter-nth:nth-child(3) .single-counter {
+      .counter-nth:nth-child(3) .single-counter  {
         background-color: #c0fedc;
         margin-top: -30px;
         margin-bottom: 0;
@@ -223,7 +223,7 @@
         text-align:center;
       }
         .description{
-          font-size:19px;
+          font-size:15px;
           align-items:center;
           text-align:center;
 

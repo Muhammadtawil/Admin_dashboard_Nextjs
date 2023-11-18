@@ -25,8 +25,12 @@ const createFooterData = () => {
         message: t('address'),
       },
       {
+        icon: <RiMapPinUserFill fontSize={25} />,
+        message: t('address2'),
+      },
+      {
         icon: <RiPhoneFill fontSize={25} />,
-        message: "(+961)70-593-597",
+        message: "(+961)03-339-199",
       },
       {
         icon: <RiMailFill fontSize={25} />,
