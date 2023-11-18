@@ -43,7 +43,7 @@ const t = useTranslations('SideBar');
   const handleSidebarClose = () => {
     closeSidebar();
   };
-  const storedPreference = localStorage.getItem("theme");
+  const storedPreference = typeof window !== 'undefined' ? localStorage.getItem("theme") : null;
 const theme=useTheme()
 
   useEffect(() => {
