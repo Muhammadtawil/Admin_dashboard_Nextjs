@@ -14,7 +14,7 @@ export default async function NewsDetails({
   return (
    <>
 
-          <NewsDetailsMain params={params} children={<SideBarNewsDetails currentNewsId={params.newsId} />}/>
+          <NewsDetailsMain params={params} children={<h1>SideBar</h1>}/>
     
    
    
