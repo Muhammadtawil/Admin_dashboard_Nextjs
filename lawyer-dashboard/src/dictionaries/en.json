@@ -389,6 +389,26 @@
         "title":"Oops! Page Not Found",
         "description":"The page you were looking for could not be found",
         "btn":"Return to Home Page"
+      },
+      "webFilesPage":{
+        "pageTitle":"Files",
+        "create":"Create Folder",
+        "add":"Add File",
+        "view":"View file",
+        "delete":"delete",
+        "folderName":"folder Name",
+        "fileName":"file Name",
+        "choose":"Choose File",
+        "noChoosenFile":"No Chosen File ",
+        "All":"All",
+        "success":"File Added successfully",
+        "success2":"Folder Created successfully",
+        "actions": "Actions",
+        "deleteTitle":"Are you sure to delete the file",
+        "deleteTitle2":"You won't be able to revert this!",
+        "deleteSuccess":"Deleted!, Your File has been deleted., success",
+        "yes":"Yes",
+        "cancel":"cancle"
       }
 
 }

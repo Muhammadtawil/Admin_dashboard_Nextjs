@@ -1,9 +1,9 @@
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-const MySwal = withReactContent(Swal);
+
 
 export function successAlert (succesTitle: string){
- return MySwal.fire({
+ return Swal.fire({
     title: "Done!",
     text: `${succesTitle}`,
     icon: "success",
@@ -14,7 +14,7 @@ export function successAlert (succesTitle: string){
 };
 
 export const updateAlert = (updateTitle: string) => {
-  MySwal.fire({
+  Swal.fire({
     title: "Done!",
     text:`${updateTitle}`,
     icon: "success",
@@ -25,7 +25,7 @@ export const updateAlert = (updateTitle: string) => {
 };
 
 export const AssignTaskAlert = () => {
-  MySwal.fire({
+  Swal.fire({
     title: "Done!",
     text: " Task Assigned",
     icon: "success",
@@ -35,8 +35,8 @@ export const AssignTaskAlert = () => {
   });
 };
 
-export const deleteAlert = ({ deleteMethod }: any) => {
-  Swal.fire({
+export const deleteAlert =async({ deleteMethod }: any) => {
+  return await Swal.fire({
     title: "Are you sure?",
     text: "You won't be able to revert this!",
     icon: "warning",
@@ -44,17 +44,20 @@ export const deleteAlert = ({ deleteMethod }: any) => {
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, delete it!",
-    focusConfirm:true
+    focusConfirm: true,
+    allowEscapeKey:true
+    
   }).then((result) => {
-    if (result.isConfirmed ) {
-deleteMethod;
+    if (result.isConfirmed && result.value === true) {
+      console.log(result)
+ deleteMethod();
       Swal.fire("Deleted!", "Your task has been deleted.", "success");
     }
   });
 };
 
 export const LoginAlert = ({ userName }: any) => {
-  MySwal.fire({
+  Swal.fire({
     title: "Welcome!",
     text: `you are welcome ${userName}`,
     icon: "success",

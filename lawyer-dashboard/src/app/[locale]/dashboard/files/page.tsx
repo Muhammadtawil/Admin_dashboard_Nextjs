@@ -1,7 +1,10 @@
-import React from 'react'
+
+import MediaMainCoponent from '@/components/dashboard/media/mediaMain';
+
+
 
 export default function FilesPage() {
   return (
-    <h1>We will added this soon</h1>
+    <MediaMainCoponent/>
   )
 }
