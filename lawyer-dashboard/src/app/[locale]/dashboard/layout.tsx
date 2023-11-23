@@ -5,6 +5,7 @@ import { Metadata } from "next";
 import Providers from "../../../components/providers";
 import { ReactNode } from "react";
 import { NextIntlClientProvider } from 'next-intl'
+import NotificationsComponent from "@/components/dashboard/TopNavbar/notification/notificationsMain";
 
 
 type Props = {
@@ -53,7 +54,7 @@ export default async function RootLayout({
       <NextIntlClientProvider locale={locale?locale:"en"} messages={messages}>
         
       <body >
-          <ClientLayout children={children}/>
+          <ClientLayout children={children} topBarChildren={<NotificationsComponent/>}/>
           </body>
 
           </NextIntlClientProvider>

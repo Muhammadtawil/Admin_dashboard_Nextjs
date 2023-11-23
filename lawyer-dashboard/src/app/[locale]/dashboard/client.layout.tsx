@@ -8,11 +8,12 @@ import "react-tabs/style/react-tabs.css";
 import TopNavbar from "../../../components/dashboard/TopNavbar/TopNavBar";
 import ScrollToTop from "../../../components/dashboard/shared/ScrollToTop";
 import Sidebar from "../../../components/dashboard/LeftSidebar/LeftSideBar";
+import TopNavBarMain from "@/components/dashboard/TopNavbar/notification/topNavBar_Main";
 
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function ClientLayout({ children }: { children: React.ReactNode }) {
+export default function ClientLayout({ children,topBarChildren }: { children: React.ReactNode ,topBarChildren:any}) {
 
   
   const [active, setActive] = useState(false);
@@ -38,7 +39,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
       
             
         <div className={`main-wrapper-content ${active && "active"}`}>
-          <TopNavbar toogleActive={toggleActive} />
+          <TopNavBarMain toogleActive={toggleActive} children={topBarChildren} />
           <Sidebar toogleActive={toggleActive} closeSidebar={closeSidebar} />
           {children}
           <ScrollToTop />

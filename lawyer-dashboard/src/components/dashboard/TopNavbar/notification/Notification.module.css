@@ -66,3 +66,7 @@
 color:white;  
 background-color:green;
 }
+.notificationContainer {
+  max-height: 300px; /* Set the maximum height for the notification list */
+  overflow-y: auto; /* Enable vertical scrolling */
+}

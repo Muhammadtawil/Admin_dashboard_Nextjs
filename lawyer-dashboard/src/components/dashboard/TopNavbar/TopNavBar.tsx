@@ -1,21 +1,18 @@
 import { AppBar, Toolbar, IconButton, Stack, Typography } from "@mui/material";
 import Tooltip from "@mui/material/Tooltip";
-import { AnyMxRecord } from "dns";
-import SearchForm from "./search/SearchForm";
 import CurrentDate from "./Date/CurrentDate";
 import Profile from "./Profile/Profile";
-import Notifications from "./notification/Notification";
-
 import DarkAndLightMode from "../ControlPanelModal/DarkAndLightMode";
 import LocaleSwitcher from "../locale/LocaleSwitcher";
+import NotificationsComponent from "./notification/notificationsMain";
 
 
 const TopNavbar = ({
   toogleActive,
- 
+ children,
 }: {
   toogleActive: any;
-
+    children: any;
   }) => {
   
   
@@ -56,7 +53,7 @@ const TopNavbar = ({
            <DarkAndLightMode/>
 
               {/* Notification */}
-              <Notifications />
+              {children}
 
               {/* Profile */}
               <Profile
