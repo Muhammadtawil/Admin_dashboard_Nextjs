@@ -25,6 +25,7 @@ import ActionsComponent from "../shared/PaginationList";
 import { useTranslations } from "next-intl";
 import DOMPurify from "dompurify";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import Swal from "sweetalert2";
 
 
 
@@ -197,7 +198,31 @@ export default function BlogsTable({
                     size="small"
                     color="error"
                     className="error"
-                    onClick={() => deleteAlert(deleteTask(blog.blogId))}
+                    // onClick={() => deleteAlert(deleteTask(blog.blogId))}
+
+                    // }}
+                
+                    onClick={async() => {
+                      await Swal.fire({
+                        title: t('deleteTitle'),
+                        text: t('deleteTitle2'),
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: t('yes'),
+                        focusConfirm: true,
+                        allowEscapeKey: true,
+                        cancelButtonText:t('cancel')
+                        
+                      }).then((result) => {
+                        if (result.isConfirmed && result.value === true) {
+                          console.log(result)
+                          deleteTask(blog.blogId);
+                          Swal.fire(t('deleteSuccess'));
+                        }
+                      });
+                    }}
                   >
                     <DeleteIcon fontSize="inherit" />
                   </IconButton>

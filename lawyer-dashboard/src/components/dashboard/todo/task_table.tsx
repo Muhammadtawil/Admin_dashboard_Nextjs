@@ -28,6 +28,7 @@ import { getStatusTranslationKey } from "../shared/tables";
 import { Typography } from "@mui/material";
 import { IoPersonAddSharp } from "react-icons/io5";
 import { usePathname } from "next/navigation";
+import Swal from "sweetalert2";
 
 const label = { input: { "aria-label": "Checkbox demo" } };
 
@@ -197,6 +198,8 @@ export default function TaskTable({
               day: "numeric",
               month: "2-digit",
               year: "2-digit",
+              hour: "numeric",
+              minute: "numeric",
             })}
           </TableCell>
           {isAssigned ? (
@@ -261,11 +264,32 @@ export default function TaskTable({
                   size="small"
                   color="error"
                   className="error"
-                  onClick={() =>
-                    deleteAlert(
-                deleteTask(isAssigned ? task.assignedTaskId : task.taskId)
-                    )
-                  }
+                //   onClick={() =>
+                //     deleteAlert(
+                // deleteTask(isAssigned ? task.assignedTaskId : task.taskId)
+                //     )
+                //   }
+                  onClick={async() => {
+                    await Swal.fire({
+                      title: t('deleteTitle'),
+                      text: t('deleteTitle2'),
+                      icon: "warning",
+                      showCancelButton: true,
+                      confirmButtonColor: "#3085d6",
+                      cancelButtonColor: "#d33",
+                      confirmButtonText: t('yes'),
+                      focusConfirm: true,
+                      allowEscapeKey: true,
+                      cancelButtonText:t('cancel')
+                      
+                    }).then((result) => {
+                      if (result.isConfirmed && result.value === true) {
+                        console.log(result)
+                   deleteTask(isAssigned ? task.assignedTaskId : task.taskId);
+                        Swal.fire(t('deleteSuccess'));
+                      }
+                    });
+                  }}
                 >
                   <DeleteIcon fontSize="inherit" />
                 </IconButton>

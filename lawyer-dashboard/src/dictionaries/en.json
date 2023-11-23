@@ -49,7 +49,12 @@
     "no": "Draft",
     "arabic":"arabic",
     "english":"english",
-    "lang":"Language"
+    "lang":"Language",
+    "deleteTitle":"Are you sure to delete the blog",
+    "deleteTitle2":"You won't be able to revert this!",
+    "deleteSuccess":"Deleted!, Your blog has been deleted., success"
+   
+
   },
   "SideBar": {
     "main": "Dashboard",
@@ -106,7 +111,12 @@
     "NOT_COMPLETED": "Not Completed",
     "IN_PROGRESS": "In Progress",
     "success":"Task Added Successfully",
-    "editAlert":"Task Edit Successfully"
+    "editAlert":"Task Edit Successfully",
+    "deleteTitle":"Are you sure to delete the Task",
+    "deleteTitle2":"You won't be able to revert this!",
+    "deleteSuccess":"Deleted!, Your Task has been deleted., success",
+    "yes":"Yes"
+  
  
   },
 
@@ -135,7 +145,11 @@
     "no": "Draft",
     "clientMsg":"Message",
     "noEmail":"No email",
-    "noMsg":"No Message"
+    "noMsg":"No Message",
+    "deleteTitle":"Are you sure to delete the Client",
+    "deleteTitle2":"You won't be able to revert this!",
+    "deleteSuccess":"Deleted!, Your client has been deleted., success"
+
   },
 
   "newsPage": {
