@@ -70,3 +70,8 @@ background-color:green;
   max-height: 300px; /* Set the maximum height for the notification list */
   overflow-y: auto; /* Enable vertical scrolling */
 }
+
+.unreadNotification {
+  background-color: #B5BACA;
+  /* add other styles for the shadow background */
+}

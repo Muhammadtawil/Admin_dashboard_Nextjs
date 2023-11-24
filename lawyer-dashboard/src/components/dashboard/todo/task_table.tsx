@@ -327,7 +327,7 @@ export default function TaskTable({
           fontSize: 20,
           fontWeight: 500,
           padding: 2,
-          textAlign:arabic?"right":"left"
+          textAlign:locale=="ar"?"right":"left"
         }}
       >
      {t(tableTitle)}

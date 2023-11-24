@@ -1,3 +1,4 @@
+"use client"
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -10,6 +11,9 @@ import AddIcon from "@mui/icons-material/Add";
 import { AssignTaskAlert } from "../alerts/alerts";
 import { useState } from "react";
 import CustomTypography from "../shared/formsComponents";
+import { useSession } from "next-auth/react";
+import { Session } from "inspector";
+import { useTranslations } from "next-intl";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -44,7 +48,8 @@ export default function MemberSelect({
 }) {
   const theme = useTheme();
   const [personName, setPersonName] = useState([]);
-
+  const { data: session } = useSession();
+  const t=useTranslations('taskPage')
   const handleChange = (event: any) => {
     const {
       target: { value },
@@ -55,16 +60,18 @@ export default function MemberSelect({
     setPersonName(namesArray);
   };
 
+  // Filter out the active user from the list
+  const filteredUsers = usersName.filter(user => user.userId !== session?.userId); // Replace `activeUserId` with the actual ID of the active user
+
   return (
     <Box>
       <Box
         component="form"
         noValidate={false}
-        action={ (formData) => {
-           onSelectMember(formData, selectedTask.taskId).then(() => {
-          handleClose();
-          AssignTaskAlert();
-            
+        action={(formData) => {
+          onSelectMember(formData, selectedTask.taskId).then(() => {
+            handleClose();
+            AssignTaskAlert();
           });
         }}
       >
@@ -77,8 +84,8 @@ export default function MemberSelect({
           className="dark-BG-101010"
         >
           <Grid item xs={12} md={12} lg={6}>
-            <CustomTypography text={"Select Member"} />
-            <InputLabel htmlFor="select-multiple-chip">Select Member</InputLabel>
+            <CustomTypography text={t('selectMember')} />
+            <InputLabel htmlFor="select-multiple-chip">  {t('selectMember')}</InputLabel>
             <Select
               fullWidth
               labelId="demo-multiple-chip-label"
@@ -91,17 +98,21 @@ export default function MemberSelect({
               renderValue={(selected) => (
                 <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
                   {selected.map((value) => (
-                    <Chip key={value} label={value} />
+                    <Chip
+                      key={value}
+                      label={filteredUsers.find((user) => user.userId === value)?.userName}
+                    />
                   ))}
                 </Box>
               )}
-              MenuProps={MenuProps}
             >
-              {usersName.map((name: any) => (
+              {filteredUsers.map((name: any) => (
+                // Disable selection for the active user
                 <MenuItem
                   key={name.userName}
-                  value={name.userName}
+                  value={name.userId} // Use user.userId as the value
                   style={getStyles(name.userName, personName, theme)}
+                  disabled={name.userId === session?.userId} // Disable selection for the active user
                 >
                   {name.userName}
                 </MenuItem>
@@ -131,7 +142,7 @@ export default function MemberSelect({
               }}
               className="mr-5px"
             />
-            Cancel
+            {t('cancel')}
           </Button>
 
           <Button
@@ -154,7 +165,7 @@ export default function MemberSelect({
               }}
               className="mr-5px"
             />
-            Select Member
+         {t('selectMember')}
           </Button>
         </Box>
       </Box>

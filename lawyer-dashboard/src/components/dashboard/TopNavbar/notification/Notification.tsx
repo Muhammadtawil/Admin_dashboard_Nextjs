@@ -14,11 +14,13 @@ import Image from 'next/image'
 import dashboardLogo from '../../../../../public/dashboardLogo.png'
 import { useState } from "react";
 import { useLocale } from "next-intl";
+import { redirect } from "next/dist/server/api-utils";
+import { useRouter } from "next/navigation";
 
-const NotificationsSection = ({ notificationsData }: { notificationsData: any }) => {
+const NotificationsSection = ({ notificationsData,Update }: { notificationsData: any ,Update:any}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
+const router=useRouter()
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
@@ -27,6 +29,8 @@ const NotificationsSection = ({ notificationsData }: { notificationsData: any })
     setAnchorEl(null);
   };
   const locale = useLocale();
+ // Calculate the count of unread notifications
+ const unreadCount = notificationsData.filter((notification: any) => !notification.read).length;
 
   return (
     <>
@@ -45,7 +49,7 @@ const NotificationsSection = ({ notificationsData }: { notificationsData: any })
           aria-expanded={open ? "true" : undefined}
           className="ml-2 for-dark-notification"
         >
-          <Badge color="error" variant="dot">
+           <Badge color="error" badgeContent={unreadCount}>
             <NotificationsActiveIcon className="notification-icon" />
           </Badge>
         </IconButton>
@@ -61,14 +65,25 @@ const NotificationsSection = ({ notificationsData }: { notificationsData: any })
       >
      <div className={styles.header}>
           <Typography variant="h4">Notifications</Typography>
-          <Button variant="text">clear all</Button>
+   
         </div>
         <div className={styles.notificationContainer}>
           <div className={styles.notification}>
             {notificationsData.length > 0 ? (
               // Render notifications if there are any
               notificationsData.map((notification: any, index: any) => (
-                <div key={index} className={styles.notificationList}>
+                <div
+              key={index}
+              className={`${styles.notificationList} ${
+                notification.read ? '' : styles.unreadNotification
+                }`}
+                  onClick={() => {
+                    if (notification.title.includes('Task')) {
+                      router.push(`/${locale}/dashboard/tasks`)
+                    }
+                    Update(notification.id)
+                  }}
+            >
                   <Typography
                     variant="h5"
                     sx={{

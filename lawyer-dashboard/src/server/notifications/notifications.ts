@@ -26,4 +26,36 @@ export async function GetNotifications() {
     console.error("Error fetching data:", error);
     return [];
   }
+
+
 }
+
+export async function UpdateNotifications(notificationId:string) {
+  const session = await getServerSession(authOptions);
+  const notificationsData = {
+    read: true,
+  };
+  const jsonData = JSON.stringify(notificationsData);
+  const requestOptions = {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${session?.accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  };
+  try {
+    const response = await fetch(`${notifications_url}/status/${notificationId}/read`, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    const responseData = await response.json();
+    console.log("Notification Updated successfully:", responseData);
+  } catch (error) {
+    console.error("Error update Notification:", error);
+  }
+
+}
+

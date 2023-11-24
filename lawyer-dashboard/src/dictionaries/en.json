@@ -115,7 +115,8 @@
     "deleteTitle":"Are you sure to delete the Task",
     "deleteTitle2":"You won't be able to revert this!",
     "deleteSuccess":"Deleted!, Your Task has been deleted., success",
-    "yes":"Yes"
+    "yes":"Yes",
+    "selectMember":"Select Member"
   
  
   },
