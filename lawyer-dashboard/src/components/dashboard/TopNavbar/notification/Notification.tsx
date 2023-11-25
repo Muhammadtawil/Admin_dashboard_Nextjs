@@ -2,11 +2,9 @@
 import styles from "./Notification.module.css";
 import {
   IconButton,
-  Button,
   Typography,
   Tooltip,
   Menu,
-  Link,
   Badge,
 } from "@mui/material";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
@@ -14,7 +12,6 @@ import Image from 'next/image'
 import dashboardLogo from '../../../../../public/dashboardLogo.png'
 import { useState } from "react";
 import { useLocale } from "next-intl";
-import { redirect } from "next/dist/server/api-utils";
 import { useRouter } from "next/navigation";
 
 const NotificationsSection = ({ notificationsData,Update }: { notificationsData: any ,Update:any}) => {
@@ -64,7 +61,7 @@ const router=useRouter()
         // ... (rest of your code)
       >
      <div className={styles.header}>
-          <Typography variant="h4">Notifications</Typography>
+          <Typography variant="h4" className={styles.notificationHead}>Notifications</Typography>
    
         </div>
         <div className={styles.notificationContainer}>

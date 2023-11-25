@@ -39,6 +39,61 @@ export async function GetUsers() {
   }
 }
 
+
+export async function GetUsersEmails() {
+  const users_url = process.env.USERS_URL;
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+
+    },
+
+  
+  };
+
+  try {
+    const response = await fetch(`${user_url}/all-users-emails`, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return [];
+  }
+}
+
+
+
+export async function GetUsersTokens() {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+
+    },
+
+  
+  };
+
+  try {
+    const response = await fetch(`${user_url}/all-users-tokens`, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    return response.json();
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    return [];
+  }
+}
+
+
 // get active user
 
 export async function GetUser() {
@@ -279,5 +334,82 @@ export async function DeleteUser(userId: string) {
     console.log("team member deleted successfully");
   } catch (error) {
     console.error("Error Deleting team Member:", error);
+  }
+}
+
+
+export async function SendResetCode(email: string) {
+  // const userEmail = data.get("userEmail");
+  
+  const userData = {
+    email: email,
+  };
+
+  const jsonData = JSON.stringify(userData);
+
+  // Define the URL for adding a client (replace with the correct endpoint)
+
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  };
+
+  try {
+    const response = await fetch(`${user_url}/reset-password/request`, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    const responseData = await response.json();
+
+  
+
+      if (response.status == 201 || response.status == 200) {
+        console.log("user code sent Successfully:", responseData);
+
+      }
+    
+  } catch (error) {
+    console.error("Error sending code:", error);
+  }
+}
+
+export async function UpdatePassword(password: string, code: any){
+
+
+
+  const userData = {
+    newPassword: password,
+  };
+
+  const jsonData = JSON.stringify(userData);
+
+
+
+  const requestOptions = {
+    method: "PATCH",
+    headers: {
+     
+
+      "Content-Type": "application/json",
+    },
+    body: jsonData,
+  };
+
+  try {
+    const response = await fetch(`${user_url}/reset-password/${code}`, requestOptions);
+
+    if (!response.ok) {
+      throw new Error("Request failed with status: " + response.status);
+    }
+
+    const responseData = await response.json();
+    console.log("user password Updated successfully:", responseData);
+  } catch (error) {
+    console.error("Error update updating user password:", error);
   }
 }

@@ -12,6 +12,11 @@ export async function GetNotifications() {
       "Content-Type": "application/json",
    
     },
+    next: {
+      // revalidate: 10,
+      tags: ["notifications"],
+    },
+ 
   };
 
   try {

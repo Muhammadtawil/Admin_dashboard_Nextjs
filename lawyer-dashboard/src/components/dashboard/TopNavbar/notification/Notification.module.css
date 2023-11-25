@@ -67,11 +67,19 @@ color:white;
 background-color:green;
 }
 .notificationContainer {
-  max-height: 300px; /* Set the maximum height for the notification list */
+  max-height: 40vh; /* Set the maximum height for the notification list */
   overflow-y: auto; /* Enable vertical scrolling */
 }
 
 .unreadNotification {
   background-color: #B5BACA;
+
   /* add other styles for the shadow background */
+}
+.notificationHead{
+  text-align:center;
+  padding-left:30%;
+  padding-top:10%;  
+  align-items:center;
+  left:50vh;
 }

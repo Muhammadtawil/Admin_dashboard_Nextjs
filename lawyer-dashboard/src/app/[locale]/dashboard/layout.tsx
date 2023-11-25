@@ -5,7 +5,9 @@ import { Metadata } from "next";
 import Providers from "../../../components/providers";
 import { ReactNode } from "react";
 import { NextIntlClientProvider } from 'next-intl'
-import NotificationsComponent from "@/components/dashboard/TopNavbar/notification/notificationsMain";
+import dynamic from "next/dynamic";
+import LoadingSpinner from "@/components/dashboard/loading spinner/loadinSpinner";
+import { GetNotifications } from "@/server/notifications/notifications";
 
 
 type Props = {
@@ -31,13 +33,17 @@ export async function generateStaticParams() {
   return ['en', 'ar'].map((locale) => ({ locale }))
 }
 
-
+const NotificationsComponent = dynamic(() => import("../../../components/dashboard/TopNavbar/notification/notificationsMain"), {
+  loading: () => <LoadingSpinner />, 
+  ssr: false, // Disable server-side rendering for this component
+});
 
 export default async function RootLayout({
   children,
   params: { locale },
 }: Props) {
   const messages = await getMessages(locale)
+  const notifications=await GetNotifications()
 
   const lang = locale === 'ar' ? 'ar' : 'en';
   return (
@@ -54,7 +60,7 @@ export default async function RootLayout({
       <NextIntlClientProvider locale={locale?locale:"en"} messages={messages}>
         
       <body >
-          <ClientLayout children={children} topBarChildren={<NotificationsComponent/>}/>
+          <ClientLayout children={children} topBarChildren={<NotificationsComponent notificationData={notifications}/>}/>
           </body>
 
           </NextIntlClientProvider>

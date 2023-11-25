@@ -7,12 +7,14 @@ import React, { ChangeEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { IconButton, TextField } from "@mui/material";
+import { revalidatePath, revalidateTag } from "next/cache";
+import { useLocale } from "next-intl";
 
 export default function LoginForm() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-
+const locale=useLocale()
   const [formValues, setFormValues] = useState({
     userName: "",
     password: "",
@@ -27,7 +29,7 @@ export default function LoginForm() {
     try {
       setLoading(true);
       // setFormValues({ userName: "", password: "" });
-
+      localStorage.removeItem('temporaryOTP');
       const res = await signIn("credentials", {
         redirect: false,
         userName: formValues.userName,
@@ -41,8 +43,9 @@ export default function LoginForm() {
       if (!res?.error) {
         // redirect("/main");
         router.replace(callbackUrl);
+        // revalidateTag('notifications')
       } else {
-        setError("invalid email or password");
+        setError("invalid UserName or password");
       }
     } catch (error: any) {
       setLoading(false);
@@ -50,9 +53,22 @@ export default function LoginForm() {
     }
   };
 
+
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
+
+    // Password validation regex
+    const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+
     setFormValues({ ...formValues, [name]: value });
+
+    if (name === "password"  && !passwordRegex.test(value)) {
+      setError(
+        "Password must contain at least 8 characters, one letter, one number, and one special character."
+      )
+    }else {
+      setError("");
+    }
   };
 
   return (
@@ -128,7 +144,7 @@ export default function LoginForm() {
                     </div>
                   )}
                   <div className="col-lg-6 col-sm-6">
-                    <Link href="/en/login/recover" className="forget">
+                    <Link href={`/${locale}/dashboard/login/recover`} className="forget">
                       Forgot my password?
                     </Link>
                   </div>
