@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/dashboard/LeftSidebar/SidebarData.ts", "src/getDictionary.ts", "i18n.config.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/dashboard/LeftSidebar/SidebarData.ts", "src/getDictionary.ts", "i18n.config.ts", "lawfirm-398516-firebase-adminsdk-ci0pl-49e35b5209.TSX"],
   "exclude": ["node_modules"]
 }

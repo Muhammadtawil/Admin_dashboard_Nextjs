@@ -1,7 +1,8 @@
-import React from 'react'
+import LibrayMainComponent from '@/components/dashboard/library/libraryMain'
+
 
 export default function ReferencesPage() {
   return (
-    <h1>We will added this soon</h1>
+    <LibrayMainComponent/>
   )
 }

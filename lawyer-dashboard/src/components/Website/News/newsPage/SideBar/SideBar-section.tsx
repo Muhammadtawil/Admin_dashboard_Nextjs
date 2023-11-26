@@ -3,7 +3,7 @@ import Image from "next/image";
 import style from "./SideBar.module.scss";
 import { usePathname, useRouter } from "next/navigation";
 import SubscribeSide from "@/components/Website/Shared/subscribe/Subscribe";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Subscribers from "@/components/Website/Shared/subscribe/subscribers";
 import { useState } from "react";
 
@@ -12,6 +12,7 @@ const SideBarSection = ({ newsData, Subscribe }: { newsData: any, Subscribe: any
   const router = useRouter();
   const path = usePathname()
   const arabic = path.includes('ar')
+  const locale=useLocale()
   // Step 1: Group blogs by creation date
   const groupedBlogs = newsData.reduce((acc: any, blog: any) => {
     const createdAt = new Date(blog.createdAt);
@@ -50,7 +51,7 @@ const SideBarSection = ({ newsData, Subscribe }: { newsData: any, Subscribe: any
           })
           .map((data: any, index: any) => (
 
-            <div className="postCard" key={index} onClick={() => router.push(`ar/news/${data.newsId}`)}>
+            <div className="postCard" key={index} onClick={() => router.push(`/${locale}/news/${data.newsId}`)}>
 
               <div>
                 <Image

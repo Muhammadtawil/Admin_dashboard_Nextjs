@@ -1,14 +1,13 @@
 "use client";
-import Link from "next/link";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import InputAdornment from "@mui/material/InputAdornment";
 import React, { ChangeEvent, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { signIn } from "next-auth/react";
 import { IconButton, TextField } from "@mui/material";
 import { useLocale } from "next-intl";
 import { successAlert } from "../../alerts/alerts";
+
 
 export default function ChangePassowrdComponent({onSubmit}:{onSubmit:any}) {
   const router = useRouter();
@@ -62,7 +61,7 @@ const temporaryOTP = localStorage.getItem('temporaryOTP');
               
                   setLoading(true);
               
-                  onSubmit(userPassword,temporaryOTP)
+              await   onSubmit(userPassword,temporaryOTP)
                     .then(() => {
                       successAlert(`Password reset Successfuly`);
                       router.push(`/${locale}/dashboard/login`);
