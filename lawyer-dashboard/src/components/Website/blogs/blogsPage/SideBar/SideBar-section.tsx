@@ -4,9 +4,6 @@ import style from "./SideBar.module.scss";
 import { usePathname, useRouter } from "next/navigation";
 import SubscribeSide from "@/components/Website/Shared/subscribe/Subscribe";
 import { useTranslations } from "next-intl";
-import { format } from "date-fns"; 
-import ar from "date-fns/locale/ar/index";
-import { enUS } from "date-fns/locale";
 import { useState } from "react";
 
 

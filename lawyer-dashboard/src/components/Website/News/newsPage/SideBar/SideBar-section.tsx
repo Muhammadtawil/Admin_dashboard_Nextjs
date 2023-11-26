@@ -2,9 +2,8 @@
 import Image from "next/image";
 import style from "./SideBar.module.scss";
 import { usePathname, useRouter } from "next/navigation";
-import SubscribeSide from "@/components/Website/Shared/subscribe/Subscribe";
 import { useLocale, useTranslations } from "next-intl";
-import Subscribers from "@/components/Website/Shared/subscribe/subscribers";
+import SubscribeSide from "@/components/Website/Shared/subscribe/subscribers";
 import { useState } from "react";
 
 const SideBarSection = ({ newsData, Subscribe }: { newsData: any, Subscribe: any }) => {
@@ -78,7 +77,7 @@ const SideBarSection = ({ newsData, Subscribe }: { newsData: any, Subscribe: any
 
           ))}
       </div>
-      <Subscribers Subscribe={Subscribe} />
+      <SubscribeSide Subscribe={Subscribe} />
       <div className="lists archive">
         <h4>{t('archive')}</h4>
         {archiveData.map((data, index) => (

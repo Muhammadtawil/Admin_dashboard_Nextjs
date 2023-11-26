@@ -6,9 +6,10 @@ import { FaXTwitter } from 'react-icons/fa6';
 import style from "./PostContent.module.scss";
 import Link from "next/link";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { usePathname } from "next/navigation";
 import DOMPurify from "dompurify";
+import { FaWhatsapp } from "react-icons/fa";
 
 
 
@@ -92,7 +93,7 @@ news,
               <>
             <li style={{ marginRight: "10px" }} className="facebook">
                 <CopyToClipboard text={window.location.href} onCopy={() => setIsCopied(true)}>
-                    <Link href={`https://facebook.com/share?url=https://admin-dashboard-nextjs-blue.vercel.app${path}`} style={{ textDecoration: "none" }}>
+                    <Link href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}style={{ textDecoration: "none" }}>
                         <FaFacebook />
                     </Link>
                 </CopyToClipboard>
@@ -103,7 +104,7 @@ news,
             {typeof window !== 'undefined' && (
               <>
                 <li style={{ marginRight: "10px" }} className="twitter">
-                <Link href={`https://twitter.com/share?url=https://admin-dashboard-nextjs-blue.vercel.app${path}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                <Link href={`https://twitter.com/share?url=https://www.ghazal-lawfirm.com${path}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
                     <FaXTwitter />
                 </Link>
             </li>
@@ -119,7 +120,16 @@ news,
                 </li>
               </>
                 
-        )}
+            )}
+              {typeof window !== 'undefined' && (
+        <>
+            <li style={{ marginRight: "10px" }} className="whatsapp">
+                <Link href={`https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                    <FaWhatsapp />
+                </Link>
+            </li>
+        </>
+    )}
     </ul>
     {/* {isCopied && <div style={{ marginLeft: "10px" }}>URL copied to clipboard!</div>} */}
 </div>

@@ -54,7 +54,7 @@ export default async function RootLayout({ children, params: { locale } }: Props
   return (
     <html lang={lang}>
       <head>
-        <title>LawFirm</title>
+        <title>Ghazal LawFirm مكتب الغزال للمحاماة</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </head>
           <NextIntlClientProvider locale={locale ? locale : 'en'} messages={messages}>

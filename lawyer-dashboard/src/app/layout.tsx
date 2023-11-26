@@ -7,10 +7,13 @@ import '.././styles/LogIn.css'
 
 import "../styles/web/dark.css";
 import ScrollToTop from "@/components/dashboard/shared/ScrollToTop";
+import { Metadata } from "next";
 
 
-
-export const metadata = { }
+export const metadata: Metadata = {
+  title: 'Ghazal LawFirm',
+  description: 'Ghazal LawFirm',
+};
 
 export default function RootLayout({
   children,
