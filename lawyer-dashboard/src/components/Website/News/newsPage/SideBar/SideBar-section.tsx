@@ -3,8 +3,9 @@ import Image from "next/image";
 import style from "./SideBar.module.scss";
 import { usePathname, useRouter } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
-import SubscribeSide from "@/components/Website/Shared/subscribe/subscribers";
+
 import { useState } from "react";
+import SubscribeSide from "@/components/Website/Shared/subscribe/Subscribe";
 
 const SideBarSection = ({ newsData, Subscribe }: { newsData: any, Subscribe: any }) => {
   const t = useTranslations('webNews')
