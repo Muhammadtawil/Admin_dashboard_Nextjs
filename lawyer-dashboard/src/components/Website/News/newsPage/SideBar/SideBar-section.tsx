@@ -55,7 +55,7 @@ const SideBarSection = ({ newsData, Subscribe }: { newsData: any, Subscribe: any
 
               <div>
                 <Image
-                  layout="responsive"
+              
                   width={200}
                   height={200}
                   src={data?.newsImageUrl}

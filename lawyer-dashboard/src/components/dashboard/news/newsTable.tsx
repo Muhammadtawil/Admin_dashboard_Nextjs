@@ -24,6 +24,7 @@ import ActionsComponent from "../shared/PaginationList";
 import { useLocale, useTranslations } from "next-intl";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import { usePathname } from "next/navigation";
+import Image from 'next/image'
 
 export default function NewsTable({
   dataRows,

@@ -27,7 +27,7 @@ const TeamCards = ({ teamData ,translatedTeam}: { teamData: any[],translatedTeam
           <div className="team-grid " >
             {teamsData.map((member: any, index: any) => (
               <div key={index} className="team-item ">
-                <img src={member.userImgUrl} className="team-img" alt="pic" />
+                <img key={index} src={member.userImgUrl} className="team-img" alt="pic" />
                 <h3 style={{padding:"10px"}}>{member.userName}</h3>
                 <div className="team-info">
                   <p>{member.userPosition}</p>

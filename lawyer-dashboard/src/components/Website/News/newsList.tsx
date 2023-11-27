@@ -1,6 +1,8 @@
 "use client"
 import { motion } from "framer-motion";
 import { Container, Row } from "react-bootstrap";
+import Image from 'next/image'
+
 import {
   FaLongArrowAltRight,
 } from "react-icons/fa";
@@ -55,7 +57,7 @@ const t=useTranslations('webNews')
             >
               
               <div className="image " onClick={()=>router.push(`/${locale}/news/${news.newsId}`)}>
-                <img src={news?.newsImageUrl} alt="blog image" />
+                <Image  src={news?.newsImageUrl} alt="blog image" width={350} height={100}/>
                 </div>
        
      

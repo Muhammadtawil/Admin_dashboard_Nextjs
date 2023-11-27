@@ -93,7 +93,7 @@ const archiveData = Object.keys(groupedBlogs).map((dateKey) => ({
          
             <div>
               <Image
-                layout="responsive"
+             
                 width={200}
                 height={200}
                 src={data?.blogImageUrl}

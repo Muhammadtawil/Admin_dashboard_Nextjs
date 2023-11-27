@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import style from "../Contact/ContactForm/ContactForm.module.scss";
 import createFooterData from "../Footer/footerData";
+import Link from "next/link";
 
 
 
@@ -111,7 +112,7 @@ const path = usePathname()
   <div className="d-flex gap-2 socialLink arabic-list" style={{ padding: "10px" ,fontSize:"34px"}}>
     {footerData?.socialLinks.map((data, index) => (
       <div key={index}>
-        <a href={data?.link}>{data?.icon}</a>
+        <Link href={data?.link}>{data?.icon}</Link>
       </div>
     ))}
   </div>
