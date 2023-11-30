@@ -32,7 +32,7 @@
       }
 
       .pb-70 {
-        padding-bottom: 70px;
+        padding-bottom: 50px;
       }
       .title{
         text-align:right;
@@ -64,6 +64,7 @@
         width: 50%;
         padding: 10px;
       left:50%;  
+      color:white;
     }
       @media (max-width: 768px) {
         .row {
@@ -90,13 +91,16 @@
       margin:0;
     }
 
-        .about-img {
-      // text-align: center;
+        .about-img{
+      text-align: center;   margin-right: auto;
+      margin-left: auto;
+      width: 70%;
+      padding: 10px;
       // margin-right: auto;
      
       // padding: 10px;
-      width:200;
-      height:100;
+      width:300px;
+      height:400px;
           }
 
           .center {
@@ -108,16 +112,26 @@
             // text-align:right
           }
           .contactBtn{
-            margin: auto;
-            width: 35%;
-            padding: 0px;
-          left:70%; 
+            text-align: center;   
+            margin-right: auto;
+            margin-left: auto;
+            width: 70%;
+            padding: 10px;
+            padding-top:0;
                       // align-items:right; 
         }
         .titlemain{
           font-size:30px;
             font-weight:bold;
             text-align:center;
+
+        }
+        .title{
+          padding-top:0;
+        }
+        .description{
+          padding-top:0;
+          
         }
 
           

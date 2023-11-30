@@ -92,9 +92,9 @@ export default function AddTaskForm({
               className="client-box"
             >
               <Grid container alignItems="center" spacing={2}>
-                <CustomTextField name="clientName" label={t('clientName')} />
-                <CustomTextField name="clientEmail" label={t('clientEmail')} />
-                <CustomTextField name="clientPhone" label={t('clientPhone')} />
+                <CustomTextField name="clientName" label={t('clientName')} isrequired={true} type=""/>
+                <CustomTextField name="clientEmail" label={t('clientEmail')} isrequired={false} type=""/>
+                <CustomTextField name="clientPhone" label={t('clientPhone')} isrequired={true} type=""/>
                 {/* 
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={t('status')} />

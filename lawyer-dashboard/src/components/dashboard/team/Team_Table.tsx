@@ -111,6 +111,7 @@ export default function TeamTable({
               alignItems: "center",
             }}
           >
+    
             <Box
               sx={{
                 display: "flex",
@@ -124,6 +125,18 @@ export default function TeamTable({
                 width={40}
                 height={40}
                 className="borRadius100"
+              />
+                              <span
+                style={{
+                  // position: "fixed",
+                  // bottom: 0,
+                  // right: 0,
+                  width: "12px",
+                  height: "12px",
+                  borderRadius: "50%",
+                  border: "2px solid #fff",
+                  backgroundColor: user.isOnline ? "green" : "red",
+                }}
               />
               <Box>
                 <Typography

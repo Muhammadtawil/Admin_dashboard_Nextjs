@@ -59,16 +59,18 @@ export default function AddTeamForm({ onCreate }: { onCreate: any }) {
               className="dark-BG-101010"
             >
               <Grid container alignItems="center" spacing={2}>
-                <CustomTextField name="userName" label={t('userName')} />
-                <CustomTextField name="password" label={t('password')} />
+                <CustomTextField name="userName" label={t('userName')} isrequired={true} type=""/>
+                <CustomTextField name="password" label={t('password')} isrequired={true} type=""/>
 
-                <CustomTextField name="userPosition" label={t('position')}/>
+                <CustomTextField name="userPosition" label={t('position')} isrequired={true} type=""/>
                 <CustomTextField
                   name="userPhone"
                   label={t('phone')}
                   type="number"
+                  isrequired={true}
+            
                 />
-                <CustomTextField name="userEmail" label={t('email')} />
+                <CustomTextField name="userEmail" label={t('email')}isrequired={true} type="" />
    
           
                 <FormFooter

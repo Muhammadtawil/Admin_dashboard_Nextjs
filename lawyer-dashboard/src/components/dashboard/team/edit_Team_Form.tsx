@@ -73,7 +73,12 @@ export default function EditTeamForm({
 
     });
   }, [selectedUser]);
+  const isNewImageSelected = selectedImage !== undefined;
 
+  const imagePreviewSource = isNewImageSelected
+    ? URL.createObjectURL(selectedImage)
+    : formData.userImgUrl;
+  
   // Handle form input changes
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -315,7 +320,7 @@ export default function EditTeamForm({
   <div>
     <h3>{t('Preview')}:</h3>
     <Image
-      src={URL.createObjectURL(selectedImage)}
+      src={imagePreviewSource}
       alt="Selected"
       width="200"
       height={180}

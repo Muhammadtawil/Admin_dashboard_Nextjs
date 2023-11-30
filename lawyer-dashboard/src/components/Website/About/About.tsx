@@ -31,7 +31,7 @@ const path = usePathname();
                   width={400}
                   height={400}
                   alt="About Us"
-                  className="image-with-border about-img"
+                  className="about-img image-with-border"
                 />
               </div>
             </div>

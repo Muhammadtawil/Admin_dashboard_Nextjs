@@ -31,14 +31,14 @@ const CustomTypography = ({ text }: { text: any }) => {
 
 export default CustomTypography;
 
-export const CustomTextField = ({ name, label, type = "text" }: any) => (
+export const CustomTextField = ({ name, label, type = "text" ,isrequired}: {name:any,label:any,type:string,isrequired:boolean}) => (
   <Grid item xs={12} md={12} lg={6}>
     <CustomTypography text={label} />
 
     <TextField
       autoComplete={name}
       name={name}
-      required={true}
+      required={isrequired}
       fullWidth
       id={name}
       type={type}

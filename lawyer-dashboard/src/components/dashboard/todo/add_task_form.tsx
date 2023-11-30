@@ -77,7 +77,7 @@ export default function AddTaskForm({ onCreate }: any) {
               className="client-box"
             >
               <Grid container alignItems="center" spacing={2}>
-                <CustomTextField name="taskTitle" label={t('taskTitle')} />
+                <CustomTextField name="taskTitle" label={t('taskTitle')} isrequired={true} type=""/>
 
                 <Grid item xs={12} md={12} lg={6}>
                   <CustomTypography text={'label'} />

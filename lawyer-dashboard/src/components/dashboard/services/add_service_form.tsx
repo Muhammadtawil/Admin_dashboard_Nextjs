@@ -66,13 +66,15 @@ const t=useTranslations('servicesPage')
               className="client-box"
             >
               <Grid container alignItems="center" spacing={2}>
-                <CustomTextField name="serviceName" label={t('serviceTitle')} />
+                <CustomTextField name="serviceName" label={t('serviceTitle')} isrequired={true} type=""/>
                 
                 <CustomTextField
                   name="serviceDescription"
                   label={t('serviceDescription')}
-                  multiline={true}
-                  minRows={6}
+                  // multiline={true}
+                  // minRows={6}
+                  isrequired={true}
+                  type=""
                 />
 
                 <Grid item xs={12} md={12} lg={6}>

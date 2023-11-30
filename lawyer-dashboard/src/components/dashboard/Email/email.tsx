@@ -3,6 +3,7 @@
 import SendEmail from "@/server/email/email";
 import { revalidatePath } from "next/cache";
 import EmailLists from "./EmailLists";
+import { GetSubscribers } from "@/server/subscribers/subscribers";
 
 
 
@@ -17,12 +18,12 @@ async function OnSendEmail(formData: FormData,content:any) {
 
 
 
-export default  function EmailComponent() {
-
+export default  async function EmailComponent() {
+const subscribersEmails=await GetSubscribers()
  
   return (
     <>
-          <EmailLists sendEmail={OnSendEmail } />
+          <EmailLists sendEmail={OnSendEmail } subscribersEmail={subscribersEmails} />
     </> 
   );
 }

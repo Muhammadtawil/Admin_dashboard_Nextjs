@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { Box, Button, Grid, IconButton, TextField, Typography } from "@mui/material";
 import {useState } from "react";
 import RichTextEditor from "@mantine/rte";
 import SendIcon from '@mui/icons-material/Send';
@@ -9,9 +9,14 @@ import { successAlert } from "../alerts/alerts";
 import {convert} from "html-to-text";
 import PageTitle from "../shared/PageTitle/pageTitle";
 import { useTranslations } from "next-intl";
-export default function EmailLists({ sendEmail }: any) {
+import { IoPersonAddSharp } from "react-icons/io5";
+import StyledDialogTitle from "../shared/StyledDialogTitle";
+import EmailSelect from "./emails_select";
+
+export default function EmailLists({ sendEmail ,subscribersEmail}: {sendEmail:any,subscribersEmail:any}) {
 const t=useTranslations('emailPage')
   const [content, setContent] = useState(""); // Step 1: Create state for content
+  const [openMember, setOpenMember] = useState(false);
 
   const handleContentChange = (newContent: any) => {
     // Step 2: Update the content state when it changes
@@ -20,15 +25,20 @@ const t=useTranslations('emailPage')
   const clearContent = () => {
     setContent("");
   };
-  // const handleSubmit = async (event: any) => {
-  //   event.preventDefault();
+  const handleCloseMember = () => {
+    setOpenMember(false);
+  };
 
-  //   const formData = new FormData(event.target);
-  //   formData.append("content", content); // Step 3: Include content in formData
+  const handleClickOpenMember = () => {
+    setOpenMember(true);
+  };
 
-  //   await sendEmail(formData);
-  //   updateTaskAlert();
-  // };
+  const handleSelectClick = () => {
+    handleClickOpenMember();
+  };
+  const subscribersEmailsList = subscribersEmail.map((subscriber:any) => subscriber.subscriberEmail)
+  const [toEmails, setToEmails] = useState([]);
+
 
   return (
     <>
@@ -85,12 +95,19 @@ const plainTextContent = convert(content, {
                   fullWidth
                   id="to"
                   label={t('to')}
+                  value={toEmails.length>0?toEmails:null}
                   autoFocus
                   InputProps={{
                     style: { borderRadius: 8 },
                     className:"client-input"
                   }}
                 />
+                           <IconButton
+                aria-label="User Icon"
+                onClick={() => handleSelectClick()}
+              >
+              <IoPersonAddSharp/>
+              </IconButton>
               </Grid>
 
               <Grid item xs={12}>
@@ -153,6 +170,20 @@ translate="yes"
             </Grid>
           </Box>
         </Box>
+        <StyledDialogTitle
+        onClose={handleCloseMember}
+        aria-labelledby="customized-dialog-title"
+        open={openMember}
+      >
+        <EmailSelect
+          usersName={subscribersEmail}
+          handleClose={handleCloseMember}
+      
+           
+            toEmails={toEmails}
+            setToEmails={setToEmails}
+        />
+      </StyledDialogTitle>
       </Box>
 
     </>
