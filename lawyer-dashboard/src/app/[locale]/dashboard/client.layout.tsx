@@ -13,7 +13,7 @@ import TopNavBarMain from "@/components/dashboard/TopNavbar/notification/topNavB
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function ClientLayout({ children,topBarChildren }: { children: React.ReactNode ,topBarChildren:any}) {
+export default function ClientLayout({ children,topBarChildren , onSignOut}: { children: React.ReactNode ,topBarChildren:any, onSignOut: any}) {
 
   
   const [active, setActive] = useState(false);
@@ -39,8 +39,8 @@ export default function ClientLayout({ children,topBarChildren }: { children: Re
       
             
         <div className={`main-wrapper-content ${active && "active"}`}>
-          <TopNavBarMain toogleActive={toggleActive} children={topBarChildren} />
-          <Sidebar toogleActive={toggleActive} closeSidebar={closeSidebar} />
+          <TopNavBarMain toogleActive={toggleActive} children={topBarChildren} onSignOut={onSignOut} />
+          <Sidebar toogleActive={toggleActive} closeSidebar={closeSidebar} onSignOut={onSignOut} />
           {children}
           <ScrollToTop />
             </div>

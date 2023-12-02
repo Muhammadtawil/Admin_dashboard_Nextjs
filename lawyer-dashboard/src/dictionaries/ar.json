@@ -66,7 +66,7 @@
     "about": "معلومات المكتب",
     "testimonials": "الشهادات",
     "subscribers": "المشتركون",
-    "calendar": "الرزنامة",
+    "calendar": "اﻷجندة",
     "files": "الملفات",
     "references":"المراجع",
     "signOut": "الخروج"
@@ -281,7 +281,27 @@
 "Yes":"نعم",
 "No":"كلا"
 },
+"agendaPage":{
+  "title":"الأجندة",
+  "add":"إضافة موعد",
+  "edit":"حفظ التغيرات",
+  "save":"حفظ",
+  "private":"خاص",
+  "Public":"عام",
+  "delete":"مسح",
+  "type":"النوع",
+  "eventName":"العنوان",
+  "success":"تم إضافة الموعد بنجاح",
+"editSucess":"تم تعديل الموعد بنجاح",
+"deleteTitle":"هل أنت متأكد من حذف الموعد؟",
+"deleteTitle2":"لا يمكنك إسترجاع الموعد",
+"deleteSuccess":"تم المسح الموعد بنجاح",
+"date":"التاريخ و الوقت",
+"editTitle":"تعديل الموعد",
+"yes":"نعم",
+"cancel":"إلغاء"
 
+},
 "webMainPage":{
   "home":"الرئيسية",
   "about":"من نحن",

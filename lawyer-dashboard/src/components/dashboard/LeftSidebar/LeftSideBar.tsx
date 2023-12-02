@@ -6,7 +6,7 @@ import SubMenu from "./SubMenu";
 import Link from "next/link";
 import ClearIcon from "@mui/icons-material/Clear";
 import IconButton from "@mui/material/IconButton";
-import { signOut } from "next-auth/react";
+import { signOut,useSession } from "next-auth/react";
 import Logout from "@mui/icons-material/Logout";
 import DashboardLogo from '../../../../public/dashboardLogo.png'
 import Image from 'next/image'
@@ -35,7 +35,7 @@ const SidebarWrap = styled("div")(({ theme }) => ({
   width: "100%",
 }));
 
-const Sidebar = ({ toogleActive, closeSidebar }: any) => {
+const Sidebar = ({ toogleActive, closeSidebar,onSignOut }: any) => {
    // Use state to dynamically change the logo source
 
 const sidebarData = getSidebarData(); 
@@ -43,7 +43,7 @@ const t = useTranslations('SideBar');
   const handleSidebarClose = () => {
     closeSidebar();
   };
-
+  const { data: session } = useSession();
   return (
     <>
       <div className="leftSidebarDark">
@@ -90,7 +90,10 @@ const t = useTranslations('SideBar');
             })}
 
             <div ></div>
-            <MenuItem  onClick={() => signOut({ redirect: true, callbackUrl: "/en/dashboard/login" })}>
+            <MenuItem onClick={() => {
+              signOut({ redirect: true, callbackUrl: "/en/dashboard/login" })
+              onSignOut(session?.userId)
+            }}>
               <ListItemIcon
                 sx={{ mr: "-8px", mt: "-3px" }}
              

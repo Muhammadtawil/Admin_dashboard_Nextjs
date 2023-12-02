@@ -8,6 +8,8 @@ import { NextIntlClientProvider } from 'next-intl'
 import dynamic from "next/dynamic";
 import LoadingSpinner from "@/components/dashboard/loading spinner/loadinSpinner";
 import { GetNotifications } from "@/server/notifications/notifications";
+import NotificationsComponent from "@/components/dashboard/TopNavbar/notification/notificationsMain";
+import { UserSignOut } from "@/server/users/users";
 
 
 type Props = {
@@ -32,11 +34,13 @@ console.log(error)
 export async function generateStaticParams() {
   return ['en', 'ar'].map((locale) => ({ locale }))
 }
-
-const NotificationsComponent = dynamic(() => import("../../../components/dashboard/TopNavbar/notification/notificationsMain"), {
-  loading: () => <LoadingSpinner />, 
-  ssr: false, // Disable server-side rendering for this component
-});
+async function SignOutUser(userId: string) {
+  "use server";
+  try {
+    await UserSignOut(userId);
+ 
+  } catch (error) {}
+}
 
 export default async function RootLayout({
   children,
@@ -60,7 +64,7 @@ export default async function RootLayout({
       <NextIntlClientProvider locale={locale?locale:"en"} messages={messages}>
         
       <body >
-          <ClientLayout children={children} topBarChildren={<NotificationsComponent notificationData={notifications}/>}/>
+            <ClientLayout children={children} topBarChildren={<NotificationsComponent notificationData={notifications} />} onSignOut={SignOutUser} />
           </body>
 
           </NextIntlClientProvider>

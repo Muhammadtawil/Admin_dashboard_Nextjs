@@ -1,4 +1,5 @@
 import LoadingSpinner from '@/components/dashboard/loading spinner/loadinSpinner';
+import CalendarMain from '@/components/dashboard/todo/Calendar/calendar_main';
 
 import dynamic from 'next/dynamic';
 
@@ -11,6 +12,6 @@ const CalendarComponent = dynamic(() => import("../../../../components/dashboard
 
 export default function CaledarPage() {
   return (
-   <CalendarComponent/>
+   <CalendarMain/>
   )
 }

@@ -1,5 +1,6 @@
 // localeConfig.js
 
+import { lb } from 'date-fns/locale';
 import ar from 'date-fns/locale/ar';
 import en from 'date-fns/locale/en-US';
 

@@ -25,8 +25,8 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: 'Ghazal LawFirm',
-  description: 'Ghazal LawFirm',
+  title: 'Ghazal LawFirm مكتب الغزال للمحاماة',
+  description: 'Ghazal LawFirm مكتب الغزال للمحاماة',
 };
 
 async function getMessages(locale: string) {

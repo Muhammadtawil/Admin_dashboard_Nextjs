@@ -13,9 +13,8 @@ import {
 import Logout from "@mui/icons-material/Logout";
 import React from "react";
 import { signOut, useSession } from "next-auth/react";
-import Link from "next/link";
-import { redirect } from "next/dist/server/api-utils";
-const Profile = () => {
+
+const Profile = ({onSignOut}:{onSignOut:any}) => {
   const { data: session } = useSession();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -105,7 +104,10 @@ const Profile = () => {
 
           <Divider />
 
-          <MenuItem   onClick={() => signOut({ redirect: true, callbackUrl: "/en/dashboard/login" })}>
+          <MenuItem onClick={() => {
+            signOut({ redirect: true, callbackUrl: "/en/dashboard/login" })
+            onSignOut(session.userId)
+          }}>
             <ListItemIcon
               sx={{ mr: "-8px", mt: "-3px" }}
             

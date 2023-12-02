@@ -16,6 +16,7 @@ import { useTranslations } from 'next-intl';
 import AttachFileOutlinedIcon from '@mui/icons-material/AttachFileOutlined';
 import ClassOutlinedIcon from '@mui/icons-material/ClassOutlined';
 import EditCalendarOutlinedIcon from '@mui/icons-material/EditCalendarOutlined';
+
 function getSidebarData() {
   const t = useTranslations('SideBar');
 

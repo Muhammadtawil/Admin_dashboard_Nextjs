@@ -4,15 +4,17 @@ import CurrentDate from "./Date/CurrentDate";
 import Profile from "./Profile/Profile";
 import DarkAndLightMode from "../ControlPanelModal/DarkAndLightMode";
 import LocaleSwitcher from "../locale/LocaleSwitcher";
-import NotificationsComponent from "./notification/notificationsMain";
+
 
 
 const TopNavbar = ({
   toogleActive,
- children,
+  children,
+ onSignOut,
 }: {
   toogleActive: any;
     children: any;
+    onSignOut: any;
   }) => {
   
   
@@ -56,7 +58,7 @@ const TopNavbar = ({
               {children}
 
               {/* Profile */}
-              <Profile
+              <Profile onSignOut={onSignOut}
               
   
               />

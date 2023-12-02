@@ -1,9 +1,11 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import styles from "@/styles/PageTitle.module.css";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+// import interactionPlugin from "@fullcalendar/interaction";
+
 import Card from "@mui/material/Card";
 import { Box, Typography } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
@@ -15,14 +17,21 @@ import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import AddIcon from "@mui/icons-material/Add";
 import ClearIcon from "@mui/icons-material/Clear";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import Stack from "@mui/material/Stack";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-import events from "./Events";
-import CustomTypography from "../../shared/formsComponents";
-
+import CustomTypography, { ValuesSelect } from "../../shared/formsComponents";
+import interactionPlugin from '@fullcalendar/interaction';
+import { arLocale, enLocale } from '../../../../../localeConfig';
+import { useLocale,useTranslations } from "next-intl";
+import timeGridPlugin from '@fullcalendar/timegrid'
+import { successAlert } from "../../alerts/alerts";
+import { useSession } from "next-auth/react";
+// import 'dayjs/locale/ar-lb';
+import Swal from "sweetalert2";
+import { RiNurseFill } from "react-icons/ri";
 
 // Add event modal style
 const style = {
@@ -37,38 +46,66 @@ const style = {
   borderRadius: "8px",
 };
 
-const Calendar = () => {
+const CalendarComponent = ({onCreate,events,onUpdate,onDelete,onUpdatePublic, onDeletePublic}:{events:any,onCreate:any,onUpdate:any,onDelete:any,onUpdatePublic:any, onDeletePublic:any}) => {
   // Add event modal
-  const [open, setOpen] = React.useState(false);
+  const t=useTranslations('agendaPage')
+  const [open, setOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<any>(null);
+  const [isEditing, setIsEditing] = useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+  const handleClose = () => {
+    setOpen(false);
+    setIsEditing(false);
+    setSelectedEvent(null);
   };
 
+  const { data: session } = useSession();
+  const statusValues = ["Public", "private"];
+const locale=useLocale()
+ // Set the locale to Arabic (Lebanon) here
+// dayjs.locale('ar-lb');
+
   // Date & Time ickers
-  const [value, setValue] = React.useState(dayjs("2023-01-01T21:11:54"));
+  const [value, setValue] = useState(
+    isEditing && selectedEvent.start ? dayjs(selectedEvent.start) : dayjs()
+  );
 
   const handleChange = (newValue: any) => {
     setValue(newValue);
   };
 
+  
+  const handleEventClick = (info: any) => {
+
+
+
+
+    if (info.event.groupId  === 'Public' && session?.UserRole === 'USER') {
+      // If it's a public event and the user role is USER, prevent editing
+
+      return null;
+    } else {
+      setSelectedEvent(info.event);
+
+
+      setIsEditing(true);
+      handleOpen();
+
+    }
+  };
+
+
+
   return (
     <>
       {/* Page title */}
       <div className={styles.pageTitle}>
-        <h1>Calendar</h1>
+        <h1>{t('title')}</h1>
         <ul>
           <li>
             <Link href="/">Dashboard</Link>
           </li>
-          <li>Calendar</li>
+          <li>{t('title')}</li>
         </ul>
       </div>
 
@@ -98,11 +135,15 @@ const Calendar = () => {
               fontWeight: 500,
             }}
           >
-            Calendar
+      {/* {t('title')} */}
           </Typography>
 
           <Button
             onClick={handleOpen}
+            // onClick={() => {
+            //   console.log(events)
+            // }}
+
             variant="contained"
             sx={{
               textTransform: "capitalize",
@@ -111,22 +152,51 @@ const Calendar = () => {
               fontSize: "13px",
               padding: "12px 20px",
               color: "#fff !important",
+              backgroundColor:"#6154f2"
             }}
           >
             <AddIcon
               sx={{ position: "relative", top: "-1px" }}
               className="mr-5px"
             />{" "}
-            Add Event
+  {t('add')}
           </Button>
         </Box>
 
-        <FullCalendar
-          //   defaultView="dayGridMonth"
-          plugins={[dayGridPlugin]}
+        {/* <FullCalendar
+          initialView="dayGridDay"
+          plugins={[dayGridPlugin, interactionPlugin]}
           events={events}
-          displayEventEnd={true}
+          displayEventEnd={false}
           eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
+          selectable={true}
+          locales={[arLocale, enLocale]}
+          locale={locale == 'ar' ? 'ar' : 'en'}
+          editable={true}
+         
+        /> */}
+              <FullCalendar
+          initialView="dayGridMonth"
+          plugins={[ dayGridPlugin, timeGridPlugin, interactionPlugin ]}
+          events={events}
+          displayEventEnd={false}
+          // eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
+          eventColor="#6154f2"
+          selectable={true}
+          locales={[arLocale, enLocale]}
+          locale={locale == 'ar' ? 'ar-LB' : 'en'}
+        
+          editable={true}
+          headerToolbar={{
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+          }}
+          // eventBackgroundColor={events.eventStatus=='public'?"green":"red" }
+          eventClick={handleEventClick}
+    //  eventBorderColor="green"
+          // eventRender={handleEventRender} 
+          // handleCustomRendering={handleEventRender}
         />
       </Card>
 
@@ -164,7 +234,7 @@ const Calendar = () => {
                   fontSize: "18px",
                 }}
               >
-                Add New Event
+                 {isEditing ? t('editTitle'): t('add')}
               </Typography>
 
               <IconButton
@@ -177,53 +247,146 @@ const Calendar = () => {
               </IconButton>
             </Box>
 
-            <Box component="form" noValidate onSubmit={handleSubmit}>
+            <Box
+              className="client-box"
+              component="form"
+              noValidate={false}
+              
+              action={(formData) => {
+      {isEditing && selectedEvent.start ?  formData.append('eventDate', selectedEvent.start?selectedEvent.start : ''):  formData.append('eventDate', value ? value.format() : '')}
+
+                // formData.append('eventDate', value ? value.format() : '');
+    
+                if (isEditing) {
+        
+
+                  if (selectedEvent.groupId === 'Public') {
+                    onUpdatePublic(formData, selectedEvent.id).then(() => {
+                      handleClose();
+                      successAlert(t('editSucess'));
+                    });
+                  } else {
+          
+
+                    onUpdate(formData, selectedEvent.id).then(() => {
+                      handleClose();
+                      successAlert(t('editSucess'));
+      
+      
+                    });           
+}
+          
+             
+                } else {
+              onCreate(formData).then(() => {
+                handleClose();
+                successAlert(t('success'));
+
+
+              });   
+                }
+       
+            }}>
               <Box
                 sx={{
                   background: "#fff",
                   padding: "20px 20px",
                   borderRadius: "8px",
                 }}
-                className="dark-BG-101010"
+                className="client-box"
               >
                 <Grid container alignItems="center" spacing={2}>
-                  <Grid item xs={12} md={12} lg={12}>
-                    <CustomTypography text={"Event Name"} />
+                <Grid item xs={12} md={12} lg={12}>
+  <CustomTypography text={t('eventName')}/>
 
                     <TextField
-                      autoComplete="event-name"
-                      name="eventName"
-                      fullWidth
-                      id="eventName"
-                      label="Event Name"
-                      autoFocus
-                      InputProps={{
-                        style: { borderRadius: 8 },
-                      }}
-                    />
-                  </Grid>
+   className="client-box"
+    autoComplete="event-name"
+    name="eventName"
+    fullWidth
+    id="eventName"
+    label={t('eventName')}
+    required
+    autoFocus
+    InputProps={{
+      style: { borderRadius: 8 },
+      className:"client-input"
+    }}
+    defaultValue={isEditing && selectedEvent.title ? selectedEvent.title : ''}
+  />
+</Grid>
+                  {session?.UserRole=="ADMIN"?<Grid item xs={12} md={12} lg={12}>
+                  <CustomTypography text={t('type')} />
+                  <ValuesSelect name={"eventStatus"} values={statusValues} isrequired={true} dicName="agendaPage" optionValue={isEditing?selectedEvent.groupId:statusValues}/>
+                </Grid>:null}
+<Grid item xs={12} md={12} lg={12}>
+  <CustomTypography text={t('date')} />
 
-                  <Grid item xs={12} md={12} lg={12}>
-                    <CustomTypography text={"Date & Time"} />
-
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <Stack className="date-time-picker">
-                        <DateTimePicker
-                          value={value}
+  <LocalizationProvider dateAdapter={AdapterDayjs} >
+    <Stack className="date-time-picker">
+      <DateTimePicker
+        value={isEditing && selectedEvent.start ? dayjs(selectedEvent.start) : value}
                           onChange={handleChange}
-                          //   renderInput={(params: any) => (
-                          //     <TextField {...params} />
-                          //   )}
-                        />
-                      </Stack>
-                    </LocalizationProvider>
-                  </Grid>
+                          className="client-input client-box"
+                  
+                          
+      />
+    </Stack>
+  </LocalizationProvider>
+</Grid>
 
                   <Grid item xs={12} textAlign="end">
                     <Button
                       type="submit"
                       variant="contained"
                       sx={{
+                        mt: 1,
+                        textTransform: "capitalize",
+                        borderRadius: "8px",
+                        fontWeight: "500",
+                        fontSize: "13px",
+                        padding: "12px 20px",
+                        color: "#fff !important",
+                        backgroundColor:'#6154f2'
+                      }}
+                    >
+                      <AddIcon
+                        sx={{
+                          position: "relative",
+                          top: "-2px",
+                        }}
+                        className="mr-5px"
+                      />
+                     {isEditing ? t('edit') : t('save')}
+                    </Button>
+                    {isEditing?         <Button
+                      onClick={async () => {
+                        handleClose();
+
+                          await Swal.fire({
+                            title: t('deleteTitle'),
+                            text: t('deleteTitle2'),
+                            icon: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: "#3085d6",
+                            cancelButtonColor: "#d33",
+                            confirmButtonText: t('yes'),
+                            focusConfirm: true,
+                            allowEscapeKey: true,
+                            cancelButtonText:t('cancel')
+                            
+                          }).then((result) => {
+                            if (result.isConfirmed && result.value === true) {
+                              console.log(result)
+                        {selectedEvent.groupId==='Public'?onDeletePublic(selectedEvent.id): onDelete(selectedEvent.id);}
+                              Swal.fire(t('deleteSuccess'));
+                            }
+                          });
+                        }}
+                      variant="contained"
+                      sx={{
+                        backgroundColor: 'red',
+                        paddingLeft:'15px',
                         mt: 1,
                         textTransform: "capitalize",
                         borderRadius: "8px",
@@ -239,9 +402,9 @@ const Calendar = () => {
                           top: "-2px",
                         }}
                         className="mr-5px"
-                      />{" "}
-                      Save
-                    </Button>
+                      />
+                  {t('delete')}
+                    </Button>:null}
                   </Grid>
                 </Grid>
               </Box>
@@ -253,4 +416,4 @@ const Calendar = () => {
   );
 };
 
-export default Calendar;
+export default CalendarComponent;

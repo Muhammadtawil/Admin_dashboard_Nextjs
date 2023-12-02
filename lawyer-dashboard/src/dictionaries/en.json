@@ -69,7 +69,7 @@
     "about": "About",
     "testimonials": "Testimonials",
     "subscribers": "Subscribers",
-    "calendar": "Calendar",
+    "calendar": "Agenda",
     "files": "Files",
     "references":"References",
     "signOut": "logout"
@@ -278,7 +278,26 @@
       "yes":"Yes",
 "no":"No"
       },
-
+"agendaPage":{
+"title":"Agenda",
+"add":"Add Event",
+"edit":"Save Changes",
+"save":"Save",
+"private":"Private",
+"Public":"Public",
+"delete":"Delete",
+"type":"Type",
+"eventName":"Title",
+"success":"Event Added Successfully",
+"editSucess":"Event Edited Successfully",
+"deleteTitle":"Are you sure to delete the Event",
+"deleteTitle2":"You won't be able to revert this!",
+"deleteSuccess":"Deleted!, Your Event has been deleted., success",
+"date":"Date and Time",
+"editTitle":"Edit Event",
+"yes":"Yes",
+"cancel":"Cancel"
+},
       "webMainPage":{
         "home":"Home",
         "about":"About",

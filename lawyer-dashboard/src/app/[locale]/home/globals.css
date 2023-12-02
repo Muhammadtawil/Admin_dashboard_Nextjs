@@ -133,6 +133,7 @@ a {
   border: 5px solid transparent;
   border-image: linear-gradient(45deg, #eb7494, #ae77b2, #97b5da, #0099ca) 1;
   border-image-slice: 1;
+  padding-bottom:10px;
 }
 @keyframes slideIn {
   from {

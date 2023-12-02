@@ -413,3 +413,44 @@ export async function UpdatePassword(password: string, code: any){
     console.error("Error update updating user password:", error);
   }
 }
+
+
+export async function UserSignOut(userId:string) {
+    // const userEmail = data.get("userEmail");
+  
+    const userData = {
+      userId: userId,
+    };
+  
+    const jsonData = JSON.stringify(userData);
+  
+    // Define the URL for adding a client (replace with the correct endpoint)
+  
+    const requestOptions = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: jsonData,
+    };
+  
+    try {
+      const response = await fetch(`${user_url}/signOut`, requestOptions);
+  
+      if (!response.ok) {
+        throw new Error("Request failed with status: " + response.status);
+      }
+  
+      const responseData = await response.json();
+  
+    
+  
+        if (response.status == 201 || response.status == 200) {
+          console.log("user signedOut Successfully:", responseData);
+  
+        }
+      
+    } catch (error) {
+      console.error("Error signing out:", error);
+    }
+}
