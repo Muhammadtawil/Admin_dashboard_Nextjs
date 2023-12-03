@@ -44,12 +44,12 @@ export default function ServiceClientChart({ servicesData }: { servicesData: any
         padding: '10px',
       },
       [`.${axisClasses.tickLabel}`]: {
-        fill: '#6154f2',
+        fill: '#040831',
         fontsize: '30px',
       },
       [`.${axisClasses.tickLabel} ${axisClasses.label}`]: {
         color: 'white', // Set the color for Y-axis label here
-        fill: '#6154f2',
+        fill: '#040831',
       },
     },
   };
@@ -81,7 +81,7 @@ export default function ServiceClientChart({ servicesData }: { servicesData: any
             dataKey: 'clientsCount',
             label: t('clinetsNumber'),
             valueFormatter: (value) => `${value}`,
-            color: '#6154f2',
+            color: '#040831',
          
           },
         ]}

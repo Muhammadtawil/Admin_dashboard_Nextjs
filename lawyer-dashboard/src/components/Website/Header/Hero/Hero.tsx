@@ -34,7 +34,7 @@ const Hero = () => {
 
 
 
-
+{/* 
         <Col md={6} lg={4} className="d-flex align-items-center offset-lg-3">
           <Image
             src="/contact2.png"
@@ -43,7 +43,7 @@ const Hero = () => {
             alt="About Us"
             className="image-with-border"
           />
-        </Col>
+        </Col> */}
 
 
 

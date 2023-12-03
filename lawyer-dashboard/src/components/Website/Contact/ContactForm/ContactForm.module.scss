@@ -1,5 +1,5 @@
 .contactFormSection :global {
-  // background-color: lighten($color: #6154f2, $amount: 34);
+  // background-color: lighten($color: #040831, $amount: 34);
   overflow: hidden;
   .arabic-list{
     // display: flex;
@@ -46,14 +46,14 @@
         padding: 10px 8px;
         font-size: 1rem;
         color: lighten($color: #000000, $amount: 35);
-        background-color: lighten($color: #6154f2, $amount: 31);
+        background-color: lighten($color: #040831, $amount: 31);
         letter-spacing: 0.3px;
         border-radius: 5px;
         margin-bottom: 1.5rem;
-        border: 2px solid lighten($color: #6154f2, $amount: 31);
+        border: 2px solid lighten($color: #040831, $amount: 31);
         outline: none;
         &:focus {
-          border: 2px solid #6154f2;
+          border: 2px solid #040831;
         }
       }
       .inputErrorStyle {
@@ -71,7 +71,7 @@
     .submitBtn {
       padding: 0.8rem 1.8rem;
       color: white;
-      background: #6154f2;
+      background: #040831;
       border: 0;
       border-radius: 5px;
       letter-spacing: 0.3px;
@@ -127,7 +127,7 @@
         transition: all 0.2s;
         &:hover {
           transition: all 0.2s;
-          background: #6154f2;
+          background: #040831;
         }
       }
       .inputErrorStyle {
@@ -188,7 +188,7 @@
             background: white;
             transition: all 0.2s;
             a {
-              color: #6154f2 !important;
+              color: #040831 !important;
             }
           }
           a {

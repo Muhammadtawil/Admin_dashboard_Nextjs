@@ -2,12 +2,17 @@
 import { BsLinkedin, BsDribbble, BsFacebook, BsInstagram } from "react-icons/bs";
 import { RiMailFill, RiMapPinUserFill, RiPhoneFill } from "react-icons/ri";
 import Logo from "../../../../public/Mainlogo.png";
+import ArMainLogo from "../../../../public/logonew.png";
+import MianLogEn from '../../../../public/logoEn.png'
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 const createFooterData = () => {
-  const t=useTranslations('webFooter')
+  const t = useTranslations('webFooter')
+  const path = usePathname();
+  const en=path.includes('/en')
   return {
-    logo: Logo,
+    logo: en?MianLogEn: ArMainLogo,
     formTitle: "Join a Newsletter",
     copyRightMsg: t('copyRightMsg'),
     serivecs: {

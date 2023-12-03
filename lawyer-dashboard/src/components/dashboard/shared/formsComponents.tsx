@@ -122,7 +122,7 @@ export const FormHead = ({
           fontSize: "13px",
           padding: "12px 20px 10px 10px",
           color: "#fff !important",
-          background: "#6154f2",
+          background: "#040831",
         }}
       >
         <AddIcon
@@ -182,7 +182,7 @@ export const FormFooter = ({
           fontSize: "13px",
           padding: "12px 20px",
           color: "#fff !important",
-          background: "#6154f2",
+          background: "#040831",
 
         }}
       >

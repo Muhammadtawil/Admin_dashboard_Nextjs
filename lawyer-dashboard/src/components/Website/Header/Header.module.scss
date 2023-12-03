@@ -1,7 +1,33 @@
 .headerStyle :global {
-  background-image: url("/images/Hero/HeroBG.svg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
   overflow: hidden;
+  height: 1000px;
+  // transition: background-image 0.1s linear; /* Adjust the duration and easing as needed */
+}
+
+.headerStyle {
+  background-image: url("/bg-7.jpg");
+  animation: carouselAnimation 30s infinite;
+}
+
+@keyframes carouselAnimation {
+  0%, 49.999%, 100% {
+    background-image: url("/bg-8.jpg");
+  }
+
+  50%, 99.999% {
+    background-image: url("/bg-9.jpg");
+  }
+
+}
+
+
+
+@media screen and (max-width: 955px) {
+
+  .headerStyle {
+   height:100%;
+  }
 }

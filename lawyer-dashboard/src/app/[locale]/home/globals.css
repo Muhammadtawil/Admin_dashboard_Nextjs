@@ -32,7 +32,7 @@ a {
   width: 100%;
   top: 0;
   padding: 0.8rem 0 !important;
-  background: #6154f2eb;
+  background: #040831eb;
   z-index: 30;
   animation-name: topToShow;
   animation-duration: 0.7s;
@@ -280,7 +280,7 @@ a {
   width: 100%;
   top: 0;
   padding: 0.8rem 0 !important;
-  background: #6154f2eb;
+  background: #040831eb;
   z-index: 30;
   animation-name: topToShow;
   animation-duration: 0.7s;
@@ -312,7 +312,7 @@ a {
   position: relative;
   cursor: pointer;
   overflow: hidden;
-  background-color: #6154f2;
+  background-color: #040831;
   display: inline-block;
 }
 

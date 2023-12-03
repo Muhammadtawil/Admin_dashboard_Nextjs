@@ -1,5 +1,5 @@
 .footerStyle :global {
-  background-color: #6154F2;
+  background-color: #040831;
   position: relative;
   overflow: hidden;
   color: white;
@@ -55,7 +55,7 @@
       transition: all 0.2s;
       &:hover {
         transition: all 0.2s;
-        background: #6154f2;
+        background: #040831;
       }
     }
     .inputErrorStyle {
@@ -115,7 +115,7 @@
           background: white;
           transition: all 0.2s;
           a {
-            color: #6154f2 !important;
+            color: #040831 !important;
           }
         }
         a {

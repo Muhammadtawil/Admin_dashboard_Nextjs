@@ -1,5 +1,6 @@
 import { usePathname } from "next/navigation";
-import MainLogo from "../../../../../public/Mainlogo.png";
+import MainLogo from "../../../../../public/logonew.png";
+import EnMianLog from '../../../../../public/logoEn.png'
 import { useTranslations } from "next-intl";
 
 const NavbarData = () => {
@@ -8,7 +9,7 @@ const NavbarData = () => {
   const en=path.includes('/en')
 
   return {
-    logo: MainLogo,
+    logo:en?EnMianLog : MainLogo,
     menus: [
       {
         name: t('home'),

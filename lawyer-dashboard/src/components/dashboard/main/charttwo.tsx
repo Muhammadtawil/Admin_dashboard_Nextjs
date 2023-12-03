@@ -39,11 +39,11 @@ export default function MonthlyClientChart({ clientData }: { clientData: any[] }
       },
       [`.${axisClasses.tickLabel} ${axisClasses.label}`]: {
         color: 'white', // Set the color for Y-axis label here
-        fill: '#6154f2',
+        fill: '#040831',
       },
       [`.${axisClasses.bottom} ${axisClasses.label}`]: {
         color: 'white', // Set the color for Y-axis label here
-        fill: '#6154f2',
+        fill: '#040831',
       },
     },
   };
@@ -92,7 +92,7 @@ export default function MonthlyClientChart({ clientData }: { clientData: any[] }
     <BarChart
       dataset={dataset}
       yAxis={[{ scaleType: 'band', dataKey: 'month' }]}
-      series={[{ dataKey: 'count', label: t('clientsPerMonth'), valueFormatter ,color: '#6154f2',}]}
+      series={[{ dataKey: 'count', label: t('clientsPerMonth'), valueFormatter ,color: '#040831',}]}
       layout="horizontal"
       {...chartSetting}
       

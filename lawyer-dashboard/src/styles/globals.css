@@ -1,10 +1,10 @@
 :root {
   --bodyFontFamily: "Roboto", sans-serif !important;
-  --bodyTextColor: #6154f2;
-  --primaryColor: #6154f2;
+  --bodyTextColor: #040831;
+  --primaryColor: #040831;
   --secondaryColor: #818093;
   --successColor: #00B69B;
-  --infoColor: #6154f2;
+  --infoColor: #040831;
   --warningColor: #FFBC2B;
   --dangerColor: #EE368C;
   --darkColor: #260944;
@@ -209,8 +209,8 @@ img {
 
 .ml-5px {
   margin-left: 5px !important;
-  color:#6154f2;
-  background-color:#6154f2;
+  color:#040831;
+  background-color:#040831;
 
 }
 

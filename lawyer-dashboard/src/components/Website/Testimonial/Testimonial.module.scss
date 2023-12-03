@@ -1,6 +1,6 @@
 .testimonialStyle :global {
   overflow: hidden;
-  // background-color: lighten($color: #6154f2, $amount: 34);
+  // background-color: lighten($color: #040831, $amount: 34);
   // Slide style
   .blogTitle{
     padding-bottom:10px;
@@ -85,7 +85,7 @@
 
   // Active slide style
   .activeStyle {
-    background-color: #6154f2 !important;
+    background-color: #040831 !important;
     opacity: 1;
     transition: all 0.2s;
     p,

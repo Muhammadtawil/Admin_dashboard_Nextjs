@@ -6,17 +6,18 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import footerData from "./footerData";
+
 import style from "./Footer.module.scss";
 import { successAlert } from "@/components/dashboard/alerts/alerts";
 import { useTranslations } from "next-intl";
+import createFooterData from "../../Footer/footerData";
 
 const SubscribeSide = ({Subscribe}:{Subscribe:any}) => {
 
 const t=useTranslations('webSubscriber')
   // Sweetalert package configure in react
   const MySwal = withReactContent(Swal);
-
+const footerData=createFooterData()
   // react hook form
   const {
     register,

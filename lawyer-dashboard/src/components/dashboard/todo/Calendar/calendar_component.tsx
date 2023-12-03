@@ -152,7 +152,7 @@ const locale=useLocale()
               fontSize: "13px",
               padding: "12px 20px",
               color: "#fff !important",
-              backgroundColor:"#6154f2"
+              backgroundColor:"#040831"
             }}
           >
             <AddIcon
@@ -181,7 +181,7 @@ const locale=useLocale()
           events={events}
           displayEventEnd={false}
           // eventColor={"#" + Math.floor(Math.random() * 16777215).toString(16)}
-          eventColor="#6154f2"
+          eventColor="#040831"
           selectable={true}
           locales={[arLocale, enLocale]}
           locale={locale == 'ar' ? 'ar-LB' : 'en'}
@@ -347,7 +347,7 @@ const locale=useLocale()
                         fontSize: "13px",
                         padding: "12px 20px",
                         color: "#fff !important",
-                        backgroundColor:'#6154f2'
+                        backgroundColor:'#040831'
                       }}
                     >
                       <AddIcon

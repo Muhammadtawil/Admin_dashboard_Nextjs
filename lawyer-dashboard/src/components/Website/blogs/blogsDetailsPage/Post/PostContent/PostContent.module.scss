@@ -9,7 +9,7 @@
       gap: 5px;
       margin: 1rem 0;
       svg {
-        color: #6154f2;
+        color: #040831;
       }
     }
     .content {
@@ -31,14 +31,14 @@
     .quote {
       // background: #f9f9f9; /* Set the background color for the quote */
       padding: 20px; /* Add padding to the quote */
-      border-left: 4px solid #6154f2; /* Add a left border to the quote for styling */
+      border-left: 4px solid #040831; /* Add a left border to the quote for styling */
       quotes: '\201C' '\201D'; /* Define double quotes */
       font-size: 30px;
       font-style: italic; /* Make the text italic */
     }
     
     .quote :hover {
-      background: #6154f2;
+      background: #040831;
       color: white;
       .text-center{
           color:white;
