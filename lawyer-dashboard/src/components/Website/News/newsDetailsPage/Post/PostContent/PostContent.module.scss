@@ -1,4 +1,9 @@
 .postContentSection :global {
+  .dark.comment-icon{
+    
+      color: white;
+    
+  }
   .blogContent {
     img {
       border-radius: 8px;
@@ -10,6 +15,14 @@
       margin: 1rem 0;
       svg {
         color: #040831;
+        color: #040831;
+      
+      }
+
+      &.dark {
+        svg {
+          color: white;
+        }
       }
     }
     .content {

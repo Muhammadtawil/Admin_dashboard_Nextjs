@@ -40,9 +40,13 @@
       }
     }
     .active {
+      color:#f6a546;
+      // background-color: #f6a546;
       > a::after {
         opacity: 1 !important;
         top: -0.5rem;
+        color:#f6a546;
+        background-color: #f6a546;
       }
     }
   }
@@ -103,6 +107,7 @@
           left: 0;
           top: inherit !important;
           bottom: 0 !important;
+          color:#f6a546;
         }
       }
     }

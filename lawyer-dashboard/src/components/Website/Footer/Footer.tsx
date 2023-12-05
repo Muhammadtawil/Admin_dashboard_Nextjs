@@ -101,7 +101,7 @@ const footerData = createFooterData();
           style={{ width: "100%", height: "100%" }}
         >
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3315.152246381675!2d35.85813907570601!3d33.80838397324984!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDQ4JzMwLjIiTiAzNcKwNTEnMzguNiJF!5e0!3m2!1sen!2slb!4v1700272717415!5m2!1sen!2slb"
+             src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3312.1644629423836!2d35.5041660757094!3d33.88541797322031!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzPCsDUzJzA3LjUiTiAzNcKwMzAnMjQuMyJF!5e0!3m2!1sen!2slb!4v1700280573681!5m2!1sen!2slb"
             width="100%"
             height="250"
             // allowFullScreen=""

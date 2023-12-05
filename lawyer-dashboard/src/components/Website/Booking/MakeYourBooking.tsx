@@ -112,7 +112,7 @@ const path = usePathname()
   <div className="d-flex gap-2 socialLink arabic-list" style={{ padding: "10px" ,fontSize:"34px"}}>
     {footerData?.socialLinks.map((data, index) => (
       <div key={index}>
-        <Link href={data?.link}>{data?.icon}</Link>
+        <Link href={data?.link} style={{ color: data.color }}>{data?.icon}</Link>
       </div>
     ))}
   </div>
@@ -234,12 +234,12 @@ const path = usePathname()
                 >
                      <label>{t('service')}</label>
                           <select
-                            className="form-select bg-light border-0 select-dropdown"
+                            className="form-select select-dropdown inputStyle"
                             name="clientService"
                             style={{ height: "55px", color: "black", width: "200px" }}
                             required
                           >
-                            <option value=""       style={{ height: "55px", color: "black", width: "200px" }}>{t('service')}</option>
+                            <option className="inputStyle"  value=""       style={{ height: "55px", color: "black", width: "200px" }}>{t('service')}</option>
                             {servicesData.length === 0 ? (
                               <option value="" disabled>
                                 Loading...
@@ -252,6 +252,7 @@ const path = usePathname()
          
                                   (
                                     <option
+                                      className="inputStyle"
                                       key={service.serviceId}
                                       value={service.serviceId}
                                       style={{ height: "55px", color: "black", width: "200px" }}

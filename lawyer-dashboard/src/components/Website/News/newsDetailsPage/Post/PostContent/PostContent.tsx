@@ -49,7 +49,7 @@ news,
     if (!news || !news.newsContent) {
       return (
           <div>
-              <p>Blog content is not available.</p>
+              <p>News content is not available.</p>
            
           </div>
       );
@@ -64,12 +64,10 @@ news,
         <Image width={1000} height={800} src={news.newsImageUrl} alt="post image" />
         <div className="comment">
         
-          {news?.createdAt && news?.createdAt && (
-            <span> / </span>
-          )}
+
           {news?.createdAt && (
             <span>
-              <FaCalendarAlt fontSize={25} />      {new Date(news.createdAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
+              <FaCalendarAlt fontSize={25} className="comment-Icon" />      {new Date(news.createdAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
                                                     day: "numeric",
                                                     month: "long",
                 year: "numeric",

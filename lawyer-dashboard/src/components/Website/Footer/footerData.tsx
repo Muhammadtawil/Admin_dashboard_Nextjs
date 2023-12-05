@@ -27,11 +27,11 @@ const createFooterData = () => {
     contacts: [
       {
         icon: <RiMapPinUserFill fontSize={25} />,
-        message: t('address'),
+        message: t('address2'),
       },
       {
         icon: <RiMapPinUserFill fontSize={25} />,
-        message: t('address2'),
+        message: t('address'),
       },
       {
         icon: <RiPhoneFill fontSize={25} />,
@@ -43,10 +43,9 @@ const createFooterData = () => {
       },
     ],
     socialLinks: [
-      { icon: <BsFacebook />, link: "#" },
-      { icon: <BsInstagram />, link: "#" },
-      // { icon: <BsDribbble />, link: "#" },
-      { icon: <BsLinkedin />, link: "#" },
+      { icon: <BsFacebook />, link: "#" ,color:"#4267B2"},
+      { icon: <BsInstagram />, link: "#",color:"#F56040" },
+      { icon: <BsLinkedin />, link: "#" ,color:"#0A66C2"},
     ],
   };
 };
