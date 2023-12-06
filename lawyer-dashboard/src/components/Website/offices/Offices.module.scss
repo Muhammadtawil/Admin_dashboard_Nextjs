@@ -1,0 +1,33 @@
+.headerStyle :global {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
+  overflow: hidden;
+  height: 800px;
+  // transition: background-image 0.1s linear; /* Adjust the duration and easing as needed */
+}
+
+.headerStyle {
+  background-image: url("/bg-5.jpg");
+  animation: carouselAnimation 10s infinite;
+}
+
+@keyframes carouselAnimation {
+  0%, 49.999%, 100% {
+    background-image: url("/offices/beirut1.jpg");
+  }
+
+  50%, 99.999% {
+    background-image: url("/offices/chtoura.jpg");
+  }
+
+}
+
+
+
+@media screen and (max-width: 955px) {
+
+  .headerStyle {
+   height:100%;
+  }
+}

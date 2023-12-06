@@ -32,6 +32,10 @@ const NavbarData = () => {
         link: en?"/en/news":"/ar/news",
       },
       {
+        name: t('offices'),
+        link: en?"/en/offices":"/ar/offices",
+      },
+      {
         name: t('contact'),
         link: en?"/en/contact":"/ar/contact",
       },

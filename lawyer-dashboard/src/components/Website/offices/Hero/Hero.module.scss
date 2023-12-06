@@ -1,0 +1,170 @@
+.heroSection :global {
+  // Hero details css start
+  .welcomeText {
+    // border-left: 6px solid #f6a546;
+    font-family: "monospace";
+    padding-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: slideIn 1s ease-out; 
+  }
+  
+  @keyframes slideInFromRight {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  .welcomeTextAr {
+    // border-right: 6px solid #f6a546;
+    font-family: "monospace";
+    white-space: nowrap;
+    overflow: hidden;
+    animation: slideInFromRight 1s ease-out; 
+    font-weight:500;
+    padding-top:200px;
+    font-size:2.5rem;
+  }
+  .heroDetails {
+    padding-top:50%;
+    h5,
+    h2,
+    p {
+      margin: 0 0 1.5rem 0;
+      letter-spacing: 0.5px;
+      color: white;
+    
+    }
+    h5 {
+      font-weight: 500;
+      font-size: 1.5rem;
+
+    }
+    h2 {
+      font-weight: bold;
+      font-size: 3rem;
+      line-height: 3.8rem;
+      letter-spacing: 0;
+      padding-top:1%;
+      background-color:#040831
+    }
+    button {
+      background-color: #d4af37;
+      color: white;
+      border-radius: 8px;
+      border: 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+      padding: 13px 18px;
+      transition: all 0.1s;
+      letter-spacing: 0.8px;
+      font-family: "Mulish", sans-serif;
+      &:hover {
+        transition: all 0.3s;
+        background-color: darken($color: #d4af37, $amount: 5);
+      }
+    }
+  }
+  // Hero image css end
+  // Hero image css start
+  .heroImage {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    img {
+      border-radius: 8px;
+      border: 0;
+    }
+  }
+  // Hero image css end
+  // Hero responsive css start
+  @media screen and (max-width: 1199px) {
+    .heroImage {
+ 
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .heroContainer {
+      > div:first-child {
+        margin-bottom: 40px;
+      }
+    }
+    .heroDetails {
+      h5,
+      h2,
+      p {
+        margin: 0 0 1rem 0;
+        letter-spacing: 0.3px;
+      }
+      h5 {
+        font-size: 1.2rem;
+      }
+      h2 {
+        font-size: 3rem;
+        line-height: 3rem;
+        letter-spacing: 0;
+      }
+    }
+    .heroImage {
+ 
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    .welcomeTextAr {
+      border-right: 4px solid #d4af37;
+    }
+    .heroContainer {
+      > div:first-child {
+        margin-bottom: 30px;
+      }
+    }
+    .heroImage {
+   
+    }
+    .heroDetails {
+      h5,
+      h2,
+      p {
+        margin: 0 0 1.4rem 0;
+        letter-spacing: 0.5px;
+        color: white;
+      
+      }
+      h5 {
+        font-weight: 500;
+        font-size: 1.2rem;
+  
+      }
+      h2 {
+        font-weight: bold;
+        font-size: 22.5px;
+        line-height: 3.8rem;
+        letter-spacing: 0;
+      }
+      button {
+        text-align:right;
+       
+        background-color: #f6a546;
+        color: white;
+        border-radius: 5px;
+        border: 0;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 10px 15px;
+        transition: all 0.1s;
+        letter-spacing: 0.3px;
+        font-family: "Mulish", sans-serif;
+        &:hover {
+          transition: all 0.3s;
+          background-color: darken($color: #f6a546, $amount: 5);
+        }
+      }
+    }
+  }
+  // Hero responsive css end
+}
