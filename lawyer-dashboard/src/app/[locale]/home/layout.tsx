@@ -30,8 +30,20 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: 'Ghazal LawFirm مكتب الغزال للمحاماة',
-  description: 'Ghazal LawFirm مكتب الغزال للمحاماة',
+  title: ' مكتب الغزال للمحاماة واﻹستشارات القانونية Ghazal LawFirm',
+  description: ' مكتب الغزال للمحاماة واﻹستشارات القانونية Ghazal LawFirm  ',
+  generator: 'ClickerSoftwarw',
+  applicationName: ' مكتب الغزال للمحاماة واﻹستشارات القانونية Ghazal LawFirm  ',
+  referrer: 'origin-when-cross-origin',
+  keywords: ['LawFim', 'Ghazal', 'Ghazal lawFirm', 'ghazal law', 'خالد الغزال', 'المحامي خالد الغزال', 'مكتب الغزال', 'مكتب الغزال للمحاماة', 'محامي', 'الغزال', 'Khaled Ghazal', 'Khaled ALghazal'],
+  authors: [{ name: 'Ghazal lawFirm' }, { name: 'Ghazal lawFirm', url: 'www.ghazal-lawfirm.com' }],
+  creator: 'Clickers software',
+  publisher: 'Clickers software',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
 };
 
 async function getMessages(locale: string) {
@@ -56,25 +68,32 @@ export default async function RootLayout({ children, params: { locale } }: Props
       <head>
         <title>Ghazal LawFirm مكتب الغزال للمحاماة</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </head>
-          <NextIntlClientProvider locale={locale ? locale : 'en'} messages={messages}>
+        <meta property="og:title" content="مكتب الغزال للمحاماة واﻹستشارات القانونية Ghazal LawFirm" />
+        <meta property="og:description" content="مكتب الغزال للمحاماة واﻹستشارات القانونية Ghazal LawFirm" />
+        <meta property="og:image" content="/logonew.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
 
-              <body>
+      </head>
+      <NextIntlClientProvider locale={locale ? locale : 'en'} messages={messages}>
+
+        <body>
           {/* <Navbar /> */}
           {/* <NavBarTest/> */}
 
           <div className={`main-wrapper-content`}>
-          {children}
-          {/* <SubscriptionPopup /> */}
+            {children}
+            {/* <SubscriptionPopup /> */}
 
             <FooterMain />
-          <ScrollToTop/>
+            <ScrollToTop />
 
           </div>
           {/* <GoTop/> */}
         </body>
 
-       
+
 
       </NextIntlClientProvider>
     </html>
