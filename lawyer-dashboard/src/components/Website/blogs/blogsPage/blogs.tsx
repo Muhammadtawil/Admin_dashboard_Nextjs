@@ -15,7 +15,7 @@ const Blogs = ({ blogData ,children}: { blogData: any,children:any }) => {
   // State for search functionality implement
   const t=useTranslations('WebBlog')
   const [blogsData, setBlogsData] = useState(blogData);
-  const [visibleCount, setVisibleCount] = useState(3);
+  const [visibleCount, setVisibleCount] = useState(4);
   const loadMore = () => {
     const remainingArticles = blogsData.length - visibleCount;
     if (remainingArticles <= 2) {

@@ -89,7 +89,7 @@ const archiveData = Object.keys(groupedBlogs).map((dateKey) => ({
   }).slice(0,5)
   .map((data:any, index:any) => (
             //  <Link href={`/ar/blogs/${data.blogId}`}>
-          <div className="postCard" key={index} onClick={()=>router.push(`/${locale}/blogs/${data.blogId}`)}>
+          <div className="postCard" key={index} onClick={()=>router.push(`/${locale}/blogs/${data.blogId}/${data.blogTitle}`)        }>
          
             <div>
               <Image
@@ -97,11 +97,13 @@ const archiveData = Object.keys(groupedBlogs).map((dateKey) => ({
                 width={200}
                 height={200}
                 src={data?.blogImageUrl}
-                alt="blog image"
+          alt="blog image"
+          className="sideBar-Image"
+          
               />
               </div>
             <div>
-              <h5>{data.blogTitle.slice(0, 20)}...</h5>
+              <h5>{data.blogTitle}...</h5>
               <span>
                                    {new Date(data.createdAt).toLocaleDateString(arabic?"ar-LB":"en-US", {
                                      day: "numeric",

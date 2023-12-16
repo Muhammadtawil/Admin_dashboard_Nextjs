@@ -83,7 +83,7 @@ export default async function RootLayout({ children, params: { locale } }: Props
     <html lang={lang}>
           <NextIntlClientProvider locale={locale ? locale : 'en'} messages={messages}>
           <head>
-        <title>Ghazal LawFirm مكتب الغزال للمحاماة</title>
+        <title>مكتب الغزال للمحاماة واﻹستشارات القانونية Ghazal LawFirm for legal Services</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="icon" href="/fav.png" />
       </head>

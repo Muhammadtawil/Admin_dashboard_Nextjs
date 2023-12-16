@@ -9,7 +9,7 @@ import SideBarNewsDetails from "./SideBar/sideBar";
 export default async function BlogsDetails({
   params,
 }: {
-  params: { blogId: string};
+  params: { blogId: string,blogTitle:string};
   }) {
   
     

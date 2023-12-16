@@ -25,8 +25,8 @@ type Props = {
 };
 
 export const metadata: Metadata = {
-  title: 'Ghazal LawFirm مكتب الغزال للمحاماة',
-  description: 'Ghazal LawFirm مكتب الغزال للمحاماة',
+  title: 'مكتب الغزال للمحاماة واﻹستشارات القانونية Ghazal LawFirm for legal Services',
+  description: 'مكتب الغزال للمحاماة واﻹستشارات القانونية Ghazal LawFirm for legal Services',
 };
 
 async function getMessages(locale: string) {
@@ -50,7 +50,7 @@ export default async function blogsPageLayout({ children, params: { locale } }: 
     <html>
       <NextIntlClientProvider locale={locale ? locale : 'en'} messages={messages}>
       <head>
-        <title>Ghazal LawFirm مكتب الغزال للمحاماة</title>
+        <title>مكتب الغزال للمحاماة واﻹستشارات القانونية Ghazal LawFirm for legal Services</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </head>
         <body>

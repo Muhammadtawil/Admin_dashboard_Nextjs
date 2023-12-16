@@ -35,18 +35,20 @@ const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId 
         <h4>{t('popularPosts') }</h4>
   
 {filteredBlogs.map((data: any, index: any) => (
-  <Link key={index} href={`/${locale}/blogs/${data.blogId}`}>
+  <Link key={index} href={`/${locale}/blogs/${data.blogId}/${data.blogTitle}`}>
     <div key={index} className="postCard">
       <div key={index} >
         <Image
-          width={200}
-          height={200}
+          width={300}
+          height={300}
           src={data?.blogImageUrl}
           alt="blog image"
+          layout="fixed"
+          className="sideBar-Image"
         />
       </div>
       <div key={index} >
-        <h5 key={index} >{data.blogTitle.slice(0, 20)}...</h5>
+        <h5 className="sideBar-title" key={index} >{data.blogTitle}...</h5>
         <h6  key={index}  className="date">
           {new Date(data.createdAt).toLocaleDateString(arabic ? "ar-LB" : "en-US", {
             day: "numeric",
@@ -64,7 +66,7 @@ const authorBlogs = blogs.filter((blog: any,index:any) => (blog.author.authorId 
 
         {authorBlogs.map((data: any, index: any) => (
   <>
-  <Link key={index} href={`/${locale}/blogs/${data.blogId}`}>
+  <Link key={index} href={`/${locale}/blogs/${data.blogId}/${data.blogTitle}}`}>
     <div key={index} className="postCard">
       <div key={index} >
         <Image

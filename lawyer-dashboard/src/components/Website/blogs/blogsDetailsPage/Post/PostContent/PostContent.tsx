@@ -31,7 +31,7 @@ const PostContent = ({
 
 
 }: {
-  params: { blogId: string};
+  params: { blogId: string,blogTitle:string};
       blog: any;
    
   }) => {

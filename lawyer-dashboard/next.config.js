@@ -42,11 +42,8 @@ const nextConfig = {
   //   locales: ["en", "ar"],
   //   localeDetection: false,
   // },
-
   experimental: {
-    // serverComponents: true,
-    // appDir: true,
-    serverActions: true, // Enable Server Actions
+    serverActions: {}, // Set it to an empty object or configure it as needed
   },
   
 };

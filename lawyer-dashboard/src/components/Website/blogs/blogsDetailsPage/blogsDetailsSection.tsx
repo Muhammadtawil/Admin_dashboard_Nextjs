@@ -6,7 +6,7 @@ export default async function BlogsDetailsMain({
   params,
   children
 }: {
-  params: { blogId: string };
+  params: { blogId: string,blogTitle:string };
   children: any;
 }) {
 

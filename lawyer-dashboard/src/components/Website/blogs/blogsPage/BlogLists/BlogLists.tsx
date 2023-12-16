@@ -18,7 +18,8 @@ const BlogLists = ({ blogsData }:any) => {
   const path = usePathname();
   const arabic = path.includes('ar')
   const locale=arabic?"ar":"en"
-const t=useTranslations('WebBlog')
+  const t = useTranslations('WebBlog')
+
   return (
     <div className={style.blogListStyle}>
       <Row className="row-cols-1 row-cols-md-1 row-cols-lg-2">
@@ -43,7 +44,7 @@ const t=useTranslations('WebBlog')
               <div className="image">
                 <Image fill src={blog?.blogImageUrl} alt="blog image" />
               </div>
-              <div className="blogContent" onClick={()=>router.push(`/${locale}/blogs/${blog.blogId}`)}>
+              <div className="blogContent" onClick={()=>router.push(`/${locale}/blogs/${blog.blogId}/${blog.blogTitle}`)}>
                 <div>
                   {blog?.author.authorName && (
                     <span>
@@ -62,7 +63,7 @@ const t=useTranslations('WebBlog')
                   )}
                 </div>
                 <h4 >{blog.blogTitle}</h4>
-                <Link href={`/${locale}/blogs/${blog.blogId}`} className="read-more">
+                <Link href={`/${locale}/blogs/${blog.blogId}/${blog.blogTitle}`} className="read-more">
                 <button>
                 {t('readMore') } <FaLongArrowAltRight />
                 </button>
