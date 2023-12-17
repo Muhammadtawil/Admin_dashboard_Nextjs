@@ -10,6 +10,9 @@ import style from "../../../components/Website/Header/Header.module.scss";
 import Testimonial from "@/components/Website/Testimonial/Testimonial";
 import Services from "@/components/Website/Services/services";
 import ScrollToTop from "@/components/dashboard/shared/ScrollToTop";
+import FooterMain from "@/components/Website/Footer/Footer-main";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 
 
@@ -18,7 +21,10 @@ import ScrollToTop from "@/components/dashboard/shared/ScrollToTop";
 
 export default function HomePage() {
     return (
-        <>
+        <section>
+
+
+    
             <div className={style.headerStyle}>
 
                 <NavBar />
@@ -33,10 +39,11 @@ export default function HomePage() {
             <Team />
             <Testimonial />
             <Booking />
-
+            <FooterMain />
 
             {/* <ContactInfo /> */}
-        </>
+
+        </section>
 
     )
 }

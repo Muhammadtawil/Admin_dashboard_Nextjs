@@ -106,7 +106,7 @@ export default async function RootLayout({ children, params: { locale } }: Props
             {children}
             {/* <SubscriptionPopup /> */}
 
-            <FooterMain />
+        
             <ScrollToTop />
 
           </div>
