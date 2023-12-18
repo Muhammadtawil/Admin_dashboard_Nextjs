@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import LoadingLogo from '../../../../public/Video.gif';
+
+import LoadingSpinnerWeb from '@/components/Website/loading/loading-component';
 
 export default function Loading() {
   const containerStyle = {
@@ -7,17 +7,15 @@ export default function Loading() {
     alignItems: 'center',
     justifyContent: 'center',
     height: '100vh',
-    backgroundColor: '#0D0B2B',
+    backgroundColor: '#110F37',
   };
 
   const imageStyle = {
-    width: '10%', // Adjust the size as needed
-    height: '15%', // Adjust the size as needed
+    width: '15%', // Adjust the size as needed
+    height: '25%', // Adjust the size as needed
   };
 
   return (
-    <div style={containerStyle}>
-      <Image src={LoadingLogo} alt="Loading..." style={imageStyle} />
-    </div>
+    <LoadingSpinnerWeb/>
   );
 }

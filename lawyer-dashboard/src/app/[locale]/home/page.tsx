@@ -12,7 +12,8 @@ import Services from "@/components/Website/Services/services";
 import ScrollToTop from "@/components/dashboard/shared/ScrollToTop";
 import FooterMain from "@/components/Website/Footer/Footer-main";
 import { Suspense } from "react";
-import Loading from "./loading";
+import LoadingSpinnerWeb from "@/components/Website/loading/loading-component";
+
 
 
 
@@ -21,6 +22,7 @@ import Loading from "./loading";
 
 export default function HomePage() {
     return (
+
         <section>
 
 
@@ -44,6 +46,7 @@ export default function HomePage() {
             {/* <ContactInfo /> */}
 
         </section>
+        // </Suspense>
 
     )
 }

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
-import { ReactNode } from 'react';
+import { ReactNode, Suspense } from 'react';
 import "../../../styles/web/style.css";
 import "../../../styles/web/dark.css";
 import "../../../styles/web/bootstrap.min.css";
@@ -23,6 +23,7 @@ import FooterMain from '@/components/Website/Footer/Footer-main';
 import ScrollToTop from '@/components/dashboard/shared/ScrollToTop';
 // import SubscriptionPopup from '@/components/shared/SubscriptionPopup';
 import Image from 'next/image';
+import LoadingSpinnerWeb from '@/components/Website/loading/loading-component';
 
 
 type Props = {
@@ -103,11 +104,13 @@ export default async function RootLayout({ children, params: { locale } }: Props
           {/* <NavBarTest/> */}
 
           <div className={`main-wrapper-content`}>
+        {/* <Suspense fallback={<LoadingSpinnerWeb/>}> */}
+
             {children}
             {/* <SubscriptionPopup /> */}
-
+            {/* </Suspense> */}
         
-            <ScrollToTop />
+            {/* <ScrollToTop /> */}
 
           </div>
           {/* <GoTop/> */}

@@ -1,0 +1,20 @@
+/* Loading.module.scss */
+
+.containerStyle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; 
+  background-color: #0f0d2e;
+}
+
+.imageStyle {
+  width: 15%;
+  height: 25%;
+}
+
+@media (max-width: 963px) {
+  .imageStyle {
+    height: 12%;
+  }
+}
