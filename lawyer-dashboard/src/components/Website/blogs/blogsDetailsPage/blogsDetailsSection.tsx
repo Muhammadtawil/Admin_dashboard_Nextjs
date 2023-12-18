@@ -31,9 +31,9 @@ export default async function BlogsDetailsMain({
         <meta property="og:title" content={blog.blogTitle } />
         <meta property="og:description" content={blog.blogContent} />
         <meta property="og:image" content={blog.blogImageUrl}/>
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        {/* <meta property="og:image:type" content="image/png"/> */}
+        <meta property="og:image:width" content="1200"/>
+        <meta property="og:image:height" content="630"/>
         <meta property="og:type" content="webiste" />
       </head>
       <DetailsComponent params={params} blogs={blog} children={children}  />
