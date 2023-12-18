@@ -19,7 +19,7 @@ export default async function blogsDetailsPage({
 
   return (
     <>
-          <head>
+          {/* <head>
         <title>{params.blogTitle }</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:title" content={params.blogTitle } />
@@ -29,7 +29,7 @@ export default async function blogsDetailsPage({
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="webiste" />
-      </head>
+      </head> */}
   <BlogsDetails params={params}/>
    
    

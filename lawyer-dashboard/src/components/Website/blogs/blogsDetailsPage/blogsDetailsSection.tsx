@@ -29,7 +29,7 @@ export default async function BlogsDetailsMain({
         <title>{blog.blogTitle }</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta property="og:title" content={blog.blogTitle } />
-        <meta property="og:description" content={blog.blogTitle} />
+        <meta property="og:description" content={blog.blogContent} />
         <meta property="og:image" content={blog.blogImageUrl}/>
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
