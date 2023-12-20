@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import LoadingLogo from '../../../../public/Video.gif';
+import LoadingLogo from '../../../../public/ghazal-loading.gif';
 import style from './Loading.module.scss';
 
 export default function Loading() {
